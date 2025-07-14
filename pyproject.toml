@@ -1,0 +1,23 @@
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "wheel>=0.37.0",
+    "scikit-build-core>=0.11.5",
+]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "cbits"
+version = "0.1.0"
+authors = [
+    { name = "lambdaphoenix" }
+]
+description = "High-performance BitVector with C backend."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: C",
+    "Operating System :: OS Independent",
+]
+dependencies = []
