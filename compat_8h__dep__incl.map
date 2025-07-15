@@ -1,0 +1,9 @@
+<map id="include/compat.h" name="include/compat.h">
+<area shape="rect" id="Node000001" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="77,5,211,31"/>
+<area shape="rect" id="Node000002" href="$bitvector_8h.html" title="Packed BitVector struct." alt="" coords="73,79,215,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="147,44,147,79,141,79,141,44"/>
+<area shape="rect" id="Node000003" href="$binding_8c.html" title="Python C&#45;API bindings for cbits.BitVector." alt="" coords="5,152,136,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="124,116,84,154,81,150,120,112"/>
+<area shape="rect" id="Node000004" href="$bitvector_8c.html" title="Implementation of BitVector functions." alt="" coords="161,152,274,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="168,112,207,150,204,154,164,116"/>
+</map>

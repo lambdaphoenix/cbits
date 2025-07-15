@@ -1,0 +1,7 @@
+<map id="include/bitvector.h" name="include/bitvector.h">
+<area shape="rect" id="Node000001" title="Packed BitVector struct." alt="" coords="73,5,215,31"/>
+<area shape="rect" id="Node000002" href="$binding_8c.html" title="Python C&#45;API bindings for cbits.BitVector." alt="" coords="5,79,136,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="124,42,84,80,81,77,120,38"/>
+<area shape="rect" id="Node000003" href="$bitvector_8c.html" title="Implementation of BitVector functions." alt="" coords="161,79,274,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="168,38,207,77,204,80,164,42"/>
+</map>

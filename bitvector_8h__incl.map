@@ -1,0 +1,15 @@
+<map id="include/bitvector.h" name="include/bitvector.h">
+<area shape="rect" id="Node000001" title="Packed BitVector struct." alt="" coords="168,5,311,31"/>
+<area shape="rect" id="Node000002" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="145,79,227,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,33,205,69,201,66,228,29"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="251,79,334,104"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="250,29,278,66,274,69,246,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,76,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="164,106,78,148,75,144,161,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="101,152,175,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="180,106,156,142,151,139,176,103"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="200,152,271,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="196,103,222,139,217,142,192,106"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="295,152,387,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="212,102,304,144,302,149,210,106"/>
+</map>
