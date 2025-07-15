@@ -1,15 +1,29 @@
-/// @file src/bitvector.c
-/// @brief Implementation of BitVector functions.
-///
-/// - bv_new, bv_copy, bv_free
-///
-/// - build_rank, rank
-///
-/// - equality and subvector search
-/// @see include/bitvector.h
+/**
+ * @file src/bitvector.c
+ * @brief Implementation of BitVector functions.
+ *
+ * This source file provides the C_API implementations for:
+ * - bv_new, bv_copy, bv_free
+ * - bv_build_rank, bv_rank
+ * - bv_equal and bv_contains_subvector
+ *
+ * @see include/bitvector.h
+ * @author lambdaphoenix
+ * @copyright Copyright (c) 2025 lambdaphoenix
+ */
+
 #include "../include/bitvector.h"
 #include "bitvector.h"
 
+/**
+ * @brief Compute how many 64-bit words are needed to store a given number of
+ * bits.
+ *
+ * Internally rounds up: any remainder bits occupy another full word.
+ *
+ * @param n_bits Number of bits to store.
+ * @return Number of 64-bit words required.
+ */
 static inline size_t
 words_for_bits(const size_t n_bits)
 {

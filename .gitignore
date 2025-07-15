@@ -38,5 +38,5 @@ build-*/
 *.sublime-workspace
 
 # Documentation build
-docs
+doxygen
 Doxyfile.bak

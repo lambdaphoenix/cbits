@@ -1,34 +1,58 @@
-/// @file python/binding.c
-/// @brief Python C-API bindings for cbits.BitVector.
-///
-/// Defines:
-///
-/// - PyBitVector type
-///
-/// - tp_new, tp_init, tp_dealloc, tp_methods
-///
-/// - sequence, number and richcompare protocols
+/**
+ * @file python/binding.c
+ * @brief Python C-API bindings for cbits.BitVector.
+ *
+ * Defines the Python-level BitVector type wrapping the C BitVector API,
+ * including:
+ * - PyBitVector type and lifecycle (tp_new, tp_init, tp_dealloc)
+ * - Core BitVector methods (get, set, clear, flip, rank, copy)
+ * - Sequence, numeric and richcompare protocols
+ *
+ * @see include/bitvector.h
+ * @author lambdaphoenix
+ * @copyright Copyright (c) 2025 lambdaphoenix
+ */
 #define PY_SSIZE_T_CLEAN
 #include <Python.h>
 #include "bitvector.h"
 
+/**
+ * @def CHECK_BV_OBJ(o)
+ * @brief Verify that @a o is a PyBitVector instance or raise @c TypeError.
+ */
 #define CHECK_BV_OBJ(o)                                         \
     if (!PyObject_TypeCheck(o, PyBitVectorPtr)) {               \
         PyErr_SetString(PyExc_TypeError, "Expected BitVector"); \
         return NULL;                                            \
     }
+
+/**
+ * @def CHECK_BV_BOTH(a, b)
+ * @brief Verify both @a a and @a b are PyBitVector, else return @c
+ * NotImplemented.
+ */
 #define CHECK_BV_BOTH(a, b)                       \
     if (!PyObject_TypeCheck(a, PyBitVectorPtr) || \
         !PyObject_TypeCheck(b, PyBitVectorPtr)) { \
         Py_RETURN_NOTIMPLEMENTED;                 \
     }
 
+/**
+ * @struct PyBitVector
+ * @brief Python object containing a pointer to a native BitVector.
+ */
 typedef struct {
     PyObject_HEAD BitVector *bv;
 } PyBitVector;
 
+/** Global pointer to the PyBitVector type object. */
 PyTypeObject *PyBitVectorPtr = NULL;
 
+/**
+ * @brief Wrap a native BitVector in a new PyBitVector Python object.
+ * @param bv_data Pointer to an allocated BitVector.
+ * @return New reference to a PyBitVector, or NULL on allocation failure.
+ */
 static PyObject *
 bv_wrap_new(BitVector *bv_data)
 {
@@ -45,6 +69,10 @@ bv_wrap_new(BitVector *bv_data)
  * Deallocation and object lifecycle
  * ------------------------------------------------------------------------- */
 
+/**
+ * @brief Deallocate a PyBitVector object.
+ * @param self Python object to deallocate.
+ */
 static void
 py_bv_free(PyObject *self)
 {
@@ -56,6 +84,13 @@ py_bv_free(PyObject *self)
     Py_TYPE(self)->tp_free(self);
 }
 
+/**
+ * @brief __new__ for BitVector: allocate the Python object.
+ * @param type The Python type object.
+ * @param args Positional args (unused).
+ * @param kwds Keyword args (unused).
+ * @return New, uninitialized PyBitVector or NULL on failure.
+ */
 static PyObject *
 py_bv_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
 {
@@ -67,6 +102,12 @@ py_bv_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
     return (PyObject *) bvself;
 }
 
+/**
+ * @brief Python binding for BitVector.copy() → BitVector.
+ * @param self Python PyBitVector instance.
+ * @param UNUSED
+ * @return New BitVector copy
+ */
 static PyObject *
 py_bv_copy(PyObject *self, PyObject *UNUSED(ignored))
 {
@@ -79,6 +120,12 @@ py_bv_copy(PyObject *self, PyObject *UNUSED(ignored))
     return bv_wrap_new(copy);
 }
 
+/**
+ * @brief Python binding for BitVector.__deepcopy__(memo) → BitVector.
+ * @param self Python PyBitVector instance.
+ * @param memo
+ * @return New BitVector copy
+ */
 static PyObject *
 py_bv_deepcopy(PyObject *self, PyObject *memo)
 {
@@ -95,6 +142,13 @@ py_bv_deepcopy(PyObject *self, PyObject *memo)
     return copy;
 }
 
+/**
+ * @brief __init__ for BitVector(size): allocate the underlying C BitVector.
+ * @param self Python PyBitVector instance.
+ * @param args Positional args tuple.
+ * @param kwds Keyword args dict.
+ * @return 0 on success, -1 on error (with exception set).
+ */
 static int
 py_bv_init(PyObject *self, PyObject *args, PyObject *kwds)
 {
@@ -115,6 +169,15 @@ py_bv_init(PyObject *self, PyObject *args, PyObject *kwds)
 /* -------------------------------------------------------------------------
  * Core BitVector Methods
  * ------------------------------------------------------------------------- */
+
+/**
+ * @brief Parse and validate a single index argument.
+ * @param self Python PyBitVector instance.
+ * @param args Array of Python arguments.
+ * @param n_args Number of arguments expected (should be 1).
+ * @param p_index Output pointer to store the validated index.
+ * @return 0 on success (p_index set), -1 on failure (exception set).
+ */
 static inline int
 bv_parse_index(PyObject *self, PyObject *const *args, Py_ssize_t n_args,
                size_t *p_index)
@@ -140,6 +203,13 @@ bv_parse_index(PyObject *self, PyObject *const *args, Py_ssize_t n_args,
     return 0;
 }
 
+/**
+ * @brief Python binding for BitVector.get(index) → bool.
+ * @param self Python PyBitVector instance.
+ * @param args Array of Python arguments.
+ * @param n_args Number of arguments expected (should be 1).
+ * @return true is bit is set, false otherwise
+ */
 static PyObject *
 py_bv_get(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
 {
@@ -152,6 +222,13 @@ py_bv_get(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
     return PyBool_FromLong(bit);
 }
 
+/**
+ * @brief Python binding for BitVector.set(index).
+ * @param self Python PyBitVector instance.
+ * @param args Array of Python arguments.
+ * @param n_args Number of arguments expected (should be 1).
+ * @return None on success, NULL on error.
+ */
 static PyObject *
 py_bv_set(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
 {
@@ -164,6 +241,13 @@ py_bv_set(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
     Py_RETURN_NONE;
 }
 
+/**
+ * @brief Python binding for BitVector.clear(index).
+ * @param self Python PyBitVector instance.
+ * @param args Array of Python arguments.
+ * @param n_args Number of arguments expected (should be 1).
+ * @return None on success, NULL on error.
+ */
 static PyObject *
 py_bv_clear(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
 {
@@ -176,6 +260,13 @@ py_bv_clear(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
     Py_RETURN_NONE;
 }
 
+/**
+ * @brief Python binding for BitVector.flip(index).
+ * @param self Python PyBitVector instance.
+ * @param args Array of Python arguments.
+ * @param n_args Number of arguments expected (should be 1).
+ * @return None on success, NULL on error.
+ */
 static PyObject *
 py_bv_flip(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
 {
@@ -188,6 +279,13 @@ py_bv_flip(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
     Py_RETURN_NONE;
 }
 
+/**
+ * @brief Python binding for BitVector.rank(index) → bool.
+ * @param self Python PyBitVector instance.
+ * @param args Array of Python arguments.
+ * @param n_args Number of arguments expected (should be 1).
+ * @return Number of bits set in range [0...pos]
+ */
 static PyObject *
 py_bv_rank(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
 {
@@ -200,6 +298,9 @@ py_bv_rank(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
     return PyLong_FromSize_t(rank);
 }
 
+/**
+ * @brief Method table for BitVector core methods.
+ */
 static PyMethodDef BitVector_methods[] = {
     {"get", (PyCFunction) py_bv_get, METH_FASTCALL, PyDoc_STR("Get bit")},
     {"set", (PyCFunction) py_bv_set, METH_FASTCALL, PyDoc_STR("Set bit")},
@@ -220,6 +321,11 @@ static PyMethodDef BitVector_methods[] = {
  * Magic Methods
  * ------------------------------------------------------------------------- */
 
+/**
+ * @brief __repr__ for BitVector.
+ * @param self Python PyBitVector instance.
+ * @return New Python string describing the object.
+ */
 static PyObject *
 py_bv_repr(PyObject *self)
 {
@@ -228,6 +334,11 @@ py_bv_repr(PyObject *self)
                                 self, bvself->bv->n_bits);
 }
 
+/**
+ * @brief __str__ for BitVector.
+ * @param self Python PyBitVector instance.
+ * @return New Python string "BitVector with X bits".
+ */
 static PyObject *
 py_bv_str(PyObject *self)
 {
@@ -235,6 +346,14 @@ py_bv_str(PyObject *self)
     return PyUnicode_FromFormat("BitVector with %zu bits", bvself->bv->n_bits);
 }
 
+/**
+ * @brief Rich comparison (== and !=) for BitVector.
+ * @param a First operant.
+ * @param b Second operant.
+ * @param op Comparison operation (Py_EQ or Py_NE).
+ * @return Py_True or Py_False on success; Py_RETURN_NOTIMPLEMENTED if
+ * unsupported.
+ */
 static PyObject *
 py_bv_richcompare(PyObject *a, PyObject *b, int op)
 {
@@ -256,6 +375,11 @@ py_bv_richcompare(PyObject *a, PyObject *b, int op)
  * Sequence Protocol
  * ------------------------------------------------------------------------- */
 
+/**
+ * @brief __len__(BitVector) → number of bits.
+ * @param self Python PyBitVector instance.
+ * @return Number of bits as Py_ssize_t.
+ */
 static Py_ssize_t
 py_bv_len(PyObject *self)
 {
@@ -263,6 +387,12 @@ py_bv_len(PyObject *self)
     return (Py_ssize_t) (bv ? bv->n_bits : 0);
 }
 
+/**
+ * @brief __getitem__(BitVector, index).
+ * @param self Python PyBitVector instance.
+ * @param i Index to access
+ * @return Py_True or Py_False; NULL on IndexError.
+ */
 static PyObject *
 py_bv_item(PyObject *self, Py_ssize_t i)
 {
@@ -274,6 +404,13 @@ py_bv_item(PyObject *self, Py_ssize_t i)
     return PyBool_FromLong(bv_get(bv, (size_t) i));
 }
 
+/**
+ * @brief __setitem__(BitVector, index, value).
+ * @param self Python PyBitVector instance.
+ * @param i Index to access
+ * @param value Boolean-like Python object
+ * @return 0 on success; -1 on error (with exception set).
+ */
 static int
 py_bv_ass_item(PyObject *self, Py_ssize_t i, PyObject *value)
 {
@@ -296,6 +433,12 @@ py_bv_ass_item(PyObject *self, Py_ssize_t i, PyObject *value)
     return 0;
 }
 
+/**
+ * @brief __contains__(BitVector, other) → boolean.
+ * @param self Python PyBitVector instance (haystack).
+ * @param value Python PyBitVector instance (needle).
+ * @return 1 if contained, 0 otherwise
+ */
 static int
 py_bv_contains(PyObject *self, PyObject *value)
 {
@@ -312,6 +455,12 @@ py_bv_contains(PyObject *self, PyObject *value)
  * Number Protocol
  * ------------------------------------------------------------------------- */
 
+/**
+ * @brief __and__(BitVector, BitVector) → BitVector.
+ * @param a Left operand.
+ * @param b Right operand.
+ * @return New BitVector representing bitwise AND; NULL on error.
+ */
 static PyObject *
 py_bv_and(PyObject *a, PyObject *b)
 {
@@ -338,6 +487,12 @@ py_bv_and(PyObject *a, PyObject *b)
     return bv_wrap_new(C);
 }
 
+/**
+ * @brief __iand__(BitVector, BitVector) in-place AND.
+ * @param a Left operand (modified in place).
+ * @param b Right operand.
+ * @return Self on success, NULL on error.
+ */
 static PyObject *
 py_bv_iand(PyObject *self, PyObject *arg)
 {
@@ -360,6 +515,12 @@ py_bv_iand(PyObject *self, PyObject *arg)
     return self;
 }
 
+/**
+ * @brief __or__(BitVector, BitVector) → BitVector.
+ * @param a Left operand.
+ * @param b Right operand.
+ * @return New BitVector representing bitwise OR; NULL on error.
+ */
 static PyObject *
 py_bv_or(PyObject *a, PyObject *b)
 {
@@ -386,6 +547,12 @@ py_bv_or(PyObject *a, PyObject *b)
     return bv_wrap_new(C);
 }
 
+/**
+ * @brief __ior__(BitVector, BitVector) in-place OR.
+ * @param a Left operand (modified in place).
+ * @param b Right operand.
+ * @return Self on success, NULL on error.
+ */
 static PyObject *
 py_bv_ior(PyObject *self, PyObject *arg)
 {
@@ -408,6 +575,12 @@ py_bv_ior(PyObject *self, PyObject *arg)
     return self;
 }
 
+/**
+ * @brief __xor__(BitVector, BitVector) → BitVector.
+ * @param a Left operand.
+ * @param b Right operand.
+ * @return New BitVector representing bitwise XOR; NULL on error.
+ */
 static PyObject *
 py_bv_xor(PyObject *a, PyObject *b)
 {
@@ -434,6 +607,12 @@ py_bv_xor(PyObject *a, PyObject *b)
     return bv_wrap_new(C);
 }
 
+/**
+ * @brief __ixor__(BitVector, BitVector) in-place XOR.
+ * @param a Left operand (modified in place).
+ * @param b Right operand.
+ * @return Self on success, NULL on error.
+ */
 static PyObject *
 py_bv_ixor(PyObject *self, PyObject *arg)
 {
@@ -456,6 +635,11 @@ py_bv_ixor(PyObject *self, PyObject *arg)
     return self;
 }
 
+/**
+ * @brief __invert__(BitVector) → BitVector.
+ * @param self Python PyBitVector instance.
+ * @return New BitVector instance with all bits toggled, NULL on error;
+ */
 static PyObject *
 py_bv_invert(PyObject *self)
 {
@@ -472,6 +656,11 @@ py_bv_invert(PyObject *self)
     return bv_wrap_new(C);
 }
 
+/**
+ * @brief __bool__(BitVector) → boolean.
+ * @param self Python PyBitVector instance.
+ * @return 1 if any bit is set, 0 otherwise
+ */
 static int
 py_bv_bool(PyObject *self)
 {
@@ -483,6 +672,12 @@ py_bv_bool(PyObject *self)
  * Properties
  * ------------------------------------------------------------------------- */
 
+/**
+ * @brief Getter for the read-only "bits" property.
+ * @param self Python PyBitVector instance.
+ * @param closure Unused.
+ * @return Python integer of the bit-length
+ */
 static PyObject *
 py_bv_get_size(PyObject *self, void *closure)
 {
@@ -490,6 +685,12 @@ py_bv_get_size(PyObject *self, void *closure)
     return PyLong_FromSize_t(bvself->bv->n_bits);
 }
 
+/**
+ * @brief Setter for the read-only "bits" property, always raises.
+ * @param self Python PyBitVector instance.
+ * @param closure Unused.
+ * @return -1 and sets AttributeError
+ */
 static int
 py_bv_set_size(PyObject *self, void *closure)
 {
@@ -497,6 +698,14 @@ py_bv_set_size(PyObject *self, void *closure)
     return -1;
 }
 
+/**
+ * @brief Property definitions for the BitVector type.
+ *
+ * This table lists all read-only and writable properties exposed
+ * on the Python BitVector object.
+ *
+ * @see PyGetSetDef
+ */
 static PyGetSetDef PyBitVector_getset[] = {
     {"bits", (getter) py_bv_get_size, (setter) py_bv_set_size,
      PyDoc_STR("The number of bits"), NULL},
@@ -507,6 +716,14 @@ static PyGetSetDef PyBitVector_getset[] = {
  * Type Object Definition
  * ------------------------------------------------------------------------- */
 
+/**
+ * @brief Slot table for the PyBitVector type.
+ *
+ * Maps Python’s type callbacks (new, init, dealloc, repr, etc.)
+ * and protocol slots (sequence, number, richcompare) to our C functions.
+ *
+ * @see PyType_Slot
+ */
 static PyType_Slot PyBitVector_slots[] = {
     {Py_tp_new, py_bv_new},
     {Py_tp_init, py_bv_init},
@@ -535,6 +752,14 @@ static PyType_Slot PyBitVector_slots[] = {
     {0, 0},
 };
 
+/**
+ * @brief Type specification for cbits.BitVector.
+ *
+ * This structure describes the Python type name, size,
+ * inheritance flags, and slot table used to create the type.
+ *
+ * @see PyType_Spec
+ */
 PyType_Spec PyBitVector_spec = {
     .name = "cbits.BitVector",
     .basicsize = sizeof(PyBitVector),
@@ -548,15 +773,49 @@ PyType_Spec PyBitVector_spec = {
  * ------------------------------------------------------------------------- */
 
 #if PY_VERSION_HEX >= 0x030C0000
+    /**
+     * @def ADD_OBJECT(module, name, object)
+     * @brief Add a PyObject to a module, handling reference counts portably.
+     *
+     * On Python ≥ 3.12, PyModule_AddObjectRef() is available and automatically
+     * steals a reference. On older versions, we fall back to
+     * PyModule_AddObject() and manually increment the reference on success.
+     *
+     * @param module The Python module to which the object is added.
+     * @param name The attribute name under which the object is registered.
+     * @param object The PyObject pointer to add.
+     * @return 0 on success, -1 on failure (exception set by
+     * PyModule_AddObject*).
+     */
     #define ADD_OBJECT(module, name, object) \
         (PyModule_AddObjectRef(module, name, object))
 #else
+
+    /**
+     * @def ADD_OBJECT(module, name, object)
+     * @brief Add a PyObject to a module, handling reference counts portably.
+     *
+     * On Python ≥ 3.12, PyModule_AddObjectRef() is available and automatically
+     * steals a reference. On older versions, we fall back to
+     * PyModule_AddObject() and manually increment the reference on success.
+     *
+     * @param module The Python module to which the object is added.
+     * @param name The attribute name under which the object is registered.
+     * @param object The PyObject pointer to add.
+     * @return 0 on success, -1 on failure (exception set by
+     * PyModule_AddObject*).
+     */
     #define ADD_OBJECT(module, name, object)           \
         (PyModule_AddObject(module, name, object) == 0 \
              ? (Py_XINCREF(object), 0)                 \
              : -1)
 #endif
 
+/**
+ * @brief Module exec callback: register BitVector type and metadata.
+ * @param module New module instance.
+ * @return 0 on success; -1 on failure (exception set).
+ */
 static int
 cbits_module_exec(PyObject *module)
 {
@@ -580,14 +839,38 @@ cbits_module_exec(PyObject *module)
     if (PyModule_AddStringConstant(module, "__version__", "0.1.0") < 0) {
         return -1;
     }
+    if (PyModule_AddStringConstant(module, "__license__", "Apache-2.0") < 0) {
+        return -1;
+    }
+    if (PyModule_AddStringConstant(
+            module, "__license_url__",
+            "https://github.com/lambdaphoenix/cbits/blob/main/LICENSE") < 0) {
+        return -1;
+    }
     return 0;
 }
 
+/**
+ * @brief Module initialization slots.
+ *
+ * Lists callbacks invoked when the module is loaded; here,
+ * we use Py_mod_exec to register types and module constants.
+ *
+ * @see PyModuleDef_Slot
+ */
 static PyModuleDef_Slot cbits_module_slots[] = {
     {Py_mod_exec, cbits_module_exec},
     {0, NULL},
 };
 
+/**
+ * @brief Definition of the _cbits extension module.
+ *
+ * Describes the module’s name, docstring, memory footprint,
+ * and its initialization slot table.
+ *
+ * @see PyModuleDef
+ */
 static PyModuleDef cbits_module = {
     .m_base = PyModuleDef_HEAD_INIT,
     .m_name = "_cbits",
@@ -596,6 +879,11 @@ static PyModuleDef cbits_module = {
     .m_slots = cbits_module_slots,
 };
 
+/**
+ * @brief Python entrypoint for _cbits extension module.
+ * @param void
+ * @return New module object (borrowed reference).
+ */
 PyMODINIT_FUNC
 PyInit__cbits(void)
 {

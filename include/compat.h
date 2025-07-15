@@ -1,8 +1,16 @@
-/// @file include/compat.h
-/// @brief Cross-platform aligned allocators, atomics, popcount, prefetch.
-///
-/// Provides wrappers around posix_memalign or _aligned_malloc,
-/// C11 atomics or MSVC intrinsics, and optimized popcount-block routines.
+/**
+ * @file include/compat.h
+ * @brief Cross-platform aligned allocators, atomics, popcount, prefetch.
+ *
+ * Provides wrappers for:
+ * - posix_memalign or _aligned_malloc/free
+ * - atomic load/or/and/xor via C11 or MSVC intrinsics
+ * - cache prefetch instructions
+ * - optimized 64-bit popcount and block-level popcount
+ *
+ * @author lambdaphoenix
+ * @copyright Copyright (c) 2025 lambdaphoenix
+ */
 #ifndef CBITS_COMPAT_H
 #define CBITS_COMPAT_H
 
