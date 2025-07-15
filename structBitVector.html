@@ -85,26 +85,21 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aa956c76f1dcf37d70fbe6b26b23fc571" id="r_aa956c76f1dcf37d70fbe6b26b23fc571"><td class="memItemLeft" align="right" valign="top">uint64_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBitVector.html#aa956c76f1dcf37d70fbe6b26b23fc571">data</a></td></tr>
-<tr class="memdesc:aa956c76f1dcf37d70fbe6b26b23fc571"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aligned array of 64-bit words storing bits.  <br /></td></tr>
 <tr class="separator:aa956c76f1dcf37d70fbe6b26b23fc571"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab83f018fe84a783408855951df52ae43" id="r_ab83f018fe84a783408855951df52ae43"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBitVector.html#ab83f018fe84a783408855951df52ae43">n_bits</a></td></tr>
-<tr class="memdesc:ab83f018fe84a783408855951df52ae43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total number of bits.  <br /></td></tr>
 <tr class="separator:ab83f018fe84a783408855951df52ae43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0bf575ac9079d9eb892a748a7dc04bd" id="r_ae0bf575ac9079d9eb892a748a7dc04bd"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBitVector.html#ae0bf575ac9079d9eb892a748a7dc04bd">n_words</a></td></tr>
-<tr class="memdesc:ae0bf575ac9079d9eb892a748a7dc04bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of 64-bit words allocated.  <br /></td></tr>
 <tr class="separator:ae0bf575ac9079d9eb892a748a7dc04bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad89fa3a636e1da59676d84c8ddab93b6" id="r_ad89fa3a636e1da59676d84c8ddab93b6"><td class="memItemLeft" align="right" valign="top">size_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBitVector.html#ad89fa3a636e1da59676d84c8ddab93b6">super_rank</a></td></tr>
-<tr class="memdesc:ad89fa3a636e1da59676d84c8ddab93b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prefix-sum of popcounts at superblock granularity.  <br /></td></tr>
 <tr class="separator:ad89fa3a636e1da59676d84c8ddab93b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acca22beea5c72befb73b720e5584edb2" id="r_acca22beea5c72befb73b720e5584edb2"><td class="memItemLeft" align="right" valign="top">uint16_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBitVector.html#acca22beea5c72befb73b720e5584edb2">block_rank</a></td></tr>
-<tr class="memdesc:acca22beea5c72befb73b720e5584edb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prefix-sum of popcounts at block granularity.  <br /></td></tr>
 <tr class="separator:acca22beea5c72befb73b720e5584edb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af65f0dc5339203d0870fbdd9a2779f5f" id="r_af65f0dc5339203d0870fbdd9a2779f5f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structBitVector.html#af65f0dc5339203d0870fbdd9a2779f5f">rank_dirty</a></td></tr>
-<tr class="memdesc:af65f0dc5339203d0870fbdd9a2779f5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag indicating that rank tables need rebuilding.  <br /></td></tr>
 <tr class="separator:af65f0dc5339203d0870fbdd9a2779f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Packed array of bits with support for rank/select operations. </p>
+<p>Stores bits in an aligned array of 64-bit words, and maintains auxiliary superblock and block rank tables for constant-time rank queries. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="acca22beea5c72befb73b720e5584edb2" name="acca22beea5c72befb73b720e5584edb2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acca22beea5c72befb73b720e5584edb2">&#9670;&#160;</a></span>block_rank</h2>
@@ -117,7 +112,6 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
 <p>Prefix-sum of popcounts at block granularity. </p>
 
 </div>
@@ -133,7 +127,6 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
 <p>Aligned array of 64-bit words storing bits. </p>
 
 </div>
@@ -149,7 +142,6 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
 <p>Total number of bits. </p>
 
 </div>
@@ -165,8 +157,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Number of 64-bit words allocated. </p>
+<p>Number of 64-bit words allocated in <code>data</code>. </p>
 
 </div>
 </div>
@@ -181,7 +172,6 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
 <p>Flag indicating that rank tables need rebuilding. </p>
 
 </div>
@@ -197,7 +187,6 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-
 <p>Prefix-sum of popcounts at superblock granularity. </p>
 
 </div>

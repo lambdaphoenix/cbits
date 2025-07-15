@@ -1,6 +1,6 @@
 <map id="src/bitvector.c" name="src/bitvector.c">
 <area shape="rect" id="Node000001" title="Implementation of BitVector functions." alt="" coords="183,5,296,31"/>
-<area shape="rect" id="Node000002" href="$bitvector_8h.html" title="Packed BitVector struct." alt="" coords="162,79,317,104"/>
+<area shape="rect" id="Node000002" href="$bitvector_8h.html" title="Packed BitVector C&#45;API declarations." alt="" coords="162,79,317,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="242,31,242,65,237,65,237,31"/>
 <area shape="rect" id="Node000003" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="145,152,227,177"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="233,106,205,143,201,140,228,103"/>

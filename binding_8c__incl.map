@@ -2,7 +2,7 @@
 <area shape="rect" id="Node000001" title="Python C&#45;API bindings for cbits.BitVector." alt="" coords="119,5,250,31"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="91,79,169,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="178,33,149,69,145,66,174,29"/>
-<area shape="rect" id="Node000003" href="$bitvector_8h.html" title="Packed BitVector struct." alt="" coords="194,79,285,104"/>
+<area shape="rect" id="Node000003" href="$bitvector_8h.html" title="Packed BitVector C&#45;API declarations." alt="" coords="194,79,285,104"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="196,29,224,66,220,69,192,33"/>
 <area shape="rect" id="Node000004" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="145,152,227,177"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="233,106,205,143,201,140,228,103"/>

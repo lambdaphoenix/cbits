@@ -82,7 +82,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Packed <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> struct.  
+<p>Packed <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> C-API declarations.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="compat_8h_source.html">compat.h</a>&quot;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
@@ -91,7 +91,7 @@ Include dependency graph for bitvector.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="bitvector_8h__incl.png" border="0" usemap="#ainclude_2bitvector_8h" alt=""/></div>
 <map name="ainclude_2bitvector_8h" id="ainclude_2bitvector_8h">
-<area shape="rect" title="Packed BitVector struct." alt="" coords="168,5,311,31"/>
+<area shape="rect" title="Packed BitVector C&#45;API declarations." alt="" coords="168,5,311,31"/>
 <area shape="rect" href="compat_8h.html" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="145,79,227,104"/>
 <area shape="poly" title=" " alt="" coords="233,33,205,69,201,66,228,29"/>
 <area shape="rect" title=" " alt="" coords="251,79,334,104"/>
@@ -111,7 +111,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="bitvector_8h__dep__incl.png" border="0" usemap="#ainclude_2bitvector_8hdep" alt=""/></div>
 <map name="ainclude_2bitvector_8hdep" id="ainclude_2bitvector_8hdep">
-<area shape="rect" title="Packed BitVector struct." alt="" coords="73,5,215,31"/>
+<area shape="rect" title="Packed BitVector C&#45;API declarations." alt="" coords="73,5,215,31"/>
 <area shape="rect" href="binding_8c.html" title="Python C&#45;API bindings for cbits.BitVector." alt="" coords="5,79,136,104"/>
 <area shape="poly" title=" " alt="" coords="124,42,84,80,81,77,120,38"/>
 <area shape="rect" href="bitvector_8c.html" title="Implementation of BitVector functions." alt="" coords="161,79,274,104"/>
@@ -163,10 +163,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:adb02e58f6a79eebb62a1c260821c3ab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the bit value at a given position.  <br /></td></tr>
 <tr class="separator:adb02e58f6a79eebb62a1c260821c3ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5a6e7fc872706fc88f7562ea00dab02" id="r_ab5a6e7fc872706fc88f7562ea00dab02"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#ab5a6e7fc872706fc88f7562ea00dab02">bv_set</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv, const size_t pos)</td></tr>
-<tr class="memdesc:ab5a6e7fc872706fc88f7562ea00dab02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the bit at a given position.  <br /></td></tr>
+<tr class="memdesc:ab5a6e7fc872706fc88f7562ea00dab02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the bit at a given position (set to 1)  <br /></td></tr>
 <tr class="separator:ab5a6e7fc872706fc88f7562ea00dab02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abe9af7e7b58e8d6c145772125facdf23" id="r_abe9af7e7b58e8d6c145772125facdf23"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#abe9af7e7b58e8d6c145772125facdf23">bv_clear</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv, const size_t pos)</td></tr>
-<tr class="memdesc:abe9af7e7b58e8d6c145772125facdf23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the bit at a given position.  <br /></td></tr>
+<tr class="memdesc:abe9af7e7b58e8d6c145772125facdf23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the bit at a given position (set to 0)  <br /></td></tr>
 <tr class="separator:abe9af7e7b58e8d6c145772125facdf23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a237c5942e4ea28aabaf70a42f8f343a7" id="r_a237c5942e4ea28aabaf70a42f8f343a7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#a237c5942e4ea28aabaf70a42f8f343a7">bv_flip</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv, const size_t pos)</td></tr>
 <tr class="memdesc:a237c5942e4ea28aabaf70a42f8f343a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle (flip) the bit at a given position.  <br /></td></tr>
@@ -182,15 +182,14 @@ Functions</h2></td></tr>
 <tr class="separator:a321007321514662bf5f9d8350ed380ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Packed <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> struct. </p>
-<p>This header decleares the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> C-API:</p>
-<ul>
+<div class="textblock"><p>Packed <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> C-API declarations. </p>
+<p>This header decleares the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> C-API:</p><ul>
 <li>creation, copy, free</li>
-<li>bit get/set/clear/flip</li>
-<li>rank and subvector-containment queries <dl class="section author"><dt>Author</dt><dd>lambdaphoenix </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>2025 lambdaphoenix </dd></dl>
-</li>
+<li>bit get/set/clear/flip operations</li>
+<li>rank and subvector-containment queries</li>
 </ul>
+<dl class="section author"><dt>Author</dt><dd>lambdaphoenix </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 lambdaphoenix </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ac741fbe224335b2474474263fc59609e" name="ac741fbe224335b2474474263fc59609e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac741fbe224335b2474474263fc59609e">&#9670;&#160;</a></span>BV_ALIGN</h2>
@@ -293,7 +292,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Build or rebuild the rank tables for a <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>. </p>
-<p>This populates super_rank[] and block_rank[] to support O(1) rank queries. After this call, rank_dirty is cleared. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>This populates <code>super_rank</code>[] and <code>block_rank</code>[] to support O(1) rank queries. After this call, <code>bv-&gt;rank_dirty</code> is cleared. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">bv</td><td>Pointer to the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> whose tables to build </td></tr>
   </table>
@@ -336,7 +335,7 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Clear the bit at a given position. </p>
+<p>Clear the bit at a given position (set to 0) </p>
 <p>Marks the rank table dirty so it will be rebuilt on next rank query. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">bv</td><td>Pointer to the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> </td></tr>
@@ -374,14 +373,14 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Check weather B appears as a contiguous sub-bitvector of A. </p>
-<p>That is, whether there exists an offset i in A such that A[i..i+|B|-1] == B[0..|B|-1]. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>That is, whether there exists an offset i in A such that <code> A[i..i+|B|-1] == B[0..|B|-1] </code>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td>Haystack <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> </td></tr>
     <tr><td class="paramname">b</td><td>Needle <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if b is contained in a, false otherwise </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if b is contained in a, <code>false</code> otherwise </dd></dl>
 
 </div>
 </div>
@@ -408,7 +407,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Newly allocated <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> copy </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Newly allocated <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> copy, or <code>NULL</code> on failure. </dd></dl>
 
 </div>
 </div>
@@ -446,7 +445,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>true if length and all words are identical, false otherwise </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if length and all words are identical, <code>false</code> otherwise </dd></dl>
 
 </div>
 </div>
@@ -563,7 +562,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>0 or 1 depending on the bit value </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><code>0</code> or <code>1</code> depending on the bit value </dd></dl>
 
 </div>
 </div>
@@ -628,7 +627,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of bits set in range [0...pos] </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of bits set in range <code></code>[0...pos] </dd></dl>
 
 </div>
 </div>
@@ -666,7 +665,7 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Set the bit at a given position. </p>
+<p>Set the bit at a given position (set to 1) </p>
 <p>Marks the rank table dirty so it will be rebuilt on next rank query. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">bv</td><td>Pointer to the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> </td></tr>

@@ -108,7 +108,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="center"><img src="compat_8h__dep__incl.png" border="0" usemap="#ainclude_2compat_8hdep" alt=""/></div>
 <map name="ainclude_2compat_8hdep" id="ainclude_2compat_8hdep">
 <area shape="rect" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="77,5,211,31"/>
-<area shape="rect" href="bitvector_8h.html" title="Packed BitVector struct." alt="" coords="73,79,215,104"/>
+<area shape="rect" href="bitvector_8h.html" title="Packed BitVector C&#45;API declarations." alt="" coords="73,79,215,104"/>
 <area shape="poly" title=" " alt="" coords="147,44,147,79,141,79,141,44"/>
 <area shape="rect" href="binding_8c.html" title="Python C&#45;API bindings for cbits.BitVector." alt="" coords="5,152,136,177"/>
 <area shape="poly" title=" " alt="" coords="124,116,84,154,81,150,120,112"/>
@@ -142,7 +142,14 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Cross-platform aligned allocators, atomics, popcount, prefetch. </p>
-<p>Provides wrappers around posix_memalign or _aligned_malloc, C11 atomics or MSVC intrinsics, and optimized popcount-block routines. </p>
+<p>Provides wrappers for:</p><ul>
+<li>posix_memalign or _aligned_malloc/free</li>
+<li>atomic load/or/and/xor via C11 or MSVC intrinsics</li>
+<li>cache prefetch instructions</li>
+<li>optimized 64-bit popcount and block-level popcount</li>
+</ul>
+<dl class="section author"><dt>Author</dt><dd>lambdaphoenix </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 lambdaphoenix </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="ad3f6d167e9173b07e41ce4c067ad3910" name="ad3f6d167e9173b07e41ce4c067ad3910"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad3f6d167e9173b07e41ce4c067ad3910">&#9670;&#160;</a></span>cbits_atomic_fetch_and()</h2>

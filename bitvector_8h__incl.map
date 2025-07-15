@@ -1,5 +1,5 @@
 <map id="include/bitvector.h" name="include/bitvector.h">
-<area shape="rect" id="Node000001" title="Packed BitVector struct." alt="" coords="168,5,311,31"/>
+<area shape="rect" id="Node000001" title="Packed BitVector C&#45;API declarations." alt="" coords="168,5,311,31"/>
 <area shape="rect" id="Node000002" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="145,79,227,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="233,33,205,69,201,66,228,29"/>
 <area shape="rect" id="Node000007" title=" " alt="" coords="251,79,334,104"/>
