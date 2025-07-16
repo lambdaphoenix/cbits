@@ -9,8 +9,6 @@ var searchData=
   ['cbits_5fmodule_5fexec_6',['cbits_module_exec',['../binding_8c.html#a8f427b0cfdb1957c3605e10019f007bd',1,'binding.c']]],
   ['cbits_5fpopcount64_7',['cbits_popcount64',['../compat_8h.html#a5123c2821a6ef3a94476f2b83e09dba2',1,'compat.h']]],
   ['cbits_5fpopcount_5fblock_8',['cbits_popcount_block',['../compat_8h.html#addef37948dc5ab434f81a1f15ff81570',1,'compat.h']]],
-  ['cbits_5fpopcount_5fblock_5favx2_9',['cbits_popcount_block_avx2',['../compat_8h.html#a617b4c0cfded8b9abccd0b0b23a4b372',1,'cbits_popcount_block_avx2(const uint64_t *ptr):&#160;compat_dispatch.c'],['../compat__dispatch_8c.html#a617b4c0cfded8b9abccd0b0b23a4b372',1,'cbits_popcount_block_avx2(const uint64_t *ptr):&#160;compat_dispatch.c']]],
-  ['cbits_5fpopcount_5fblock_5favx512_10',['cbits_popcount_block_avx512',['../compat_8h.html#a424faca709a08dc933da45a763f83897',1,'cbits_popcount_block_avx512(const uint64_t *ptr):&#160;compat_dispatch.c'],['../compat__dispatch_8c.html#a424faca709a08dc933da45a763f83897',1,'cbits_popcount_block_avx512(const uint64_t *ptr):&#160;compat_dispatch.c']]],
-  ['cbits_5fpopcount_5fblock_5ffallback_11',['cbits_popcount_block_fallback',['../compat_8h.html#a8cb5141d31b8f85334c52c013f40a5d9',1,'cbits_popcount_block_fallback(const uint64_t *ptr):&#160;compat_dispatch.c'],['../compat__dispatch_8c.html#a8cb5141d31b8f85334c52c013f40a5d9',1,'cbits_popcount_block_fallback(const uint64_t *ptr):&#160;compat_dispatch.c']]],
-  ['cbits_5fprefetch_12',['cbits_prefetch',['../compat_8h.html#ac5fec5ad747dac70c19c014609850e2a',1,'compat.h']]]
+  ['cbits_5fpopcount_5fblock_5ffallback_9',['cbits_popcount_block_fallback',['../compat_8h.html#a8cb5141d31b8f85334c52c013f40a5d9',1,'cbits_popcount_block_fallback(const uint64_t *ptr):&#160;compat_dispatch.c'],['../compat__dispatch_8c.html#a8cb5141d31b8f85334c52c013f40a5d9',1,'cbits_popcount_block_fallback(const uint64_t *ptr):&#160;compat_dispatch.c']]],
+  ['cbits_5fprefetch_10',['cbits_prefetch',['../compat_8h.html#ac5fec5ad747dac70c19c014609850e2a',1,'compat.h']]]
 ];

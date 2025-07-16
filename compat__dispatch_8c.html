@@ -104,12 +104,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a8cb5141d31b8f85334c52c013f40a5d9" id="r_a8cb5141d31b8f85334c52c013f40a5d9"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat__dispatch_8c.html#a8cb5141d31b8f85334c52c013f40a5d9">cbits_popcount_block_fallback</a> (const uint64_t *ptr)</td></tr>
 <tr class="memdesc:a8cb5141d31b8f85334c52c013f40a5d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fallback popcount block implementation.  <br /></td></tr>
 <tr class="separator:a8cb5141d31b8f85334c52c013f40a5d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a617b4c0cfded8b9abccd0b0b23a4b372" id="r_a617b4c0cfded8b9abccd0b0b23a4b372"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat__dispatch_8c.html#a617b4c0cfded8b9abccd0b0b23a4b372">cbits_popcount_block_avx2</a> (const uint64_t *ptr)</td></tr>
-<tr class="memdesc:a617b4c0cfded8b9abccd0b0b23a4b372"><td class="mdescLeft">&#160;</td><td class="mdescRight">AVX2 popcount block implementation (256-bit).  <br /></td></tr>
-<tr class="separator:a617b4c0cfded8b9abccd0b0b23a4b372"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a424faca709a08dc933da45a763f83897" id="r_a424faca709a08dc933da45a763f83897"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat__dispatch_8c.html#a424faca709a08dc933da45a763f83897">cbits_popcount_block_avx512</a> (const uint64_t *ptr)</td></tr>
-<tr class="memdesc:a424faca709a08dc933da45a763f83897"><td class="mdescLeft">&#160;</td><td class="mdescRight">AVX-512VPOPCNTDQ popcount block implementation (512-bit).  <br /></td></tr>
-<tr class="separator:a424faca709a08dc933da45a763f83897"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -125,64 +119,6 @@ Variables</h2></td></tr>
 <dl class="section version"><dt>Version</dt><dd>0.1.1 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 lambdaphoenix </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="a617b4c0cfded8b9abccd0b0b23a4b372" name="a617b4c0cfded8b9abccd0b0b23a4b372"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a617b4c0cfded8b9abccd0b0b23a4b372">&#9670;&#160;</a></span>cbits_popcount_block_avx2()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint64_t cbits_popcount_block_avx2 </td>
-          <td>(</td>
-          <td class="paramtype">const uint64_t *&#160;</td>
-          <td class="paramname"><em>ptr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>AVX2 popcount block implementation (256-bit). </p>
-<p>Loads two 256-bit vectors, stores to temporary array, and sums popcounts of each 64-bit element.</p>
-<p>Only used when targeting AVX2.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ptr</td><td>Pointer to at least 8 uint64_t words. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Total popcount of the 8 words. </dd></dl>
-
-</div>
-</div>
-<a id="a424faca709a08dc933da45a763f83897" name="a424faca709a08dc933da45a763f83897"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a424faca709a08dc933da45a763f83897">&#9670;&#160;</a></span>cbits_popcount_block_avx512()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint64_t cbits_popcount_block_avx512 </td>
-          <td>(</td>
-          <td class="paramtype">const uint64_t *&#160;</td>
-          <td class="paramname"><em>ptr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>AVX-512VPOPCNTDQ popcount block implementation (512-bit). </p>
-<p>Loads one 512-bit vector, applies _mm512_popcnt_epi64, then reduces with _mm512_reduce_add_epi64.</p>
-<p>Only used when targeting AVX-512VPOPCNTDQ.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ptr</td><td>Pointer to at least 8 uint64_t words. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Total popcount of the 8 words. </dd></dl>
-
-</div>
-</div>
 <a id="a8cb5141d31b8f85334c52c013f40a5d9" name="a8cb5141d31b8f85334c52c013f40a5d9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8cb5141d31b8f85334c52c013f40a5d9">&#9670;&#160;</a></span>cbits_popcount_block_fallback()</h2>
 
