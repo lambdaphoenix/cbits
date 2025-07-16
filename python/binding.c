@@ -895,7 +895,7 @@ cbits_module_exec(PyObject *module)
         0) {
         return -1;
     }
-    if (PyModule_AddStringConstant(module, "__version__", "0.1.0") < 0) {
+    if (PyModule_AddStringConstant(module, "__version__", "0.1.1") < 0) {
         return -1;
     }
     if (PyModule_AddStringConstant(module, "__license__", "Apache-2.0") < 0) {
