@@ -12,8 +12,8 @@
  * @copyright Copyright (c) 2025 lambdaphoenix
  */
 
-#include "../include/bitvector.h"
 #include "bitvector.h"
+#include <string.h>
 
 /**
  * @brief Compute how many 64-bit words are needed to store a given number of

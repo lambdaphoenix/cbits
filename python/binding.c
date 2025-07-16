@@ -10,6 +10,7 @@
  *
  * @see include/bitvector.h
  * @author lambdaphoenix
+ * @version 0.1.1
  * @copyright Copyright (c) 2025 lambdaphoenix
  */
 #define PY_SSIZE_T_CLEAN
@@ -109,7 +110,7 @@ py_bv_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
  * @return New BitVector copy
  */
 static PyObject *
-py_bv_copy(PyObject *self, PyObject *UNUSED(ignored))
+py_bv_copy(PyObject *self, PyObject *ignored)
 {
     BitVector *copy = bv_copy(((PyBitVector *) self)->bv);
     if (!copy) {
@@ -819,9 +820,21 @@ PyType_Spec PyBitVector_spec = {
 static int
 cbits_module_exec(PyObject *module)
 {
-    /* Register BitVector */
+/* Register BitVector */
+#if defined(_MSC_VER)
+    init_cpu_dispatch();
+#endif
+#if PY_VERSION_HEX >= 0x030B0000
     PyBitVectorPtr = (PyTypeObject *) PyType_FromModuleAndSpec(
         module, &PyBitVector_spec, NULL);
+#else
+    PyBitVectorPtr = (PyTypeObject *) PyType_FromSpec(&PyBitVector_spec);
+    if (!PyBitVectorPtr || PyType_Ready(PyBitVectorPtr) < 0) {
+        PyErr_SetString(PyExc_RuntimeError,
+                        "Failed to initialize BitVector type");
+        return -1;
+    }
+#endif
     if (!PyBitVectorPtr) {
         PyErr_SetString(PyExc_RuntimeError, "Failed to create BitVector type");
         return -1;

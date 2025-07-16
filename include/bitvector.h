@@ -7,6 +7,7 @@
  * - rank and subvector-containment queries
  *
  * @author lambdaphoenix
+ * @version 0.1.1
  * @copyright Copyright (c) 2025 lambdaphoenix
  */
 #ifndef CBITS_BITVECTOR_H
