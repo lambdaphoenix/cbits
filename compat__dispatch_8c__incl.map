@@ -1,9 +1,11 @@
 <map id="src/compat_dispatch.c" name="src/compat_dispatch.c">
-<area shape="rect" id="Node000001" title="Runtime dispatch for fastest popcount block implementation." alt="" coords="5,5,172,31"/>
-<area shape="rect" id="Node000002" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="47,79,130,104"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="91,31,91,65,86,65,86,31"/>
+<area shape="rect" id="Node000001" title="Runtime dispatch for fastest popcount block implementation." alt="" coords="55,5,221,31"/>
+<area shape="rect" id="Node000002" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="97,79,179,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="141,31,141,65,135,65,135,31"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="5,152,76,177"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="83,106,58,142,54,139,79,103"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="124,106,69,146,66,141,121,102"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="101,152,175,177"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="99,103,124,139,120,142,95,106"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="141,104,141,138,135,138,135,104"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="200,152,271,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="155,102,210,141,207,146,152,106"/>
 </map>
