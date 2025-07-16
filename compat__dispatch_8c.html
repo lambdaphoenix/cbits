@@ -106,6 +106,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a8cb5141d31b8f85334c52c013f40a5d9" id="r_a8cb5141d31b8f85334c52c013f40a5d9"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat__dispatch_8c.html#a8cb5141d31b8f85334c52c013f40a5d9">cbits_popcount_block_fallback</a> (const uint64_t *ptr)</td></tr>
 <tr class="memdesc:a8cb5141d31b8f85334c52c013f40a5d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fallback popcount block implementation.  <br /></td></tr>
 <tr class="separator:a8cb5141d31b8f85334c52c013f40a5d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9256aa51e475beabf9cd975766084809" id="r_a9256aa51e475beabf9cd975766084809"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat__dispatch_8c.html#a9256aa51e475beabf9cd975766084809">init_cpu_dispatch</a> (void)</td></tr>
+<tr class="memdesc:a9256aa51e475beabf9cd975766084809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor to initialize popcount dispatch pointer.  <br /></td></tr>
+<tr class="separator:a9256aa51e475beabf9cd975766084809"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -146,6 +149,33 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Total popcount of the 8 words. </dd></dl>
+
+</div>
+</div>
+<a id="a9256aa51e475beabf9cd975766084809" name="a9256aa51e475beabf9cd975766084809"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9256aa51e475beabf9cd975766084809">&#9670;&#160;</a></span>init_cpu_dispatch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_cpu_dispatch </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor to initialize popcount dispatch pointer. </p>
+<p>At program start, this function checks CPU support for AVX-512VPOPCNTDQ and AVX2 via __builtin_cpu_supports, then updates cbits_popcount_block_ptr accordingly.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">void</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
