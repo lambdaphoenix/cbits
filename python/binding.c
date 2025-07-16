@@ -372,6 +372,27 @@ py_bv_richcompare(PyObject *a, PyObject *b, int op)
     Py_RETURN_FALSE;
 }
 
+/**
+ * @brief __hash__ for a BitVector object.
+ *
+ * Uses Python’s internal pointer-hashing helper to produce a hash
+ * based solely on the object’s address.
+ *
+ * @param self Pointer to the PyBitVector instance to be hashed.
+ * @return A Py_hash_t value computed from the object pointer.
+ */
+static Py_hash_t
+py_bv_hash(PyObject *self)
+{
+    return _Py_HashPointer(self);
+}
+
+static Py_hash_t
+py_bv_hash(PyObject *self)
+{
+    return _Py_HashPointer(self);
+}
+
 /* -------------------------------------------------------------------------
  * Sequence Protocol
  * ------------------------------------------------------------------------- */
@@ -735,6 +756,7 @@ static PyType_Slot PyBitVector_slots[] = {
     {Py_tp_doc, PyDoc_STR("BitVector")},
     {Py_tp_getset, PyBitVector_getset},
     {Py_tp_richcompare, py_bv_richcompare},
+    {Py_tp_hash, py_bv_hash},
 
     {Py_sq_length, py_bv_len},
     {Py_sq_item, py_bv_item},

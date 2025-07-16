@@ -1,4 +1,5 @@
 import unittest
+import copy
 from cbits import BitVector
 
 class MyTestCase(unittest.TestCase):
@@ -132,6 +133,66 @@ class MyTestCase(unittest.TestCase):
         self.assertFalse(a == b)
         c = b.copy()
         self.assertEqual(b, c)
+
+    def test_contains_subvector(self):
+        a = BitVector(10)
+        b = BitVector(3)
+        a.set(0); a.set(2); a.set(4)
+        b.set(0); b.set(2)
+        self.assertIn(b, a)
+        c = BitVector(3)
+        c.set(1); c.set(2)
+        self.assertNotIn(c, a)
+        self.assertFalse(("foo" in a))
+
+    def test_mismatched_bitwise_length(self):
+        a = BitVector(8)
+        b = BitVector(7)
+        with self.assertRaises(ValueError):
+            _ = a & b
+        with self.assertRaises(ValueError):
+            a &= b
+        with self.assertRaises(ValueError):
+            _ = a | b
+        with self.assertRaises(ValueError):
+            a |= b
+        with self.assertRaises(ValueError):
+            _ = a ^ b
+        with self.assertRaises(ValueError):
+            a ^= b
+
+    def test_type_mismatch_bitwise(self):
+        a = BitVector(8)
+        with self.assertRaises(TypeError):
+            _ = a & 123
+        with self.assertRaises(TypeError):
+            _ = a | "foo"
+
+    def test_equality_with_other_types(self):
+        a = BitVector(5)
+        self.assertFalse(a == 42)
+        self.assertTrue(a != 42)
+
+    def test_negative_index_errors(self):
+        bv = BitVector(5)
+        bv.set(-1)
+        self.assertTrue(bv.get(4))
+        with self.assertRaises(IndexError):
+            bv.get(-6)
+        with self.assertRaises(IndexError):
+            bv.set(-10)
+
+    def test_copy_and_deepcopy_memo(self):
+        a = BitVector(16)
+        a.set(3)
+        c1 = copy.copy(a)
+        self.assertIsNot(c1, a)
+        self.assertEqual(a, c1)
+        memo = {}
+        c2 = copy.deepcopy(a, memo)
+        self.assertIn(a, memo)
+        self.assertIs(memo[a], c2)
+        self.assertEqual(a, c2)
 
     # def test_iterator(self):
     #     positions = [2, 5, 63, 64, 90]
