@@ -1891,7 +1891,7 @@ Variables</h2></td></tr>
 <div class="line">    .m_size = 0,</div>
 <div class="line">    .m_slots = <a class="code hl_variable" href="binding_8c.html#a843c32fa48b7e83c731f95efec9e8b3f">cbits_module_slots</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="abinding_8c_html_a843c32fa48b7e83c731f95efec9e8b3f"><div class="ttname"><a href="binding_8c.html#a843c32fa48b7e83c731f95efec9e8b3f">cbits_module_slots</a></div><div class="ttdeci">static PyModuleDef_Slot cbits_module_slots[]</div><div class="ttdoc">Module initialization slots.</div><div class="ttdef"><b>Definition</b> binding.c:890</div></div>
+<div class="ttc" id="abinding_8c_html_a843c32fa48b7e83c731f95efec9e8b3f"><div class="ttname"><a href="binding_8c.html#a843c32fa48b7e83c731f95efec9e8b3f">cbits_module_slots</a></div><div class="ttdeci">static PyModuleDef_Slot cbits_module_slots[]</div><div class="ttdoc">Module initialization slots.</div><div class="ttdef"><b>Definition</b> binding.c:920</div></div>
 </div><!-- fragment -->
 <p>Definition of the _cbits extension module. </p>
 <p>Describes the module’s name, docstring, memory footprint, and its initialization slot table.</p>
@@ -1922,7 +1922,7 @@ Variables</h2></td></tr>
 <div class="line">    {Py_mod_exec, <a class="code hl_function" href="binding_8c.html#a8f427b0cfdb1957c3605e10019f007bd">cbits_module_exec</a>},</div>
 <div class="line">    {0, NULL},</div>
 <div class="line">}</div>
-<div class="ttc" id="abinding_8c_html_a8f427b0cfdb1957c3605e10019f007bd"><div class="ttname"><a href="binding_8c.html#a8f427b0cfdb1957c3605e10019f007bd">cbits_module_exec</a></div><div class="ttdeci">static int cbits_module_exec(PyObject *module)</div><div class="ttdoc">Module exec callback: register BitVector type and metadata.</div><div class="ttdef"><b>Definition</b> binding.c:837</div></div>
+<div class="ttc" id="abinding_8c_html_a8f427b0cfdb1957c3605e10019f007bd"><div class="ttname"><a href="binding_8c.html#a8f427b0cfdb1957c3605e10019f007bd">cbits_module_exec</a></div><div class="ttdeci">static int cbits_module_exec(PyObject *module)</div><div class="ttdoc">Module exec callback: register BitVector type and metadata.</div><div class="ttdef"><b>Definition</b> binding.c:867</div></div>
 </div><!-- fragment -->
 <p>Module initialization slots. </p>
 <p>Lists callbacks invoked when the module is loaded; here, we use Py_mod_exec to register types and module constants.</p>
