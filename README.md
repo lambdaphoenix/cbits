@@ -1,12 +1,19 @@
 [![Doxygen](https://img.shields.io/badge/docs-doxygen-2c4aa8?logo=doxygen)](https://lambdaphoenix.github.io/cbits/)
-[![GitHub License](https://img.shields.io/github/license/lambdaphoenix/cbits)](https://github.com/lambdaphoenix/cbits/blob/main/LICENSE)
+[![PyPI - Implementation](https://img.shields.io/pypi/implementation/cbits)](https://pypi.org/project/cbits/)
+[![PyPI - Version](https://img.shields.io/pypi/v/cbits)](https://pypi.org/project/cbits/)
+[![PyPI - Format](https://img.shields.io/pypi/format/cbits)](https://pypi.org/project/cbits/#files)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/cbits)](https://pypi.org/project/cbits/)
 [![Changelog](https://img.shields.io/badge/CHANGELOG-md-blue.svg)](https://github.com/lambdaphoenix/cbits/blob/main/CHANGELOG.md)
+[![GitHub License](https://img.shields.io/github/license/lambdaphoenix/cbits)](https://github.com/lambdaphoenix/cbits/blob/main/LICENSE)
 
 # cbits
 
 > High-performance BitVector for Python.
 
----
+
+## Description
+cbits implements a powerful bit vector type in C that is accessible via a Python API. It stores bits contiguously in memory and minimizes overhead compared to a list of Boolean values. Core operations such as setting, clearing, flipping and counting bits run in constant or near-constant time per word, making it ideal for extensive bit manipulation.
+
 
 ## Installation
 
@@ -105,3 +112,4 @@ Apache License 2.0 See [LICENSE](https://github.com/lambdaphoenix/cbits/blob/mai
 - [📖 Documentation & Source](https://github.com/lambdaphoenix/cbits)
 - [🐛 Issues](https://github.com/lambdaphoenix/cbits/issues)
 - [📋 Changelog](https://github.com/lambdaphoenix/cbits/blob/main/CHANGELOG.md)
+- [📦 PyPI](https://pypi.org/project/cbits/)
