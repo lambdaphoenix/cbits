@@ -17,11 +17,23 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include <stdlib.h>
 
-#if defined(_MSC_VER)
-    #include <immintrin.h> /**< Intel intrinsics (MSVC) */
-#else
-    #include <x86intrin.h> /**< GCC/Clang x86 intrinsics */
+#if defined(__x86_64__) || defined(_M_X64)
+    #if defined(_MSC_VER)
+        #include <immintrin.h>
+    #else
+        #include <x86intrin.h>
+    #endif
+#endif
+
+#ifdef _MSC_VER
+    #ifdef _M_IX86
+        #pragma intrinsic(__popcnt)
+    #elif defined(_M_X64) || defined(_M_AMD64)
+        #pragma intrinsic(__popcnt)
+        #pragma intrinsic(__popcnt64)
+    #endif
 #endif
 
 /* Aligned malloc / free */
@@ -93,7 +105,6 @@ cbits_malloc_aligned(size_t size, size_t align)
         #define WIN32_LEAN_AND_MEAN
     #endif
     #include <windows.h>
-    #include <intrin.h>
 #elif defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L && \
     !defined(__STDC_NO_ATOMICS__)
     #include <stdatomic.h>
@@ -179,9 +190,6 @@ cbits_atomic_fetch_xor(uint64_t *ptr, uint64_t v)
 }
 
 /* Prefetch */
-#if defined(_MSC_VER)
-    #include <intrin.h>
-#endif
 
 /**
  * @brief Prefetch a cache line at ptr into L1.
@@ -199,9 +207,6 @@ cbits_prefetch(const void *ptr)
 }
 
 /* Popcount */
-#if defined(_MSC_VER)
-    #pragma intrinsic(__popcnt64)
-#endif
 
 /**
  * @brief Count bits set in a 64-bit word.
@@ -210,12 +215,17 @@ cbits_prefetch(const void *ptr)
  * @return Number of set bits in *ptr.
  */
 static inline uint64_t
-cbits_popcount64(const uint64_t *ptr)
+cbits_popcount64(uint64_t x)
 {
 #if defined(_MSC_VER)
-    return (uint64_t) __popcnt64(*ptr);
+    #if defined(_M_IX86) || defined(_M_ARM)
+    return (uint64_t) __popcnt((uint32_t) x) +
+           (uint64_t) __popcnt((uint32_t) (x >> 32));
+    #else
+    return (uint64_t) __popcnt64(x);
+    #endif
 #else
-    return (uint64_t) __builtin_popcountll(*ptr);
+    return (uint64_t) __builtin_popcountll(x);
 #endif
 }
 
@@ -240,6 +250,7 @@ extern uint64_t (*cbits_popcount_block_ptr)(const uint64_t *ptr);
 uint64_t
 cbits_popcount_block_fallback(const uint64_t *ptr);
 
+#if defined(__x86_64__) || defined(_M_X64)
 /**
  * @brief AVX2 popcount block implementation (256-bit).
  *
@@ -267,6 +278,7 @@ cbits_popcount_block_avx2(const uint64_t *ptr);
  */
 uint64_t
 cbits_popcount_block_avx512(const uint64_t *ptr);
+#endif
 
 /**
  * @brief Inline wrapper that calls the current dispatch pointer.

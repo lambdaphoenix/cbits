@@ -9,6 +9,7 @@
  *
  * @see include/bitvector.h
  * @author lambdaphoenix
+ * @version 0.1.1
  * @copyright Copyright (c) 2025 lambdaphoenix
  */
 
@@ -107,14 +108,14 @@ bv_build_rank(BitVector *bv)
         }
         else {
             for (size_t w = base; w < end; ++w) {
-                super_total += cbits_popcount64(&bv->data[w]);
+                super_total += cbits_popcount64(bv->data[w]);
             }
         }
 
         size_t acc = 0;
         for (size_t w = base; w < end; ++w) {
             bv->block_rank[w] = (uint16_t) acc;
-            acc += cbits_popcount64(&bv->data[w]);
+            acc += cbits_popcount64(bv->data[w]);
         }
     }
     bv->rank_dirty = false;
@@ -132,7 +133,7 @@ bv_rank(BitVector *bv, const size_t pos)
     size_t b = bv->block_rank[w];
     uint64_t mask = (off == 63) ? UINT64_MAX : ((1ULL << (off + 1)) - 1);
     uint64_t part = bv->data[w] & mask;
-    return s + b + (size_t) cbits_popcount64(&part);
+    return s + b + (size_t) cbits_popcount64(part);
 }
 
 bool

@@ -17,7 +17,7 @@ cbits_popcount_block_fallback(const uint64_t *ptr)
 {
     uint64_t sum = 0;
     for (size_t i = 0; i < 8; ++i) {
-        sum += cbits_popcount64(ptr + i);
+        sum += cbits_popcount64(ptr[i]);
     }
     return sum;
 }
@@ -25,9 +25,11 @@ cbits_popcount_block_fallback(const uint64_t *ptr)
 uint64_t (*cbits_popcount_block_ptr)(const uint64_t *ptr) =
     cbits_popcount_block_fallback;
 
-#if defined(__GNUC__)
+#if defined(__x86_64__) || defined(_M_X64)
+
+    #if defined(__GNUC__)
 __attribute__((target("avx2")))
-#endif
+    #endif
 uint64_t
 cbits_popcount_block_avx2(const uint64_t *ptr)
 {
@@ -36,15 +38,15 @@ cbits_popcount_block_avx2(const uint64_t *ptr)
     uint64_t tmp[8];
     _mm256_storeu_si256((__m256i *) tmp, v0);
     _mm256_storeu_si256((__m256i *) (tmp + 4), v1);
-    return cbits_popcount64(&tmp[0]) + cbits_popcount64(&tmp[1]) +
-           cbits_popcount64(&tmp[2]) + cbits_popcount64(&tmp[3]) +
-           cbits_popcount64(&tmp[4]) + cbits_popcount64(&tmp[5]) +
-           cbits_popcount64(&tmp[6]) + cbits_popcount64(&tmp[7]);
+    return cbits_popcount64(tmp[0]) + cbits_popcount64(tmp[1]) +
+           cbits_popcount64(tmp[2]) + cbits_popcount64(tmp[3]) +
+           cbits_popcount64(tmp[4]) + cbits_popcount64(tmp[5]) +
+           cbits_popcount64(tmp[6]) + cbits_popcount64(tmp[7]);
 }
 
-#if defined(__GNUC__)
+    #if defined(__GNUC__)
 __attribute__((target("avx512vpopcntdq")))
-#endif
+    #endif
 uint64_t
 cbits_popcount_block_avx512(const uint64_t *ptr)
 {
@@ -53,9 +55,10 @@ cbits_popcount_block_avx512(const uint64_t *ptr)
     return _mm512_reduce_add_epi64(c);
 }
 
-#if defined(__GNUC__)
-void __attribute__((constructor))
-init_cpu_dispatch(void)
+    #if defined(__GNUC__)
+__attribute__((target("avx2"))) __attribute__((target("avx512vpopcntdq")))
+__attribute__((constructor)) void
+init_cpu_dispatch_gcc(void)
 {
     if (__builtin_cpu_supports("avx512vpopcntdq")) {
         cbits_popcount_block_ptr = cbits_popcount_block_avx512;
@@ -63,13 +66,12 @@ init_cpu_dispatch(void)
     }
     if (__builtin_cpu_supports("avx2")) {
         cbits_popcount_block_ptr = cbits_popcount_block_avx2;
-        return;
     }
 }
-#elif defined(_MSC_VER)
-    #include <intrin.h>
+    #elif defined(_MSC_VER)
+        #include <intrin.h>
 void __cdecl init_cpu_dispatch(void);
-    #pragma section(".CRT$XCU", read)
+        #pragma section(".CRT$XCU", read)
 __declspec(allocate(".CRT$XCU")) void(__cdecl *_ict_ptr)(void) =
     init_cpu_dispatch;
 
@@ -86,5 +88,12 @@ void __cdecl init_cpu_dispatch(void)
         cbits_popcount_block_ptr = cbits_popcount_block_avx2;
         return;
     }
+}
+    #endif
+#endif
+#if !defined(__x86_64__) && !defined(_M_X64)
+void
+init_cpu_dispatch(void)
+{
 }
 #endif

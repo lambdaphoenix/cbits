@@ -387,12 +387,6 @@ py_bv_hash(PyObject *self)
     return _Py_HashPointer(self);
 }
 
-static Py_hash_t
-py_bv_hash(PyObject *self)
-{
-    return _Py_HashPointer(self);
-}
-
 /* -------------------------------------------------------------------------
  * Sequence Protocol
  * ------------------------------------------------------------------------- */
@@ -832,6 +826,36 @@ PyType_Spec PyBitVector_spec = {
         (PyModule_AddObject(module, name, object) == 0 \
              ? (Py_XINCREF(object), 0)                 \
              : -1)
+#endif
+#ifdef PYPY_VERSION
+    #undef ADD_OBJECT
+static inline int
+cbits_add_object(PyObject *module, const char *name, PyObject *obj)
+{
+    int err = PyModule_AddObject(module, name, obj);
+    if (err < 0) {
+        return err;
+    }
+    Py_XINCREF(obj);
+    return 0;
+}
+
+    /**
+     * @def ADD_OBJECT(module, name, object)
+     * @brief Add a PyObject to a module, handling reference counts portably.
+     *
+     * On Python ≥ 3.12, PyModule_AddObjectRef() is available and automatically
+     * steals a reference. On older versions, we fall back to
+     * PyModule_AddObject() and manually increment the reference on success.
+     *
+     * @param module The Python module to which the object is added.
+     * @param name The attribute name under which the object is registered.
+     * @param object The PyObject pointer to add.
+     * @return 0 on success, -1 on failure (exception set by
+     * PyModule_AddObject*).
+     */
+    #define ADD_OBJECT(module, name, object) \
+        cbits_add_object(module, name, object)
 #endif
 
 /**
