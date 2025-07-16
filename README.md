@@ -4,7 +4,7 @@
 [![PyPI - Format](https://img.shields.io/pypi/format/cbits)](https://pypi.org/project/cbits/#files)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/cbits)](https://pypi.org/project/cbits/)
 [![Changelog](https://img.shields.io/badge/CHANGELOG-md-blue.svg)](https://github.com/lambdaphoenix/cbits/blob/main/CHANGELOG.md)
-[![GitHub License](https://img.shields.io/github/license/lambdaphoenix/cbits)](https://github.com/lambdaphoenix/cbits/blob/main/LICENSE)
+[![GitHub License](https://img.shields.io/github/license/lambdaphoenix/cbits.svg)](https://github.com/lambdaphoenix/cbits/blob/main/LICENSE)
 
 # cbits
 
