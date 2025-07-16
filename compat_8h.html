@@ -75,7 +75,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle"><div class="title">compat.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -84,22 +85,19 @@ $(function() {
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
-<code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;x86intrin.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for compat.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="compat_8h__incl.png" border="0" usemap="#ainclude_2compat_8h" alt=""/></div>
 <map name="ainclude_2compat_8h" id="ainclude_2compat_8h">
-<area shape="rect" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="119,5,253,31"/>
+<area shape="rect" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="71,5,205,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,76,104"/>
-<area shape="poly" title=" " alt="" coords="164,33,78,75,75,70,161,28"/>
+<area shape="poly" title=" " alt="" coords="124,33,69,72,66,68,121,29"/>
 <area shape="rect" title=" " alt="" coords="101,79,175,104"/>
-<area shape="poly" title=" " alt="" coords="180,33,156,69,151,66,176,30"/>
-<area shape="rect" title=" " alt="" coords="200,79,271,104"/>
-<area shape="poly" title=" " alt="" coords="196,29,222,66,217,69,192,33"/>
-<area shape="rect" title=" " alt="" coords="295,79,387,104"/>
-<area shape="poly" title=" " alt="" coords="212,28,304,70,302,75,210,33"/>
+<area shape="poly" title=" " alt="" coords="141,31,141,65,135,65,135,31"/>
+<area shape="rect" title=" " alt="" coords="200,79,292,104"/>
+<area shape="poly" title=" " alt="" coords="157,28,218,69,215,73,154,33"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -107,9 +105,11 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="compat_8h__dep__incl.png" border="0" usemap="#ainclude_2compat_8hdep" alt=""/></div>
 <map name="ainclude_2compat_8hdep" id="ainclude_2compat_8hdep">
-<area shape="rect" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="77,5,211,31"/>
+<area shape="rect" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="166,5,301,31"/>
 <area shape="rect" href="bitvector_8h.html" title="Packed BitVector C&#45;API declarations." alt="" coords="73,79,215,104"/>
-<area shape="poly" title=" " alt="" coords="147,44,147,79,141,79,141,44"/>
+<area shape="poly" title=" " alt="" coords="210,41,160,81,157,76,207,37"/>
+<area shape="rect" href="compat__dispatch_8c.html" title="Runtime dispatch for fastest popcount block implementation." alt="" coords="239,79,406,104"/>
+<area shape="poly" title=" " alt="" coords="260,37,310,76,306,81,257,41"/>
 <area shape="rect" href="binding_8c.html" title="Python C&#45;API bindings for cbits.BitVector." alt="" coords="5,152,136,177"/>
 <area shape="poly" title=" " alt="" coords="124,116,84,154,81,150,120,112"/>
 <area shape="rect" href="bitvector_8c.html" title="Implementation of BitVector functions." alt="" coords="161,152,274,177"/>
@@ -122,23 +122,50 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aef5ff1718342c263ed54219faf08ec16" id="r_aef5ff1718342c263ed54219faf08ec16"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#aef5ff1718342c263ed54219faf08ec16">cbits_free_aligned</a> (void *ptr)</td></tr>
+<tr class="memdesc:aef5ff1718342c263ed54219faf08ec16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free aligned memory.  <br /></td></tr>
 <tr class="separator:aef5ff1718342c263ed54219faf08ec16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0861c18a2e3ac73f750606b45787ed7" id="r_ab0861c18a2e3ac73f750606b45787ed7"><td class="memItemLeft" align="right" valign="top">static void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#ab0861c18a2e3ac73f750606b45787ed7">cbits_malloc_aligned</a> (size_t size, size_t align)</td></tr>
+<tr class="memdesc:ab0861c18a2e3ac73f750606b45787ed7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate aligned memory.  <br /></td></tr>
 <tr class="separator:ab0861c18a2e3ac73f750606b45787ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72aee128fdf77164600dbbd8dce82d37" id="r_a72aee128fdf77164600dbbd8dce82d37"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#a72aee128fdf77164600dbbd8dce82d37">cbits_atomic_load</a> (const uint64_t *ptr)</td></tr>
+<tr class="memdesc:a72aee128fdf77164600dbbd8dce82d37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atomic load (relaxed).  <br /></td></tr>
 <tr class="separator:a72aee128fdf77164600dbbd8dce82d37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f195d03c1d58f80f25d801995177054" id="r_a9f195d03c1d58f80f25d801995177054"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#a9f195d03c1d58f80f25d801995177054">cbits_atomic_fetch_or</a> (uint64_t *ptr, uint64_t v)</td></tr>
+<tr class="memdesc:a9f195d03c1d58f80f25d801995177054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atomic fetch-and-OR (relaxed).  <br /></td></tr>
 <tr class="separator:a9f195d03c1d58f80f25d801995177054"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3f6d167e9173b07e41ce4c067ad3910" id="r_ad3f6d167e9173b07e41ce4c067ad3910"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#ad3f6d167e9173b07e41ce4c067ad3910">cbits_atomic_fetch_and</a> (uint64_t *ptr, uint64_t v)</td></tr>
+<tr class="memdesc:ad3f6d167e9173b07e41ce4c067ad3910"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atomic fetch-and-AND (relaxed).  <br /></td></tr>
 <tr class="separator:ad3f6d167e9173b07e41ce4c067ad3910"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0805aa8ea491241b9046666b03920b45" id="r_a0805aa8ea491241b9046666b03920b45"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#a0805aa8ea491241b9046666b03920b45">cbits_atomic_fetch_xor</a> (uint64_t *ptr, uint64_t v)</td></tr>
+<tr class="memdesc:a0805aa8ea491241b9046666b03920b45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atomic fetch-and-XOR (relaxed).  <br /></td></tr>
 <tr class="separator:a0805aa8ea491241b9046666b03920b45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5fec5ad747dac70c19c014609850e2a" id="r_ac5fec5ad747dac70c19c014609850e2a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#ac5fec5ad747dac70c19c014609850e2a">cbits_prefetch</a> (const void *ptr)</td></tr>
+<tr class="memdesc:ac5fec5ad747dac70c19c014609850e2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prefetch a cache line at ptr into L1.  <br /></td></tr>
 <tr class="separator:ac5fec5ad747dac70c19c014609850e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4a08ff54563b0e05e08e3d75fd26b84d" id="r_a4a08ff54563b0e05e08e3d75fd26b84d"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#a4a08ff54563b0e05e08e3d75fd26b84d">cbits_popcount64</a> (const uint64_t *ptr)</td></tr>
+<tr class="memdesc:a4a08ff54563b0e05e08e3d75fd26b84d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count bits set in a 64-bit word.  <br /></td></tr>
 <tr class="separator:a4a08ff54563b0e05e08e3d75fd26b84d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cb5141d31b8f85334c52c013f40a5d9" id="r_a8cb5141d31b8f85334c52c013f40a5d9"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#a8cb5141d31b8f85334c52c013f40a5d9">cbits_popcount_block_fallback</a> (const uint64_t *ptr)</td></tr>
+<tr class="memdesc:a8cb5141d31b8f85334c52c013f40a5d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fallback popcount block implementation.  <br /></td></tr>
+<tr class="separator:a8cb5141d31b8f85334c52c013f40a5d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a617b4c0cfded8b9abccd0b0b23a4b372" id="r_a617b4c0cfded8b9abccd0b0b23a4b372"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#a617b4c0cfded8b9abccd0b0b23a4b372">cbits_popcount_block_avx2</a> (const uint64_t *ptr)</td></tr>
+<tr class="memdesc:a617b4c0cfded8b9abccd0b0b23a4b372"><td class="mdescLeft">&#160;</td><td class="mdescRight">AVX2 popcount block implementation (256-bit).  <br /></td></tr>
+<tr class="separator:a617b4c0cfded8b9abccd0b0b23a4b372"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a424faca709a08dc933da45a763f83897" id="r_a424faca709a08dc933da45a763f83897"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#a424faca709a08dc933da45a763f83897">cbits_popcount_block_avx512</a> (const uint64_t *ptr)</td></tr>
+<tr class="memdesc:a424faca709a08dc933da45a763f83897"><td class="mdescLeft">&#160;</td><td class="mdescRight">AVX-512VPOPCNTDQ popcount block implementation (512-bit).  <br /></td></tr>
+<tr class="separator:a424faca709a08dc933da45a763f83897"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addef37948dc5ab434f81a1f15ff81570" id="r_addef37948dc5ab434f81a1f15ff81570"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#addef37948dc5ab434f81a1f15ff81570">cbits_popcount_block</a> (const uint64_t *ptr)</td></tr>
+<tr class="memdesc:addef37948dc5ab434f81a1f15ff81570"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inline wrapper that calls the current dispatch pointer.  <br /></td></tr>
 <tr class="separator:addef37948dc5ab434f81a1f15ff81570"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9256aa51e475beabf9cd975766084809" id="r_a9256aa51e475beabf9cd975766084809"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#a9256aa51e475beabf9cd975766084809">init_cpu_dispatch</a> (void)</td></tr>
+<tr class="memdesc:a9256aa51e475beabf9cd975766084809"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor to initialize popcount dispatch pointer.  <br /></td></tr>
+<tr class="separator:a9256aa51e475beabf9cd975766084809"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ada042e04a5174cfb9391066a3cea3253" id="r_ada042e04a5174cfb9391066a3cea3253"><td class="memItemLeft" align="right" valign="top">uint64_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#ada042e04a5174cfb9391066a3cea3253">cbits_popcount_block_ptr</a> )(const uint64_t *ptr)</td></tr>
+<tr class="memdesc:ada042e04a5174cfb9391066a3cea3253"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dispatch pointer for block popcount.  <br /></td></tr>
+<tr class="separator:ada042e04a5174cfb9391066a3cea3253"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Cross-platform aligned allocators, atomics, popcount, prefetch. </p>
@@ -149,6 +176,7 @@ Functions</h2></td></tr>
 <li>optimized 64-bit popcount and block-level popcount</li>
 </ul>
 <dl class="section author"><dt>Author</dt><dd>lambdaphoenix </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1.1 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 lambdaphoenix </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="ad3f6d167e9173b07e41ce4c067ad3910" name="ad3f6d167e9173b07e41ce4c067ad3910"></a>
@@ -184,6 +212,16 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Atomic fetch-and-AND (relaxed). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer to the 64-bit integer to update. </td></tr>
+    <tr><td class="paramname">v</td><td>Value to AND with *ptr. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The previous value stored at *ptr. </dd></dl>
 
 </div>
 </div>
@@ -221,6 +259,16 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Atomic fetch-and-OR (relaxed). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer to the 64-bit integer to update. </td></tr>
+    <tr><td class="paramname">v</td><td>Value to OR with *ptr. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The previous value stored at *ptr. </dd></dl>
+
 </div>
 </div>
 <a id="a0805aa8ea491241b9046666b03920b45" name="a0805aa8ea491241b9046666b03920b45"></a>
@@ -257,6 +305,16 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Atomic fetch-and-XOR (relaxed). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer to the 64-bit integer to update. </td></tr>
+    <tr><td class="paramname">v</td><td>Value to XOR with *ptr. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The previous value stored at *ptr. </dd></dl>
+
 </div>
 </div>
 <a id="a72aee128fdf77164600dbbd8dce82d37" name="a72aee128fdf77164600dbbd8dce82d37"></a>
@@ -283,6 +341,15 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Atomic load (relaxed). </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer to the 64-bit integer to load. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value currently stored at *ptr. </dd></dl>
+
 </div>
 </div>
 <a id="aef5ff1718342c263ed54219faf08ec16" name="aef5ff1718342c263ed54219faf08ec16"></a>
@@ -308,6 +375,16 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Free aligned memory. </p>
+<p>&lt; GCC/Clang x86 intrinsics </p>
+<p>On MSVC uses _aligned_free, otherwise standard free.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer returned by cbits_malloc_aligned. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -345,6 +422,17 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Allocate aligned memory. </p>
+<p>Uses posix_memalign on POSIX, or _aligned_malloc on MSVC.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>Number of bytes to allocate. </td></tr>
+    <tr><td class="paramname">align</td><td>Desired alignment in bytes (must be power of two). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to aligned memory, or NULL if allocation failed. </dd></dl>
+
 </div>
 </div>
 <a id="a4a08ff54563b0e05e08e3d75fd26b84d" name="a4a08ff54563b0e05e08e3d75fd26b84d"></a>
@@ -370,6 +458,15 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Count bits set in a 64-bit word. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer to the uint64_t to count bits in. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of set bits in *ptr. </dd></dl>
 
 </div>
 </div>
@@ -397,6 +494,101 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Inline wrapper that calls the current dispatch pointer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer to 8 contiguous uint64_t words. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Total popcount as computed by the best available impl. </dd></dl>
+
+</div>
+</div>
+<a id="a617b4c0cfded8b9abccd0b0b23a4b372" name="a617b4c0cfded8b9abccd0b0b23a4b372"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a617b4c0cfded8b9abccd0b0b23a4b372">&#9670;&#160;</a></span>cbits_popcount_block_avx2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t cbits_popcount_block_avx2 </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t *&#160;</td>
+          <td class="paramname"><em>ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>AVX2 popcount block implementation (256-bit). </p>
+<p>Loads two 256-bit vectors, stores to temporary array, and sums popcounts of each 64-bit element.</p>
+<p>Only used when targeting AVX2.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer to at least 8 uint64_t words. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Total popcount of the 8 words. </dd></dl>
+
+</div>
+</div>
+<a id="a424faca709a08dc933da45a763f83897" name="a424faca709a08dc933da45a763f83897"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a424faca709a08dc933da45a763f83897">&#9670;&#160;</a></span>cbits_popcount_block_avx512()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t cbits_popcount_block_avx512 </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t *&#160;</td>
+          <td class="paramname"><em>ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>AVX-512VPOPCNTDQ popcount block implementation (512-bit). </p>
+<p>Loads one 512-bit vector, applies _mm512_popcnt_epi64, then reduces with _mm512_reduce_add_epi64.</p>
+<p>Only used when targeting AVX-512VPOPCNTDQ.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer to at least 8 uint64_t words. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Total popcount of the 8 words. </dd></dl>
+
+</div>
+</div>
+<a id="a8cb5141d31b8f85334c52c013f40a5d9" name="a8cb5141d31b8f85334c52c013f40a5d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cb5141d31b8f85334c52c013f40a5d9">&#9670;&#160;</a></span>cbits_popcount_block_fallback()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t cbits_popcount_block_fallback </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t *&#160;</td>
+          <td class="paramname"><em>ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fallback popcount block implementation. </p>
+<p>Processes in 64-bit chunks, summing up cbits_popcount64 for each of 8 words. Used when no vector instructions are available.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer to at least 8 uint64_t words. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Total popcount of the 8 words. </dd></dl>
+
 </div>
 </div>
 <a id="ac5fec5ad747dac70c19c014609850e2a" name="ac5fec5ad747dac70c19c014609850e2a"></a>
@@ -422,6 +614,71 @@ Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Prefetch a cache line at ptr into L1. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Address to prefetch. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a9256aa51e475beabf9cd975766084809" name="a9256aa51e475beabf9cd975766084809"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9256aa51e475beabf9cd975766084809">&#9670;&#160;</a></span>init_cpu_dispatch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_cpu_dispatch </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor to initialize popcount dispatch pointer. </p>
+<p>At program start, this function checks CPU support for AVX-512VPOPCNTDQ and AVX2 via __builtin_cpu_supports, then updates cbits_popcount_block_ptr accordingly.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">void</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="ada042e04a5174cfb9391066a3cea3253" name="ada042e04a5174cfb9391066a3cea3253"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada042e04a5174cfb9391066a3cea3253">&#9670;&#160;</a></span>cbits_popcount_block_ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t(* cbits_popcount_block_ptr) (const uint64_t *ptr) </td>
+          <td>(</td>
+          <td class="paramtype">const uint64_t *&#160;</td>
+          <td class="paramname"><em>ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dispatch pointer for block popcount. </p>
+<p>Initially set to <a class="el" href="compat_8h.html#a8cb5141d31b8f85334c52c013f40a5d9">cbits_popcount_block_fallback</a>, and overwritten during module initialization by <a class="el" href="compat_8h.html#a9256aa51e475beabf9cd975766084809">init_cpu_dispatch</a> to point to the best available implementation. </p>
 
 </div>
 </div>

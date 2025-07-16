@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['n_5fbits_0',['n_bits',['../structBitVector.html#ab83f018fe84a783408855951df52ae43',1,'BitVector']]],
-  ['n_5fwords_1',['n_words',['../structBitVector.html#ae0bf575ac9079d9eb892a748a7dc04bd',1,'BitVector']]]
+  ['init_5fcpu_5fdispatch_0',['init_cpu_dispatch',['../compat_8h.html#a9256aa51e475beabf9cd975766084809',1,'compat.h']]]
 ];

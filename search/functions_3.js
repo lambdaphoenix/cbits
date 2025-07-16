@@ -1,4 +1,32 @@
 var searchData=
 [
-  ['words_5ffor_5fbits_0',['words_for_bits',['../bitvector_8c.html#ad51d2ff48f225f8f8d5da50fdf7a63fc',1,'bitvector.c']]]
+  ['py_5fbv_5fand_0',['py_bv_and',['../binding_8c.html#ad43924cc3cad095c828cc2b5096f8cf3',1,'binding.c']]],
+  ['py_5fbv_5fass_5fitem_1',['py_bv_ass_item',['../binding_8c.html#a9a4f14c0adf92741fd193d14fee2bd6e',1,'binding.c']]],
+  ['py_5fbv_5fbool_2',['py_bv_bool',['../binding_8c.html#a2a48ec54bd2020b5f9c53ccb60efad9e',1,'binding.c']]],
+  ['py_5fbv_5fclear_3',['py_bv_clear',['../binding_8c.html#acd9a229f87194f1da31035b8013ca1ec',1,'binding.c']]],
+  ['py_5fbv_5fcontains_4',['py_bv_contains',['../binding_8c.html#ac16b0c5b44b6cdd492918469bcbf7f96',1,'binding.c']]],
+  ['py_5fbv_5fcopy_5',['py_bv_copy',['../binding_8c.html#a67c5804ed6745718be7527a3aae4664a',1,'binding.c']]],
+  ['py_5fbv_5fdeepcopy_6',['py_bv_deepcopy',['../binding_8c.html#ad5569e465c62a44515af6f4aa324fc60',1,'binding.c']]],
+  ['py_5fbv_5fflip_7',['py_bv_flip',['../binding_8c.html#ac6089ad6722c611aaf65f792e62a1aef',1,'binding.c']]],
+  ['py_5fbv_5ffree_8',['py_bv_free',['../binding_8c.html#a2d55c861d7fdf3b0e9b95497fdb6a6e4',1,'binding.c']]],
+  ['py_5fbv_5fget_9',['py_bv_get',['../binding_8c.html#a5c26cc530c0b88174ccaa392cf99a2ba',1,'binding.c']]],
+  ['py_5fbv_5fget_5fsize_10',['py_bv_get_size',['../binding_8c.html#a676b77aaaa3053d90f7ea7f95e22e8eb',1,'binding.c']]],
+  ['py_5fbv_5fhash_11',['py_bv_hash',['../binding_8c.html#a2f67615df466f74b6f90c13dc37589ff',1,'binding.c']]],
+  ['py_5fbv_5fiand_12',['py_bv_iand',['../binding_8c.html#ad100d02b61be2f9082ce249bc3099ddc',1,'binding.c']]],
+  ['py_5fbv_5finit_13',['py_bv_init',['../binding_8c.html#a510d7b30401e3d3bd188a9a7de61803d',1,'binding.c']]],
+  ['py_5fbv_5finvert_14',['py_bv_invert',['../binding_8c.html#a21759f5b861d2e61454568931070553d',1,'binding.c']]],
+  ['py_5fbv_5fior_15',['py_bv_ior',['../binding_8c.html#a2a23db722235b739cd8ca7af6aa096dd',1,'binding.c']]],
+  ['py_5fbv_5fitem_16',['py_bv_item',['../binding_8c.html#a436b24e6696f952a3d1a96ecf7191f96',1,'binding.c']]],
+  ['py_5fbv_5fixor_17',['py_bv_ixor',['../binding_8c.html#a239e981d1a323d9bce7c018f08b5f081',1,'binding.c']]],
+  ['py_5fbv_5flen_18',['py_bv_len',['../binding_8c.html#a21e08dec927792701cb73c6e6a1df927',1,'binding.c']]],
+  ['py_5fbv_5fnew_19',['py_bv_new',['../binding_8c.html#a33699ee8e583f6b69da8d7a4b011de12',1,'binding.c']]],
+  ['py_5fbv_5for_20',['py_bv_or',['../binding_8c.html#a93c64247c7738efc9cbbfe20eab23f9b',1,'binding.c']]],
+  ['py_5fbv_5frank_21',['py_bv_rank',['../binding_8c.html#ab3420fc2c891b9921a12b1761ffdf2fd',1,'binding.c']]],
+  ['py_5fbv_5frepr_22',['py_bv_repr',['../binding_8c.html#a7c29dda376c942eaafd3e1297c392b6c',1,'binding.c']]],
+  ['py_5fbv_5frichcompare_23',['py_bv_richcompare',['../binding_8c.html#a907d626799062d832d366b69aa7755ef',1,'binding.c']]],
+  ['py_5fbv_5fset_24',['py_bv_set',['../binding_8c.html#a6c9af6a3bf28663156930eb95089628c',1,'binding.c']]],
+  ['py_5fbv_5fset_5fsize_25',['py_bv_set_size',['../binding_8c.html#a470ee7402be5662a9f0651631ec1f172',1,'binding.c']]],
+  ['py_5fbv_5fstr_26',['py_bv_str',['../binding_8c.html#a08bbcefc5bea6072787075f0a7e305c8',1,'binding.c']]],
+  ['py_5fbv_5fxor_27',['py_bv_xor',['../binding_8c.html#a702c72682e39dec38e3f0e8f70fac5b2',1,'binding.c']]],
+  ['pyinit_5f_5fcbits_28',['PyInit__cbits',['../binding_8c.html#a5a66f6dc0f1f2e3f2080e50d639e37d2',1,'binding.c']]]
 ];
