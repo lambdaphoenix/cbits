@@ -524,7 +524,7 @@ py_bv_iand(PyObject *self, PyObject *arg)
     }
 
     for (size_t i = 0; i < A->bv->n_words; ++i) {
-        cbits_atomic_fetch_and(&A->bv->data[i], B->bv->data[i]);
+        A->bv->data[i] &= B->bv->data[i];
     }
     A->bv->rank_dirty = true;
     Py_INCREF(self);
@@ -584,7 +584,7 @@ py_bv_ior(PyObject *self, PyObject *arg)
     }
 
     for (size_t i = 0; i < A->bv->n_words; ++i) {
-        cbits_atomic_fetch_or(&A->bv->data[i], B->bv->data[i]);
+        A->bv->data[i] |= B->bv->data[i];
     }
     A->bv->rank_dirty = true;
     Py_INCREF(self);
@@ -644,7 +644,7 @@ py_bv_ixor(PyObject *self, PyObject *arg)
     }
 
     for (size_t i = 0; i < A->bv->n_words; ++i) {
-        cbits_atomic_fetch_xor(&A->bv->data[i], B->bv->data[i]);
+        A->bv->data[i] ^= B->bv->data[i];
     }
     A->bv->rank_dirty = true;
     Py_INCREF(self);

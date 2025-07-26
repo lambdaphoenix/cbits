@@ -1,10 +1,9 @@
 /**
  * @file include/compat.h
- * @brief Cross-platform aligned allocators, atomics, popcount, prefetch.
+ * @brief Cross-platform aligned allocators, popcount, prefetch.
  *
  * Provides wrappers for:
  * - posix_memalign or _aligned_malloc/free
- * - atomic load/or/and/xor via C11 or MSVC intrinsics
  * - cache prefetch instructions
  * - optimized 64-bit popcount and block-level popcount
  *
@@ -97,96 +96,6 @@ cbits_malloc_aligned(size_t size, size_t align)
         return NULL;
     }
     return p;
-}
-
-/* Atomics */
-#if defined(_MSC_VER)
-    #ifndef WIN32_LEAN_AND_MEAN
-        #define WIN32_LEAN_AND_MEAN
-    #endif
-    #include <windows.h>
-#elif defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L && \
-    !defined(__STDC_NO_ATOMICS__)
-    #include <stdatomic.h>
-#endif
-/**
- * @brief Atomic load (relaxed).
- *
- * @param ptr Pointer to the 64-bit integer to load.
- * @return The value currently stored at *ptr.
- */
-static inline uint64_t
-cbits_atomic_load(const uint64_t *ptr)
-{
-#if defined(_MSC_VER)
-    return (uint64_t) InterlockedCompareExchange64((volatile LONG64 *) ptr, 0,
-                                                   0);
-#elif defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L && \
-    !defined(__STDC_NO_ATOMICS__)
-    return atomic_load((_Atomic uint64_t *) ptr);
-#else
-    return __atomic_load_n(ptr, __ATOMIC_RELAXED);
-#endif
-}
-
-/**
- * @brief Atomic fetch-and-OR (relaxed).
- *
- * @param ptr Pointer to the 64-bit integer to update.
- * @param v   Value to OR with *ptr.
- * @return The previous value stored at *ptr.
- */
-static inline uint64_t
-cbits_atomic_fetch_or(uint64_t *ptr, uint64_t v)
-{
-#if defined(_MSC_VER)
-    return (uint64_t) InterlockedOr64((volatile LONG64 *) ptr, v);
-#elif defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L && \
-    !defined(__STDC_NO_ATOMICS__)
-    return atomic_fetch_or((_Atomic uint64_t *) ptr, v);
-#else
-    return __atomic_fetch_or(ptr, v, __ATOMIC_RELAXED);
-#endif
-}
-
-/**
- * @brief Atomic fetch-and-AND (relaxed).
- *
- * @param ptr Pointer to the 64-bit integer to update.
- * @param v   Value to AND with *ptr.
- * @return The previous value stored at *ptr.
- */
-static inline uint64_t
-cbits_atomic_fetch_and(uint64_t *ptr, uint64_t v)
-{
-#if defined(_MSC_VER)
-    return (uint64_t) InterlockedAnd64((volatile LONG64 *) ptr, v);
-#elif defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L && \
-    !defined(__STDC_NO_ATOMICS__)
-    return atomic_fetch_and((_Atomic uint64_t *) ptr, v);
-#else
-    return __atomic_fetch_and(ptr, v, __ATOMIC_RELAXED);
-#endif
-}
-
-/**
- * @brief Atomic fetch-and-XOR (relaxed).
- *
- * @param ptr Pointer to the 64-bit integer to update.
- * @param v   Value to XOR with *ptr.
- * @return The previous value stored at *ptr.
- */
-static inline uint64_t
-cbits_atomic_fetch_xor(uint64_t *ptr, uint64_t v)
-{
-#if defined(_MSC_VER)
-    return (uint64_t) InterlockedXor64((volatile LONG64 *) ptr, v);
-#elif defined(__STDC_VERSION__) && __STDC_VERSION__ >= 201112L && \
-    !defined(__STDC_NO_ATOMICS__)
-    return atomic_fetch_xor((_Atomic uint64_t *) ptr, v);
-#else
-    return __atomic_fetch_xor(ptr, v, __ATOMIC_RELAXED);
-#endif
 }
 
 /* Prefetch */

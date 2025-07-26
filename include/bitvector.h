@@ -125,7 +125,7 @@ static inline void
 bv_set(BitVector *bv, const size_t pos)
 {
     uint64_t mask = 1ULL << bv_bit(pos);
-    cbits_atomic_fetch_or(&bv->data[bv_word(pos)], mask);
+    bv->data[bv_word(pos)] |= mask;
     bv->rank_dirty = true;
 }
 /**
@@ -139,7 +139,7 @@ static inline void
 bv_clear(BitVector *bv, const size_t pos)
 {
     uint64_t mask = ~(1ULL << bv_bit(pos));
-    cbits_atomic_fetch_and(&bv->data[bv_word(pos)], mask);
+    bv->data[bv_word(pos)] &= mask;
     bv->rank_dirty = true;
 }
 /**
@@ -153,7 +153,7 @@ static inline void
 bv_flip(BitVector *bv, const size_t pos)
 {
     uint64_t mask = 1ULL << bv_bit(pos);
-    cbits_atomic_fetch_xor(&bv->data[bv_word(pos)], mask);
+    bv->data[bv_word(pos)] ^= mask;
     bv->rank_dirty = true;
 }
 /**
