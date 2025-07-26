@@ -467,6 +467,136 @@ py_bv_contains(PyObject *self, PyObject *value)
     return bv_contains_subvector(A->bv, B->bv);
 }
 
+/*
+ * @struct PyBitVectorIter
+ * @brief Iterator structure for cbits.BitVector
+ *
+ * Stores a reference to the original BitVector and tracks
+ * the current bit position and buffer state for iteration.
+ */
+typedef struct {
+    PyObject_HEAD PyBitVector
+        *bv;               /**< Reference to the PyBitVector being iterated */
+    size_t n_bits;         /**< Total number of bits in the vector */
+    size_t position;       /**< Current bit index (0-based) */
+    size_t word_index;     /**< Index into the 64-bit word array */
+    uint64_t current_word; /**< Local copy of the active 64-bit word */
+    uint64_t mask;         /**< Bit mask for next bit */
+} PyBitVectorIter;
+
+/**
+ * @brief Deallocate a BitVector iterator object.
+ *
+ * Releases the reference to the parent BitVector and frees the iterator
+ * struct.
+ *
+ * @param self  Iterator instance to deallocate.
+ */
+static void
+py_bviter_dealloc(PyObject *self)
+{
+    PyBitVectorIter *iter = (PyBitVectorIter *) self;
+    Py_XDECREF(iter->bv);
+    Py_TYPE(iter)->tp_free(self);
+}
+
+/**
+ * @brief Return the next bit as a Python boolean.
+ *
+ * Reads one bit from the internal buffer and shifts it out. If all bits have
+ * been yielded, raises StopIteration.
+ *
+ * @param self  Iterator instance.
+ * @return Py_True or Py_False on success; NULL with StopIteration set at
+ * end-of-iteration.
+ */
+static PyObject *
+py_bviter_iternext(PyObject *self)
+{
+    PyBitVectorIter *iter = (PyBitVectorIter *) self;
+
+    if (iter->position >= iter->n_bits) {
+        PyErr_SetNone(PyExc_StopIteration);
+        return NULL;
+    }
+
+    if (iter->mask == 0) {
+        if (iter->word_index >= iter->bv->bv->n_words) {
+            PyErr_SetNone(PyExc_StopIteration);
+            return NULL;
+        }
+        iter->current_word = iter->bv->bv->data[iter->word_index++];
+        iter->mask = 1ULL;
+        cbits_prefetch(&iter->bv->bv->data[iter->word_index]);
+    }
+
+    int bit = (iter->current_word & iter->mask) != 0;
+    iter->mask <<= 1;
+    iter->position++;
+
+    if (bit) {
+        Py_RETURN_TRUE;
+    }
+    else {
+        Py_RETURN_FALSE;
+    }
+}
+
+/**
+ * @brief Slots for the _BitVectorIter type.
+ *
+ * Defines deallocator, __iter__ and __next__.
+ */
+static PyType_Slot PyBitVectorIter_slots[] = {
+    {Py_tp_dealloc, py_bviter_dealloc},
+    {Py_tp_iter, PyObject_SelfIter},
+    {Py_tp_iternext, py_bviter_iternext},
+    {0, 0},
+};
+
+/**
+ * @brief Type specification for cbits._BitVectorIter.
+ *
+ * This is the bit‐wise iterator returned by BitVector.__iter__().
+ */
+static PyType_Spec PyBitVectorIter_spec = {
+    .name = "cbits._BitVectorIter",
+    .basicsize = sizeof(PyBitVectorIter),
+    .flags = Py_TPFLAGS_DEFAULT,
+    .slots = PyBitVectorIter_slots,
+};
+
+/** Global pointer for the iterator type object */
+static PyTypeObject *PyBitVectorIterType = NULL;
+
+/**
+ * @brief Create and return a new BitVector iterator.
+ *
+ * Implements the tp_iter slot. Allocates a fresh PyBitVectorIter, initializes
+ * its state, and returns it.
+ *
+ * @param self  The PyBitVector instance to iterate.
+ * @return New iterator object or NULL on allocation failure.
+ */
+static PyObject *
+py_bv_iter(PyObject *self)
+{
+    PyBitVector *bv = (PyBitVector *) self;
+    PyBitVectorIter *iter = PyObject_New(PyBitVectorIter, PyBitVectorIterType);
+    if (!iter) {
+        return NULL;
+    }
+    Py_INCREF(bv);
+    iter->bv = bv;
+    iter->n_bits = bv->bv->n_bits;
+    iter->position = 0;
+    iter->word_index = 0;
+    iter->current_word = 0;
+    iter->mask = 0;
+
+    return (PyObject *) iter;
+}
+
 /* -------------------------------------------------------------------------
  * Number Protocol
  * ------------------------------------------------------------------------- */
@@ -769,6 +899,7 @@ static PyType_Slot PyBitVector_slots[] = {
     {Py_tp_richcompare, py_bv_richcompare},
     {Py_tp_hash, py_bv_hash},
 
+    {Py_tp_iter, py_bv_iter},
     {Py_sq_length, py_bv_len},
     {Py_sq_item, py_bv_item},
     {Py_sq_ass_item, py_bv_ass_item},
@@ -890,11 +1021,30 @@ cbits_module_exec(PyObject *module)
 #if PY_VERSION_HEX >= 0x030B0000
     PyBitVectorPtr = (PyTypeObject *) PyType_FromModuleAndSpec(
         module, &PyBitVector_spec, NULL);
+    if (!PyBitVectorPtr) {
+        PyErr_SetString(PyExc_RuntimeError,
+                        "Failed to initialize BitVector type");
+        return -1;
+    }
+    PyBitVectorIterType = (PyTypeObject *) PyType_FromModuleAndSpec(
+        module, &PyBitVectorIter_spec, NULL);
+    if (!PyBitVectorIterType) {
+        PyErr_SetString(PyExc_RuntimeError,
+                        "Failed to initialize _BitVectorIter type");
+        return -1;
+    }
 #else
     PyBitVectorPtr = (PyTypeObject *) PyType_FromSpec(&PyBitVector_spec);
     if (!PyBitVectorPtr || PyType_Ready(PyBitVectorPtr) < 0) {
         PyErr_SetString(PyExc_RuntimeError,
                         "Failed to initialize BitVector type");
+        return -1;
+    }
+    PyBitVectorIterType =
+        (PyTypeObject *) PyType_FromSpec(&PyBitVectorIter_spec);
+    if (!PyBitVectorIterType || PyType_Ready(PyBitVectorIterType) < 0) {
+        PyErr_SetString(PyExc_RuntimeError,
+                        "Failed to initialize _BitVectorIter type");
         return -1;
     }
 #endif

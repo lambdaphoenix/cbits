@@ -89,6 +89,7 @@ class BitVector:
     def __getitem__(self, index: int) -> bool
     def __setitem__(self, index: int, value: bool)
     def __contains__(self, other: BitVector) -> bool
+    def __iter__(self) -> Iterator[bool]
 
     # Numeric & bitwise protocol
     def __and__(self, other: BitVector) -> BitVector

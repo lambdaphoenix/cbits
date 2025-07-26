@@ -111,7 +111,7 @@ cbits_prefetch(const void *ptr)
 #if defined(_MSC_VER)
     _mm_prefetch((const char *) ptr, _MM_HINT_T0);
 #else
-    __builtin_prefetch(ptr);
+    __builtin_prefetch(ptr, 0, 1);
 #endif
 }
 
