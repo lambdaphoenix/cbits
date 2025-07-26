@@ -82,7 +82,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Cross-platform aligned allocators, atomics, popcount, prefetch.  
+<p>Cross-platform aligned allocators, popcount, prefetch.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
@@ -92,7 +92,7 @@ Include dependency graph for compat.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="compat_8h__incl.png" border="0" usemap="#ainclude_2compat_8h" alt=""/></div>
 <map name="ainclude_2compat_8h" id="ainclude_2compat_8h">
-<area shape="rect" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="71,5,205,31"/>
+<area shape="rect" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="71,5,205,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,76,104"/>
 <area shape="poly" title=" " alt="" coords="124,33,69,72,66,68,121,29"/>
 <area shape="rect" title=" " alt="" coords="101,79,175,104"/>
@@ -106,7 +106,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="compat_8h__dep__incl.png" border="0" usemap="#ainclude_2compat_8hdep" alt=""/></div>
 <map name="ainclude_2compat_8hdep" id="ainclude_2compat_8hdep">
-<area shape="rect" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="166,5,301,31"/>
+<area shape="rect" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="166,5,301,31"/>
 <area shape="rect" href="bitvector_8h.html" title="Packed BitVector C&#45;API declarations." alt="" coords="73,79,215,104"/>
 <area shape="poly" title=" " alt="" coords="210,41,160,81,157,76,207,37"/>
 <area shape="rect" href="compat__dispatch_8c.html" title="Runtime dispatch for fastest popcount block implementation." alt="" coords="239,79,406,104"/>
@@ -128,18 +128,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ab0861c18a2e3ac73f750606b45787ed7" id="r_ab0861c18a2e3ac73f750606b45787ed7"><td class="memItemLeft" align="right" valign="top">static void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#ab0861c18a2e3ac73f750606b45787ed7">cbits_malloc_aligned</a> (size_t size, size_t align)</td></tr>
 <tr class="memdesc:ab0861c18a2e3ac73f750606b45787ed7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate aligned memory.  <br /></td></tr>
 <tr class="separator:ab0861c18a2e3ac73f750606b45787ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a72aee128fdf77164600dbbd8dce82d37" id="r_a72aee128fdf77164600dbbd8dce82d37"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#a72aee128fdf77164600dbbd8dce82d37">cbits_atomic_load</a> (const uint64_t *ptr)</td></tr>
-<tr class="memdesc:a72aee128fdf77164600dbbd8dce82d37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atomic load (relaxed).  <br /></td></tr>
-<tr class="separator:a72aee128fdf77164600dbbd8dce82d37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9f195d03c1d58f80f25d801995177054" id="r_a9f195d03c1d58f80f25d801995177054"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#a9f195d03c1d58f80f25d801995177054">cbits_atomic_fetch_or</a> (uint64_t *ptr, uint64_t v)</td></tr>
-<tr class="memdesc:a9f195d03c1d58f80f25d801995177054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atomic fetch-and-OR (relaxed).  <br /></td></tr>
-<tr class="separator:a9f195d03c1d58f80f25d801995177054"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad3f6d167e9173b07e41ce4c067ad3910" id="r_ad3f6d167e9173b07e41ce4c067ad3910"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#ad3f6d167e9173b07e41ce4c067ad3910">cbits_atomic_fetch_and</a> (uint64_t *ptr, uint64_t v)</td></tr>
-<tr class="memdesc:ad3f6d167e9173b07e41ce4c067ad3910"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atomic fetch-and-AND (relaxed).  <br /></td></tr>
-<tr class="separator:ad3f6d167e9173b07e41ce4c067ad3910"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0805aa8ea491241b9046666b03920b45" id="r_a0805aa8ea491241b9046666b03920b45"><td class="memItemLeft" align="right" valign="top">static uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#a0805aa8ea491241b9046666b03920b45">cbits_atomic_fetch_xor</a> (uint64_t *ptr, uint64_t v)</td></tr>
-<tr class="memdesc:a0805aa8ea491241b9046666b03920b45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Atomic fetch-and-XOR (relaxed).  <br /></td></tr>
-<tr class="separator:a0805aa8ea491241b9046666b03920b45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5fec5ad747dac70c19c014609850e2a" id="r_ac5fec5ad747dac70c19c014609850e2a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="compat_8h.html#ac5fec5ad747dac70c19c014609850e2a">cbits_prefetch</a> (const void *ptr)</td></tr>
 <tr class="memdesc:ac5fec5ad747dac70c19c014609850e2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prefetch a cache line at ptr into L1.  <br /></td></tr>
 <tr class="separator:ac5fec5ad747dac70c19c014609850e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,10 +151,9 @@ Variables</h2></td></tr>
 <tr class="separator:ada042e04a5174cfb9391066a3cea3253"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Cross-platform aligned allocators, atomics, popcount, prefetch. </p>
+<div class="textblock"><p>Cross-platform aligned allocators, popcount, prefetch. </p>
 <p>Provides wrappers for:</p><ul>
 <li>posix_memalign or _aligned_malloc/free</li>
-<li>atomic load/or/and/xor via C11 or MSVC intrinsics</li>
 <li>cache prefetch instructions</li>
 <li>optimized 64-bit popcount and block-level popcount</li>
 </ul>
@@ -174,179 +161,6 @@ Variables</h2></td></tr>
 <dl class="section version"><dt>Version</dt><dd>0.1.1 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 lambdaphoenix </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="ad3f6d167e9173b07e41ce4c067ad3910" name="ad3f6d167e9173b07e41ce4c067ad3910"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad3f6d167e9173b07e41ce4c067ad3910">&#9670;&#160;</a></span>cbits_atomic_fetch_and()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static uint64_t cbits_atomic_fetch_and </td>
-          <td>(</td>
-          <td class="paramtype">uint64_t *&#160;</td>
-          <td class="paramname"><em>ptr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>v</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Atomic fetch-and-AND (relaxed). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ptr</td><td>Pointer to the 64-bit integer to update. </td></tr>
-    <tr><td class="paramname">v</td><td>Value to AND with *ptr. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The previous value stored at *ptr. </dd></dl>
-
-</div>
-</div>
-<a id="a9f195d03c1d58f80f25d801995177054" name="a9f195d03c1d58f80f25d801995177054"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f195d03c1d58f80f25d801995177054">&#9670;&#160;</a></span>cbits_atomic_fetch_or()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static uint64_t cbits_atomic_fetch_or </td>
-          <td>(</td>
-          <td class="paramtype">uint64_t *&#160;</td>
-          <td class="paramname"><em>ptr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>v</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Atomic fetch-and-OR (relaxed). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ptr</td><td>Pointer to the 64-bit integer to update. </td></tr>
-    <tr><td class="paramname">v</td><td>Value to OR with *ptr. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The previous value stored at *ptr. </dd></dl>
-
-</div>
-</div>
-<a id="a0805aa8ea491241b9046666b03920b45" name="a0805aa8ea491241b9046666b03920b45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0805aa8ea491241b9046666b03920b45">&#9670;&#160;</a></span>cbits_atomic_fetch_xor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static uint64_t cbits_atomic_fetch_xor </td>
-          <td>(</td>
-          <td class="paramtype">uint64_t *&#160;</td>
-          <td class="paramname"><em>ptr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint64_t&#160;</td>
-          <td class="paramname"><em>v</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Atomic fetch-and-XOR (relaxed). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ptr</td><td>Pointer to the 64-bit integer to update. </td></tr>
-    <tr><td class="paramname">v</td><td>Value to XOR with *ptr. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The previous value stored at *ptr. </dd></dl>
-
-</div>
-</div>
-<a id="a72aee128fdf77164600dbbd8dce82d37" name="a72aee128fdf77164600dbbd8dce82d37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a72aee128fdf77164600dbbd8dce82d37">&#9670;&#160;</a></span>cbits_atomic_load()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static uint64_t cbits_atomic_load </td>
-          <td>(</td>
-          <td class="paramtype">const uint64_t *&#160;</td>
-          <td class="paramname"><em>ptr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Atomic load (relaxed). </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ptr</td><td>Pointer to the 64-bit integer to load. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The value currently stored at *ptr. </dd></dl>
-
-</div>
-</div>
 <a id="aef5ff1718342c263ed54219faf08ec16" name="aef5ff1718342c263ed54219faf08ec16"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aef5ff1718342c263ed54219faf08ec16">&#9670;&#160;</a></span>cbits_free_aligned()</h2>
 
@@ -621,7 +435,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 26 2025 10:03:14 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Jul 26 2025 15:58:51 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

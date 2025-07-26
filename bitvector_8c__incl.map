@@ -4,7 +4,7 @@
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="237,33,210,69,206,66,233,29"/>
 <area shape="rect" id="Node000008" title=" " alt="" coords="261,79,332,104"/>
 <area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="254,29,282,66,278,69,250,33"/>
-<area shape="rect" id="Node000003" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="97,152,179,177"/>
+<area shape="rect" id="Node000003" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="97,152,179,177"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="185,106,157,143,153,140,180,103"/>
 <area shape="rect" id="Node000007" title=" " alt="" coords="203,152,286,177"/>
 <area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="202,103,230,140,226,143,198,106"/>

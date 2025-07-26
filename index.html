@@ -154,9 +154,10 @@ Class: BitVector</h3>
 <div class="line">    <span class="keyword">def </span>__getitem__(self, index: int) -&gt; bool</div>
 <div class="line">    <span class="keyword">def </span>__setitem__(self, index: int, value: bool)</div>
 <div class="line">    <span class="keyword">def </span>__contains__(self, other: BitVector) -&gt; bool</div>
+<div class="line">    <span class="keyword">def </span>__iter__(self) -&gt; Iterator[bool]</div>
 <div class="line"> </div>
 <div class="line">    <span class="comment"># Numeric &amp; bitwise protocol</span></div>
-<div class="line">    <span class="keyword">def </span>__and__(self, other: BitVector) -&gt; BitVector</div>
+<div class="line">    def __and__(self, other: BitVector) -&gt; BitVector</div>
 <div class="line">    <span class="keyword">def </span>__iand__(self, other: BitVector) -&gt; BitVector</div>
 <div class="line">    <span class="keyword">def </span>__or__(self, other: BitVector) -&gt; BitVector</div>
 <div class="line">    <span class="keyword">def </span>__ior__(self, other: BitVector) -&gt; BitVector</div>
@@ -182,7 +183,7 @@ Project Links</h2>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 26 2025 10:03:14 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Jul 26 2025 15:58:51 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <map id="include/compat.h" name="include/compat.h">
-<area shape="rect" id="Node000001" title="Cross&#45;platform aligned allocators, atomics, popcount, prefetch." alt="" coords="166,5,301,31"/>
+<area shape="rect" id="Node000001" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="166,5,301,31"/>
 <area shape="rect" id="Node000002" href="$bitvector_8h.html" title="Packed BitVector C&#45;API declarations." alt="" coords="73,79,215,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,41,160,81,157,76,207,37"/>
 <area shape="rect" id="Node000005" href="$compat__dispatch_8c.html" title="Runtime dispatch for fastest popcount block implementation." alt="" coords="239,79,406,104"/>

@@ -6,7 +6,7 @@ var searchData=
   ['bitvector_2eh_3',['bitvector.h',['../bitvector_8h.html',1,'']]],
   ['bitvector_5fmethods_4',['BitVector_methods',['../binding_8c.html#a5bc423083838b34b1ff8c04a410a35e3',1,'binding.c']]],
   ['block_5frank_5',['block_rank',['../structBitVector.html#acca22beea5c72befb73b720e5584edb2',1,'BitVector']]],
-  ['bv_6',['bv',['../structPyBitVector.html#a3ea374d89e2cc07b1dd2f110b7d0ee30',1,'PyBitVector']]],
+  ['bv_6',['bv',['../structPyBitVectorIter.html#a727a78396210deba954c699a17158343',1,'PyBitVectorIter::bv'],['../structPyBitVector.html#a3ea374d89e2cc07b1dd2f110b7d0ee30',1,'PyBitVector::bv']]],
   ['bv_5falign_7',['BV_ALIGN',['../bitvector_8h.html#ac741fbe224335b2474474263fc59609e',1,'bitvector.h']]],
   ['bv_5fbit_8',['bv_bit',['../bitvector_8h.html#ad7e0bb7a9f7e9a34611b3c3ba41bfdbf',1,'bitvector.h']]],
   ['bv_5fbuild_5frank_9',['bv_build_rank',['../bitvector_8c.html#a512988fb7c0004571bd8edefc67dbe0c',1,'bv_build_rank(BitVector *bv):&#160;bitvector.c'],['../bitvector_8h.html#a512988fb7c0004571bd8edefc67dbe0c',1,'bv_build_rank(BitVector *bv):&#160;bitvector.c']]],
