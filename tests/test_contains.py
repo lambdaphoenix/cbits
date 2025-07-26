@@ -9,7 +9,7 @@ def from_bits(bitstr: str) -> BitVector:
             bv.set(i)
     return bv
 
-class MyTestCase(unittest.TestCase):
+class TestContain(unittest.TestCase):
     def setUp(self):
         self.a_str = "00110101"
         self.a = from_bits(self.a_str)

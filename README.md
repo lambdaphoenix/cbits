@@ -1,8 +1,8 @@
-[![Doxygen](https://img.shields.io/badge/docs-doxygen-2c4aa8?logo=doxygen)](https://lambdaphoenix.github.io/cbits/)
-[![PyPI - Implementation](https://img.shields.io/pypi/implementation/cbits)](https://pypi.org/project/cbits/)
-[![PyPI - Version](https://img.shields.io/pypi/v/cbits)](https://pypi.org/project/cbits/)
-[![PyPI - Format](https://img.shields.io/pypi/format/cbits)](https://pypi.org/project/cbits/#files)
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/cbits)](https://pypi.org/project/cbits/)
+[![Doxygen](https://img.shields.io/badge/docs-doxygen-2c4aa8.svg?logo=doxygen)](https://lambdaphoenix.github.io/cbits/)
+[![PyPI - Implementation](https://img.shields.io/pypi/implementation/cbits.svg)](https://pypi.org/project/cbits/)
+[![PyPI - Version](https://img.shields.io/pypi/v/cbits.svg)](https://pypi.org/project/cbits/)
+[![PyPI - Format](https://img.shields.io/pypi/format/cbits.svg)](https://pypi.org/project/cbits/#files)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/cbits.svg)](https://pypi.org/project/cbits/)
 [![Changelog](https://img.shields.io/badge/CHANGELOG-md-blue.svg)](https://github.com/lambdaphoenix/cbits/blob/main/CHANGELOG.md)
 [![GitHub License](https://img.shields.io/github/license/lambdaphoenix/cbits.svg)](https://github.com/lambdaphoenix/cbits/blob/main/LICENSE)
 
@@ -21,8 +21,7 @@ cbits implements a powerful bit vector type in C that is accessible via a Python
 pip install cbits
 ```
 
-##
-Quick Start
+## Quick Start
 ```python
 from cbits import BitVector
 

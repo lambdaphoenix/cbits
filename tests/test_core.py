@@ -2,7 +2,7 @@ import unittest
 import copy
 from cbits import BitVector
 
-class MyTestCase(unittest.TestCase):
+class TestCore(unittest.TestCase):
     def setUp(self):
         self.n = 100
         self.bv = BitVector(self.n)

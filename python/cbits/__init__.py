@@ -1,4 +1,3 @@
-# python/cbits/__init__.py
 ##
 # @file python/cbits/__init__.py
 # @package cbits
