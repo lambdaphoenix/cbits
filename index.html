@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>cbits: Main Page</title>
+<title>cbits: cbits</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -13,6 +13,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -69,14 +70,119 @@ $(function() {
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">cbits Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">cbits </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p><a class="anchor" id="md_README"></a> <a href="https://lambdaphoenix.github.io/cbits/"><img src="https://img.shields.io/badge/docs-doxygen-2c4aa8.svg?logo=doxygen" alt="Doxygen" style="pointer-events: none;" class="inline"/></a> <a href="https://pypi.org/project/cbits/"><img src="https://img.shields.io/pypi/implementation/cbits.svg" alt="PyPI - Implementation" style="pointer-events: none;" class="inline"/></a> <a href="https://pypi.org/project/cbits/"><img src="https://img.shields.io/pypi/v/cbits.svg" alt="PyPI - Version" style="pointer-events: none;" class="inline"/></a> <a href="https://pypi.org/project/cbits/#files"><img src="https://img.shields.io/pypi/format/cbits.svg" alt="PyPI - Format" style="pointer-events: none;" class="inline"/></a> <a href="https://pypi.org/project/cbits/"><img src="https://img.shields.io/pypi/pyversions/cbits.svg" alt="PyPI - Python Version" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/lambdaphoenix/cbits/blob/main/CHANGELOG.md"><img src="https://img.shields.io/badge/CHANGELOG-md-blue.svg" alt="Changelog" style="pointer-events: none;" class="inline"/></a> <a href="https://github.com/lambdaphoenix/cbits/blob/main/LICENSE"><img src="https://img.shields.io/github/license/lambdaphoenix/cbits.svg" alt="GitHub License" style="pointer-events: none;" class="inline"/></a></p>
+<h1><a class="anchor" id="autotoc_md0"></a>
+cbits</h1>
+<blockquote class="doxtable">
+<p>&zwj;High-performance <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> for Python. </p>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md1"></a>
+Description</h2>
+<p>cbits implements a powerful bit vector type in C that is accessible via a Python API. It stores bits contiguously in memory and minimizes overhead compared to a list of Boolean values. Core operations such as setting, clearing, flipping and counting bits run in constant or near-constant time per word, making it ideal for extensive bit manipulation.</p>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Installation</h2>
+<div class="fragment"><div class="line">pip install cbits</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
+Quick Start</h2>
+<div class="fragment"><div class="line"><span class="keyword">from</span> cbits <span class="keyword">import</span> BitVector</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Create a 64-bit vector</span></div>
+<div class="line">bv = <a class="code hl_struct" href="structBitVector.html">BitVector</a>(64)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Set bits, clear, flip, query</span></div>
+<div class="line">bv.set(3)</div>
+<div class="line">bv.clear(3)</div>
+<div class="line">bv.flip(0)</div>
+<div class="line">print(bv.get(0))      <span class="comment"># → True or False</span></div>
+<div class="line">print(len(bv), bv.bits)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Negative indexing</span></div>
+<div class="line">bv.set(-1)</div>
+<div class="line">print(bv.get(63))</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Boolean test &amp; rank</span></div>
+<div class="line">print(bool(bv))</div>
+<div class="line">print(bv.rank(32))    <span class="comment"># count of set bits up to index 32</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Copy &amp; deepcopy</span></div>
+<div class="line"><span class="keyword">import</span> copy</div>
+<div class="line">bv2 = bv.copy()</div>
+<div class="line">bv3 = copy.deepcopy(bv)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Bitwise operations</span></div>
+<div class="line">a = <a class="code hl_struct" href="structBitVector.html">BitVector</a>(8); b = <a class="code hl_struct" href="structBitVector.html">BitVector</a>(8)</div>
+<div class="line">a.set(0); a.set(2)</div>
+<div class="line">b.set(1); b.set(2)</div>
+<div class="line">print((a &amp; b)[0], (a | b)[0], (a ^ b)[0], (~a)[0])</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Sequence &amp; iteration</span></div>
+<div class="line">bv[5] = <span class="keyword">True</span></div>
+<div class="line">print(bv[5])</div>
+<div class="line">print([i <span class="keywordflow">for</span> i, bit <span class="keywordflow">in</span> enumerate(bv) <span class="keywordflow">if</span> bit])</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Contains</span></div>
+<div class="line">a = <a class="code hl_struct" href="structBitVector.html">BitVector</a>(8); b = <a class="code hl_struct" href="structBitVector.html">BitVector</a>(4)</div>
+<div class="line">a.set(0); a.set(2); a.set(5)  <span class="comment"># 10100100</span></div>
+<div class="line">b.set(0); b.set(3)  <span class="comment"># 1001</span></div>
+<div class="line">print(b <span class="keywordflow">in</span> a)</div>
+<div class="ttc" id="astructBitVector_html"><div class="ttname"><a href="structBitVector.html">BitVector</a></div><div class="ttdoc">Packed array of bits with support for rank/select operations.</div><div class="ttdef"><b>Definition</b> bitvector.h:64</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
+API Reference</h2>
+<h3><a class="anchor" id="autotoc_md5"></a>
+Class: BitVector</h3>
+<div class="fragment"><div class="line"><span class="keyword">class </span><a class="code hl_struct" href="structBitVector.html">BitVector</a>:</div>
+<div class="line">    <span class="keyword">def </span>__init__(self, size: int)</div>
+<div class="line">    <span class="preprocessor">@property</span></div>
+<div class="line">    <span class="keyword">def </span>bits(self) -&gt; int</div>
+<div class="line"> </div>
+<div class="line">    def get(self, index: int) -&gt; bool</div>
+<div class="line">    <span class="keyword">def </span>set(self, index: int) -&gt; <span class="keywordtype">None</span></div>
+<div class="line">    <span class="keyword">def </span>clear(self, index: int) -&gt; <span class="keywordtype">None</span></div>
+<div class="line">    <span class="keyword">def </span>flip(self, index: int) -&gt; <span class="keywordtype">None</span></div>
+<div class="line">    <span class="keyword">def </span>rank(self, index: int) -&gt; int</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">def </span>copy(self) -&gt; BitVector</div>
+<div class="line">    def __copy__(self) -&gt; BitVector</div>
+<div class="line">    <span class="keyword">def </span>__deepcopy__(self, memo) -&gt; BitVector</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment"># Sequence protocol</span></div>
+<div class="line">    def __len__(self) -&gt; int</div>
+<div class="line">    <span class="keyword">def </span>__getitem__(self, index: int) -&gt; bool</div>
+<div class="line">    <span class="keyword">def </span>__setitem__(self, index: int, value: bool)</div>
+<div class="line">    <span class="keyword">def </span>__contains__(self, other: BitVector) -&gt; bool</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment"># Numeric &amp; bitwise protocol</span></div>
+<div class="line">    <span class="keyword">def </span>__and__(self, other: BitVector) -&gt; BitVector</div>
+<div class="line">    <span class="keyword">def </span>__iand__(self, other: BitVector) -&gt; BitVector</div>
+<div class="line">    <span class="keyword">def </span>__or__(self, other: BitVector) -&gt; BitVector</div>
+<div class="line">    <span class="keyword">def </span>__ior__(self, other: BitVector) -&gt; BitVector</div>
+<div class="line">    <span class="keyword">def </span>__xor__(self, other: BitVector) -&gt; BitVector</div>
+<div class="line">    <span class="keyword">def </span>__ixor__(self, other: BitVector) -&gt; BitVector</div>
+<div class="line">    <span class="keyword">def </span>__invert__(self) -&gt; BitVector</div>
+<div class="line">    def __bool__(self) -&gt; bool</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">def </span>__repr__(self) -&gt; str</div>
+<div class="line">    def __str__(self) -&gt; str</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
+License</h2>
+<p>Apache License 2.0 See <a href="https://github.com/lambdaphoenix/cbits/blob/main/LICENSE">LICENSE</a> for details.</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Project Links</h2>
+<ul>
+<li><a href="https://github.com/lambdaphoenix/cbits">📖 Documentation &amp; Source</a></li>
+<li><a href="https://github.com/lambdaphoenix/cbits/issues">🐛 Issues</a></li>
+<li><a href="https://github.com/lambdaphoenix/cbits/blob/main/CHANGELOG.md">📋 Changelog</a></li>
+<li><a href="https://pypi.org/project/cbits/">📦 PyPI</a> </li>
+</ul>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Jul 26 2025 10:03:14 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

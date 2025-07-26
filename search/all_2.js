@@ -1,7 +1,7 @@
 var searchData=
 [
   ['binding_2ec_0',['binding.c',['../binding_8c.html',1,'']]],
-  ['bitvector_1',['BitVector',['../structBitVector.html',1,'']]],
+  ['bitvector_1',['bitvector',['../structBitVector.html',1,'BitVector'],['../index.html#autotoc_md5',1,'Class: BitVector']]],
   ['bitvector_2ec_2',['bitvector.c',['../bitvector_8c.html',1,'']]],
   ['bitvector_2eh_3',['bitvector.h',['../bitvector_8h.html',1,'']]],
   ['bitvector_5fmethods_4',['BitVector_methods',['../binding_8c.html#a5bc423083838b34b1ff8c04a410a35e3',1,'binding.c']]],
@@ -9,11 +9,11 @@ var searchData=
   ['bv_6',['bv',['../structPyBitVector.html#a3ea374d89e2cc07b1dd2f110b7d0ee30',1,'PyBitVector']]],
   ['bv_5falign_7',['BV_ALIGN',['../bitvector_8h.html#ac741fbe224335b2474474263fc59609e',1,'bitvector.h']]],
   ['bv_5fbit_8',['bv_bit',['../bitvector_8h.html#ad7e0bb7a9f7e9a34611b3c3ba41bfdbf',1,'bitvector.h']]],
-  ['bv_5fbuild_5frank_9',['bv_build_rank',['../bitvector_8h.html#a512988fb7c0004571bd8edefc67dbe0c',1,'bv_build_rank(BitVector *bv):&#160;bitvector.c'],['../bitvector_8c.html#a512988fb7c0004571bd8edefc67dbe0c',1,'bv_build_rank(BitVector *bv):&#160;bitvector.c']]],
+  ['bv_5fbuild_5frank_9',['bv_build_rank',['../bitvector_8c.html#a512988fb7c0004571bd8edefc67dbe0c',1,'bv_build_rank(BitVector *bv):&#160;bitvector.c'],['../bitvector_8h.html#a512988fb7c0004571bd8edefc67dbe0c',1,'bv_build_rank(BitVector *bv):&#160;bitvector.c']]],
   ['bv_5fclear_10',['bv_clear',['../bitvector_8h.html#abe9af7e7b58e8d6c145772125facdf23',1,'bitvector.h']]],
-  ['bv_5fcontains_5fsubvector_11',['bv_contains_subvector',['../bitvector_8h.html#a321007321514662bf5f9d8350ed380ba',1,'bv_contains_subvector(const BitVector *a, const BitVector *b):&#160;bitvector.c'],['../bitvector_8c.html#a2d0fe7ec2aaea9cb359f93591267e08f',1,'bv_contains_subvector(const BitVector *A, const BitVector *B):&#160;bitvector.c']]],
+  ['bv_5fcontains_5fsubvector_11',['bv_contains_subvector',['../bitvector_8c.html#a2d0fe7ec2aaea9cb359f93591267e08f',1,'bv_contains_subvector(const BitVector *A, const BitVector *B):&#160;bitvector.c'],['../bitvector_8h.html#a321007321514662bf5f9d8350ed380ba',1,'bv_contains_subvector(const BitVector *a, const BitVector *b):&#160;bitvector.c']]],
   ['bv_5fcopy_12',['bv_copy',['../bitvector_8h.html#acbb0c18fd9a720e6e77c40e069d6728c',1,'bv_copy(const BitVector *src):&#160;bitvector.c'],['../bitvector_8c.html#acbb0c18fd9a720e6e77c40e069d6728c',1,'bv_copy(const BitVector *src):&#160;bitvector.c']]],
-  ['bv_5fequal_13',['bv_equal',['../bitvector_8h.html#ad82fe6ffdf12ab5ca5239d111942529e',1,'bv_equal(const BitVector *a, const BitVector *b):&#160;bitvector.c'],['../bitvector_8c.html#ad82fe6ffdf12ab5ca5239d111942529e',1,'bv_equal(const BitVector *a, const BitVector *b):&#160;bitvector.c']]],
+  ['bv_5fequal_13',['bv_equal',['../bitvector_8c.html#ad82fe6ffdf12ab5ca5239d111942529e',1,'bv_equal(const BitVector *a, const BitVector *b):&#160;bitvector.c'],['../bitvector_8h.html#ad82fe6ffdf12ab5ca5239d111942529e',1,'bv_equal(const BitVector *a, const BitVector *b):&#160;bitvector.c']]],
   ['bv_5fflip_14',['bv_flip',['../bitvector_8h.html#a237c5942e4ea28aabaf70a42f8f343a7',1,'bitvector.h']]],
   ['bv_5ffree_15',['bv_free',['../bitvector_8h.html#a222e3ed52b6f2c3079429f0cd4da5c58',1,'bv_free(BitVector *bv):&#160;bitvector.c'],['../bitvector_8c.html#a222e3ed52b6f2c3079429f0cd4da5c58',1,'bv_free(BitVector *bv):&#160;bitvector.c']]],
   ['bv_5fget_16',['bv_get',['../bitvector_8h.html#adb02e58f6a79eebb62a1c260821c3ab6',1,'bitvector.h']]],

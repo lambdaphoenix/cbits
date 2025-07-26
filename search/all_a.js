@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['words_5ffor_5fbits_0',['words_for_bits',['../bitvector_8c.html#ad51d2ff48f225f8f8d5da50fdf7a63fc',1,'bitvector.c']]]
+  ['rank_5fdirty_0',['rank_dirty',['../structBitVector.html#af65f0dc5339203d0870fbdd9a2779f5f',1,'BitVector']]],
+  ['readme_2emd_1',['README.md',['../README_8md.html',1,'']]],
+  ['reference_2',['API Reference',['../index.html#autotoc_md4',1,'']]]
 ];

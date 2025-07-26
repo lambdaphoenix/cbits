@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['cbits_0',['cbits',['../namespacecbits.html',1,'']]],
+  ['cbits_0',['cbits',['../namespacecbits.html',1,'cbits'],['../index.html',1,'cbits'],['../index.html#autotoc_md0',1,'cbits']]],
   ['cbits_5fatomic_5ffetch_5fand_1',['cbits_atomic_fetch_and',['../compat_8h.html#ad3f6d167e9173b07e41ce4c067ad3910',1,'compat.h']]],
   ['cbits_5fatomic_5ffetch_5for_2',['cbits_atomic_fetch_or',['../compat_8h.html#a9f195d03c1d58f80f25d801995177054',1,'compat.h']]],
   ['cbits_5fatomic_5ffetch_5fxor_3',['cbits_atomic_fetch_xor',['../compat_8h.html#a0805aa8ea491241b9046666b03920b45',1,'compat.h']]],
@@ -17,6 +17,7 @@ var searchData=
   ['cbits_5fprefetch_14',['cbits_prefetch',['../compat_8h.html#ac5fec5ad747dac70c19c014609850e2a',1,'compat.h']]],
   ['check_5fbv_5fboth_15',['CHECK_BV_BOTH',['../binding_8c.html#a3a1146a73d52acb0776f13d2d43954d0',1,'binding.c']]],
   ['check_5fbv_5fobj_16',['CHECK_BV_OBJ',['../binding_8c.html#a1db76aaaed3680d17b24435989491b21',1,'binding.c']]],
-  ['compat_2eh_17',['compat.h',['../compat_8h.html',1,'']]],
-  ['compat_5fdispatch_2ec_18',['compat_dispatch.c',['../compat__dispatch_8c.html',1,'']]]
+  ['class_3a_20bitvector_17',['Class: BitVector',['../index.html#autotoc_md5',1,'']]],
+  ['compat_2eh_18',['compat.h',['../compat_8h.html',1,'']]],
+  ['compat_5fdispatch_2ec_19',['compat_dispatch.c',['../compat__dispatch_8c.html',1,'']]]
 ];
