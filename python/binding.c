@@ -478,12 +478,12 @@ py_bv_contains(PyObject *self, PyObject *value)
  * @return New BitVector representing bitwise AND; NULL on error.
  */
 static PyObject *
-py_bv_and(PyObject *a, PyObject *b)
+py_bv_and(PyObject *oA, PyObject *oB)
 {
-    CHECK_BV_BOTH(a, b)
+    CHECK_BV_BOTH(oA, oB)
 
-    PyBitVector *A = (PyBitVector *) a;
-    PyBitVector *B = (PyBitVector *) b;
+    PyBitVector *A = (PyBitVector *) oA;
+    PyBitVector *B = (PyBitVector *) oB;
 
     size_t size = A->bv->n_bits;
     if (size != B->bv->n_bits) {
@@ -497,8 +497,11 @@ py_bv_and(PyObject *a, PyObject *b)
         return NULL;
     }
 
+    uint64_t *a = A->bv->data;
+    uint64_t *b = B->bv->data;
+    uint64_t *c = C->data;
     for (size_t i = 0; i < A->bv->n_words; ++i) {
-        C->data[i] = A->bv->data[i] & B->bv->data[i];
+        c[i] = a[i] & b[i];
     }
     return bv_wrap_new(C);
 }
@@ -523,8 +526,10 @@ py_bv_iand(PyObject *self, PyObject *arg)
         return NULL;
     }
 
+    uint64_t *a = A->bv->data;
+    uint64_t *b = B->bv->data;
     for (size_t i = 0; i < A->bv->n_words; ++i) {
-        A->bv->data[i] &= B->bv->data[i];
+        a[i] &= b[i];
     }
     A->bv->rank_dirty = true;
     Py_INCREF(self);
@@ -538,12 +543,12 @@ py_bv_iand(PyObject *self, PyObject *arg)
  * @return New BitVector representing bitwise OR; NULL on error.
  */
 static PyObject *
-py_bv_or(PyObject *a, PyObject *b)
+py_bv_or(PyObject *oA, PyObject *oB)
 {
-    CHECK_BV_BOTH(a, b)
+    CHECK_BV_BOTH(oA, oB)
 
-    PyBitVector *A = (PyBitVector *) a;
-    PyBitVector *B = (PyBitVector *) b;
+    PyBitVector *A = (PyBitVector *) oA;
+    PyBitVector *B = (PyBitVector *) oB;
 
     size_t size = A->bv->n_bits;
     if (size != B->bv->n_bits) {
@@ -557,8 +562,11 @@ py_bv_or(PyObject *a, PyObject *b)
         return NULL;
     }
 
+    uint64_t *a = A->bv->data;
+    uint64_t *b = B->bv->data;
+    uint64_t *c = C->data;
     for (size_t i = 0; i < A->bv->n_words; ++i) {
-        C->data[i] = A->bv->data[i] | B->bv->data[i];
+        C->data[i] = a[i] | b[i];
     }
     return bv_wrap_new(C);
 }
@@ -583,8 +591,10 @@ py_bv_ior(PyObject *self, PyObject *arg)
         return NULL;
     }
 
+    uint64_t *a = A->bv->data;
+    uint64_t *b = B->bv->data;
     for (size_t i = 0; i < A->bv->n_words; ++i) {
-        A->bv->data[i] |= B->bv->data[i];
+        a[i] |= b[i];
     }
     A->bv->rank_dirty = true;
     Py_INCREF(self);
@@ -598,12 +608,12 @@ py_bv_ior(PyObject *self, PyObject *arg)
  * @return New BitVector representing bitwise XOR; NULL on error.
  */
 static PyObject *
-py_bv_xor(PyObject *a, PyObject *b)
+py_bv_xor(PyObject *oA, PyObject *oB)
 {
-    CHECK_BV_BOTH(a, b)
+    CHECK_BV_BOTH(oA, oB)
 
-    PyBitVector *A = (PyBitVector *) a;
-    PyBitVector *B = (PyBitVector *) b;
+    PyBitVector *A = (PyBitVector *) oA;
+    PyBitVector *B = (PyBitVector *) oB;
 
     size_t size = A->bv->n_bits;
     if (size != B->bv->n_bits) {
@@ -617,8 +627,11 @@ py_bv_xor(PyObject *a, PyObject *b)
         return NULL;
     }
 
+    uint64_t *a = A->bv->data;
+    uint64_t *b = B->bv->data;
+    uint64_t *c = C->data;
     for (size_t i = 0; i < A->bv->n_words; ++i) {
-        C->data[i] = A->bv->data[i] ^ B->bv->data[i];
+        c[i] = a[i] ^ b[i];
     }
     return bv_wrap_new(C);
 }
@@ -643,8 +656,10 @@ py_bv_ixor(PyObject *self, PyObject *arg)
         return NULL;
     }
 
+    uint64_t *a = A->bv->data;
+    uint64_t *b = B->bv->data;
     for (size_t i = 0; i < A->bv->n_words; ++i) {
-        A->bv->data[i] ^= B->bv->data[i];
+        a[i] ^= b[i];
     }
     A->bv->rank_dirty = true;
     Py_INCREF(self);
@@ -666,8 +681,10 @@ py_bv_invert(PyObject *self)
                         "BitVector allocation failed in __not__");
         return NULL;
     }
+    uint64_t *a = A->bv->data;
+    uint64_t *c = C->data;
     for (size_t i = 0; i < A->bv->n_words; ++i) {
-        C->data[i] = ~A->bv->data[i];
+        c[i] = ~a[i];
     }
     return bv_wrap_new(C);
 }
