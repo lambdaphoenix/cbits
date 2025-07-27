@@ -10,7 +10,7 @@ var searchData=
   ['bv_5ffree_7',['bv_free',['../bitvector_8h.html#a222e3ed52b6f2c3079429f0cd4da5c58',1,'bv_free(BitVector *bv):&#160;bitvector.c'],['../bitvector_8c.html#a222e3ed52b6f2c3079429f0cd4da5c58',1,'bv_free(BitVector *bv):&#160;bitvector.c']]],
   ['bv_5fget_8',['bv_get',['../bitvector_8h.html#adb02e58f6a79eebb62a1c260821c3ab6',1,'bitvector.h']]],
   ['bv_5fnew_9',['bv_new',['../bitvector_8h.html#a560b4e6bdb70189b5866ea7d0245650d',1,'bv_new(size_t n_bits):&#160;bitvector.c'],['../bitvector_8c.html#a560b4e6bdb70189b5866ea7d0245650d',1,'bv_new(size_t n_bits):&#160;bitvector.c']]],
-  ['bv_5fparse_5findex_10',['bv_parse_index',['../binding_8c.html#af541722ab1e6dcf6bf691b62855c2569',1,'binding.c']]],
+  ['bv_5fparse_5findex_10',['bv_parse_index',['../binding_8c.html#a66f1d18ed7869c72e4d5e383af06f48f',1,'binding.c']]],
   ['bv_5frank_11',['bv_rank',['../bitvector_8h.html#afdfa632ea087f518a95082388f71cf38',1,'bv_rank(BitVector *bv, const size_t pos):&#160;bitvector.c'],['../bitvector_8c.html#afdfa632ea087f518a95082388f71cf38',1,'bv_rank(BitVector *bv, const size_t pos):&#160;bitvector.c']]],
   ['bv_5fset_12',['bv_set',['../bitvector_8h.html#ab5a6e7fc872706fc88f7562ea00dab02',1,'bitvector.h']]],
   ['bv_5fword_13',['bv_word',['../bitvector_8h.html#ac522e4654cef505c1ffcc75a426d639c',1,'bitvector.h']]],
