@@ -1,7 +1,7 @@
 ##
 # @file python/cbits/__init__.py
 # @package cbits
-# @brief cbits – High-performance BitVector for Python.
+# @brief cbits - High-performance BitVector for Python.
 # 
 # This module exposes the Python-level API for the BitVector C extension.
 # 
@@ -9,7 +9,7 @@
 # @version 0.1.1
 # @copyright Copyright (c) 2025 lambdaphoenix
 """
-cbits – High-performance BitVector for Python.
+cbits - High-performance BitVector for Python.
 
 This module exposes the Python-level API for the BitVector C extension.
 

@@ -43,7 +43,7 @@
  * @brief Python object containing a pointer to a native BitVector.
  */
 typedef struct {
-    PyObject_HEAD BitVector *bv;
+    PyObject_HEAD BitVector *bv; /**< Reference to the BitVector */
 } PyBitVector;
 
 /** Global pointer to the PyBitVector type object. */
@@ -180,14 +180,13 @@ py_bv_init(PyObject *self, PyObject *args, PyObject *kwds)
  * @return 0 on success (p_index set), -1 on failure (exception set).
  */
 static inline int
-bv_parse_index(PyObject *self, PyObject *const *args, Py_ssize_t n_args,
-               size_t *p_index)
+bv_parse_index(PyObject *self, PyObject *arg, size_t *p_index)
 {
-    if (n_args != 1) {
-        PyErr_SetString(PyExc_TypeError, "Method takes exactly one argument");
+    if (!PyLong_Check(arg)) {
+        PyErr_SetString(PyExc_TypeError, "BitVector index must be an integer");
         return -1;
     }
-    Py_ssize_t index = PyLong_AsSsize_t(args[0]);
+    Py_ssize_t index = PyLong_AsSsize_t(arg);
     if (index == -1 && PyErr_Occurred()) {
         return -1;
     }
@@ -212,10 +211,10 @@ bv_parse_index(PyObject *self, PyObject *const *args, Py_ssize_t n_args,
  * @return true is bit is set, false otherwise
  */
 static PyObject *
-py_bv_get(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
+py_bv_get(PyObject *self, PyObject *arg)
 {
     size_t index;
-    if (bv_parse_index(self, args, nargs, &index) < 0) {
+    if (bv_parse_index(self, arg, &index) < 0) {
         return NULL;
     }
 
@@ -231,10 +230,10 @@ py_bv_get(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
  * @return None on success, NULL on error.
  */
 static PyObject *
-py_bv_set(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
+py_bv_set(PyObject *self, PyObject *arg)
 {
     size_t index;
-    if (bv_parse_index(self, args, nargs, &index) < 0) {
+    if (bv_parse_index(self, arg, &index) < 0) {
         return NULL;
     }
 
@@ -250,10 +249,10 @@ py_bv_set(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
  * @return None on success, NULL on error.
  */
 static PyObject *
-py_bv_clear(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
+py_bv_clear(PyObject *self, PyObject *arg)
 {
     size_t index;
-    if (bv_parse_index(self, args, nargs, &index) < 0) {
+    if (bv_parse_index(self, arg, &index) < 0) {
         return NULL;
     }
 
@@ -269,10 +268,10 @@ py_bv_clear(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
  * @return None on success, NULL on error.
  */
 static PyObject *
-py_bv_flip(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
+py_bv_flip(PyObject *self, PyObject *arg)
 {
     size_t index;
-    if (bv_parse_index(self, args, nargs, &index) < 0) {
+    if (bv_parse_index(self, arg, &index) < 0) {
         return NULL;
     }
 
@@ -288,10 +287,10 @@ py_bv_flip(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
  * @return Number of bits set in range [0...pos]
  */
 static PyObject *
-py_bv_rank(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
+py_bv_rank(PyObject *self, PyObject *arg)
 {
     size_t index;
-    if (bv_parse_index(self, args, nargs, &index) < 0) {
+    if (bv_parse_index(self, arg, &index) < 0) {
         return NULL;
     }
 
@@ -299,22 +298,68 @@ py_bv_rank(PyObject *self, PyObject *const *args, Py_ssize_t nargs)
     return PyLong_FromSize_t(rank);
 }
 
+PyDoc_STRVAR(
+    py_bv_get__doc__,
+    "get(index: int) -> bool\n"
+    "\n"
+    "Return the boolean value of the bit at position *index*.\n"
+    "Negative indices are supported. Raises IndexError if out of range.");
+
+PyDoc_STRVAR(
+    py_bv_set__doc__,
+    "set(index: int) -> None\n"
+    "\n"
+    "Set the bit at position *index* to True. Supports negative indexing.\n"
+    "Raises IndexError if out of range.");
+
+PyDoc_STRVAR(py_bv_clear__doc__,
+             "clear(index: int) -> None\n"
+             "\n"
+             "Clear the bit (set to False) at position *index*. Supports "
+             "negative indexing.\n"
+             "Raises IndexError if out of range.");
+
+PyDoc_STRVAR(
+    py_bv_flip__doc__,
+    "flip(index: int) -> None\n"
+    "\n"
+    "Toggle the bit at position *index*. Supports negative indexing.\n"
+    "Raises IndexError if out of range.");
+
+PyDoc_STRVAR(
+    py_bv_rank__doc__,
+    "rank(index: int) -> int\n"
+    "\n"
+    "Count the number of bits set to True in the half-open range [0..index].\n"
+    "Supports negative indexing. Raises IndexError if out of range.");
+
+PyDoc_STRVAR(py_bv_copy__doc__,
+             "copy() -> BitVector\n"
+             "\n"
+             "Return a copy of this BitVector.");
+PyDoc_STRVAR(py_bv_copy_inline__doc__,
+             "__copy__() -> BitVector\n"
+             "\n"
+             "Return a copy of this BitVector.");
+PyDoc_STRVAR(py_bv_deepcopy__doc__,
+             "__deepcopy__(memo: dict) -> BitVector\n"
+             "\n"
+             "Return a copy of this BitVector, registering it in *memo*.");
+
 /**
  * @brief Method table for BitVector core methods.
  */
 static PyMethodDef BitVector_methods[] = {
-    {"get", (PyCFunction) py_bv_get, METH_FASTCALL, PyDoc_STR("Get bit")},
-    {"set", (PyCFunction) py_bv_set, METH_FASTCALL, PyDoc_STR("Set bit")},
-    {"clear", (PyCFunction) py_bv_clear, METH_FASTCALL,
-     PyDoc_STR("Clear bit")},
-    {"flip", (PyCFunction) py_bv_flip, METH_FASTCALL, PyDoc_STR("Flip bit")},
-    {"rank", (PyCFunction) py_bv_rank, METH_FASTCALL, PyDoc_STR("Rank query")},
-    {"copy", (PyCFunction) py_bv_copy, METH_NOARGS,
-     PyDoc_STR("Return a copy of that BitVector")},
+    {"get", (PyCFunction) py_bv_get, METH_O, py_bv_get__doc__},
+    {"set", (PyCFunction) py_bv_set, METH_O, py_bv_set__doc__},
+    {"clear", (PyCFunction) py_bv_clear, METH_O, py_bv_clear__doc__},
+    {"flip", (PyCFunction) py_bv_flip, METH_O, py_bv_flip__doc__},
+    {"rank", (PyCFunction) py_bv_rank, METH_O, py_bv_rank__doc__},
+    {"copy", (PyCFunction) py_bv_copy, METH_NOARGS, py_bv_copy__doc__},
     {"__copy__", (PyCFunction) py_bv_copy, METH_NOARGS,
-     PyDoc_STR("Return a copy of that BitVector")},
+     py_bv_copy_inline__doc__},
     {"__deepcopy__", (PyCFunction) py_bv_deepcopy, METH_O,
-     PyDoc_STR("Return a copy of that BitVector")},
+     py_bv_deepcopy__doc__},
     {NULL, NULL, 0, NULL},
 };
 
@@ -375,16 +420,19 @@ py_bv_richcompare(PyObject *a, PyObject *b, int op)
 /**
  * @brief __hash__ for a BitVector object.
  *
- * Uses Python’s internal pointer-hashing helper to produce a hash
- * based solely on the object’s address.
+ * Computes a hash over the vector’s packed bit data using Python’s internal
+ * _Py_HashBytes helper. The byte length is determined by rounding up the bit
+ * count: (n_bits + 7) >> 3.
  *
  * @param self Pointer to the PyBitVector instance to be hashed.
- * @return A Py_hash_t value computed from the object pointer.
+ * @return A Py_hash_t value derived from the bit‐pattern contents.
  */
 static Py_hash_t
 py_bv_hash(PyObject *self)
 {
-    return _Py_HashPointer(self);
+    return _Py_HashBytes(((PyBitVector *) self)->bv->data,
+                         (((PyBitVector *) self)->bv->n_bits) + 7) >>
+           3;
 }
 
 /* -------------------------------------------------------------------------
@@ -467,7 +515,7 @@ py_bv_contains(PyObject *self, PyObject *value)
     return bv_contains_subvector(A->bv, B->bv);
 }
 
-/*
+/**
  * @struct PyBitVectorIter
  * @brief Iterator structure for cbits.BitVector
  *
@@ -879,6 +927,21 @@ static PyGetSetDef PyBitVector_getset[] = {
  * Type Object Definition
  * ------------------------------------------------------------------------- */
 
+PyDoc_STRVAR(
+    BitVector__doc__,
+    "BitVector(size: int)\n"
+    "\n"
+    "A high-performance, fixed-size 1D bit array.\n\n"
+    "Supports random access, slicing, bitwise ops, and fast iteration.\n\n"
+    "Parameters\n"
+    "----------\n"
+    "size : int\n"
+    "    Number of bits in the vector.\n\n"
+    "Attributes\n"
+    "----------\n"
+    "bits : int\n"
+    "    The length of this BitVector.\n");
+
 /**
  * @brief Slot table for the PyBitVector type.
  *
@@ -888,13 +951,14 @@ static PyGetSetDef PyBitVector_getset[] = {
  * @see PyType_Slot
  */
 static PyType_Slot PyBitVector_slots[] = {
+    {Py_tp_doc, BitVector__doc__},
+
     {Py_tp_new, py_bv_new},
     {Py_tp_init, py_bv_init},
     {Py_tp_dealloc, py_bv_free},
     {Py_tp_methods, BitVector_methods},
     {Py_tp_repr, py_bv_repr},
     {Py_tp_str, py_bv_str},
-    {Py_tp_doc, PyDoc_STR("BitVector")},
     {Py_tp_getset, PyBitVector_getset},
     {Py_tp_richcompare, py_bv_richcompare},
     {Py_tp_hash, py_bv_hash},
