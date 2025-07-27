@@ -1,5 +1,5 @@
 <map id="PyBitVectorIter" name="PyBitVectorIter">
-<area shape="rect" id="Node000001" title="Iterator structure for cbits.BitVector." alt="" coords="5,181,124,207"/>
+<area shape="rect" id="Node000001" title="Iterator structure for PyBitVector." alt="" coords="5,181,124,207"/>
 <area shape="rect" id="Node000002" href="$structPyBitVector.html" title="Python object containing a pointer to a native BitVector." alt="" coords="16,93,113,119"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,133,67,181,62,181,62,133"/>
 <area shape="rect" id="Node000003" href="$structBitVector.html" title="Packed array of bits with support for rank/select operations." alt="" coords="24,5,105,31"/>

@@ -124,6 +124,27 @@ Quick Start</h2>
 <div class="line">print(bv[5])</div>
 <div class="line">print([i <span class="keywordflow">for</span> i, bit <span class="keywordflow">in</span> enumerate(bv) <span class="keywordflow">if</span> bit])</div>
 <div class="line"> </div>
+<div class="line"><span class="comment"># Slicing</span></div>
+<div class="line">sv = bv[2:10]          <span class="comment"># positions 2..9</span></div>
+<div class="line">print([sv.get(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(len(sv))])</div>
+<div class="line">sv2 = bv[:5]           <span class="comment"># first five bits</span></div>
+<div class="line">sv3 = bv[5:]           <span class="comment"># bits from 5 to end</span></div>
+<div class="line">sv4 = bv[::2]          <span class="comment"># every other bit</span></div>
+<div class="line">sv_rev = bv[::-1]      <span class="comment"># reversed vector</span></div>
+<div class="line">print([sv4.get(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(len(sv4))])</div>
+<div class="line">print([sv_rev.get(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(len(sv_rev))])</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Slice assignment from iterables or BitVector</span></div>
+<div class="line">bv[0:4] = [<span class="keyword">True</span>, <span class="keyword">False</span>, <span class="keyword">True</span>, <span class="keyword">False</span>]</div>
+<div class="line">print([bv.get(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(4)])</div>
+<div class="line"> </div>
+<div class="line">bv[4:8] = <a class="code hl_struct" href="structBitVector.html">BitVector</a>(4)  <span class="comment"># assign via another BitVector</span></div>
+<div class="line">print([bv.get(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(4, 8)])</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Negative-step assignment</span></div>
+<div class="line">bv[9:5:-1] = (i % 2 == 0 <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(4))</div>
+<div class="line">print([bv.get(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(9, 5, -1)])</div>
+<div class="line"> </div>
 <div class="line"><span class="comment"># Contains</span></div>
 <div class="line">a = <a class="code hl_struct" href="structBitVector.html">BitVector</a>(8); b = <a class="code hl_struct" href="structBitVector.html">BitVector</a>(4)</div>
 <div class="line">a.set(0); a.set(2); a.set(5)  <span class="comment"># 10100100</span></div>
@@ -136,6 +157,7 @@ API Reference</h2>
 Class: BitVector</h3>
 <div class="fragment"><div class="line"><span class="keyword">class </span><a class="code hl_struct" href="structBitVector.html">BitVector</a>:</div>
 <div class="line">    <span class="keyword">def </span>__init__(self, size: int)</div>
+<div class="line"> </div>
 <div class="line">    <span class="preprocessor">@property</span></div>
 <div class="line">    <span class="keyword">def </span>bits(self) -&gt; int</div>
 <div class="line"> </div>
@@ -151,8 +173,15 @@ Class: BitVector</h3>
 <div class="line"> </div>
 <div class="line">    <span class="comment"># Sequence protocol</span></div>
 <div class="line">    def __len__(self) -&gt; int</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment"># Single-index access</span></div>
 <div class="line">    <span class="keyword">def </span>__getitem__(self, index: int) -&gt; bool</div>
-<div class="line">    <span class="keyword">def </span>__setitem__(self, index: int, value: bool)</div>
+<div class="line">    <span class="keyword">def </span>__setitem__(self, index: int, value: bool) -&gt; <span class="keywordtype">None</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment"># Slicing access &amp; assignment</span></div>
+<div class="line">    <span class="keyword">def </span>__getiten(self, s: slice) -&gt; BitVector</div>
+<div class="line">    <span class="keyword">def </span>__setitem(self, s: slice, value: Iterable[bool]) -&gt; <span class="keywordtype">None</span></div>
+<div class="line"> </div>
 <div class="line">    <span class="keyword">def </span>__contains__(self, other: BitVector) -&gt; bool</div>
 <div class="line">    <span class="keyword">def </span>__iter__(self) -&gt; Iterator[bool]</div>
 <div class="line"> </div>
@@ -183,7 +212,7 @@ Project Links</h2>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 27 2025 11:30:12 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sun Jul 27 2025 14:35:42 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
