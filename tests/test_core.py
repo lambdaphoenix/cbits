@@ -194,13 +194,6 @@ class TestCore(unittest.TestCase):
         self.assertIs(memo[a], c2)
         self.assertEqual(a, c2)
 
-    # def test_iterator(self):
-    #     positions = [2, 5, 63, 64, 90]
-    #     for p in positions:
-    #         self.bv.set(p)
-    #     result = list(iter(self.bv))
-    #     self.assertEqual(result, positions)
-
     # def test_to_bytes(self):
     #     self.bv.set(0)
     #     self.bv.set(1)

@@ -1,6 +1,6 @@
 /**
  * @file python/binding.c
- * @brief Python C-API bindings for cbits.BitVector.
+ * @brief Python C-API bindings for BitVector.
  *
  * Defines the Python-level BitVector type wrapping the C BitVector API,
  * including:
@@ -72,7 +72,7 @@ bv_wrap_new(BitVector *bv_data)
 
 /**
  * @brief Deallocate a PyBitVector object.
- * @param self Python object to deallocate.
+ * @param self A Python PyBitVector instance.
  */
 static void
 py_bv_free(PyObject *self)
@@ -105,7 +105,7 @@ py_bv_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
 
 /**
  * @brief Python binding for BitVector.copy() → BitVector.
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @param UNUSED
  * @return New BitVector copy
  */
@@ -123,7 +123,7 @@ py_bv_copy(PyObject *self, PyObject *ignored)
 
 /**
  * @brief Python binding for BitVector.__deepcopy__(memo) → BitVector.
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @param memo
  * @return New BitVector copy
  */
@@ -145,7 +145,7 @@ py_bv_deepcopy(PyObject *self, PyObject *memo)
 
 /**
  * @brief __init__ for BitVector(size): allocate the underlying C BitVector.
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @param args Positional args tuple.
  * @param kwds Keyword args dict.
  * @return 0 on success, -1 on error (with exception set).
@@ -173,7 +173,7 @@ py_bv_init(PyObject *self, PyObject *args, PyObject *kwds)
 
 /**
  * @brief Parse and validate a single index argument.
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @param args Array of Python arguments.
  * @param n_args Number of arguments expected (should be 1).
  * @param p_index Output pointer to store the validated index.
@@ -205,7 +205,7 @@ bv_parse_index(PyObject *self, PyObject *arg, size_t *p_index)
 
 /**
  * @brief Python binding for BitVector.get(index) → bool.
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @param args Array of Python arguments.
  * @param n_args Number of arguments expected (should be 1).
  * @return true is bit is set, false otherwise
@@ -224,7 +224,7 @@ py_bv_get(PyObject *self, PyObject *arg)
 
 /**
  * @brief Python binding for BitVector.set(index).
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @param args Array of Python arguments.
  * @param n_args Number of arguments expected (should be 1).
  * @return None on success, NULL on error.
@@ -243,7 +243,7 @@ py_bv_set(PyObject *self, PyObject *arg)
 
 /**
  * @brief Python binding for BitVector.clear(index).
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @param args Array of Python arguments.
  * @param n_args Number of arguments expected (should be 1).
  * @return None on success, NULL on error.
@@ -262,7 +262,7 @@ py_bv_clear(PyObject *self, PyObject *arg)
 
 /**
  * @brief Python binding for BitVector.flip(index).
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @param args Array of Python arguments.
  * @param n_args Number of arguments expected (should be 1).
  * @return None on success, NULL on error.
@@ -281,7 +281,7 @@ py_bv_flip(PyObject *self, PyObject *arg)
 
 /**
  * @brief Python binding for BitVector.rank(index) → bool.
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @param args Array of Python arguments.
  * @param n_args Number of arguments expected (should be 1).
  * @return Number of bits set in range [0...pos]
@@ -369,7 +369,7 @@ static PyMethodDef BitVector_methods[] = {
 
 /**
  * @brief __repr__ for BitVector.
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @return New Python string describing the object.
  */
 static PyObject *
@@ -382,7 +382,7 @@ py_bv_repr(PyObject *self)
 
 /**
  * @brief __str__ for BitVector.
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @return New Python string "BitVector with X bits".
  */
 static PyObject *
@@ -424,7 +424,7 @@ py_bv_richcompare(PyObject *a, PyObject *b, int op)
  * _Py_HashBytes helper. The byte length is determined by rounding up the bit
  * count: (n_bits + 7) >> 3.
  *
- * @param self Pointer to the PyBitVector instance to be hashed.
+ * @param self A Python PyBitVector instance.
  * @return A Py_hash_t value derived from the bit‐pattern contents.
  */
 static Py_hash_t
@@ -441,7 +441,7 @@ py_bv_hash(PyObject *self)
 
 /**
  * @brief __len__(BitVector) → number of bits.
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @return Number of bits as Py_ssize_t.
  */
 static Py_ssize_t
@@ -452,10 +452,15 @@ py_bv_len(PyObject *self)
 }
 
 /**
- * @brief __getitem__(BitVector, index).
- * @param self Python PyBitVector instance.
+ * @brief Implements BitVector.__getitem__, returns the bit at position i.
+ *
+ * This function checks bounds and returns the corresponding Python boolean
+ * (True/False). On out-of-range access it raises IndexError.
+ *
+ * @param self A Python PyBitVector instance.
  * @param i Index to access
- * @return Py_True or Py_False; NULL on IndexError.
+ * @return New reference to Py_True or Py_False on success; NULL and IndexError
+ * on failure.
  */
 static PyObject *
 py_bv_item(PyObject *self, Py_ssize_t i)
@@ -469,10 +474,95 @@ py_bv_item(PyObject *self, Py_ssize_t i)
 }
 
 /**
- * @brief __setitem__(BitVector, index, value).
- * @param self Python PyBitVector instance.
- * @param i Index to access
- * @param value Boolean-like Python object
+ * @brief Implements slicing for BitVector.__getitem__ with a slice object.
+ *
+ * Creates and returns a new BitVector containing elements from
+ * [start:stop:step]. Raises IndexError if any index is out of bounds.
+ *
+ * @param self A Python PyBitVector instance.
+ * @param start Start index of the slice.
+ * @param stop End index (exclusive) of the slice.
+ * @param step Step size for the slice.
+ * @param slicelength Number of elements in the resulting slice.
+ * @return New PyBitVector wrapping the sliced BitVector; NULL and IndexError
+ * on failure.
+ */
+static PyObject *
+py_bv_slice(PyObject *self, size_t start, size_t stop, size_t step,
+            size_t slicelength)
+{
+    PyBitVector *pbv = (PyBitVector *) self;
+    BitVector *src = pbv->bv;
+
+    BitVector *out = bv_new(slicelength);
+    if (!out) {
+        return NULL;
+    }
+
+    size_t n_bits = src->n_bits;
+    for (size_t i = 0, idx = start; i < slicelength; ++i, idx += step) {
+        if (n_bits <= idx) {
+            bv_free(out);
+            PyErr_SetString(PyExc_IndexError, "BitVector slice out of range");
+            return NULL;
+        }
+        if (bv_get(src, idx)) {
+            bv_set(out, i);
+        }
+    }
+
+    return bv_wrap_new(out);
+}
+
+/**
+ * @brief Implements BitVector.__getitem__ dispatch for index or slice.
+ *
+ * Delegates either to py_bv_item (for integer indices) or to py_bv_slice (for
+ * slice objects). Raises TypeError for unsupported types.
+ *
+ * @param self A Python PyBitVector instance.
+ * @param arg Index or slice object.
+ * @return New reference to a Python bool or PyBitVector; NULL and exception on
+ * error.
+ */
+static PyObject *
+py_bv_subscript(PyObject *self, PyObject *arg)
+{
+    if (PyIndex_Check(arg)) {
+        Py_ssize_t idx = PyNumber_AsSsize_t(arg, PyExc_IndexError);
+        if (idx == -1 && PyErr_Occurred()) {
+            return NULL;
+        }
+        return py_bv_item(self, idx);
+    }
+
+    if (PySlice_Check(arg)) {
+        PySliceObject *slice = (PySliceObject *) arg;
+        PyBitVector *bv = (PyBitVector *) self;
+        Py_ssize_t start, stop, step, slicelength;
+        if (PySlice_GetIndicesEx(slice, bv->bv->n_bits, &start, &stop, &step,
+                                 &slicelength) < 0) {
+            return NULL;
+        }
+        return py_bv_slice(self, (size_t) start, (size_t) stop, (size_t) step,
+                           (size_t) slicelength);
+    }
+
+    PyErr_Format(PyExc_TypeError,
+                 "indices must be integers or slices, not %.200s",
+                 Py_TYPE(arg)->tp_name);
+    return NULL;
+}
+
+/**
+ * @brief Implements BitVector.__setitem__ for a single index.
+ *
+ * Sets or clears the bit at position i based on the truth value of `value`.
+ * Raises IndexError if the index is out of range.
+ *
+ * @param self A Python PyBitVector instance.
+ * @param i Index of the bit to assign.
+ * @param value Python object interpreted as boolean.
  * @return 0 on success; -1 on error (with exception set).
  */
 static int
@@ -498,9 +588,117 @@ py_bv_ass_item(PyObject *self, Py_ssize_t i, PyObject *value)
 }
 
 /**
+ * @brief Implements BitVector.__setitem__ for slice assignment.
+ *
+ * Assigns bits from an iterable `value` to the slice [start:stop:step]. Raises
+ * IndexError or ValueError on length mismatch or out-of-range.
+ *
+ * @param self A Python PyBitVector instance.
+ * @param start Start index of the slice.
+ * @param stop End index (exclusive) of the slice.
+ * @param step Step size for the slice.
+ * @param slicelength Number of elements in the resulting slice.
+ * @param value Iterable of boolean-convertible Python objects.
+ * @return 0 on success; -1 on error (with exception set).
+ */
+static int
+py_bv_ass_slice(PyObject *self, size_t start, size_t stop, size_t step,
+                size_t slicelength, PyObject *value)
+{
+    BitVector *bv = ((PyBitVector *) self)->bv;
+
+    PyObject *seq =
+        PySequence_Fast(value, "can only assign iterable to BitVector slice");
+    if (!seq) {
+        return -1;
+    }
+
+    Py_ssize_t vlen = PySequence_Fast_GET_SIZE(seq);
+    if ((size_t) vlen != slicelength) {
+        Py_DECREF(seq);
+        PyErr_Format(PyExc_ValueError,
+                     "attempt to assign sequence of length %zd "
+                     "to slice of length %zu",
+                     vlen, slicelength);
+        return -1;
+    }
+
+    PyObject **items = PySequence_Fast_ITEMS(seq);
+
+    size_t n_bits = bv->n_bits;
+    for (size_t i = 0, idx = start; i < slicelength; ++i, idx += step) {
+        if (n_bits <= idx) {
+            Py_DECREF(seq);
+            PyErr_SetString(PyExc_IndexError, "BitVector slice out of range");
+            return -1;
+        }
+        int bit = PyObject_IsTrue(items[i]);
+        if (bit < 0) {
+            Py_DECREF(seq);
+            return -1;
+        }
+        if (bit) {
+            bv_set(bv, idx);
+        }
+        else {
+            bv_clear(bv, idx);
+        }
+    }
+
+    Py_DECREF(seq);
+    return 0;
+}
+
+/**
+ * @brief Implements BitVector.__setitem__ dispatch for index or slice.
+ *
+ * Delegates to py_bv_ass_item or py_bv_ass_slice depending on type of `arg`.
+ * Does not support item deletion (value==NULL).
+ *
+ * @param self A Python PyBitVector instance.
+ * @param arg Index or slice object.
+ * @param value Python object to assign (must not be NULL).
+ * @return 0 on success; -1 on error (with exception set).
+ */
+static int
+py_bv_ass_subscript(PyObject *self, PyObject *arg, PyObject *value)
+{
+    if (value == NULL) {
+        PyErr_SetString(PyExc_TypeError,
+                        "BitVector does not support item deletion");
+        return -1;
+    }
+
+    if (PyIndex_Check(arg)) {
+        Py_ssize_t idx = PyNumber_AsSsize_t(arg, PyExc_IndexError);
+        if (idx == -1 && PyErr_Occurred()) {
+            return -1;
+        }
+        return py_bv_ass_item(self, idx, value);
+    }
+
+    if (PySlice_Check(arg)) {
+        PySliceObject *slice = (PySliceObject *) arg;
+        PyBitVector *bv = (PyBitVector *) self;
+        Py_ssize_t start, stop, step, slicelength;
+        if (PySlice_GetIndicesEx(slice, bv->bv->n_bits, &start, &stop, &step,
+                                 &slicelength) < 0) {
+            return -1;
+        }
+        return py_bv_ass_slice(self, (size_t) start, (size_t) stop,
+                               (size_t) step, (size_t) slicelength, value);
+    }
+
+    PyErr_Format(PyExc_TypeError,
+                 "indices must be integers or slices, not %.200s",
+                 Py_TYPE(arg)->tp_name);
+    return -1;
+}
+
+/**
  * @brief __contains__(BitVector, other) → boolean.
- * @param self Python PyBitVector instance (haystack).
- * @param value Python PyBitVector instance (needle).
+ * @param self A Python PyBitVector instance. (haystack).
+ * @param value A Python PyBitVector instance (needle).
  * @return 1 if contained, 0 otherwise
  */
 static int
@@ -517,9 +715,9 @@ py_bv_contains(PyObject *self, PyObject *value)
 
 /**
  * @struct PyBitVectorIter
- * @brief Iterator structure for cbits.BitVector
+ * @brief Iterator structure for PyBitVector
  *
- * Stores a reference to the original BitVector and tracks
+ * Stores a reference to the original PyBitVector and tracks
  * the current bit position and buffer state for iteration.
  */
 typedef struct {
@@ -535,10 +733,10 @@ typedef struct {
 /**
  * @brief Deallocate a BitVector iterator object.
  *
- * Releases the reference to the parent BitVector and frees the iterator
+ * Releases the reference to the parent PyBitVector and frees the iterator
  * struct.
  *
- * @param self  Iterator instance to deallocate.
+ * @param self A PyBitVectorIter instance.
  */
 static void
 py_bviter_dealloc(PyObject *self)
@@ -554,7 +752,7 @@ py_bviter_dealloc(PyObject *self)
  * Reads one bit from the internal buffer and shifts it out. If all bits have
  * been yielded, raises StopIteration.
  *
- * @param self  Iterator instance.
+ * @param self A PyBitVectorIter instance.
  * @return Py_True or Py_False on success; NULL with StopIteration set at
  * end-of-iteration.
  */
@@ -623,7 +821,7 @@ static PyTypeObject *PyBitVectorIterType = NULL;
  * Implements the tp_iter slot. Allocates a fresh PyBitVectorIter, initializes
  * its state, and returns it.
  *
- * @param self  The PyBitVector instance to iterate.
+ * @param self A Python PyBitVector instance.
  * @return New iterator object or NULL on allocation failure.
  */
 static PyObject *
@@ -846,7 +1044,7 @@ py_bv_ixor(PyObject *self, PyObject *arg)
 
 /**
  * @brief __invert__(BitVector) → BitVector.
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @return New BitVector instance with all bits toggled, NULL on error;
  */
 static PyObject *
@@ -869,7 +1067,7 @@ py_bv_invert(PyObject *self)
 
 /**
  * @brief __bool__(BitVector) → boolean.
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @return 1 if any bit is set, 0 otherwise
  */
 static int
@@ -885,7 +1083,7 @@ py_bv_bool(PyObject *self)
 
 /**
  * @brief Getter for the read-only "bits" property.
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @param closure Unused.
  * @return Python integer of the bit-length
  */
@@ -898,7 +1096,7 @@ py_bv_get_size(PyObject *self, void *closure)
 
 /**
  * @brief Setter for the read-only "bits" property, always raises.
- * @param self Python PyBitVector instance.
+ * @param self A Python PyBitVector instance.
  * @param closure Unused.
  * @return -1 and sets AttributeError
  */
@@ -964,9 +1162,9 @@ static PyType_Slot PyBitVector_slots[] = {
     {Py_tp_hash, py_bv_hash},
 
     {Py_tp_iter, py_bv_iter},
-    {Py_sq_length, py_bv_len},
-    {Py_sq_item, py_bv_item},
-    {Py_sq_ass_item, py_bv_ass_item},
+    {Py_mp_length, py_bv_len},
+    {Py_mp_subscript, py_bv_subscript},
+    {Py_mp_ass_subscript, py_bv_ass_subscript},
     {Py_sq_contains, py_bv_contains},
 
     {Py_nb_and, py_bv_and},
@@ -982,7 +1180,7 @@ static PyType_Slot PyBitVector_slots[] = {
 };
 
 /**
- * @brief Type specification for cbits.BitVector.
+ * @brief Type specification for BitVector.
  *
  * This structure describes the Python type name, size,
  * inheritance flags, and slot table used to create the type.

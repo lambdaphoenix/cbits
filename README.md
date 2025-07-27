@@ -59,6 +59,27 @@ bv[5] = True
 print(bv[5])
 print([i for i, bit in enumerate(bv) if bit])
 
+# Slicing
+sv = bv[2:10]          # positions 2..9
+print([sv.get(i) for i in range(len(sv))])
+sv2 = bv[:5]           # first five bits
+sv3 = bv[5:]           # bits from 5 to end
+sv4 = bv[::2]          # every other bit
+sv_rev = bv[::-1]      # reversed vector
+print([sv4.get(i) for i in range(len(sv4))])
+print([sv_rev.get(i) for i in range(len(sv_rev))])
+
+# Slice assignment from iterables or BitVector
+bv[0:4] = [True, False, True, False]
+print([bv.get(i) for i in range(4)])
+
+bv[4:8] = BitVector(4)  # assign via another BitVector
+print([bv.get(i) for i in range(4, 8)])
+
+# Negative-step assignment
+bv[9:5:-1] = (i % 2 == 0 for i in range(4))
+print([bv.get(i) for i in range(9, 5, -1)])
+
 # Contains
 a = BitVector(8); b = BitVector(4)
 a.set(0); a.set(2); a.set(5)  # 10100100
@@ -71,6 +92,7 @@ print(b in a)
 ```python
 class BitVector:
     def __init__(self, size: int)
+
     @property
     def bits(self) -> int
 
@@ -86,8 +108,15 @@ class BitVector:
 
     # Sequence protocol
     def __len__(self) -> int
+
+    # Single-index access
     def __getitem__(self, index: int) -> bool
-    def __setitem__(self, index: int, value: bool)
+    def __setitem__(self, index: int, value: bool) -> None
+
+    # Slicing access & assignment
+    def __getiten(self, s: slice) -> BitVector
+    def __setitem(self, s: slice, value: Iterable[bool]) -> None
+
     def __contains__(self, other: BitVector) -> bool
     def __iter__(self) -> Iterator[bool]
 
