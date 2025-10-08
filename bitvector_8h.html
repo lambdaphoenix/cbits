@@ -146,6 +146,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ad7e0bb7a9f7e9a34611b3c3ba41bfdbf" id="r_ad7e0bb7a9f7e9a34611b3c3ba41bfdbf"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#ad7e0bb7a9f7e9a34611b3c3ba41bfdbf">bv_bit</a> (const size_t pos)</td></tr>
 <tr class="memdesc:ad7e0bb7a9f7e9a34611b3c3ba41bfdbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the bit offset within its 64-bit word.  <br /></td></tr>
 <tr class="separator:ad7e0bb7a9f7e9a34611b3c3ba41bfdbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eccabaaa5958327799ceda0117f7b76" id="r_a3eccabaaa5958327799ceda0117f7b76"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#a3eccabaaa5958327799ceda0117f7b76">bv_apply_tail_mask</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv)</td></tr>
+<tr class="memdesc:a3eccabaaa5958327799ceda0117f7b76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mask off any excess bits in the last word of a <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>.  <br /></td></tr>
+<tr class="separator:a3eccabaaa5958327799ceda0117f7b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a560b4e6bdb70189b5866ea7d0245650d" id="r_a560b4e6bdb70189b5866ea7d0245650d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBitVector.html">BitVector</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#a560b4e6bdb70189b5866ea7d0245650d">bv_new</a> (size_t n_bits)</td></tr>
 <tr class="memdesc:a560b4e6bdb70189b5866ea7d0245650d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate a new <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> with all bits cleared.  <br /></td></tr>
 <tr class="separator:a560b4e6bdb70189b5866ea7d0245650d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -240,6 +243,41 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a3eccabaaa5958327799ceda0117f7b76" name="a3eccabaaa5958327799ceda0117f7b76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3eccabaaa5958327799ceda0117f7b76">&#9670;&#160;</a></span>bv_apply_tail_mask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void bv_apply_tail_mask </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBitVector.html">BitVector</a> *&#160;</td>
+          <td class="paramname"><em>bv</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mask off any excess bits in the last word of a <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bv</td><td>Pointer to an allocated <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section since"><dt>Since</dt><dd>0.1.2 </dd></dl>
+
+</div>
+</div>
 <a id="ad7e0bb7a9f7e9a34611b3c3ba41bfdbf" name="ad7e0bb7a9f7e9a34611b3c3ba41bfdbf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad7e0bb7a9f7e9a34611b3c3ba41bfdbf">&#9670;&#160;</a></span>bv_bit()</h2>
 
@@ -714,7 +752,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 27 2025 14:35:42 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Wed Oct 8 2025 14:54:20 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
