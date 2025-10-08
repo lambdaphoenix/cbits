@@ -72,6 +72,24 @@ typedef struct {
 } BitVector;
 
 /**
+ * @brief Mask off any excess bits in the last word of a BitVector.
+ * @param bv Pointer to an allocated BitVector.
+ * @since 0.1.2
+ */
+static inline void
+bv_apply_tail_mask(BitVector *bv)
+{
+    if (!bv->n_words) {
+        return;
+    }
+    unsigned tail = (unsigned) (bv->n_bits & 63);
+    if (tail) {
+        uint64_t mask = (UINT64_C(1) << tail) - 1;
+        bv->data[bv->n_words - 1] &= mask;
+    }
+}
+
+/**
  *  @brief Allocate a new BitVector with all bits cleared
  *  @param n_bits Number of bits
  *  @return Pointer to the new BitVector

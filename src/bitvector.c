@@ -77,6 +77,7 @@ bv_copy(const BitVector *src)
     }
 
     memcpy(dst->data, src->data, src->n_words * sizeof(uint64_t));
+    bv_apply_tail_mask(dst);
     return dst;
 }
 
@@ -149,7 +150,7 @@ bv_rank(BitVector *bv, const size_t pos)
     size_t off = pos & 63;
     size_t s = bv->super_rank[w >> BV_WORDS_SUPER_SHIFT];
     size_t b = bv->block_rank[w];
-    uint64_t mask = (off == 63) ? UINT64_MAX : ((1ULL << (off + 1)) - 1);
+    uint64_t mask = (1ULL << (off + 1)) - 1;
     uint64_t part = bv->data[w] & mask;
     return s + b + (size_t) cbits_popcount64(part);
 }

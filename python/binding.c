@@ -67,24 +67,6 @@ bv_wrap_new(BitVector *bv_data)
     return (PyObject *) obj;
 }
 
-/**
- * @brief Mask off any excess bits in the last word of a BitVector.
- * @param bv Pointer to an allocated BitVector.
- * @since 0.1.2
- */
-static inline void
-bv_apply_tail_mask(BitVector *bv)
-{
-    if (!bv->n_words) {
-        return;
-    }
-    unsigned tail = (unsigned) (bv->n_bits & 63);
-    if (tail) {
-        uint64_t mask = (UINT64_C(1) << tail) - 1;
-        bv->data[bv->n_words - 1] &= mask;
-    }
-}
-
 /* -------------------------------------------------------------------------
  * Deallocation and object lifecycle
  * ------------------------------------------------------------------------- */
@@ -959,8 +941,8 @@ py_bv_iand(PyObject *self, PyObject *arg)
     for (; i + 3 < A->bv->n_words; i += 4) {
         a[i] &= b[i];
         a[i + 1] &= b[i + 1];
-        a[i + 2] &= b[i + 3];
-        a[i + 2] &= b[i + 3];
+        a[i + 2] &= b[i + 2];
+        a[i + 3] &= b[i + 3];
     }
     for (; i < A->bv->n_words; ++i) {
         a[i] &= b[i];
