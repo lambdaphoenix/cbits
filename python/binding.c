@@ -66,6 +66,25 @@ bv_wrap_new(BitVector *bv_data)
     obj->bv = bv_data;
     return (PyObject *) obj;
 }
+
+/**
+ * @brief Mask off any excess bits in the last word of a BitVector.
+ * @param bv Pointer to an allocated BitVector.
+ * @since 0.1.2
+ */
+static inline void
+bv_apply_tail_mask(BitVector *bv)
+{
+    if (!bv->n_words) {
+        return;
+    }
+    unsigned tail = (unsigned) (bv->n_bits & 63);
+    if (tail) {
+        uint64_t mask = (UINT64_C(1) << tail) - 1;
+        bv->data[bv->n_words - 1] &= mask;
+    }
+}
+
 /* -------------------------------------------------------------------------
  * Deallocation and object lifecycle
  * ------------------------------------------------------------------------- */
@@ -501,6 +520,24 @@ py_bv_slice(PyObject *self, size_t start, size_t stop, size_t step,
         return NULL;
     }
 
+    if (step == 1 && slicelength > 0) {
+        size_t s_word = start >> 6;
+        unsigned s_off = (unsigned) (start & 63);
+        size_t words_needed = out->n_words;
+
+        uint64_t carry = 0;
+        for (size_t j = 0; j < words_needed; ++j) {
+            size_t aw = s_word + j;
+            uint64_t lo = (aw < src->n_words) ? src->data[aw] : 0ULL;
+            uint64_t hi = (aw + 1 < src->n_words) ? src->data[aw + 1] : 0ULL;
+
+            uint64_t word = (lo >> s_off) | (hi << (64 - s_off));
+            out->data[j] = word;
+        }
+        bv_apply_tail_mask(out);
+        return bv_wrap_new(out);
+    }
+
     size_t n_bits = src->n_bits;
     for (size_t i = 0, idx = start; i < slicelength; ++i, idx += step) {
         if (n_bits <= idx) {
@@ -848,19 +885,6 @@ py_bv_iter(PyObject *self)
 /* -------------------------------------------------------------------------
  * Number Protocol
  * ------------------------------------------------------------------------- */
-
-static inline void
-bv_apply_tail_mask(BitVector *bv)
-{
-    if (!bv->n_words) {
-        return;
-    }
-    unsigned tail = (unsigned) (bv->n_bits & 63);
-    if (tail) {
-        uint64_t mask = (UINT64_C(1) << tail) - 1;
-        bv->data[bv->n_words - 1] &= mask;
-    }
-}
 
 /**
  * @brief __and__(BitVector, BitVector) → BitVector.
