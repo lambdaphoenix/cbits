@@ -421,8 +421,7 @@ py_bv_richcompare(PyObject *a, PyObject *b, int op)
  * @brief __hash__ for a BitVector object.
  *
  * Computes a hash over the vector’s packed bit data using Python’s internal
- * _Py_HashBytes helper. The byte length is determined by rounding up the bit
- * count: (n_bits + 7) >> 3.
+ * _Py_HashBytes helper.
  *
  * @param self A Python PyBitVector instance.
  * @return A Py_hash_t value derived from the bit‐pattern contents.
@@ -430,9 +429,12 @@ py_bv_richcompare(PyObject *a, PyObject *b, int op)
 static Py_hash_t
 py_bv_hash(PyObject *self)
 {
-    return _Py_HashBytes(((PyBitVector *) self)->bv->data,
-                         (((PyBitVector *) self)->bv->n_bits) + 7) >>
-           3;
+    BitVector *bv = ((PyBitVector *) self)->bv;
+    size_t n_bytes = (bv->n_bits + 7) >> 3;
+    if (n_bytes == 0) {
+        return 0;
+    }
+    return _Py_HashBytes((const void *) bv->data, n_bytes);
 }
 
 /* -------------------------------------------------------------------------
@@ -847,6 +849,19 @@ py_bv_iter(PyObject *self)
  * Number Protocol
  * ------------------------------------------------------------------------- */
 
+static inline void
+bv_apply_tail_mask(BitVector *bv)
+{
+    if (!bv->n_words) {
+        return;
+    }
+    unsigned tail = (unsigned) (bv->n_bits & 63);
+    if (tail) {
+        uint64_t mask = (UINT64_C(1) << tail) - 1;
+        bv->data[bv->n_words - 1] &= mask;
+    }
+}
+
 /**
  * @brief __and__(BitVector, BitVector) → BitVector.
  * @param a Left operand.
@@ -863,7 +878,8 @@ py_bv_and(PyObject *oA, PyObject *oB)
 
     size_t size = A->bv->n_bits;
     if (size != B->bv->n_bits) {
-        PyErr_SetString(PyExc_ValueError, "length mismatch");
+        PyErr_Format(PyExc_ValueError, "length mismatch: A=%zu, B=%zu", size,
+                     B->bv->n_bits);
         return NULL;
     }
     BitVector *C = bv_new(size);
@@ -873,12 +889,21 @@ py_bv_and(PyObject *oA, PyObject *oB)
         return NULL;
     }
 
-    uint64_t *a = A->bv->data;
-    uint64_t *b = B->bv->data;
-    uint64_t *c = C->data;
-    for (size_t i = 0; i < A->bv->n_words; ++i) {
+    uint64_t *restrict a = A->bv->data;
+    uint64_t *restrict b = B->bv->data;
+    uint64_t *restrict c = C->data;
+
+    size_t i = 0;
+    for (; i + 3 < A->bv->n_words; i += 4) {
+        c[i] = a[i] & b[i];
+        c[i + 1] = a[i + 1] & b[i + 1];
+        c[i + 2] = a[i + 2] & b[i + 2];
+        c[i + 3] = a[i + 3] & b[i + 3];
+    }
+    for (; i < A->bv->n_words; ++i) {
         c[i] = a[i] & b[i];
     }
+    bv_apply_tail_mask(C);
     return bv_wrap_new(C);
 }
 
@@ -898,15 +923,25 @@ py_bv_iand(PyObject *self, PyObject *arg)
 
     size_t size = A->bv->n_bits;
     if (size != B->bv->n_bits) {
-        PyErr_SetString(PyExc_ValueError, "length mismatch");
+        PyErr_Format(PyExc_ValueError, "length mismatch: A=%zu, B=%zu", size,
+                     B->bv->n_bits);
         return NULL;
     }
 
-    uint64_t *a = A->bv->data;
-    uint64_t *b = B->bv->data;
-    for (size_t i = 0; i < A->bv->n_words; ++i) {
+    uint64_t *restrict a = A->bv->data;
+    uint64_t *restrict b = B->bv->data;
+
+    size_t i = 0;
+    for (; i + 3 < A->bv->n_words; i += 4) {
+        a[i] &= b[i];
+        a[i + 1] &= b[i + 1];
+        a[i + 2] &= b[i + 3];
+        a[i + 2] &= b[i + 3];
+    }
+    for (; i < A->bv->n_words; ++i) {
         a[i] &= b[i];
     }
+    bv_apply_tail_mask(A->bv);
     A->bv->rank_dirty = true;
     Py_INCREF(self);
     return self;
@@ -928,7 +963,8 @@ py_bv_or(PyObject *oA, PyObject *oB)
 
     size_t size = A->bv->n_bits;
     if (size != B->bv->n_bits) {
-        PyErr_SetString(PyExc_ValueError, "length mismatch");
+        PyErr_Format(PyExc_ValueError, "length mismatch: A=%zu, B=%zu", size,
+                     B->bv->n_bits);
         return NULL;
     }
     BitVector *C = bv_new(size);
@@ -938,12 +974,21 @@ py_bv_or(PyObject *oA, PyObject *oB)
         return NULL;
     }
 
-    uint64_t *a = A->bv->data;
-    uint64_t *b = B->bv->data;
-    uint64_t *c = C->data;
-    for (size_t i = 0; i < A->bv->n_words; ++i) {
-        C->data[i] = a[i] | b[i];
+    uint64_t *restrict a = A->bv->data;
+    uint64_t *restrict b = B->bv->data;
+    uint64_t *restrict c = C->data;
+
+    size_t i = 0;
+    for (; i + 3 < A->bv->n_words; i += 4) {
+        c[i] = a[i] | b[i];
+        c[i + 1] = a[i + 1] | b[i + 1];
+        c[i + 2] = a[i + 2] | b[i + 2];
+        c[i + 3] = a[i + 3] | b[i + 3];
     }
+    for (; i < A->bv->n_words; ++i) {
+        c[i] = a[i] | b[i];
+    }
+    bv_apply_tail_mask(C);
     return bv_wrap_new(C);
 }
 
@@ -963,15 +1008,24 @@ py_bv_ior(PyObject *self, PyObject *arg)
 
     size_t size = A->bv->n_bits;
     if (size != B->bv->n_bits) {
-        PyErr_SetString(PyExc_ValueError, "length mismatch");
+        PyErr_Format(PyExc_ValueError, "length mismatch: A=%zu, B=%zu", size,
+                     B->bv->n_bits);
         return NULL;
     }
 
-    uint64_t *a = A->bv->data;
-    uint64_t *b = B->bv->data;
-    for (size_t i = 0; i < A->bv->n_words; ++i) {
+    uint64_t *restrict a = A->bv->data;
+    uint64_t *restrict b = B->bv->data;
+    size_t i = 0;
+    for (; i + 3 < A->bv->n_words; i += 4) {
+        a[i] |= b[i];
+        a[i + 1] |= b[i + 1];
+        a[i + 2] |= b[i + 2];
+        a[i + 3] |= b[i + 3];
+    }
+    for (; i < A->bv->n_words; ++i) {
         a[i] |= b[i];
     }
+    bv_apply_tail_mask(A->bv);
     A->bv->rank_dirty = true;
     Py_INCREF(self);
     return self;
@@ -993,7 +1047,8 @@ py_bv_xor(PyObject *oA, PyObject *oB)
 
     size_t size = A->bv->n_bits;
     if (size != B->bv->n_bits) {
-        PyErr_SetString(PyExc_ValueError, "length mismatch");
+        PyErr_Format(PyExc_ValueError, "length mismatch: A=%zu, B=%zu", size,
+                     B->bv->n_bits);
         return NULL;
     }
     BitVector *C = bv_new(size);
@@ -1003,12 +1058,21 @@ py_bv_xor(PyObject *oA, PyObject *oB)
         return NULL;
     }
 
-    uint64_t *a = A->bv->data;
-    uint64_t *b = B->bv->data;
-    uint64_t *c = C->data;
-    for (size_t i = 0; i < A->bv->n_words; ++i) {
+    uint64_t *restrict a = A->bv->data;
+    uint64_t *restrict b = B->bv->data;
+    uint64_t *restrict c = C->data;
+
+    size_t i = 0;
+    for (; i + 3 < A->bv->n_words; i += 4) {
+        c[i] = a[i] ^ b[i];
+        c[i + 1] = a[i + 1] ^ b[i + 1];
+        c[i + 2] = a[i + 2] ^ b[i + 2];
+        c[i + 3] = a[i + 3] ^ b[i + 3];
+    }
+    for (; i < A->bv->n_words; ++i) {
         c[i] = a[i] ^ b[i];
     }
+    bv_apply_tail_mask(C);
     return bv_wrap_new(C);
 }
 
@@ -1028,15 +1092,24 @@ py_bv_ixor(PyObject *self, PyObject *arg)
 
     size_t size = A->bv->n_bits;
     if (size != B->bv->n_bits) {
-        PyErr_SetString(PyExc_ValueError, "length mismatch");
+        PyErr_Format(PyExc_ValueError, "length mismatch: A=%zu, B=%zu", size,
+                     B->bv->n_bits);
         return NULL;
     }
 
-    uint64_t *a = A->bv->data;
-    uint64_t *b = B->bv->data;
-    for (size_t i = 0; i < A->bv->n_words; ++i) {
+    uint64_t *restrict a = A->bv->data;
+    uint64_t *restrict b = B->bv->data;
+    size_t i = 0;
+    for (; i + 3 < A->bv->n_words; i += 4) {
+        a[i] ^= b[i];
+        a[i + 1] ^= b[i + 1];
+        a[i + 2] ^= b[i + 2];
+        a[i + 3] ^= b[i + 3];
+    }
+    for (; i < A->bv->n_words; ++i) {
         a[i] ^= b[i];
     }
+    bv_apply_tail_mask(A->bv);
     A->bv->rank_dirty = true;
     Py_INCREF(self);
     return self;
@@ -1054,14 +1127,23 @@ py_bv_invert(PyObject *self)
     BitVector *C = bv_new(A->bv->n_bits);
     if (!C) {
         PyErr_SetString(PyExc_MemoryError,
-                        "BitVector allocation failed in __not__");
+                        "BitVector allocation failed in __invert__");
         return NULL;
     }
-    uint64_t *a = A->bv->data;
-    uint64_t *c = C->data;
-    for (size_t i = 0; i < A->bv->n_words; ++i) {
+    uint64_t *restrict a = A->bv->data;
+    uint64_t *restrict c = C->data;
+
+    size_t i = 0;
+    for (; i + 3 < A->bv->n_words; i += 4) {
+        c[i] = ~a[i];
+        c[i + 1] = ~a[i + 1];
+        c[i + 2] = ~a[i + 2];
+        c[i + 3] = ~a[i + 3];
+    }
+    for (; i < A->bv->n_words; ++i) {
         c[i] = ~a[i];
     }
+    bv_apply_tail_mask(C);
     return bv_wrap_new(C);
 }
 

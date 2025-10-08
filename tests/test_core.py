@@ -194,6 +194,16 @@ class TestCore(unittest.TestCase):
         self.assertIs(memo[a], c2)
         self.assertEqual(a, c2)
 
+    def test_hash(self):
+        for i in (0, 3, 7, 21, 31, 42, 55, 60):
+            self.bv.set(i)
+        hash_val = hash(self.bv)
+        self.assertEqual(hash(self.bv), hash_val)
+        self.bv.clear(0)
+        self.assertNotEqual(hash_val, hash(self.bv))
+        self.bv.set(0)
+        self.assertEqual(hash_val, hash(self.bv))
+
     # def test_to_bytes(self):
     #     self.bv.set(0)
     #     self.bv.set(1)
