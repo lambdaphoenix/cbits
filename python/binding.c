@@ -41,9 +41,13 @@
 /**
  * @struct PyBitVector
  * @brief Python object containing a pointer to a native BitVector.
+ *
+ * Includes a cached hash value @c 'hash_cache' to speed up repeated
+ * dictionary/set lookups.
  */
 typedef struct {
     PyObject_HEAD BitVector *bv; /**< Reference to the BitVector */
+    Py_hash_t hash_cache;        /**< Cached hash value or -1 if invalid */
 } PyBitVector;
 
 /** Global pointer to the PyBitVector type object. */
@@ -64,6 +68,7 @@ bv_wrap_new(BitVector *bv_data)
         return NULL;
     }
     obj->bv = bv_data;
+    obj->hash_cache = -1;
     return (PyObject *) obj;
 }
 
@@ -101,6 +106,7 @@ py_bv_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
         return NULL;
     }
     bvself->bv = NULL;
+    bvself->hash_cache = -1;
     return (PyObject *) bvself;
 }
 
@@ -239,6 +245,7 @@ py_bv_set(PyObject *self, PyObject *arg)
     }
 
     bv_set(((PyBitVector *) self)->bv, index);
+    ((PyBitVector *) self)->hash_cache = -1;
     Py_RETURN_NONE;
 }
 
@@ -258,6 +265,7 @@ py_bv_clear(PyObject *self, PyObject *arg)
     }
 
     bv_clear(((PyBitVector *) self)->bv, index);
+    ((PyBitVector *) self)->hash_cache = -1;
     Py_RETURN_NONE;
 }
 
@@ -277,6 +285,7 @@ py_bv_flip(PyObject *self, PyObject *arg)
     }
 
     bv_flip(((PyBitVector *) self)->bv, index);
+    ((PyBitVector *) self)->hash_cache = -1;
     Py_RETURN_NONE;
 }
 
@@ -422,7 +431,8 @@ py_bv_richcompare(PyObject *a, PyObject *b, int op)
  * @brief __hash__ for a BitVector object.
  *
  * Computes a hash over the vector’s packed bit data using Python’s internal
- * _Py_HashBytes helper.
+ * _Py_HashBytes helper. The result is cached in the object until the BitVector
+ * is mutated.
  *
  * @param self A Python PyBitVector instance.
  * @return A Py_hash_t value derived from the bit‐pattern contents.
@@ -430,12 +440,21 @@ py_bv_richcompare(PyObject *a, PyObject *b, int op)
 static Py_hash_t
 py_bv_hash(PyObject *self)
 {
-    BitVector *bv = ((PyBitVector *) self)->bv;
+    PyBitVector *pbv = (PyBitVector *) self;
+    if (pbv->hash_cache != -1) {
+        return pbv->hash_cache;
+    }
+    BitVector *bv = pbv->bv;
     size_t n_bytes = (bv->n_bits + 7) >> 3;
     if (n_bytes == 0) {
         return 0;
     }
-    return _Py_HashBytes((const void *) bv->data, n_bytes);
+    Py_hash_t hash = _Py_HashBytes((const void *) bv->data, n_bytes);
+    if (hash == -1) {
+        hash = -2;
+    }
+    pbv->hash_cache = hash;
+    return hash;
 }
 
 /* -------------------------------------------------------------------------
@@ -605,6 +624,7 @@ py_bv_ass_item(PyObject *self, Py_ssize_t i, PyObject *value)
     else {
         bv_clear(bv, (size_t) i);
     }
+    ((PyBitVector *) self)->hash_cache = -1;
     return 0;
 }
 
@@ -664,6 +684,7 @@ py_bv_ass_slice(PyObject *self, size_t start, size_t stop, size_t step,
         else {
             bv_clear(bv, idx);
         }
+        ((PyBitVector *) self)->hash_cache = -1;
     }
 
     Py_DECREF(seq);
@@ -901,6 +922,9 @@ py_bv_and(PyObject *oA, PyObject *oB)
 
     size_t i = 0;
     for (; i + 3 < A->bv->n_words; i += 4) {
+        cbits_prefetch(&a[i + 16]);
+        cbits_prefetch(&b[i + 16]);
+
         c[i] = a[i] & b[i];
         c[i + 1] = a[i + 1] & b[i + 1];
         c[i + 2] = a[i + 2] & b[i + 2];
@@ -939,6 +963,9 @@ py_bv_iand(PyObject *self, PyObject *arg)
 
     size_t i = 0;
     for (; i + 3 < A->bv->n_words; i += 4) {
+        cbits_prefetch(&a[i + 16]);
+        cbits_prefetch(&b[i + 16]);
+
         a[i] &= b[i];
         a[i + 1] &= b[i + 1];
         a[i + 2] &= b[i + 2];
@@ -949,6 +976,7 @@ py_bv_iand(PyObject *self, PyObject *arg)
     }
     bv_apply_tail_mask(A->bv);
     A->bv->rank_dirty = true;
+    A->hash_cache = -1;
     Py_INCREF(self);
     return self;
 }
@@ -986,6 +1014,9 @@ py_bv_or(PyObject *oA, PyObject *oB)
 
     size_t i = 0;
     for (; i + 3 < A->bv->n_words; i += 4) {
+        cbits_prefetch(&a[i + 16]);
+        cbits_prefetch(&b[i + 16]);
+
         c[i] = a[i] | b[i];
         c[i + 1] = a[i + 1] | b[i + 1];
         c[i + 2] = a[i + 2] | b[i + 2];
@@ -1023,6 +1054,9 @@ py_bv_ior(PyObject *self, PyObject *arg)
     uint64_t *restrict b = B->bv->data;
     size_t i = 0;
     for (; i + 3 < A->bv->n_words; i += 4) {
+        cbits_prefetch(&a[i + 16]);
+        cbits_prefetch(&b[i + 16]);
+
         a[i] |= b[i];
         a[i + 1] |= b[i + 1];
         a[i + 2] |= b[i + 2];
@@ -1033,6 +1067,7 @@ py_bv_ior(PyObject *self, PyObject *arg)
     }
     bv_apply_tail_mask(A->bv);
     A->bv->rank_dirty = true;
+    A->hash_cache = -1;
     Py_INCREF(self);
     return self;
 }
@@ -1070,6 +1105,9 @@ py_bv_xor(PyObject *oA, PyObject *oB)
 
     size_t i = 0;
     for (; i + 3 < A->bv->n_words; i += 4) {
+        cbits_prefetch(&a[i + 16]);
+        cbits_prefetch(&b[i + 16]);
+
         c[i] = a[i] ^ b[i];
         c[i + 1] = a[i + 1] ^ b[i + 1];
         c[i + 2] = a[i + 2] ^ b[i + 2];
@@ -1107,6 +1145,9 @@ py_bv_ixor(PyObject *self, PyObject *arg)
     uint64_t *restrict b = B->bv->data;
     size_t i = 0;
     for (; i + 3 < A->bv->n_words; i += 4) {
+        cbits_prefetch(&a[i + 16]);
+        cbits_prefetch(&b[i + 16]);
+
         a[i] ^= b[i];
         a[i + 1] ^= b[i + 1];
         a[i + 2] ^= b[i + 2];
@@ -1117,6 +1158,7 @@ py_bv_ixor(PyObject *self, PyObject *arg)
     }
     bv_apply_tail_mask(A->bv);
     A->bv->rank_dirty = true;
+    A->hash_cache = -1;
     Py_INCREF(self);
     return self;
 }
@@ -1141,6 +1183,8 @@ py_bv_invert(PyObject *self)
 
     size_t i = 0;
     for (; i + 3 < A->bv->n_words; i += 4) {
+        cbits_prefetch(&a[i + 16]);
+
         c[i] = ~a[i];
         c[i + 1] = ~a[i + 1];
         c[i + 2] = ~a[i + 2];

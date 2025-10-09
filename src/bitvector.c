@@ -110,6 +110,8 @@ bv_build_rank(BitVector *bv)
         else {
             size_t w = base;
             for (; w + 3 < end; w += 4) {
+                cbits_prefetch(&bv->data[w + 16]);
+
                 super_total += cbits_popcount64(bv->data[w]);
                 super_total += cbits_popcount64(bv->data[w + 1]);
                 super_total += cbits_popcount64(bv->data[w + 2]);
