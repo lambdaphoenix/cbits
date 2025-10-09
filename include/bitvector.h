@@ -7,7 +7,7 @@
  * - rank and subvector-containment queries
  *
  * @author lambdaphoenix
- * @version 0.1.1
+ * @version 0.2.0
  * @copyright Copyright (c) 2025 lambdaphoenix
  */
 #ifndef CBITS_BITVECTOR_H
@@ -113,15 +113,6 @@ bv_copy(const BitVector *src);
 void
 bv_free(BitVector *bv);
 /**
- *  @brief Build or rebuild the rank tables for a BitVector.
- *
- *  This populates @c super_rank[] and @c block_rank[] to support O(1) rank
- * queries. After this call, @c bv->rank_dirty is cleared.
- *  @param bv Pointer to the BitVector whose tables to build
- */
-void
-bv_build_rank(BitVector *bv);
-/**
  *  @brief Get the bit value at a given position.
  *  @param bv Pointer to the BitVector
  *  @param pos Bit index
@@ -174,6 +165,48 @@ bv_flip(BitVector *bv, const size_t pos)
     bv->data[bv_word(pos)] ^= mask;
     bv->rank_dirty = true;
 }
+/**
+ *  @brief Set all bits in the half‑open range [start, start+len).
+ *
+ *  Marks the rank table dirty so it will be rebuilt on next rank query.
+ *  @param bv Pointer to the BitVector
+ *  @param start Start bit index
+ *  @param len Number of bits to set
+ *  @since 0.2.0
+ */
+void
+bv_set_range(BitVector *bv, size_t start, size_t len);
+/**
+ *  @brief Clear all bits in the half‑open range [start, start+len).
+ *
+ *  Marks the rank table dirty so it will be rebuilt on next rank query.
+ *  @param bv Pointer to the BitVector
+ *  @param start Start bit index
+ *  @param len Number of bits to clear
+ *  @since 0.2.0
+ */
+void
+bv_clear_range(BitVector *bv, size_t start, size_t len);
+/**
+ *  @brief Toggle (flip) all bits in the half‑open range [start, start+len).
+ *
+ *  Marks the rank table dirty so it will be rebuilt on next rank query.
+ *  @param bv Pointer to the BitVector
+ *  @param start Start bit index
+ *  @param len Number of bits to flip
+ *  @since 0.2.0
+ */
+void
+bv_flip_range(BitVector *bv, size_t start, size_t len);
+/**
+ *  @brief Build or rebuild the rank tables for a BitVector.
+ *
+ *  This populates @c super_rank[] and @c block_rank[] to support O(1) rank
+ * queries. After this call, @c bv->rank_dirty is cleared.
+ *  @param bv Pointer to the BitVector whose tables to build
+ */
+void
+bv_build_rank(BitVector *bv);
 /**
  *  @brief Compute the rank (number of set bits) up to a position.
  *

@@ -10,7 +10,7 @@
  *
  * @see include/bitvector.h
  * @author lambdaphoenix
- * @version 0.1.1
+ * @version 0.2.0
  * @copyright Copyright (c) 2025 lambdaphoenix
  */
 #define PY_SSIZE_T_CLEAN
@@ -181,8 +181,7 @@ py_bv_init(PyObject *self, PyObject *args, PyObject *kwds)
 /**
  * @brief Parse and validate a single index argument.
  * @param self A Python PyBitVector instance.
- * @param args Array of Python arguments.
- * @param n_args Number of arguments expected (should be 1).
+ * @param arg Python argument.
  * @param p_index Output pointer to store the validated index.
  * @return 0 on success (p_index set), -1 on failure (exception set).
  */
@@ -211,10 +210,40 @@ bv_parse_index(PyObject *self, PyObject *arg, size_t *p_index)
 }
 
 /**
+ * @brief Parse and validate a (start, length) range tuple.
+ * @param self A Python PyBitVector instance.
+ * @param args   Python argument tuple (start, length).
+ * @param p_start Output pointer for start index.
+ * @param p_len   Output pointer for length.
+ * @return 0 on success (outputs set), -1 on failure (exception set).
+ * @since 0.2.0
+ */
+static inline int
+bv_parse_tuple(PyObject *self, PyObject *args, size_t *p_start, size_t *p_len)
+{
+    Py_ssize_t start, len;
+    if (!PyArg_ParseTuple(args, "nn", &start, &len)) {
+        return -1;
+    }
+    if (start < 0 || len < 0) {
+        PyErr_SetString(PyExc_ValueError,
+                        "start and length must be non-negative");
+        return -1;
+    }
+    PyBitVector *bvself = (PyBitVector *) self;
+    if ((size_t) start + (size_t) len > bvself->bv->n_bits) {
+        PyErr_SetString(PyExc_IndexError, "BitVector range out of bounds");
+        return -1;
+    }
+    *p_start = (size_t) start;
+    *p_len = (size_t) len;
+    return 0;
+}
+
+/**
  * @brief Python binding for BitVector.get(index) → bool.
  * @param self A Python PyBitVector instance.
- * @param args Array of Python arguments.
- * @param n_args Number of arguments expected (should be 1).
+ * @param arg Python argument.
  * @return true is bit is set, false otherwise
  */
 static PyObject *
@@ -232,8 +261,7 @@ py_bv_get(PyObject *self, PyObject *arg)
 /**
  * @brief Python binding for BitVector.set(index).
  * @param self A Python PyBitVector instance.
- * @param args Array of Python arguments.
- * @param n_args Number of arguments expected (should be 1).
+ * @param arg Python argument.
  * @return None on success, NULL on error.
  */
 static PyObject *
@@ -252,8 +280,7 @@ py_bv_set(PyObject *self, PyObject *arg)
 /**
  * @brief Python binding for BitVector.clear(index).
  * @param self A Python PyBitVector instance.
- * @param args Array of Python arguments.
- * @param n_args Number of arguments expected (should be 1).
+ * @param args Python argument.
  * @return None on success, NULL on error.
  */
 static PyObject *
@@ -272,8 +299,7 @@ py_bv_clear(PyObject *self, PyObject *arg)
 /**
  * @brief Python binding for BitVector.flip(index).
  * @param self A Python PyBitVector instance.
- * @param args Array of Python arguments.
- * @param n_args Number of arguments expected (should be 1).
+ * @param arg Python argument.
  * @return None on success, NULL on error.
  */
 static PyObject *
@@ -285,6 +311,75 @@ py_bv_flip(PyObject *self, PyObject *arg)
     }
 
     bv_flip(((PyBitVector *) self)->bv, index);
+    ((PyBitVector *) self)->hash_cache = -1;
+    Py_RETURN_NONE;
+}
+
+/**
+ * @brief Python binding for BitVector.set_range(start, length).
+ *
+ * Calls bv_set_range() to set all bits in the half‑open range
+ * [start, start+length). Marks the hash cache invalid and returns None.
+ *
+ * @param self A Python PyBitVector instance.
+ * @param args Tuple (start, length).
+ * @return Py_None on success, NULL on error (with exception set).
+ * @since 0.2.0
+ */
+static PyObject *
+py_bv_set_range(PyObject *self, PyObject *args)
+{
+    size_t start, len;
+    if (bv_parse_tuple(self, args, &start, &len) < 0) {
+        return NULL;
+    }
+    bv_set_range(((PyBitVector *) self)->bv, start, len);
+    ((PyBitVector *) self)->hash_cache = -1;
+    Py_RETURN_NONE;
+}
+
+/**
+ * @brief Python binding for BitVector.clear_range(start, length).
+ *
+ * Calls bv_clear_range() to clear all bits in the half‑open range
+ * [start, start+length). Marks the hash cache invalid and returns None.
+ *
+ * @param self A Python PyBitVector instance.
+ * @param args Tuple (start, length).
+ * @return Py_None on success, NULL on error (with exception set).
+ * @since 0.2.0
+ */
+static PyObject *
+py_bv_clear_range(PyObject *self, PyObject *args)
+{
+    size_t start, len;
+    if (bv_parse_tuple(self, args, &start, &len) < 0) {
+        return NULL;
+    }
+    bv_clear_range(((PyBitVector *) self)->bv, start, len);
+    ((PyBitVector *) self)->hash_cache = -1;
+    Py_RETURN_NONE;
+}
+
+/**
+ * @brief Python binding for BitVector.flip_range(start, length).
+ *
+ * Calls bv_flip_range() to toggle all bits in the half‑open range
+ * [start, start+length). Marks the hash cache invalid and returns None.
+ *
+ * @param self A Python PyBitVector instance.
+ * @param args Tuple (start, length).
+ * @return Py_None on success, NULL on error (with exception set).
+ * @since 0.2.0
+ */
+static PyObject *
+py_bv_flip_range(PyObject *self, PyObject *args)
+{
+    size_t start, len;
+    if (bv_parse_tuple(self, args, &start, &len) < 0) {
+        return NULL;
+    }
+    bv_flip_range(((PyBitVector *) self)->bv, start, len);
     ((PyBitVector *) self)->hash_cache = -1;
     Py_RETURN_NONE;
 }
@@ -329,6 +424,24 @@ PyDoc_STRVAR(py_bv_clear__doc__,
              "negative indexing.\n"
              "Raises IndexError if out of range.");
 
+PyDoc_STRVAR(py_bv_set_range__doc__,
+             "set_range(start: int, length: int) -> None\n"
+             "\n"
+             "Set all bits in the half-open range [start, start+length).\n"
+             "Raises IndexError if the range is out of bounds.");
+
+PyDoc_STRVAR(py_bv_clear_range__doc__,
+             "clear_range(start: int, length: int) -> None\n"
+             "\n"
+             "Clear all bits in the half-open range [start, start+length).\n"
+             "Raises IndexError if the range is out of bounds.");
+
+PyDoc_STRVAR(py_bv_flip_range__doc__,
+             "flip_range(start: int, length: int) -> None\n"
+             "\n"
+             "Toggle all bits in the half-open range [start, start+length).\n"
+             "Raises IndexError if the range is out of bounds.");
+
 PyDoc_STRVAR(
     py_bv_flip__doc__,
     "flip(index: int) -> None\n"
@@ -364,6 +477,12 @@ static PyMethodDef BitVector_methods[] = {
     {"set", (PyCFunction) py_bv_set, METH_O, py_bv_set__doc__},
     {"clear", (PyCFunction) py_bv_clear, METH_O, py_bv_clear__doc__},
     {"flip", (PyCFunction) py_bv_flip, METH_O, py_bv_flip__doc__},
+    {"set_range", (PyCFunction) py_bv_set_range, METH_VARARGS,
+     py_bv_set_range__doc__},
+    {"clear_range", (PyCFunction) py_bv_clear_range, METH_VARARGS,
+     py_bv_clear_range__doc__},
+    {"flip_range", (PyCFunction) py_bv_flip_range, METH_VARARGS,
+     py_bv_flip_range__doc__},
     {"rank", (PyCFunction) py_bv_rank, METH_O, py_bv_rank__doc__},
     {"copy", (PyCFunction) py_bv_copy, METH_NOARGS, py_bv_copy__doc__},
     {"__copy__", (PyCFunction) py_bv_copy, METH_NOARGS,
@@ -1456,7 +1575,7 @@ cbits_module_exec(PyObject *module)
         0) {
         return -1;
     }
-    if (PyModule_AddStringConstant(module, "__version__", "0.1.1") < 0) {
+    if (PyModule_AddStringConstant(module, "__version__", "0.2.0") < 0) {
         return -1;
     }
     if (PyModule_AddStringConstant(module, "__license__", "Apache-2.0") < 0) {

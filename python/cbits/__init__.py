@@ -6,7 +6,7 @@
 # This module exposes the Python-level API for the BitVector C extension.
 # 
 # @author lambdaphoenix
-# @version 0.1.1
+# @version 0.2.0
 # @copyright Copyright (c) 2025 lambdaphoenix
 """
 cbits - High-performance BitVector for Python.
@@ -15,7 +15,7 @@ This module exposes the Python-level API for the BitVector C extension.
 
 Author lambdaphoenix
 
-Version 0.1.1
+Version 0.2.0
 
 Copyright (c) 2025 lambdaphoenix
 """
