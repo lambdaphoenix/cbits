@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cbits<span id="projectnumber">&#160;0.1.1</span>
+   <div id="projectname">cbits<span id="projectnumber">&#160;0.2.0</span>
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
@@ -85,16 +85,20 @@ $(function() {
 <li>bv_bit()&#160;:&#160;<a class="el" href="bitvector_8h.html#ad7e0bb7a9f7e9a34611b3c3ba41bfdbf">bitvector.h</a></li>
 <li>bv_build_rank()&#160;:&#160;<a class="el" href="bitvector_8h.html#a512988fb7c0004571bd8edefc67dbe0c">bitvector.h</a>, <a class="el" href="bitvector_8c.html#a512988fb7c0004571bd8edefc67dbe0c">bitvector.c</a></li>
 <li>bv_clear()&#160;:&#160;<a class="el" href="bitvector_8h.html#abe9af7e7b58e8d6c145772125facdf23">bitvector.h</a></li>
+<li>bv_clear_range()&#160;:&#160;<a class="el" href="bitvector_8h.html#a7e326b3e801d3ae2c8372fd66a493b21">bitvector.h</a>, <a class="el" href="bitvector_8c.html#a7e326b3e801d3ae2c8372fd66a493b21">bitvector.c</a></li>
 <li>bv_contains_subvector()&#160;:&#160;<a class="el" href="bitvector_8h.html#a321007321514662bf5f9d8350ed380ba">bitvector.h</a>, <a class="el" href="bitvector_8c.html#a2d0fe7ec2aaea9cb359f93591267e08f">bitvector.c</a></li>
 <li>bv_copy()&#160;:&#160;<a class="el" href="bitvector_8h.html#acbb0c18fd9a720e6e77c40e069d6728c">bitvector.h</a>, <a class="el" href="bitvector_8c.html#acbb0c18fd9a720e6e77c40e069d6728c">bitvector.c</a></li>
 <li>bv_equal()&#160;:&#160;<a class="el" href="bitvector_8h.html#ad82fe6ffdf12ab5ca5239d111942529e">bitvector.h</a>, <a class="el" href="bitvector_8c.html#ad82fe6ffdf12ab5ca5239d111942529e">bitvector.c</a></li>
 <li>bv_flip()&#160;:&#160;<a class="el" href="bitvector_8h.html#a237c5942e4ea28aabaf70a42f8f343a7">bitvector.h</a></li>
+<li>bv_flip_range()&#160;:&#160;<a class="el" href="bitvector_8c.html#a2e3fbc3abe02f0db7577453638cb46b7">bitvector.c</a>, <a class="el" href="bitvector_8h.html#a2e3fbc3abe02f0db7577453638cb46b7">bitvector.h</a></li>
 <li>bv_free()&#160;:&#160;<a class="el" href="bitvector_8h.html#a222e3ed52b6f2c3079429f0cd4da5c58">bitvector.h</a>, <a class="el" href="bitvector_8c.html#a222e3ed52b6f2c3079429f0cd4da5c58">bitvector.c</a></li>
 <li>bv_get()&#160;:&#160;<a class="el" href="bitvector_8h.html#adb02e58f6a79eebb62a1c260821c3ab6">bitvector.h</a></li>
 <li>bv_new()&#160;:&#160;<a class="el" href="bitvector_8h.html#a560b4e6bdb70189b5866ea7d0245650d">bitvector.h</a>, <a class="el" href="bitvector_8c.html#a560b4e6bdb70189b5866ea7d0245650d">bitvector.c</a></li>
 <li>bv_parse_index()&#160;:&#160;<a class="el" href="binding_8c.html#a66f1d18ed7869c72e4d5e383af06f48f">binding.c</a></li>
+<li>bv_parse_tuple()&#160;:&#160;<a class="el" href="binding_8c.html#af83d6c14dbf421173b34f8b69d00da95">binding.c</a></li>
 <li>bv_rank()&#160;:&#160;<a class="el" href="bitvector_8h.html#afdfa632ea087f518a95082388f71cf38">bitvector.h</a>, <a class="el" href="bitvector_8c.html#afdfa632ea087f518a95082388f71cf38">bitvector.c</a></li>
 <li>bv_set()&#160;:&#160;<a class="el" href="bitvector_8h.html#ab5a6e7fc872706fc88f7562ea00dab02">bitvector.h</a></li>
+<li>bv_set_range()&#160;:&#160;<a class="el" href="bitvector_8h.html#a182f282c1a69c41d230ead44c24eec77">bitvector.h</a>, <a class="el" href="bitvector_8c.html#a182f282c1a69c41d230ead44c24eec77">bitvector.c</a></li>
 <li>bv_word()&#160;:&#160;<a class="el" href="bitvector_8h.html#ac522e4654cef505c1ffcc75a426d639c">bitvector.h</a></li>
 <li>BV_WORDS_SUPER&#160;:&#160;<a class="el" href="bitvector_8h.html#abb4c7c2cc9b400dd17cb2ee0c0a66d30">bitvector.h</a></li>
 <li>BV_WORDS_SUPER_SHIFT&#160;:&#160;<a class="el" href="bitvector_8h.html#a6a08af42132e566279704aecd170e0fb">bitvector.h</a></li>
@@ -130,10 +134,12 @@ $(function() {
 <li>py_bv_ass_subscript()&#160;:&#160;<a class="el" href="binding_8c.html#adde6296db3ce5161082498d618fda1ea">binding.c</a></li>
 <li>py_bv_bool()&#160;:&#160;<a class="el" href="binding_8c.html#a2a48ec54bd2020b5f9c53ccb60efad9e">binding.c</a></li>
 <li>py_bv_clear()&#160;:&#160;<a class="el" href="binding_8c.html#af3d93df3d5ac6faaa1366b7f31402798">binding.c</a></li>
+<li>py_bv_clear_range()&#160;:&#160;<a class="el" href="binding_8c.html#ac489bee1773936cb5e811e2d0252707f">binding.c</a></li>
 <li>py_bv_contains()&#160;:&#160;<a class="el" href="binding_8c.html#ac16b0c5b44b6cdd492918469bcbf7f96">binding.c</a></li>
 <li>py_bv_copy()&#160;:&#160;<a class="el" href="binding_8c.html#a67c5804ed6745718be7527a3aae4664a">binding.c</a></li>
 <li>py_bv_deepcopy()&#160;:&#160;<a class="el" href="binding_8c.html#ad5569e465c62a44515af6f4aa324fc60">binding.c</a></li>
 <li>py_bv_flip()&#160;:&#160;<a class="el" href="binding_8c.html#a38c1503708121705e22921b48fabf14c">binding.c</a></li>
+<li>py_bv_flip_range()&#160;:&#160;<a class="el" href="binding_8c.html#abaa5a8a1af4ebbd29f13a650c21f3af2">binding.c</a></li>
 <li>py_bv_free()&#160;:&#160;<a class="el" href="binding_8c.html#a2d55c861d7fdf3b0e9b95497fdb6a6e4">binding.c</a></li>
 <li>py_bv_get()&#160;:&#160;<a class="el" href="binding_8c.html#a95f4a245c9973679b1f9af1379e81821">binding.c</a></li>
 <li>py_bv_get_size()&#160;:&#160;<a class="el" href="binding_8c.html#a676b77aaaa3053d90f7ea7f95e22e8eb">binding.c</a></li>
@@ -152,6 +158,7 @@ $(function() {
 <li>py_bv_repr()&#160;:&#160;<a class="el" href="binding_8c.html#a7c29dda376c942eaafd3e1297c392b6c">binding.c</a></li>
 <li>py_bv_richcompare()&#160;:&#160;<a class="el" href="binding_8c.html#a907d626799062d832d366b69aa7755ef">binding.c</a></li>
 <li>py_bv_set()&#160;:&#160;<a class="el" href="binding_8c.html#a83289c5959b0cbc9ef594a00054b3d0a">binding.c</a></li>
+<li>py_bv_set_range()&#160;:&#160;<a class="el" href="binding_8c.html#a5a36766609fe6f9a6f7b436d305d29cd">binding.c</a></li>
 <li>py_bv_set_size()&#160;:&#160;<a class="el" href="binding_8c.html#a470ee7402be5662a9f0651631ec1f172">binding.c</a></li>
 <li>py_bv_slice()&#160;:&#160;<a class="el" href="binding_8c.html#a511eab9e240d4537ea455c8181ecbb48">binding.c</a></li>
 <li>py_bv_str()&#160;:&#160;<a class="el" href="binding_8c.html#a08bbcefc5bea6072787075f0a7e305c8">binding.c</a></li>
@@ -178,7 +185,7 @@ $(function() {
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 8 2025 14:54:20 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Thu Oct 9 2025 16:06:22 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

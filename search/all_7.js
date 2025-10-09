@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['mask_0',['mask',['../structPyBitVectorIter.html#ad56912b495732f21989e91304a6250c0',1,'PyBitVectorIter']]]
+  ['license_0',['License',['../index.html#autotoc_md6',1,'']]],
+  ['links_1',['Project Links',['../index.html#autotoc_md7',1,'']]]
 ];

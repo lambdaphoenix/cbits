@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cbits<span id="projectnumber">&#160;0.1.1</span>
+   <div id="projectname">cbits<span id="projectnumber">&#160;0.2.0</span>
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
@@ -157,6 +157,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a66f1d18ed7869c72e4d5e383af06f48f" id="r_a66f1d18ed7869c72e4d5e383af06f48f"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binding_8c.html#a66f1d18ed7869c72e4d5e383af06f48f">bv_parse_index</a> (PyObject *self, PyObject *arg, size_t *p_index)</td></tr>
 <tr class="memdesc:a66f1d18ed7869c72e4d5e383af06f48f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse and validate a single index argument.  <br /></td></tr>
 <tr class="separator:a66f1d18ed7869c72e4d5e383af06f48f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af83d6c14dbf421173b34f8b69d00da95" id="r_af83d6c14dbf421173b34f8b69d00da95"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binding_8c.html#af83d6c14dbf421173b34f8b69d00da95">bv_parse_tuple</a> (PyObject *self, PyObject *args, size_t *p_start, size_t *p_len)</td></tr>
+<tr class="memdesc:af83d6c14dbf421173b34f8b69d00da95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse and validate a (start, length) range tuple.  <br /></td></tr>
+<tr class="separator:af83d6c14dbf421173b34f8b69d00da95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a95f4a245c9973679b1f9af1379e81821" id="r_a95f4a245c9973679b1f9af1379e81821"><td class="memItemLeft" align="right" valign="top">static PyObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binding_8c.html#a95f4a245c9973679b1f9af1379e81821">py_bv_get</a> (PyObject *self, PyObject *arg)</td></tr>
 <tr class="memdesc:a95f4a245c9973679b1f9af1379e81821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Python binding for BitVector.get(index) → bool.  <br /></td></tr>
 <tr class="separator:a95f4a245c9973679b1f9af1379e81821"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,6 +172,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a38c1503708121705e22921b48fabf14c" id="r_a38c1503708121705e22921b48fabf14c"><td class="memItemLeft" align="right" valign="top">static PyObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binding_8c.html#a38c1503708121705e22921b48fabf14c">py_bv_flip</a> (PyObject *self, PyObject *arg)</td></tr>
 <tr class="memdesc:a38c1503708121705e22921b48fabf14c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Python binding for BitVector.flip(index).  <br /></td></tr>
 <tr class="separator:a38c1503708121705e22921b48fabf14c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a36766609fe6f9a6f7b436d305d29cd" id="r_a5a36766609fe6f9a6f7b436d305d29cd"><td class="memItemLeft" align="right" valign="top">static PyObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binding_8c.html#a5a36766609fe6f9a6f7b436d305d29cd">py_bv_set_range</a> (PyObject *self, PyObject *args)</td></tr>
+<tr class="memdesc:a5a36766609fe6f9a6f7b436d305d29cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Python binding for BitVector.set_range(start, length).  <br /></td></tr>
+<tr class="separator:a5a36766609fe6f9a6f7b436d305d29cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac489bee1773936cb5e811e2d0252707f" id="r_ac489bee1773936cb5e811e2d0252707f"><td class="memItemLeft" align="right" valign="top">static PyObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binding_8c.html#ac489bee1773936cb5e811e2d0252707f">py_bv_clear_range</a> (PyObject *self, PyObject *args)</td></tr>
+<tr class="memdesc:ac489bee1773936cb5e811e2d0252707f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Python binding for BitVector.clear_range(start, length).  <br /></td></tr>
+<tr class="separator:ac489bee1773936cb5e811e2d0252707f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaa5a8a1af4ebbd29f13a650c21f3af2" id="r_abaa5a8a1af4ebbd29f13a650c21f3af2"><td class="memItemLeft" align="right" valign="top">static PyObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binding_8c.html#abaa5a8a1af4ebbd29f13a650c21f3af2">py_bv_flip_range</a> (PyObject *self, PyObject *args)</td></tr>
+<tr class="memdesc:abaa5a8a1af4ebbd29f13a650c21f3af2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Python binding for BitVector.flip_range(start, length).  <br /></td></tr>
+<tr class="separator:abaa5a8a1af4ebbd29f13a650c21f3af2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6596d7e4e07e24155651258c9091028b" id="r_a6596d7e4e07e24155651258c9091028b"><td class="memItemLeft" align="right" valign="top">static PyObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binding_8c.html#a6596d7e4e07e24155651258c9091028b">py_bv_rank</a> (PyObject *self, PyObject *arg)</td></tr>
 <tr class="memdesc:a6596d7e4e07e24155651258c9091028b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Python binding for BitVector.rank(index) → bool.  <br /></td></tr>
 <tr class="separator:a6596d7e4e07e24155651258c9091028b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -178,6 +190,12 @@ Functions</h2></td></tr>
 <tr class="separator:a051fef147d43e118d591720c1ade81a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68fec1a34b42e4faa10468e1b05d5a2a" id="r_a68fec1a34b42e4faa10468e1b05d5a2a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binding_8c.html#a68fec1a34b42e4faa10468e1b05d5a2a">PyDoc_STRVAR</a> (py_bv_clear__doc__, &quot;clear(index: int) -&gt; None\n&quot; &quot;\n&quot; &quot;Clear the bit (set to False) at position *index*. Supports &quot; &quot;negative indexing.\n&quot; &quot;Raises IndexError if out of range.&quot;)</td></tr>
 <tr class="separator:a68fec1a34b42e4faa10468e1b05d5a2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0168cda7bd3f2cbff1aa141999f47c7f" id="r_a0168cda7bd3f2cbff1aa141999f47c7f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binding_8c.html#a0168cda7bd3f2cbff1aa141999f47c7f">PyDoc_STRVAR</a> (py_bv_set_range__doc__, &quot;set_range(start: int, length: int) -&gt; None\n&quot; &quot;\n&quot; &quot;Set all bits in the half-open range [start, start+length).\n&quot; &quot;Raises IndexError if the range is out of bounds.&quot;)</td></tr>
+<tr class="separator:a0168cda7bd3f2cbff1aa141999f47c7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab955783023262da680c8bcb054ba1963" id="r_ab955783023262da680c8bcb054ba1963"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binding_8c.html#ab955783023262da680c8bcb054ba1963">PyDoc_STRVAR</a> (py_bv_clear_range__doc__, &quot;clear_range(start: int, length: int) -&gt; None\n&quot; &quot;\n&quot; &quot;Clear all bits in the half-open range [start, start+length).\n&quot; &quot;Raises IndexError if the range is out of bounds.&quot;)</td></tr>
+<tr class="separator:ab955783023262da680c8bcb054ba1963"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae43697e8ed705eb2f0b49517a3c533aa" id="r_ae43697e8ed705eb2f0b49517a3c533aa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binding_8c.html#ae43697e8ed705eb2f0b49517a3c533aa">PyDoc_STRVAR</a> (py_bv_flip_range__doc__, &quot;flip_range(start: int, length: int) -&gt; None\n&quot; &quot;\n&quot; &quot;Toggle all bits in the half-open range [start, start+length).\n&quot; &quot;Raises IndexError if the range is out of bounds.&quot;)</td></tr>
+<tr class="separator:ae43697e8ed705eb2f0b49517a3c533aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeb4bf04b7dba5886d67076d40167328" id="r_aeeb4bf04b7dba5886d67076d40167328"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binding_8c.html#aeeb4bf04b7dba5886d67076d40167328">PyDoc_STRVAR</a> (py_bv_flip__doc__, &quot;flip(index: int) -&gt; None\n&quot; &quot;\n&quot; &quot;Toggle the bit at position *index*. Supports negative indexing.\n&quot; &quot;Raises IndexError if out of range.&quot;)</td></tr>
 <tr class="separator:aeeb4bf04b7dba5886d67076d40167328"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affc62d1304007fadd932f46d3952167e" id="r_affc62d1304007fadd932f46d3952167e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="binding_8c.html#affc62d1304007fadd932f46d3952167e">PyDoc_STRVAR</a> (py_bv_rank__doc__, &quot;rank(index: int) -&gt; int\n&quot; &quot;\n&quot; &quot;Count the number of bits set to True in the half-open range [0..index].\n&quot; &quot;Supports negative indexing. Raises IndexError if out of range.&quot;)</td></tr>
@@ -312,7 +330,7 @@ Variables</h2></td></tr>
 </ul>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="bitvector_8h.html" title="Packed BitVector C-API declarations.">include/bitvector.h</a> </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>lambdaphoenix </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1.1 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.2.0 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 lambdaphoenix </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a7b13fba70d68d647dc3c308c0be92240" name="a7b13fba70d68d647dc3c308c0be92240"></a>
@@ -393,7 +411,7 @@ Variables</h2></td></tr>
 <div class="line">        !PyObject_TypeCheck(b, <a class="code hl_variable" href="binding_8c.html#a5625b28f722b33c1597cff28478aeb9a">PyBitVectorPtr</a>)) { \</div>
 <div class="line">        Py_RETURN_NOTIMPLEMENTED;                 \</div>
 <div class="line">    }</div>
-<div class="ttc" id="abinding_8c_html_a5625b28f722b33c1597cff28478aeb9a"><div class="ttname"><a href="binding_8c.html#a5625b28f722b33c1597cff28478aeb9a">PyBitVectorPtr</a></div><div class="ttdeci">PyTypeObject * PyBitVectorPtr</div><div class="ttdef"><b>Definition</b> binding.c:50</div></div>
+<div class="ttc" id="abinding_8c_html_a5625b28f722b33c1597cff28478aeb9a"><div class="ttname"><a href="binding_8c.html#a5625b28f722b33c1597cff28478aeb9a">PyBitVectorPtr</a></div><div class="ttdeci">PyTypeObject * PyBitVectorPtr</div><div class="ttdef"><b>Definition</b> binding.c:54</div></div>
 </div><!-- fragment -->
 <p>Verify both <em>a</em> and <em>b</em> are <a class="el" href="structPyBitVector.html" title="Python object containing a pointer to a native BitVector.">PyBitVector</a>, else return <code>NotImplemented</code>. </p>
 
@@ -482,13 +500,73 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>A Python <a class="el" href="structPyBitVector.html" title="Python object containing a pointer to a native BitVector.">PyBitVector</a> instance. </td></tr>
-    <tr><td class="paramname">args</td><td>Array of Python arguments. </td></tr>
-    <tr><td class="paramname">n_args</td><td>Number of arguments expected (should be 1). </td></tr>
+    <tr><td class="paramname">arg</td><td>Python argument. </td></tr>
     <tr><td class="paramname">p_index</td><td>Output pointer to store the validated index. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success (p_index set), -1 on failure (exception set). </dd></dl>
+
+</div>
+</div>
+<a id="af83d6c14dbf421173b34f8b69d00da95" name="af83d6c14dbf421173b34f8b69d00da95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af83d6c14dbf421173b34f8b69d00da95">&#9670;&#160;</a></span>bv_parse_tuple()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int bv_parse_tuple </td>
+          <td>(</td>
+          <td class="paramtype">PyObject *&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PyObject *&#160;</td>
+          <td class="paramname"><em>args</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>p_start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t *&#160;</td>
+          <td class="paramname"><em>p_len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Parse and validate a (start, length) range tuple. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>A Python <a class="el" href="structPyBitVector.html" title="Python object containing a pointer to a native BitVector.">PyBitVector</a> instance. </td></tr>
+    <tr><td class="paramname">args</td><td>Python argument tuple (start, length). </td></tr>
+    <tr><td class="paramname">p_start</td><td>Output pointer for start index. </td></tr>
+    <tr><td class="paramname">p_len</td><td>Output pointer for length. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success (outputs set), -1 on failure (exception set). </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>0.2.0 </dd></dl>
 
 </div>
 </div>
@@ -864,12 +942,59 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>A Python <a class="el" href="structPyBitVector.html" title="Python object containing a pointer to a native BitVector.">PyBitVector</a> instance. </td></tr>
-    <tr><td class="paramname">args</td><td>Array of Python arguments. </td></tr>
-    <tr><td class="paramname">n_args</td><td>Number of arguments expected (should be 1). </td></tr>
+    <tr><td class="paramname">args</td><td>Python argument. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None on success, NULL on error. </dd></dl>
+
+</div>
+</div>
+<a id="ac489bee1773936cb5e811e2d0252707f" name="ac489bee1773936cb5e811e2d0252707f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac489bee1773936cb5e811e2d0252707f">&#9670;&#160;</a></span>py_bv_clear_range()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static PyObject * py_bv_clear_range </td>
+          <td>(</td>
+          <td class="paramtype">PyObject *&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PyObject *&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Python binding for BitVector.clear_range(start, length). </p>
+<p>Calls <a class="el" href="bitvector_8h.html#a7e326b3e801d3ae2c8372fd66a493b21" title="Clear all bits in the half‑open range [start, start+len).">bv_clear_range()</a> to clear all bits in the half‑open range [start, start+length). Marks the hash cache invalid and returns None.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>A Python <a class="el" href="structPyBitVector.html" title="Python object containing a pointer to a native BitVector.">PyBitVector</a> instance. </td></tr>
+    <tr><td class="paramname">args</td><td>Tuple (start, length). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Py_None on success, NULL on error (with exception set). </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>0.2.0 </dd></dl>
 
 </div>
 </div>
@@ -1049,12 +1174,59 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>A Python <a class="el" href="structPyBitVector.html" title="Python object containing a pointer to a native BitVector.">PyBitVector</a> instance. </td></tr>
-    <tr><td class="paramname">args</td><td>Array of Python arguments. </td></tr>
-    <tr><td class="paramname">n_args</td><td>Number of arguments expected (should be 1). </td></tr>
+    <tr><td class="paramname">arg</td><td>Python argument. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None on success, NULL on error. </dd></dl>
+
+</div>
+</div>
+<a id="abaa5a8a1af4ebbd29f13a650c21f3af2" name="abaa5a8a1af4ebbd29f13a650c21f3af2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abaa5a8a1af4ebbd29f13a650c21f3af2">&#9670;&#160;</a></span>py_bv_flip_range()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static PyObject * py_bv_flip_range </td>
+          <td>(</td>
+          <td class="paramtype">PyObject *&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PyObject *&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Python binding for BitVector.flip_range(start, length). </p>
+<p>Calls <a class="el" href="bitvector_8h.html#a2e3fbc3abe02f0db7577453638cb46b7" title="Toggle (flip) all bits in the half‑open range [start, start+len).">bv_flip_range()</a> to toggle all bits in the half‑open range [start, start+length). Marks the hash cache invalid and returns None.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>A Python <a class="el" href="structPyBitVector.html" title="Python object containing a pointer to a native BitVector.">PyBitVector</a> instance. </td></tr>
+    <tr><td class="paramname">args</td><td>Tuple (start, length). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Py_None on success, NULL on error (with exception set). </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>0.2.0 </dd></dl>
 
 </div>
 </div>
@@ -1130,8 +1302,7 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>A Python <a class="el" href="structPyBitVector.html" title="Python object containing a pointer to a native BitVector.">PyBitVector</a> instance. </td></tr>
-    <tr><td class="paramname">args</td><td>Array of Python arguments. </td></tr>
-    <tr><td class="paramname">n_args</td><td>Number of arguments expected (should be 1). </td></tr>
+    <tr><td class="paramname">arg</td><td>Python argument. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1210,7 +1381,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p><b>hash</b> for a <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> object. </p>
-<p>Computes a hash over the vector’s packed bit data using Python’s internal _Py_HashBytes helper.</p>
+<p>Computes a hash over the vector’s packed bit data using Python’s internal _Py_HashBytes helper. The result is cached in the object until the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> is mutated.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>A Python <a class="el" href="structPyBitVector.html" title="Python object containing a pointer to a native BitVector.">PyBitVector</a> instance. </td></tr>
@@ -1837,12 +2008,59 @@ Variables</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">self</td><td>A Python <a class="el" href="structPyBitVector.html" title="Python object containing a pointer to a native BitVector.">PyBitVector</a> instance. </td></tr>
-    <tr><td class="paramname">args</td><td>Array of Python arguments. </td></tr>
-    <tr><td class="paramname">n_args</td><td>Number of arguments expected (should be 1). </td></tr>
+    <tr><td class="paramname">arg</td><td>Python argument. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>None on success, NULL on error. </dd></dl>
+
+</div>
+</div>
+<a id="a5a36766609fe6f9a6f7b436d305d29cd" name="a5a36766609fe6f9a6f7b436d305d29cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a36766609fe6f9a6f7b436d305d29cd">&#9670;&#160;</a></span>py_bv_set_range()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static PyObject * py_bv_set_range </td>
+          <td>(</td>
+          <td class="paramtype">PyObject *&#160;</td>
+          <td class="paramname"><em>self</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">PyObject *&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Python binding for BitVector.set_range(start, length). </p>
+<p>Calls <a class="el" href="bitvector_8h.html#a182f282c1a69c41d230ead44c24eec77" title="Set all bits in the half‑open range [start, start+len).">bv_set_range()</a> to set all bits in the half‑open range [start, start+length). Marks the hash cache invalid and returns None.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>A Python <a class="el" href="structPyBitVector.html" title="Python object containing a pointer to a native BitVector.">PyBitVector</a> instance. </td></tr>
+    <tr><td class="paramname">args</td><td>Tuple (start, length). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Py_None on success, NULL on error (with exception set). </dd></dl>
+<dl class="section since"><dt>Since</dt><dd>0.2.0 </dd></dl>
 
 </div>
 </div>
@@ -2160,7 +2378,7 @@ Variables</h2></td></tr>
 </div>
 </div>
 <a id="a821b81ab1b3cde6c5e96b908b1e9c62f" name="a821b81ab1b3cde6c5e96b908b1e9c62f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a821b81ab1b3cde6c5e96b908b1e9c62f">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[1/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a821b81ab1b3cde6c5e96b908b1e9c62f">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[1/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2212,7 +2430,7 @@ Variables</h2></td></tr>
 </div>
 </div>
 <a id="a68fec1a34b42e4faa10468e1b05d5a2a" name="a68fec1a34b42e4faa10468e1b05d5a2a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68fec1a34b42e4faa10468e1b05d5a2a">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[2/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a68fec1a34b42e4faa10468e1b05d5a2a">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[2/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2239,8 +2457,26 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="ab955783023262da680c8bcb054ba1963" name="ab955783023262da680c8bcb054ba1963"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab955783023262da680c8bcb054ba1963">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[3/12]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PyDoc_STRVAR </td>
+          <td>(</td>
+          <td class="paramtype">py_bv_clear_range__doc__&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a1c3c7189ce65be48e710bd5fa5a03f87" name="a1c3c7189ce65be48e710bd5fa5a03f87"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c3c7189ce65be48e710bd5fa5a03f87">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[3/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c3c7189ce65be48e710bd5fa5a03f87">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[4/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2268,7 +2504,7 @@ Variables</h2></td></tr>
 </div>
 </div>
 <a id="aadde30ba5221d4e50c79f97e995ee9cd" name="aadde30ba5221d4e50c79f97e995ee9cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aadde30ba5221d4e50c79f97e995ee9cd">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[4/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aadde30ba5221d4e50c79f97e995ee9cd">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[5/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2296,7 +2532,7 @@ Variables</h2></td></tr>
 </div>
 </div>
 <a id="aeb4f67838cd25681435f80de1ac59357" name="aeb4f67838cd25681435f80de1ac59357"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb4f67838cd25681435f80de1ac59357">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[5/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb4f67838cd25681435f80de1ac59357">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[6/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2330,7 +2566,7 @@ Variables</h2></td></tr>
 </div>
 </div>
 <a id="aeeb4bf04b7dba5886d67076d40167328" name="aeeb4bf04b7dba5886d67076d40167328"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeeb4bf04b7dba5886d67076d40167328">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[6/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aeeb4bf04b7dba5886d67076d40167328">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[7/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2357,8 +2593,26 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="ae43697e8ed705eb2f0b49517a3c533aa" name="ae43697e8ed705eb2f0b49517a3c533aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae43697e8ed705eb2f0b49517a3c533aa">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[8/12]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PyDoc_STRVAR </td>
+          <td>(</td>
+          <td class="paramtype">py_bv_flip_range__doc__&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a4f4f1973576a28570505fd8ebe44de7f" name="a4f4f1973576a28570505fd8ebe44de7f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4f4f1973576a28570505fd8ebe44de7f">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[7/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f4f1973576a28570505fd8ebe44de7f">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[9/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2386,7 +2640,7 @@ Variables</h2></td></tr>
 </div>
 </div>
 <a id="affc62d1304007fadd932f46d3952167e" name="affc62d1304007fadd932f46d3952167e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affc62d1304007fadd932f46d3952167e">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[8/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#affc62d1304007fadd932f46d3952167e">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[10/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2414,7 +2668,7 @@ Variables</h2></td></tr>
 </div>
 </div>
 <a id="a051fef147d43e118d591720c1ade81a7" name="a051fef147d43e118d591720c1ade81a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a051fef147d43e118d591720c1ade81a7">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[9/9]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a051fef147d43e118d591720c1ade81a7">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[11/12]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2435,6 +2689,24 @@ Variables</h2></td></tr>
           <td></td>
           <td>)</td>
           <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0168cda7bd3f2cbff1aa141999f47c7f" name="a0168cda7bd3f2cbff1aa141999f47c7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0168cda7bd3f2cbff1aa141999f47c7f">&#9670;&#160;</a></span>PyDoc_STRVAR() <span class="overload">[12/12]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">PyDoc_STRVAR </td>
+          <td>(</td>
+          <td class="paramtype">py_bv_set_range__doc__&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2493,6 +2765,12 @@ Variables</h2></td></tr>
 <div class="line">    {<span class="stringliteral">&quot;set&quot;</span>, (PyCFunction) <a class="code hl_function" href="binding_8c.html#a83289c5959b0cbc9ef594a00054b3d0a">py_bv_set</a>, METH_O, py_bv_set__doc__},</div>
 <div class="line">    {<span class="stringliteral">&quot;clear&quot;</span>, (PyCFunction) <a class="code hl_function" href="binding_8c.html#af3d93df3d5ac6faaa1366b7f31402798">py_bv_clear</a>, METH_O, py_bv_clear__doc__},</div>
 <div class="line">    {<span class="stringliteral">&quot;flip&quot;</span>, (PyCFunction) <a class="code hl_function" href="binding_8c.html#a38c1503708121705e22921b48fabf14c">py_bv_flip</a>, METH_O, py_bv_flip__doc__},</div>
+<div class="line">    {<span class="stringliteral">&quot;set_range&quot;</span>, (PyCFunction) <a class="code hl_function" href="binding_8c.html#a5a36766609fe6f9a6f7b436d305d29cd">py_bv_set_range</a>, METH_VARARGS,</div>
+<div class="line">     py_bv_set_range__doc__},</div>
+<div class="line">    {<span class="stringliteral">&quot;clear_range&quot;</span>, (PyCFunction) <a class="code hl_function" href="binding_8c.html#ac489bee1773936cb5e811e2d0252707f">py_bv_clear_range</a>, METH_VARARGS,</div>
+<div class="line">     py_bv_clear_range__doc__},</div>
+<div class="line">    {<span class="stringliteral">&quot;flip_range&quot;</span>, (PyCFunction) <a class="code hl_function" href="binding_8c.html#abaa5a8a1af4ebbd29f13a650c21f3af2">py_bv_flip_range</a>, METH_VARARGS,</div>
+<div class="line">     py_bv_flip_range__doc__},</div>
 <div class="line">    {<span class="stringliteral">&quot;rank&quot;</span>, (PyCFunction) <a class="code hl_function" href="binding_8c.html#a6596d7e4e07e24155651258c9091028b">py_bv_rank</a>, METH_O, py_bv_rank__doc__},</div>
 <div class="line">    {<span class="stringliteral">&quot;copy&quot;</span>, (PyCFunction) <a class="code hl_function" href="binding_8c.html#a67c5804ed6745718be7527a3aae4664a">py_bv_copy</a>, METH_NOARGS, py_bv_copy__doc__},</div>
 <div class="line">    {<span class="stringliteral">&quot;__copy__&quot;</span>, (PyCFunction) <a class="code hl_function" href="binding_8c.html#a67c5804ed6745718be7527a3aae4664a">py_bv_copy</a>, METH_NOARGS,</div>
@@ -2501,13 +2779,16 @@ Variables</h2></td></tr>
 <div class="line">     py_bv_deepcopy__doc__},</div>
 <div class="line">    {NULL, NULL, 0, NULL},</div>
 <div class="line">}</div>
-<div class="ttc" id="abinding_8c_html_a38c1503708121705e22921b48fabf14c"><div class="ttname"><a href="binding_8c.html#a38c1503708121705e22921b48fabf14c">py_bv_flip</a></div><div class="ttdeci">static PyObject * py_bv_flip(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.flip(index).</div><div class="ttdef"><b>Definition</b> binding.c:272</div></div>
-<div class="ttc" id="abinding_8c_html_a6596d7e4e07e24155651258c9091028b"><div class="ttname"><a href="binding_8c.html#a6596d7e4e07e24155651258c9091028b">py_bv_rank</a></div><div class="ttdeci">static PyObject * py_bv_rank(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.rank(index) → bool.</div><div class="ttdef"><b>Definition</b> binding.c:291</div></div>
-<div class="ttc" id="abinding_8c_html_a67c5804ed6745718be7527a3aae4664a"><div class="ttname"><a href="binding_8c.html#a67c5804ed6745718be7527a3aae4664a">py_bv_copy</a></div><div class="ttdeci">static PyObject * py_bv_copy(PyObject *self, PyObject *ignored)</div><div class="ttdoc">Python binding for BitVector.copy() → BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:114</div></div>
-<div class="ttc" id="abinding_8c_html_a83289c5959b0cbc9ef594a00054b3d0a"><div class="ttname"><a href="binding_8c.html#a83289c5959b0cbc9ef594a00054b3d0a">py_bv_set</a></div><div class="ttdeci">static PyObject * py_bv_set(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.set(index).</div><div class="ttdef"><b>Definition</b> binding.c:234</div></div>
-<div class="ttc" id="abinding_8c_html_a95f4a245c9973679b1f9af1379e81821"><div class="ttname"><a href="binding_8c.html#a95f4a245c9973679b1f9af1379e81821">py_bv_get</a></div><div class="ttdeci">static PyObject * py_bv_get(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.get(index) → bool.</div><div class="ttdef"><b>Definition</b> binding.c:215</div></div>
-<div class="ttc" id="abinding_8c_html_ad5569e465c62a44515af6f4aa324fc60"><div class="ttname"><a href="binding_8c.html#ad5569e465c62a44515af6f4aa324fc60">py_bv_deepcopy</a></div><div class="ttdeci">static PyObject * py_bv_deepcopy(PyObject *self, PyObject *memo)</div><div class="ttdoc">Python binding for BitVector.__deepcopy__(memo) → BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:132</div></div>
-<div class="ttc" id="abinding_8c_html_af3d93df3d5ac6faaa1366b7f31402798"><div class="ttname"><a href="binding_8c.html#af3d93df3d5ac6faaa1366b7f31402798">py_bv_clear</a></div><div class="ttdeci">static PyObject * py_bv_clear(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.clear(index).</div><div class="ttdef"><b>Definition</b> binding.c:253</div></div>
+<div class="ttc" id="abinding_8c_html_a38c1503708121705e22921b48fabf14c"><div class="ttname"><a href="binding_8c.html#a38c1503708121705e22921b48fabf14c">py_bv_flip</a></div><div class="ttdeci">static PyObject * py_bv_flip(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.flip(index).</div><div class="ttdef"><b>Definition</b> binding.c:306</div></div>
+<div class="ttc" id="abinding_8c_html_a5a36766609fe6f9a6f7b436d305d29cd"><div class="ttname"><a href="binding_8c.html#a5a36766609fe6f9a6f7b436d305d29cd">py_bv_set_range</a></div><div class="ttdeci">static PyObject * py_bv_set_range(PyObject *self, PyObject *args)</div><div class="ttdoc">Python binding for BitVector.set_range(start, length).</div><div class="ttdef"><b>Definition</b> binding.c:330</div></div>
+<div class="ttc" id="abinding_8c_html_a6596d7e4e07e24155651258c9091028b"><div class="ttname"><a href="binding_8c.html#a6596d7e4e07e24155651258c9091028b">py_bv_rank</a></div><div class="ttdeci">static PyObject * py_bv_rank(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.rank(index) → bool.</div><div class="ttdef"><b>Definition</b> binding.c:395</div></div>
+<div class="ttc" id="abinding_8c_html_a67c5804ed6745718be7527a3aae4664a"><div class="ttname"><a href="binding_8c.html#a67c5804ed6745718be7527a3aae4664a">py_bv_copy</a></div><div class="ttdeci">static PyObject * py_bv_copy(PyObject *self, PyObject *ignored)</div><div class="ttdoc">Python binding for BitVector.copy() → BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:120</div></div>
+<div class="ttc" id="abinding_8c_html_a83289c5959b0cbc9ef594a00054b3d0a"><div class="ttname"><a href="binding_8c.html#a83289c5959b0cbc9ef594a00054b3d0a">py_bv_set</a></div><div class="ttdeci">static PyObject * py_bv_set(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.set(index).</div><div class="ttdef"><b>Definition</b> binding.c:268</div></div>
+<div class="ttc" id="abinding_8c_html_a95f4a245c9973679b1f9af1379e81821"><div class="ttname"><a href="binding_8c.html#a95f4a245c9973679b1f9af1379e81821">py_bv_get</a></div><div class="ttdeci">static PyObject * py_bv_get(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.get(index) → bool.</div><div class="ttdef"><b>Definition</b> binding.c:250</div></div>
+<div class="ttc" id="abinding_8c_html_abaa5a8a1af4ebbd29f13a650c21f3af2"><div class="ttname"><a href="binding_8c.html#abaa5a8a1af4ebbd29f13a650c21f3af2">py_bv_flip_range</a></div><div class="ttdeci">static PyObject * py_bv_flip_range(PyObject *self, PyObject *args)</div><div class="ttdoc">Python binding for BitVector.flip_range(start, length).</div><div class="ttdef"><b>Definition</b> binding.c:376</div></div>
+<div class="ttc" id="abinding_8c_html_ac489bee1773936cb5e811e2d0252707f"><div class="ttname"><a href="binding_8c.html#ac489bee1773936cb5e811e2d0252707f">py_bv_clear_range</a></div><div class="ttdeci">static PyObject * py_bv_clear_range(PyObject *self, PyObject *args)</div><div class="ttdoc">Python binding for BitVector.clear_range(start, length).</div><div class="ttdef"><b>Definition</b> binding.c:353</div></div>
+<div class="ttc" id="abinding_8c_html_ad5569e465c62a44515af6f4aa324fc60"><div class="ttname"><a href="binding_8c.html#ad5569e465c62a44515af6f4aa324fc60">py_bv_deepcopy</a></div><div class="ttdeci">static PyObject * py_bv_deepcopy(PyObject *self, PyObject *memo)</div><div class="ttdoc">Python binding for BitVector.__deepcopy__(memo) → BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:138</div></div>
+<div class="ttc" id="abinding_8c_html_af3d93df3d5ac6faaa1366b7f31402798"><div class="ttname"><a href="binding_8c.html#af3d93df3d5ac6faaa1366b7f31402798">py_bv_clear</a></div><div class="ttdeci">static PyObject * py_bv_clear(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.clear(index).</div><div class="ttdef"><b>Definition</b> binding.c:287</div></div>
 </div><!-- fragment -->
 <p>Method table for <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> core methods. </p>
 
@@ -2539,7 +2820,7 @@ Variables</h2></td></tr>
 <div class="line">    .m_size = 0,</div>
 <div class="line">    .m_slots = <a class="code hl_variable" href="binding_8c.html#a843c32fa48b7e83c731f95efec9e8b3f">cbits_module_slots</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="abinding_8c_html_a843c32fa48b7e83c731f95efec9e8b3f"><div class="ttname"><a href="binding_8c.html#a843c32fa48b7e83c731f95efec9e8b3f">cbits_module_slots</a></div><div class="ttdeci">static PyModuleDef_Slot cbits_module_slots[]</div><div class="ttdoc">Module initialization slots.</div><div class="ttdef"><b>Definition</b> binding.c:1437</div></div>
+<div class="ttc" id="abinding_8c_html_a843c32fa48b7e83c731f95efec9e8b3f"><div class="ttname"><a href="binding_8c.html#a843c32fa48b7e83c731f95efec9e8b3f">cbits_module_slots</a></div><div class="ttdeci">static PyModuleDef_Slot cbits_module_slots[]</div><div class="ttdoc">Module initialization slots.</div><div class="ttdef"><b>Definition</b> binding.c:1600</div></div>
 </div><!-- fragment -->
 <p>Definition of the _cbits extension module. </p>
 <p>Describes the module’s name, docstring, memory footprint, and its initialization slot table.</p>
@@ -2570,7 +2851,7 @@ Variables</h2></td></tr>
 <div class="line">    {Py_mod_exec, <a class="code hl_function" href="binding_8c.html#a8f427b0cfdb1957c3605e10019f007bd">cbits_module_exec</a>},</div>
 <div class="line">    {0, NULL},</div>
 <div class="line">}</div>
-<div class="ttc" id="abinding_8c_html_a8f427b0cfdb1957c3605e10019f007bd"><div class="ttname"><a href="binding_8c.html#a8f427b0cfdb1957c3605e10019f007bd">cbits_module_exec</a></div><div class="ttdeci">static int cbits_module_exec(PyObject *module)</div><div class="ttdoc">Module exec callback: register BitVector type and metadata.</div><div class="ttdef"><b>Definition</b> binding.c:1365</div></div>
+<div class="ttc" id="abinding_8c_html_a8f427b0cfdb1957c3605e10019f007bd"><div class="ttname"><a href="binding_8c.html#a8f427b0cfdb1957c3605e10019f007bd">cbits_module_exec</a></div><div class="ttdeci">static int cbits_module_exec(PyObject *module)</div><div class="ttdoc">Module exec callback: register BitVector type and metadata.</div><div class="ttdef"><b>Definition</b> binding.c:1528</div></div>
 </div><!-- fragment -->
 <p>Module initialization slots. </p>
 <p>Lists callbacks invoked when the module is loaded; here, we use Py_mod_exec to register types and module constants.</p>
@@ -2602,8 +2883,8 @@ Variables</h2></td></tr>
 <div class="line">     PyDoc_STR(<span class="stringliteral">&quot;The number of bits&quot;</span>), NULL},</div>
 <div class="line">    {NULL},</div>
 <div class="line">}</div>
-<div class="ttc" id="abinding_8c_html_a470ee7402be5662a9f0651631ec1f172"><div class="ttname"><a href="binding_8c.html#a470ee7402be5662a9f0651631ec1f172">py_bv_set_size</a></div><div class="ttdeci">static int py_bv_set_size(PyObject *self, void *closure)</div><div class="ttdoc">Setter for the read-only &quot;bits&quot; property, always raises.</div><div class="ttdef"><b>Definition</b> binding.c:1192</div></div>
-<div class="ttc" id="abinding_8c_html_a676b77aaaa3053d90f7ea7f95e22e8eb"><div class="ttname"><a href="binding_8c.html#a676b77aaaa3053d90f7ea7f95e22e8eb">py_bv_get_size</a></div><div class="ttdeci">static PyObject * py_bv_get_size(PyObject *self, void *closure)</div><div class="ttdoc">Getter for the read-only &quot;bits&quot; property.</div><div class="ttdef"><b>Definition</b> binding.c:1179</div></div>
+<div class="ttc" id="abinding_8c_html_a470ee7402be5662a9f0651631ec1f172"><div class="ttname"><a href="binding_8c.html#a470ee7402be5662a9f0651631ec1f172">py_bv_set_size</a></div><div class="ttdeci">static int py_bv_set_size(PyObject *self, void *closure)</div><div class="ttdoc">Setter for the read-only &quot;bits&quot; property, always raises.</div><div class="ttdef"><b>Definition</b> binding.c:1355</div></div>
+<div class="ttc" id="abinding_8c_html_a676b77aaaa3053d90f7ea7f95e22e8eb"><div class="ttname"><a href="binding_8c.html#a676b77aaaa3053d90f7ea7f95e22e8eb">py_bv_get_size</a></div><div class="ttdeci">static PyObject * py_bv_get_size(PyObject *self, void *closure)</div><div class="ttdoc">Getter for the read-only &quot;bits&quot; property.</div><div class="ttdef"><b>Definition</b> binding.c:1342</div></div>
 </div><!-- fragment -->
 <p>Property definitions for the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> type. </p>
 <p>This table lists all read-only and writable properties exposed on the Python <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> object.</p>
@@ -2660,28 +2941,28 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line">    {0, 0},</div>
 <div class="line">}</div>
-<div class="ttc" id="abinding_8c_html_a08bbcefc5bea6072787075f0a7e305c8"><div class="ttname"><a href="binding_8c.html#a08bbcefc5bea6072787075f0a7e305c8">py_bv_str</a></div><div class="ttdeci">static PyObject * py_bv_str(PyObject *self)</div><div class="ttdoc">str for BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:390</div></div>
-<div class="ttc" id="abinding_8c_html_a09bf92aec4a330bd6b0e0ad143f3ab36"><div class="ttname"><a href="binding_8c.html#a09bf92aec4a330bd6b0e0ad143f3ab36">py_bv_and</a></div><div class="ttdeci">static PyObject * py_bv_and(PyObject *oA, PyObject *oB)</div><div class="ttdoc">and(BitVector, BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:878</div></div>
-<div class="ttc" id="abinding_8c_html_a1a9db01fecf7acf29d81e6af54c2b1a1"><div class="ttname"><a href="binding_8c.html#a1a9db01fecf7acf29d81e6af54c2b1a1">py_bv_subscript</a></div><div class="ttdeci">static PyObject * py_bv_subscript(PyObject *self, PyObject *arg)</div><div class="ttdoc">Implements BitVector.__getitem__ dispatch for index or slice.</div><div class="ttdef"><b>Definition</b> binding.c:550</div></div>
-<div class="ttc" id="abinding_8c_html_a21759f5b861d2e61454568931070553d"><div class="ttname"><a href="binding_8c.html#a21759f5b861d2e61454568931070553d">py_bv_invert</a></div><div class="ttdeci">static PyObject * py_bv_invert(PyObject *self)</div><div class="ttdoc">invert(BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:1130</div></div>
-<div class="ttc" id="abinding_8c_html_a21e08dec927792701cb73c6e6a1df927"><div class="ttname"><a href="binding_8c.html#a21e08dec927792701cb73c6e6a1df927">py_bv_len</a></div><div class="ttdeci">static Py_ssize_t py_bv_len(PyObject *self)</div><div class="ttdoc">len(BitVector) → number of bits.</div><div class="ttdef"><b>Definition</b> binding.c:451</div></div>
-<div class="ttc" id="abinding_8c_html_a239e981d1a323d9bce7c018f08b5f081"><div class="ttname"><a href="binding_8c.html#a239e981d1a323d9bce7c018f08b5f081">py_bv_ixor</a></div><div class="ttdeci">static PyObject * py_bv_ixor(PyObject *self, PyObject *arg)</div><div class="ttdoc">ixor(BitVector, BitVector) in-place XOR.</div><div class="ttdef"><b>Definition</b> binding.c:1092</div></div>
-<div class="ttc" id="abinding_8c_html_a25220119ba92df39434d4868745481b1"><div class="ttname"><a href="binding_8c.html#a25220119ba92df39434d4868745481b1">py_bv_iter</a></div><div class="ttdeci">static PyObject * py_bv_iter(PyObject *self)</div><div class="ttdoc">Create and return a new BitVector iterator.</div><div class="ttdef"><b>Definition</b> binding.c:849</div></div>
-<div class="ttc" id="abinding_8c_html_a2a23db722235b739cd8ca7af6aa096dd"><div class="ttname"><a href="binding_8c.html#a2a23db722235b739cd8ca7af6aa096dd">py_bv_ior</a></div><div class="ttdeci">static PyObject * py_bv_ior(PyObject *self, PyObject *arg)</div><div class="ttdoc">ior(BitVector, BitVector) in-place OR.</div><div class="ttdef"><b>Definition</b> binding.c:1008</div></div>
-<div class="ttc" id="abinding_8c_html_a2a48ec54bd2020b5f9c53ccb60efad9e"><div class="ttname"><a href="binding_8c.html#a2a48ec54bd2020b5f9c53ccb60efad9e">py_bv_bool</a></div><div class="ttdeci">static int py_bv_bool(PyObject *self)</div><div class="ttdoc">bool(BitVector) → boolean.</div><div class="ttdef"><b>Definition</b> binding.c:1162</div></div>
-<div class="ttc" id="abinding_8c_html_a2d55c861d7fdf3b0e9b95497fdb6a6e4"><div class="ttname"><a href="binding_8c.html#a2d55c861d7fdf3b0e9b95497fdb6a6e4">py_bv_free</a></div><div class="ttdeci">static void py_bv_free(PyObject *self)</div><div class="ttdoc">Deallocate a PyBitVector object.</div><div class="ttdef"><b>Definition</b> binding.c:79</div></div>
-<div class="ttc" id="abinding_8c_html_a2f67615df466f74b6f90c13dc37589ff"><div class="ttname"><a href="binding_8c.html#a2f67615df466f74b6f90c13dc37589ff">py_bv_hash</a></div><div class="ttdeci">static Py_hash_t py_bv_hash(PyObject *self)</div><div class="ttdoc">hash for a BitVector object.</div><div class="ttdef"><b>Definition</b> binding.c:431</div></div>
-<div class="ttc" id="abinding_8c_html_a33699ee8e583f6b69da8d7a4b011de12"><div class="ttname"><a href="binding_8c.html#a33699ee8e583f6b69da8d7a4b011de12">py_bv_new</a></div><div class="ttdeci">static PyObject * py_bv_new(PyTypeObject *type, PyObject *args, PyObject *kwds)</div><div class="ttdoc">new for BitVector: allocate the Python object.</div><div class="ttdef"><b>Definition</b> binding.c:97</div></div>
-<div class="ttc" id="abinding_8c_html_a510d7b30401e3d3bd188a9a7de61803d"><div class="ttname"><a href="binding_8c.html#a510d7b30401e3d3bd188a9a7de61803d">py_bv_init</a></div><div class="ttdeci">static int py_bv_init(PyObject *self, PyObject *args, PyObject *kwds)</div><div class="ttdoc">init for BitVector(size): allocate the underlying C BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:155</div></div>
-<div class="ttc" id="abinding_8c_html_a5bc423083838b34b1ff8c04a410a35e3"><div class="ttname"><a href="binding_8c.html#a5bc423083838b34b1ff8c04a410a35e3">BitVector_methods</a></div><div class="ttdeci">static PyMethodDef BitVector_methods[]</div><div class="ttdoc">Method table for BitVector core methods.</div><div class="ttdef"><b>Definition</b> binding.c:353</div></div>
-<div class="ttc" id="abinding_8c_html_a7c29dda376c942eaafd3e1297c392b6c"><div class="ttname"><a href="binding_8c.html#a7c29dda376c942eaafd3e1297c392b6c">py_bv_repr</a></div><div class="ttdeci">static PyObject * py_bv_repr(PyObject *self)</div><div class="ttdoc">repr for BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:377</div></div>
-<div class="ttc" id="abinding_8c_html_a907d626799062d832d366b69aa7755ef"><div class="ttname"><a href="binding_8c.html#a907d626799062d832d366b69aa7755ef">py_bv_richcompare</a></div><div class="ttdeci">static PyObject * py_bv_richcompare(PyObject *a, PyObject *b, int op)</div><div class="ttdoc">Rich comparison (== and !=) for BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:405</div></div>
-<div class="ttc" id="abinding_8c_html_ac16b0c5b44b6cdd492918469bcbf7f96"><div class="ttname"><a href="binding_8c.html#ac16b0c5b44b6cdd492918469bcbf7f96">py_bv_contains</a></div><div class="ttdeci">static int py_bv_contains(PyObject *self, PyObject *value)</div><div class="ttdoc">contains(BitVector, other) → boolean.</div><div class="ttdef"><b>Definition</b> binding.c:726</div></div>
-<div class="ttc" id="abinding_8c_html_ac80404db499e4bc108a6ac98bf2a117e"><div class="ttname"><a href="binding_8c.html#ac80404db499e4bc108a6ac98bf2a117e">py_bv_or</a></div><div class="ttdeci">static PyObject * py_bv_or(PyObject *oA, PyObject *oB)</div><div class="ttdoc">or(BitVector, BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:963</div></div>
-<div class="ttc" id="abinding_8c_html_ad100d02b61be2f9082ce249bc3099ddc"><div class="ttname"><a href="binding_8c.html#ad100d02b61be2f9082ce249bc3099ddc">py_bv_iand</a></div><div class="ttdeci">static PyObject * py_bv_iand(PyObject *self, PyObject *arg)</div><div class="ttdoc">iand(BitVector, BitVector) in-place AND.</div><div class="ttdef"><b>Definition</b> binding.c:923</div></div>
-<div class="ttc" id="abinding_8c_html_adde6296db3ce5161082498d618fda1ea"><div class="ttname"><a href="binding_8c.html#adde6296db3ce5161082498d618fda1ea">py_bv_ass_subscript</a></div><div class="ttdeci">static int py_bv_ass_subscript(PyObject *self, PyObject *arg, PyObject *value)</div><div class="ttdoc">Implements BitVector.__setitem__ dispatch for index or slice.</div><div class="ttdef"><b>Definition</b> binding.c:685</div></div>
-<div class="ttc" id="abinding_8c_html_aed9d2206089523b6bc6fbac996e9895e"><div class="ttname"><a href="binding_8c.html#aed9d2206089523b6bc6fbac996e9895e">PyBitVector_getset</a></div><div class="ttdeci">static PyGetSetDef PyBitVector_getset[]</div><div class="ttdoc">Property definitions for the BitVector type.</div><div class="ttdef"><b>Definition</b> binding.c:1206</div></div>
-<div class="ttc" id="abinding_8c_html_aefe0bb25553ffc47f530cf93cb46ca42"><div class="ttname"><a href="binding_8c.html#aefe0bb25553ffc47f530cf93cb46ca42">py_bv_xor</a></div><div class="ttdeci">static PyObject * py_bv_xor(PyObject *oA, PyObject *oB)</div><div class="ttdoc">xor(BitVector, BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:1047</div></div>
+<div class="ttc" id="abinding_8c_html_a08bbcefc5bea6072787075f0a7e305c8"><div class="ttname"><a href="binding_8c.html#a08bbcefc5bea6072787075f0a7e305c8">py_bv_str</a></div><div class="ttdeci">static PyObject * py_bv_str(PyObject *self)</div><div class="ttdoc">str for BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:518</div></div>
+<div class="ttc" id="abinding_8c_html_a09bf92aec4a330bd6b0e0ad143f3ab36"><div class="ttname"><a href="binding_8c.html#a09bf92aec4a330bd6b0e0ad143f3ab36">py_bv_and</a></div><div class="ttdeci">static PyObject * py_bv_and(PyObject *oA, PyObject *oB)</div><div class="ttdoc">and(BitVector, BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:1018</div></div>
+<div class="ttc" id="abinding_8c_html_a1a9db01fecf7acf29d81e6af54c2b1a1"><div class="ttname"><a href="binding_8c.html#a1a9db01fecf7acf29d81e6af54c2b1a1">py_bv_subscript</a></div><div class="ttdeci">static PyObject * py_bv_subscript(PyObject *self, PyObject *arg)</div><div class="ttdoc">Implements BitVector.__getitem__ dispatch for index or slice.</div><div class="ttdef"><b>Definition</b> binding.c:688</div></div>
+<div class="ttc" id="abinding_8c_html_a21759f5b861d2e61454568931070553d"><div class="ttname"><a href="binding_8c.html#a21759f5b861d2e61454568931070553d">py_bv_invert</a></div><div class="ttdeci">static PyObject * py_bv_invert(PyObject *self)</div><div class="ttdoc">invert(BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:1291</div></div>
+<div class="ttc" id="abinding_8c_html_a21e08dec927792701cb73c6e6a1df927"><div class="ttname"><a href="binding_8c.html#a21e08dec927792701cb73c6e6a1df927">py_bv_len</a></div><div class="ttdeci">static Py_ssize_t py_bv_len(PyObject *self)</div><div class="ttdoc">len(BitVector) → number of bits.</div><div class="ttdef"><b>Definition</b> binding.c:589</div></div>
+<div class="ttc" id="abinding_8c_html_a239e981d1a323d9bce7c018f08b5f081"><div class="ttname"><a href="binding_8c.html#a239e981d1a323d9bce7c018f08b5f081">py_bv_ixor</a></div><div class="ttdeci">static PyObject * py_bv_ixor(PyObject *self, PyObject *arg)</div><div class="ttdoc">ixor(BitVector, BitVector) in-place XOR.</div><div class="ttdef"><b>Definition</b> binding.c:1249</div></div>
+<div class="ttc" id="abinding_8c_html_a25220119ba92df39434d4868745481b1"><div class="ttname"><a href="binding_8c.html#a25220119ba92df39434d4868745481b1">py_bv_iter</a></div><div class="ttdeci">static PyObject * py_bv_iter(PyObject *self)</div><div class="ttdoc">Create and return a new BitVector iterator.</div><div class="ttdef"><b>Definition</b> binding.c:989</div></div>
+<div class="ttc" id="abinding_8c_html_a2a23db722235b739cd8ca7af6aa096dd"><div class="ttname"><a href="binding_8c.html#a2a23db722235b739cd8ca7af6aa096dd">py_bv_ior</a></div><div class="ttdeci">static PyObject * py_bv_ior(PyObject *self, PyObject *arg)</div><div class="ttdoc">ior(BitVector, BitVector) in-place OR.</div><div class="ttdef"><b>Definition</b> binding.c:1158</div></div>
+<div class="ttc" id="abinding_8c_html_a2a48ec54bd2020b5f9c53ccb60efad9e"><div class="ttname"><a href="binding_8c.html#a2a48ec54bd2020b5f9c53ccb60efad9e">py_bv_bool</a></div><div class="ttdeci">static int py_bv_bool(PyObject *self)</div><div class="ttdoc">bool(BitVector) → boolean.</div><div class="ttdef"><b>Definition</b> binding.c:1325</div></div>
+<div class="ttc" id="abinding_8c_html_a2d55c861d7fdf3b0e9b95497fdb6a6e4"><div class="ttname"><a href="binding_8c.html#a2d55c861d7fdf3b0e9b95497fdb6a6e4">py_bv_free</a></div><div class="ttdeci">static void py_bv_free(PyObject *self)</div><div class="ttdoc">Deallocate a PyBitVector object.</div><div class="ttdef"><b>Definition</b> binding.c:84</div></div>
+<div class="ttc" id="abinding_8c_html_a2f67615df466f74b6f90c13dc37589ff"><div class="ttname"><a href="binding_8c.html#a2f67615df466f74b6f90c13dc37589ff">py_bv_hash</a></div><div class="ttdeci">static Py_hash_t py_bv_hash(PyObject *self)</div><div class="ttdoc">hash for a BitVector object.</div><div class="ttdef"><b>Definition</b> binding.c:560</div></div>
+<div class="ttc" id="abinding_8c_html_a33699ee8e583f6b69da8d7a4b011de12"><div class="ttname"><a href="binding_8c.html#a33699ee8e583f6b69da8d7a4b011de12">py_bv_new</a></div><div class="ttdeci">static PyObject * py_bv_new(PyTypeObject *type, PyObject *args, PyObject *kwds)</div><div class="ttdoc">new for BitVector: allocate the Python object.</div><div class="ttdef"><b>Definition</b> binding.c:102</div></div>
+<div class="ttc" id="abinding_8c_html_a510d7b30401e3d3bd188a9a7de61803d"><div class="ttname"><a href="binding_8c.html#a510d7b30401e3d3bd188a9a7de61803d">py_bv_init</a></div><div class="ttdeci">static int py_bv_init(PyObject *self, PyObject *args, PyObject *kwds)</div><div class="ttdoc">init for BitVector(size): allocate the underlying C BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:161</div></div>
+<div class="ttc" id="abinding_8c_html_a5bc423083838b34b1ff8c04a410a35e3"><div class="ttname"><a href="binding_8c.html#a5bc423083838b34b1ff8c04a410a35e3">BitVector_methods</a></div><div class="ttdeci">static PyMethodDef BitVector_methods[]</div><div class="ttdoc">Method table for BitVector core methods.</div><div class="ttdef"><b>Definition</b> binding.c:475</div></div>
+<div class="ttc" id="abinding_8c_html_a7c29dda376c942eaafd3e1297c392b6c"><div class="ttname"><a href="binding_8c.html#a7c29dda376c942eaafd3e1297c392b6c">py_bv_repr</a></div><div class="ttdeci">static PyObject * py_bv_repr(PyObject *self)</div><div class="ttdoc">repr for BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:505</div></div>
+<div class="ttc" id="abinding_8c_html_a907d626799062d832d366b69aa7755ef"><div class="ttname"><a href="binding_8c.html#a907d626799062d832d366b69aa7755ef">py_bv_richcompare</a></div><div class="ttdeci">static PyObject * py_bv_richcompare(PyObject *a, PyObject *b, int op)</div><div class="ttdoc">Rich comparison (== and !=) for BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:533</div></div>
+<div class="ttc" id="abinding_8c_html_ac16b0c5b44b6cdd492918469bcbf7f96"><div class="ttname"><a href="binding_8c.html#ac16b0c5b44b6cdd492918469bcbf7f96">py_bv_contains</a></div><div class="ttdeci">static int py_bv_contains(PyObject *self, PyObject *value)</div><div class="ttdoc">contains(BitVector, other) → boolean.</div><div class="ttdef"><b>Definition</b> binding.c:866</div></div>
+<div class="ttc" id="abinding_8c_html_ac80404db499e4bc108a6ac98bf2a117e"><div class="ttname"><a href="binding_8c.html#ac80404db499e4bc108a6ac98bf2a117e">py_bv_or</a></div><div class="ttdeci">static PyObject * py_bv_or(PyObject *oA, PyObject *oB)</div><div class="ttdoc">or(BitVector, BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:1110</div></div>
+<div class="ttc" id="abinding_8c_html_ad100d02b61be2f9082ce249bc3099ddc"><div class="ttname"><a href="binding_8c.html#ad100d02b61be2f9082ce249bc3099ddc">py_bv_iand</a></div><div class="ttdeci">static PyObject * py_bv_iand(PyObject *self, PyObject *arg)</div><div class="ttdoc">iand(BitVector, BitVector) in-place AND.</div><div class="ttdef"><b>Definition</b> binding.c:1066</div></div>
+<div class="ttc" id="abinding_8c_html_adde6296db3ce5161082498d618fda1ea"><div class="ttname"><a href="binding_8c.html#adde6296db3ce5161082498d618fda1ea">py_bv_ass_subscript</a></div><div class="ttdeci">static int py_bv_ass_subscript(PyObject *self, PyObject *arg, PyObject *value)</div><div class="ttdoc">Implements BitVector.__setitem__ dispatch for index or slice.</div><div class="ttdef"><b>Definition</b> binding.c:825</div></div>
+<div class="ttc" id="abinding_8c_html_aed9d2206089523b6bc6fbac996e9895e"><div class="ttname"><a href="binding_8c.html#aed9d2206089523b6bc6fbac996e9895e">PyBitVector_getset</a></div><div class="ttdeci">static PyGetSetDef PyBitVector_getset[]</div><div class="ttdoc">Property definitions for the BitVector type.</div><div class="ttdef"><b>Definition</b> binding.c:1369</div></div>
+<div class="ttc" id="abinding_8c_html_aefe0bb25553ffc47f530cf93cb46ca42"><div class="ttname"><a href="binding_8c.html#aefe0bb25553ffc47f530cf93cb46ca42">py_bv_xor</a></div><div class="ttdeci">static PyObject * py_bv_xor(PyObject *oA, PyObject *oB)</div><div class="ttdoc">xor(BitVector, BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:1201</div></div>
 </div><!-- fragment -->
 <p>Slot table for the <a class="el" href="structPyBitVector.html" title="Python object containing a pointer to a native BitVector.">PyBitVector</a> type. </p>
 <p>Maps Python’s type callbacks (new, init, dealloc, repr, etc.) and protocol slots (sequence, number, richcompare) to our C functions.</p>
@@ -2707,8 +2988,8 @@ Variables</h2></td></tr>
 <div class="line">    .flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE,</div>
 <div class="line">    .slots = <a class="code hl_variable" href="binding_8c.html#a3c88cffd30f4952e8257b1cbe6571b27">PyBitVector_slots</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="abinding_8c_html_a3c88cffd30f4952e8257b1cbe6571b27"><div class="ttname"><a href="binding_8c.html#a3c88cffd30f4952e8257b1cbe6571b27">PyBitVector_slots</a></div><div class="ttdeci">static PyType_Slot PyBitVector_slots[]</div><div class="ttdoc">Slot table for the PyBitVector type.</div><div class="ttdef"><b>Definition</b> binding.c:1239</div></div>
-<div class="ttc" id="astructPyBitVector_html"><div class="ttname"><a href="structPyBitVector.html">PyBitVector</a></div><div class="ttdoc">Python object containing a pointer to a native BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:45</div></div>
+<div class="ttc" id="abinding_8c_html_a3c88cffd30f4952e8257b1cbe6571b27"><div class="ttname"><a href="binding_8c.html#a3c88cffd30f4952e8257b1cbe6571b27">PyBitVector_slots</a></div><div class="ttdeci">static PyType_Slot PyBitVector_slots[]</div><div class="ttdoc">Slot table for the PyBitVector type.</div><div class="ttdef"><b>Definition</b> binding.c:1402</div></div>
+<div class="ttc" id="astructPyBitVector_html"><div class="ttname"><a href="structPyBitVector.html">PyBitVector</a></div><div class="ttdoc">Python object containing a pointer to a native BitVector.</div><div class="ttdef"><b>Definition</b> binding.c:48</div></div>
 </div><!-- fragment -->
 <p>Type specification for <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>. </p>
 <p>This structure describes the Python type name, size, inheritance flags, and slot table used to create the type.</p>
@@ -2741,8 +3022,8 @@ Variables</h2></td></tr>
 <div class="line">    {Py_tp_iternext, <a class="code hl_function" href="binding_8c.html#a778fdf5cc237723a965b88bf6011f519">py_bviter_iternext</a>},</div>
 <div class="line">    {0, 0},</div>
 <div class="line">}</div>
-<div class="ttc" id="abinding_8c_html_a778fdf5cc237723a965b88bf6011f519"><div class="ttname"><a href="binding_8c.html#a778fdf5cc237723a965b88bf6011f519">py_bviter_iternext</a></div><div class="ttdeci">static PyObject * py_bviter_iternext(PyObject *self)</div><div class="ttdoc">Return the next bit as a Python boolean.</div><div class="ttdef"><b>Definition</b> binding.c:781</div></div>
-<div class="ttc" id="abinding_8c_html_a881c976bd771094e5f63e77dbbacb95b"><div class="ttname"><a href="binding_8c.html#a881c976bd771094e5f63e77dbbacb95b">py_bviter_dealloc</a></div><div class="ttdeci">static void py_bviter_dealloc(PyObject *self)</div><div class="ttdoc">Deallocate a BitVector iterator object.</div><div class="ttdef"><b>Definition</b> binding.c:763</div></div>
+<div class="ttc" id="abinding_8c_html_a778fdf5cc237723a965b88bf6011f519"><div class="ttname"><a href="binding_8c.html#a778fdf5cc237723a965b88bf6011f519">py_bviter_iternext</a></div><div class="ttdeci">static PyObject * py_bviter_iternext(PyObject *self)</div><div class="ttdoc">Return the next bit as a Python boolean.</div><div class="ttdef"><b>Definition</b> binding.c:921</div></div>
+<div class="ttc" id="abinding_8c_html_a881c976bd771094e5f63e77dbbacb95b"><div class="ttname"><a href="binding_8c.html#a881c976bd771094e5f63e77dbbacb95b">py_bviter_dealloc</a></div><div class="ttdeci">static void py_bviter_dealloc(PyObject *self)</div><div class="ttdoc">Deallocate a BitVector iterator object.</div><div class="ttdef"><b>Definition</b> binding.c:903</div></div>
 </div><!-- fragment -->
 <p>Slots for the _BitVectorIter type. </p>
 <p>Defines deallocator, <b>iter</b> and <b>next</b>. </p>
@@ -2774,8 +3055,8 @@ Variables</h2></td></tr>
 <div class="line">    .flags = Py_TPFLAGS_DEFAULT,</div>
 <div class="line">    .slots = <a class="code hl_variable" href="binding_8c.html#a5741aa05e43e6ec2d650341f5d4b1a0b">PyBitVectorIter_slots</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="abinding_8c_html_a5741aa05e43e6ec2d650341f5d4b1a0b"><div class="ttname"><a href="binding_8c.html#a5741aa05e43e6ec2d650341f5d4b1a0b">PyBitVectorIter_slots</a></div><div class="ttdeci">static PyType_Slot PyBitVectorIter_slots[]</div><div class="ttdoc">Slots for the _BitVectorIter type.</div><div class="ttdef"><b>Definition</b> binding.c:817</div></div>
-<div class="ttc" id="astructPyBitVectorIter_html"><div class="ttname"><a href="structPyBitVectorIter.html">PyBitVectorIter</a></div><div class="ttdoc">Iterator structure for PyBitVector.</div><div class="ttdef"><b>Definition</b> binding.c:744</div></div>
+<div class="ttc" id="abinding_8c_html_a5741aa05e43e6ec2d650341f5d4b1a0b"><div class="ttname"><a href="binding_8c.html#a5741aa05e43e6ec2d650341f5d4b1a0b">PyBitVectorIter_slots</a></div><div class="ttdeci">static PyType_Slot PyBitVectorIter_slots[]</div><div class="ttdoc">Slots for the _BitVectorIter type.</div><div class="ttdef"><b>Definition</b> binding.c:957</div></div>
+<div class="ttc" id="astructPyBitVectorIter_html"><div class="ttname"><a href="structPyBitVectorIter.html">PyBitVectorIter</a></div><div class="ttdoc">Iterator structure for PyBitVector.</div><div class="ttdef"><b>Definition</b> binding.c:884</div></div>
 </div><!-- fragment -->
 <p>Type specification for cbits._BitVectorIter. </p>
 <p>This is the bit‐wise iterator returned by BitVector.__iter__(). </p>
@@ -2823,7 +3104,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 8 2025 14:54:20 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Thu Oct 9 2025 16:06:22 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

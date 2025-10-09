@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cbits<span id="projectnumber">&#160;0.1.1</span>
+   <div id="projectname">cbits<span id="projectnumber">&#160;0.2.0</span>
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
@@ -122,6 +122,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a222e3ed52b6f2c3079429f0cd4da5c58" id="r_a222e3ed52b6f2c3079429f0cd4da5c58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8c.html#a222e3ed52b6f2c3079429f0cd4da5c58">bv_free</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv)</td></tr>
 <tr class="memdesc:a222e3ed52b6f2c3079429f0cd4da5c58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all memory associated with a <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>.  <br /></td></tr>
 <tr class="separator:a222e3ed52b6f2c3079429f0cd4da5c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a182f282c1a69c41d230ead44c24eec77" id="r_a182f282c1a69c41d230ead44c24eec77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8c.html#a182f282c1a69c41d230ead44c24eec77">bv_set_range</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv, size_t start, size_t len)</td></tr>
+<tr class="memdesc:a182f282c1a69c41d230ead44c24eec77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all bits in the half‑open range [start, start+len).  <br /></td></tr>
+<tr class="separator:a182f282c1a69c41d230ead44c24eec77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e326b3e801d3ae2c8372fd66a493b21" id="r_a7e326b3e801d3ae2c8372fd66a493b21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8c.html#a7e326b3e801d3ae2c8372fd66a493b21">bv_clear_range</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv, size_t start, size_t len)</td></tr>
+<tr class="memdesc:a7e326b3e801d3ae2c8372fd66a493b21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all bits in the half‑open range [start, start+len).  <br /></td></tr>
+<tr class="separator:a7e326b3e801d3ae2c8372fd66a493b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e3fbc3abe02f0db7577453638cb46b7" id="r_a2e3fbc3abe02f0db7577453638cb46b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8c.html#a2e3fbc3abe02f0db7577453638cb46b7">bv_flip_range</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv, size_t start, size_t len)</td></tr>
+<tr class="memdesc:a2e3fbc3abe02f0db7577453638cb46b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle (flip) all bits in the half‑open range [start, start+len).  <br /></td></tr>
+<tr class="separator:a2e3fbc3abe02f0db7577453638cb46b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a512988fb7c0004571bd8edefc67dbe0c" id="r_a512988fb7c0004571bd8edefc67dbe0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8c.html#a512988fb7c0004571bd8edefc67dbe0c">bv_build_rank</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv)</td></tr>
 <tr class="memdesc:a512988fb7c0004571bd8edefc67dbe0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build or rebuild the rank tables for a <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>.  <br /></td></tr>
 <tr class="separator:a512988fb7c0004571bd8edefc67dbe0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,7 +153,7 @@ Functions</h2></td></tr>
 </ul>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="bitvector_8h.html" title="Packed BitVector C-API declarations.">include/bitvector.h</a> </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>lambdaphoenix </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.1.1 </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.2.0 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 lambdaphoenix </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a512988fb7c0004571bd8edefc67dbe0c" name="a512988fb7c0004571bd8edefc67dbe0c"></a>
@@ -170,6 +179,51 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a7e326b3e801d3ae2c8372fd66a493b21" name="a7e326b3e801d3ae2c8372fd66a493b21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e326b3e801d3ae2c8372fd66a493b21">&#9670;&#160;</a></span>bv_clear_range()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bv_clear_range </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBitVector.html">BitVector</a> *&#160;</td>
+          <td class="paramname"><em>bv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Clear all bits in the half‑open range [start, start+len). </p>
+<p>Marks the rank table dirty so it will be rebuilt on next rank query. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bv</td><td>Pointer to the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> </td></tr>
+    <tr><td class="paramname">start</td><td>Start bit index </td></tr>
+    <tr><td class="paramname">len</td><td>Number of bits to clear </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section since"><dt>Since</dt><dd>0.2.0 </dd></dl>
 
 </div>
 </div>
@@ -276,6 +330,51 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a2e3fbc3abe02f0db7577453638cb46b7" name="a2e3fbc3abe02f0db7577453638cb46b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e3fbc3abe02f0db7577453638cb46b7">&#9670;&#160;</a></span>bv_flip_range()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bv_flip_range </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBitVector.html">BitVector</a> *&#160;</td>
+          <td class="paramname"><em>bv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Toggle (flip) all bits in the half‑open range [start, start+len). </p>
+<p>Marks the rank table dirty so it will be rebuilt on next rank query. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bv</td><td>Pointer to the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> </td></tr>
+    <tr><td class="paramname">start</td><td>Start bit index </td></tr>
+    <tr><td class="paramname">len</td><td>Number of bits to flip </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section since"><dt>Since</dt><dd>0.2.0 </dd></dl>
+
+</div>
+</div>
 <a id="a222e3ed52b6f2c3079429f0cd4da5c58" name="a222e3ed52b6f2c3079429f0cd4da5c58"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a222e3ed52b6f2c3079429f0cd4da5c58">&#9670;&#160;</a></span>bv_free()</h2>
 
@@ -367,6 +466,51 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a182f282c1a69c41d230ead44c24eec77" name="a182f282c1a69c41d230ead44c24eec77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a182f282c1a69c41d230ead44c24eec77">&#9670;&#160;</a></span>bv_set_range()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void bv_set_range </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBitVector.html">BitVector</a> *&#160;</td>
+          <td class="paramname"><em>bv</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>start</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set all bits in the half‑open range [start, start+len). </p>
+<p>Marks the rank table dirty so it will be rebuilt on next rank query. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">bv</td><td>Pointer to the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> </td></tr>
+    <tr><td class="paramname">start</td><td>Start bit index </td></tr>
+    <tr><td class="paramname">len</td><td>Number of bits to set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section since"><dt>Since</dt><dd>0.2.0 </dd></dl>
+
+</div>
+</div>
 <a id="ad51d2ff48f225f8f8d5da50fdf7a63fc" name="ad51d2ff48f225f8f8d5da50fdf7a63fc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad51d2ff48f225f8f8d5da50fdf7a63fc">&#9670;&#160;</a></span>words_for_bits()</h2>
 
@@ -406,7 +550,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 8 2025 14:54:20 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Thu Oct 9 2025 16:06:22 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

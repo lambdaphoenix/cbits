@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cbits<span id="projectnumber">&#160;0.1.1</span>
+   <div id="projectname">cbits<span id="projectnumber">&#160;0.2.0</span>
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
@@ -95,9 +95,12 @@ Collaboration diagram for PyBitVector:</div>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a3ea374d89e2cc07b1dd2f110b7d0ee30" id="r_a3ea374d89e2cc07b1dd2f110b7d0ee30"><td class="memItemLeft" align="right" valign="top">PyObject_HEAD <a class="el" href="structBitVector.html">BitVector</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPyBitVector.html#a3ea374d89e2cc07b1dd2f110b7d0ee30">bv</a></td></tr>
 <tr class="separator:a3ea374d89e2cc07b1dd2f110b7d0ee30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a297ba834d45210685f960e2a16be156d" id="r_a297ba834d45210685f960e2a16be156d"><td class="memItemLeft" align="right" valign="top">Py_hash_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPyBitVector.html#a297ba834d45210685f960e2a16be156d">hash_cache</a></td></tr>
+<tr class="separator:a297ba834d45210685f960e2a16be156d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Python object containing a pointer to a native <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>. </p>
+<p>Includes a cached hash value <code>'hash_cache'</code> to speed up repeated dictionary/set lookups. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="a3ea374d89e2cc07b1dd2f110b7d0ee30" name="a3ea374d89e2cc07b1dd2f110b7d0ee30"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3ea374d89e2cc07b1dd2f110b7d0ee30">&#9670;&#160;</a></span>bv</h2>
@@ -114,13 +117,28 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a297ba834d45210685f960e2a16be156d" name="a297ba834d45210685f960e2a16be156d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a297ba834d45210685f960e2a16be156d">&#9670;&#160;</a></span>hash_cache</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Py_hash_t PyBitVector::hash_cache</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Cached hash value or -1 if invalid </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>python/<a class="el" href="binding_8c.html">binding.c</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Oct 8 2025 14:54:20 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Thu Oct 9 2025 16:06:22 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

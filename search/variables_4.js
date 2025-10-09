@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mask_0',['mask',['../structPyBitVectorIter.html#ad56912b495732f21989e91304a6250c0',1,'PyBitVectorIter']]]
+  ['hash_5fcache_0',['hash_cache',['../structPyBitVector.html#a297ba834d45210685f960e2a16be156d',1,'PyBitVector']]]
 ];

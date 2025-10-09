@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['init_5fcpu_5fdispatch_0',['init_cpu_dispatch',['../compat_8h.html#a9256aa51e475beabf9cd975766084809',1,'init_cpu_dispatch(void):&#160;compat_dispatch.c'],['../compat__dispatch_8c.html#a9256aa51e475beabf9cd975766084809',1,'init_cpu_dispatch(void):&#160;compat_dispatch.c']]],
-  ['installation_1',['Installation',['../index.html#autotoc_md2',1,'']]]
+  ['hash_5fcache_0',['hash_cache',['../structPyBitVector.html#a297ba834d45210685f960e2a16be156d',1,'PyBitVector']]]
 ];
