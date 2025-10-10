@@ -108,10 +108,13 @@ cbits_malloc_aligned(size_t size, size_t align)
 static inline void
 cbits_prefetch(const void *ptr)
 {
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) && defined(_M_X64)
+    #include <xmmintrin.h>
     _mm_prefetch((const char *) ptr, _MM_HINT_T0);
-#else
+#elif defined(__GNUC__) || defined(__clang__)
     __builtin_prefetch(ptr, 0, 1);
+#else
+    (void) ptr; /* no-op */
 #endif
 }
 
