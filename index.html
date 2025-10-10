@@ -97,8 +97,13 @@ Quick Start</h2>
 <div class="line">bv.set(3)</div>
 <div class="line">bv.clear(3)</div>
 <div class="line">bv.flip(0)</div>
-<div class="line">print(bv.get(0))      <span class="comment"># → True or False</span></div>
+<div class="line">print(bv.get(0))                <span class="comment"># → True or False</span></div>
 <div class="line">print(len(bv), bv.bits)</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"># Range operations</span></div>
+<div class="line">bv.set_range(10, 5)             <span class="comment"># set bits 10..14</span></div>
+<div class="line">bv.clear_range(12, 2)           <span class="comment"># clear bits 12..13</span></div>
+<div class="line">bv.flip_range(0, 64)            <span class="comment"># toggle all bits</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment"># Negative indexing</span></div>
 <div class="line">bv.set(-1)</div>
@@ -106,7 +111,7 @@ Quick Start</h2>
 <div class="line"> </div>
 <div class="line"><span class="comment"># Boolean test &amp; rank</span></div>
 <div class="line">print(bool(bv))</div>
-<div class="line">print(bv.rank(32))    <span class="comment"># count of set bits up to index 32</span></div>
+<div class="line">print(bv.rank(32))              <span class="comment"># count of set bits up to index 32</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment"># Copy &amp; deepcopy</span></div>
 <div class="line"><span class="keyword">import</span> copy</div>
@@ -125,12 +130,12 @@ Quick Start</h2>
 <div class="line">print([i <span class="keywordflow">for</span> i, bit <span class="keywordflow">in</span> enumerate(bv) <span class="keywordflow">if</span> bit])</div>
 <div class="line"> </div>
 <div class="line"><span class="comment"># Slicing</span></div>
-<div class="line">sv = bv[2:10]          <span class="comment"># positions 2..9</span></div>
+<div class="line">sv = bv[2:10]                   <span class="comment"># positions 2..9</span></div>
 <div class="line">print([sv.get(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(len(sv))])</div>
-<div class="line">sv2 = bv[:5]           <span class="comment"># first five bits</span></div>
-<div class="line">sv3 = bv[5:]           <span class="comment"># bits from 5 to end</span></div>
-<div class="line">sv4 = bv[::2]          <span class="comment"># every other bit</span></div>
-<div class="line">sv_rev = bv[::-1]      <span class="comment"># reversed vector</span></div>
+<div class="line">sv2 = bv[:5]                    <span class="comment"># first five bits</span></div>
+<div class="line">sv3 = bv[5:]                    <span class="comment"># bits from 5 to end</span></div>
+<div class="line">sv4 = bv[::2]                   <span class="comment"># every other bit</span></div>
+<div class="line">sv_rev = bv[::-1]               <span class="comment"># reversed vector</span></div>
 <div class="line">print([sv4.get(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(len(sv4))])</div>
 <div class="line">print([sv_rev.get(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(len(sv_rev))])</div>
 <div class="line"> </div>
@@ -138,7 +143,7 @@ Quick Start</h2>
 <div class="line">bv[0:4] = [<span class="keyword">True</span>, <span class="keyword">False</span>, <span class="keyword">True</span>, <span class="keyword">False</span>]</div>
 <div class="line">print([bv.get(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(4)])</div>
 <div class="line"> </div>
-<div class="line">bv[4:8] = <a class="code hl_struct" href="structBitVector.html">BitVector</a>(4)  <span class="comment"># assign via another BitVector</span></div>
+<div class="line">bv[4:8] = <a class="code hl_struct" href="structBitVector.html">BitVector</a>(4)          <span class="comment"># assign via another BitVector</span></div>
 <div class="line">print([bv.get(i) <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(4, 8)])</div>
 <div class="line"> </div>
 <div class="line"><span class="comment"># Negative-step assignment</span></div>
@@ -147,8 +152,8 @@ Quick Start</h2>
 <div class="line"> </div>
 <div class="line"><span class="comment"># Contains</span></div>
 <div class="line">a = <a class="code hl_struct" href="structBitVector.html">BitVector</a>(8); b = <a class="code hl_struct" href="structBitVector.html">BitVector</a>(4)</div>
-<div class="line">a.set(0); a.set(2); a.set(5)  <span class="comment"># 10100100</span></div>
-<div class="line">b.set(0); b.set(3)  <span class="comment"># 1001</span></div>
+<div class="line">a.set(0); a.set(2); a.set(5)    <span class="comment"># 10100100</span></div>
+<div class="line">b.set(0); b.set(3)              <span class="comment"># 1001</span></div>
 <div class="line">print(b <span class="keywordflow">in</span> a)</div>
 <div class="ttc" id="astructBitVector_html"><div class="ttname"><a href="structBitVector.html">BitVector</a></div><div class="ttdoc">Packed array of bits with support for rank/select operations.</div><div class="ttdef"><b>Definition</b> bitvector.h:64</div></div>
 </div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
@@ -165,6 +170,9 @@ Class: BitVector</h3>
 <div class="line">    <span class="keyword">def </span>set(self, index: int) -&gt; <span class="keywordtype">None</span></div>
 <div class="line">    <span class="keyword">def </span>clear(self, index: int) -&gt; <span class="keywordtype">None</span></div>
 <div class="line">    <span class="keyword">def </span>flip(self, index: int) -&gt; <span class="keywordtype">None</span></div>
+<div class="line">    <span class="keyword">def </span>set_range(self, start: int, length: int) -&gt; <span class="keywordtype">None</span></div>
+<div class="line">    <span class="keyword">def </span>clear_range(self, start: int, length: int) -&gt; <span class="keywordtype">None</span></div>
+<div class="line">    <span class="keyword">def </span>flip_range(self, start: int, length: int) -&gt; <span class="keywordtype">None</span></div>
 <div class="line">    <span class="keyword">def </span>rank(self, index: int) -&gt; int</div>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">def </span>copy(self) -&gt; BitVector</div>
@@ -179,8 +187,8 @@ Class: BitVector</h3>
 <div class="line">    <span class="keyword">def </span>__setitem__(self, index: int, value: bool) -&gt; <span class="keywordtype">None</span></div>
 <div class="line"> </div>
 <div class="line">    <span class="comment"># Slicing access &amp; assignment</span></div>
-<div class="line">    <span class="keyword">def </span>__getiten(self, s: slice) -&gt; BitVector</div>
-<div class="line">    <span class="keyword">def </span>__setitem(self, s: slice, value: Iterable[bool]) -&gt; <span class="keywordtype">None</span></div>
+<div class="line">    <span class="keyword">def </span>__getitem__(self, s: slice) -&gt; BitVector</div>
+<div class="line">    <span class="keyword">def </span>__setitem__(self, s: slice, value: Iterable[bool]) -&gt; <span class="keywordtype">None</span></div>
 <div class="line"> </div>
 <div class="line">    <span class="keyword">def </span>__contains__(self, other: BitVector) -&gt; bool</div>
 <div class="line">    <span class="keyword">def </span>__iter__(self) -&gt; Iterator[bool]</div>
@@ -212,7 +220,7 @@ Project Links</h2>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Oct 9 2025 16:06:22 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Fri Oct 10 2025 09:30:03 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
