@@ -103,7 +103,10 @@ bv_set_range(BitVector *bv, size_t start, size_t len)
     unsigned off_end = end & 63;
 
     if (w_start == w_end) {
-        uint64_t mask = ((UINT64_C(1) << (end - start)) - 1) << off_start;
+        unsigned span = (unsigned) (end - start);
+        uint64_t mask = (span == 64)
+                            ? UINT64_MAX
+                            : ((UINT64_C(1) << span) - 1) << off_start;
         bv->data[w_start] |= mask;
     }
     else {
@@ -113,6 +116,9 @@ bv_set_range(BitVector *bv, size_t start, size_t len)
         }
         if (off_end) {
             bv->data[w_end] |= (UINT64_C(1) << off_end) - 1;
+        }
+        else {
+            bv->data[w_end] = ~0ULL;
         }
     }
     bv_apply_tail_mask(bv);
@@ -132,7 +138,10 @@ bv_clear_range(BitVector *bv, size_t start, size_t len)
     unsigned off_end = end & 63;
 
     if (w_start == w_end) {
-        uint64_t mask = ((UINT64_C(1) << (end - start)) - 1) << off_start;
+        unsigned span = (unsigned) (end - start);
+        uint64_t mask = (span == 64)
+                            ? UINT64_MAX
+                            : ((UINT64_C(1) << span) - 1) << off_start;
         bv->data[w_start] &= ~mask;
     }
     else {
@@ -163,7 +172,10 @@ bv_flip_range(BitVector *bv, size_t start, size_t len)
     unsigned off_end = end & 63;
 
     if (w_start == w_end) {
-        uint64_t mask = ((UINT64_C(1) << (end - start)) - 1) << off_start;
+        unsigned span = (unsigned) (end - start);
+        uint64_t mask = (span == 64)
+                            ? UINT64_MAX
+                            : ((UINT64_C(1) << span) - 1) << off_start;
         bv->data[w_start] ^= mask;
     }
     else {
@@ -173,6 +185,9 @@ bv_flip_range(BitVector *bv, size_t start, size_t len)
         }
         if (off_end) {
             bv->data[w_end] ^= (UINT64_C(1) << off_end) - 1;
+        }
+        else {
+            bv->data[w_end] ^= ~0ULL;
         }
     }
     bv_apply_tail_mask(bv);

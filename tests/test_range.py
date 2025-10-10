@@ -81,6 +81,15 @@ class TestRange(unittest.TestCase):
         self.assertTrue(bv.get(9))
         with self.assertRaises(IndexError):
             bv.set_range(9, 5)
+        bv=BitVector(64)
+        bv.set_range(60, 4)
+        self.assertTrue(bv[63])
+        bv.flip_range(0, 64)
+        self.assertFalse(bv[63])
+        bv.set(63)
+        self.assertTrue(bv[63])
+        bv.clear_range(0, 64)
+        self.assertFalse(bv[63])
 
     def test_range_crossing_word_boundary(self):
         bv = BitVector(130)
