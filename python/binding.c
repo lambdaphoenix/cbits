@@ -696,7 +696,7 @@ py_bv_subscript(PyObject *self, PyObject *arg)
     }
 
     if (PySlice_Check(arg)) {
-        PySliceObject *slice = (PySliceObject *) arg;
+        PyObject *slice = (PyObject *) arg;
         PyBitVector *bv = (PyBitVector *) self;
         Py_ssize_t start, stop, step, slicelength;
         if (PySlice_GetIndicesEx(slice, bv->bv->n_bits, &start, &stop, &step,
@@ -839,7 +839,7 @@ py_bv_ass_subscript(PyObject *self, PyObject *arg, PyObject *value)
     }
 
     if (PySlice_Check(arg)) {
-        PySliceObject *slice = (PySliceObject *) arg;
+        PyObject *slice = (PyObject *) arg;
         PyBitVector *bv = (PyBitVector *) self;
         Py_ssize_t start, stop, step, slicelength;
         if (PySlice_GetIndicesEx(slice, bv->bv->n_bits, &start, &stop, &step,
@@ -1400,7 +1400,7 @@ PyDoc_STRVAR(
  * @see PyType_Slot
  */
 static PyType_Slot PyBitVector_slots[] = {
-    {Py_tp_doc, BitVector__doc__},
+    {Py_tp_doc, (const char *) BitVector__doc__},
 
     {Py_tp_new, py_bv_new},
     {Py_tp_init, py_bv_init},
