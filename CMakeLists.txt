@@ -49,29 +49,29 @@ target_link_libraries(${MODULE_NAME}
 
 if (MSVC)
 	if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-		target_compile_options(_cbits PRIVATE /O2 /arch:AVX2)
-		target_compile_definitions(_cbits PRIVATE
+		target_compile_options(${MODULE_NAME} PRIVATE /O2 /arch:AVX2)
+		target_compile_definitions(${MODULE_NAME} PRIVATE
 			__AVX2__=1
 		)
 		check_c_compiler_flag("/arch:AVX512VPOPCNTDQ" HAS_AVX512VPOPCNTDQ)
 		if(HAS_AVX512VPOPCNTDQ)
-			target_compile_options(_cbits PRIVATE /arch:AVX512VPOPCNTDQ)
-			target_compile_definitions(_cbits PRIVATE __AVX512VPOPCNTDQ__=1)
+			target_compile_options(${MODULE_NAME} PRIVATE /arch:AVX512VPOPCNTDQ)
+			target_compile_definitions(${MODULE_NAME} PRIVATE __AVX512VPOPCNTDQ__=1)
 		endif()
 	else()
-		target_compile_options(_cbits PRIVATE /O2)
+		target_compile_options(${MODULE_NAME} PRIVATE /O2)
 	endif()
 	set_target_properties(${MODULE_NAME} PROPERTIES SUFFIX ".pyd")
 else()
-	if(CMAKE_OSX_ARCHITECTURES STREQUAL "x86_64" OR CMAKE_SYSTEM_PROCESSOR STREQUAL "x86_64")
+	if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(x86_64|AMD64)$" OR CMAKE_OSX_ARCHITECTURES STREQUAL "x86_64")
 		target_compile_definitions(${MODULE_NAME} PRIVATE USE_X86_INTRINSIC)
 		target_compile_options(${MODULE_NAME} PRIVATE
 			-O3 -funroll-loops -mavx2 -mavx512vpopcntdq
 		)
 	else()
-		target_compile_options(${MODULE_NAME} PRIVATE -O3)
+		target_compile_options(${MODULE_NAME} PRIVATE -O3 -funroll-loops)
 	endif()
-	set_target_properties(${MODULE_NAME} PROPERTIES SUFFIX ".so")
+    set_target_properties(${MODULE_NAME} PROPERTIES SUFFIX ".so")
 endif()
 
 
