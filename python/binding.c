@@ -568,7 +568,14 @@ py_bv_hash(PyObject *self)
     if (n_bytes == 0) {
         return 0;
     }
-    Py_hash_t hash = _Py_HashBytes((const void *) bv->data, n_bytes);
+    PyObject *b = PyBytes_FromStringAndSize((const char *) bv->data,
+                                            (Py_ssize_t) n_bytes);
+    if (b == NULL) {
+        return -1;
+    }
+    Py_hash_t hash = PyObject_Hash(b);
+    Py_DECREF(b);
+
     if (hash == -1) {
         hash = -2;
     }
