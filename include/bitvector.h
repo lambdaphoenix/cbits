@@ -13,8 +13,10 @@
 #ifndef CBITS_BITVECTOR_H
 #define CBITS_BITVECTOR_H
 
-#include "compat.h"
+#include <stddef.h>
+#include <stdint.h>
 #include <stdbool.h>
+#include "compat.h"
 
 /**
  * @def BV_ALIGN
@@ -34,27 +36,6 @@
 #define BV_WORDS_SUPER (1u << BV_WORDS_SUPER_SHIFT)
 
 /**
- * @brief Compute the word index for a given bit position.
- * @param pos bit index
- * @return Index of the 64-bit word containing that bit.
- */
-static inline size_t
-bv_word(const size_t pos)
-{
-    return pos >> 6;
-}
-/**
- * @brief Compute the bit offset within its 64-bit word.
- * @param pos bit index
- * @return Offset in [0...63] inside the 64-bit word.
- */
-static inline size_t
-bv_bit(const size_t pos)
-{
-    return pos & 63;
-}
-
-/**
  * @struct BitVector
  * @brief Packed array of bits with support for rank/select operations.
  *
@@ -70,24 +51,6 @@ typedef struct {
     uint16_t *block_rank; /**< Prefix-sum of popcounts at block granularity. */
     bool rank_dirty; /**< Flag indicating that rank tables need rebuilding. */
 } BitVector;
-
-/**
- * @brief Mask off any excess bits in the last word of a BitVector.
- * @param bv Pointer to an allocated BitVector.
- * @since 0.1.2
- */
-static inline void
-bv_apply_tail_mask(BitVector *bv)
-{
-    if (!bv->n_words) {
-        return;
-    }
-    unsigned tail = (unsigned) (bv->n_bits & 63);
-    if (tail) {
-        uint64_t mask = (UINT64_C(1) << tail) - 1;
-        bv->data[bv->n_words - 1] &= mask;
-    }
-}
 
 /**
  *  @brief Allocate a new BitVector with all bits cleared
@@ -112,59 +75,7 @@ bv_copy(const BitVector *src);
  */
 void
 bv_free(BitVector *bv);
-/**
- *  @brief Get the bit value at a given position.
- *  @param bv Pointer to the BitVector
- *  @param pos Bit index
- *  @return @c 0 or @c 1 depending on the bit value
- */
-static inline int
-bv_get(const BitVector *bv, const size_t pos)
-{
-    return (bv->data[bv_word(pos)] >> bv_bit(pos)) & 1;
-}
-/**
- *  @brief Set the bit at a given position (set to 1)
- *
- *  Marks the rank table dirty so it will be rebuilt on next rank query.
- *  @param bv Pointer to the BitVector
- *  @param pos Bit index
- */
-static inline void
-bv_set(BitVector *bv, const size_t pos)
-{
-    uint64_t mask = 1ULL << bv_bit(pos);
-    bv->data[bv_word(pos)] |= mask;
-    bv->rank_dirty = true;
-}
-/**
- *  @brief Clear the bit at a given position (set to 0)
- *
- *  Marks the rank table dirty so it will be rebuilt on next rank query.
- *  @param bv Pointer to the BitVector
- *  @param pos Bit index
- */
-static inline void
-bv_clear(BitVector *bv, const size_t pos)
-{
-    uint64_t mask = ~(1ULL << bv_bit(pos));
-    bv->data[bv_word(pos)] &= mask;
-    bv->rank_dirty = true;
-}
-/**
- *  @brief Toggle (flip) the bit at a given position
- *
- *  Marks the rank table dirty so it will be rebuilt on next rank query.
- *  @param bv Pointer to the BitVector
- *  @param pos Bit index
- */
-static inline void
-bv_flip(BitVector *bv, const size_t pos)
-{
-    uint64_t mask = 1ULL << bv_bit(pos);
-    bv->data[bv_word(pos)] ^= mask;
-    bv->rank_dirty = true;
-}
+
 /**
  *  @brief Set all bits in the half‑open range [start, start+len).
  *
@@ -198,6 +109,7 @@ bv_clear_range(BitVector *bv, size_t start, size_t len);
  */
 void
 bv_flip_range(BitVector *bv, size_t start, size_t len);
+
 /**
  *  @brief Build or rebuild the rank tables for a BitVector.
  *
@@ -217,6 +129,7 @@ bv_build_rank(BitVector *bv);
  */
 size_t
 bv_rank(BitVector *bv, const size_t pos);
+
 /**
  *  @brief Test equality of two BitVectors.
  *
@@ -238,5 +151,41 @@ bv_equal(const BitVector *a, const BitVector *b);
  */
 bool
 bv_contains_subvector(const BitVector *a, const BitVector *b);
+
+/**
+ *  @brief Get the bit value at a given position.
+ *  @param bv Pointer to the BitVector
+ *  @param pos Bit index
+ *  @return @c 0 or @c 1 depending on the bit value
+ */
+int
+bv_get(const BitVector *bv, const size_t pos);
+/**
+ *  @brief Set the bit at a given position (set to 1)
+ *
+ *  Marks the rank table dirty so it will be rebuilt on next rank query.
+ *  @param bv Pointer to the BitVector
+ *  @param pos Bit index
+ */
+void
+bv_set(BitVector *bv, const size_t pos);
+/**
+ *  @brief Clear the bit at a given position (set to 0)
+ *
+ *  Marks the rank table dirty so it will be rebuilt on next rank query.
+ *  @param bv Pointer to the BitVector
+ *  @param pos Bit index
+ */
+void
+bv_clear(BitVector *bv, const size_t pos);
+/**
+ *  @brief Toggle (flip) the bit at a given position
+ *
+ *  Marks the rank table dirty so it will be rebuilt on next rank query.
+ *  @param bv Pointer to the BitVector
+ *  @param pos Bit index
+ */
+void
+bv_flip(BitVector *bv, const size_t pos);
 
 #endif /* CBITS_BITVECTOR_H */

@@ -27,9 +27,23 @@ message(STATUS "  Libraries: ${Python_LIBRARIES}")
 message(STATUS "  Module ext: ${Python_MODULE_EXTENSION}")
 
 add_library(${MODULE_NAME} MODULE
-	src/bitvector.c
+	src/cbits/bitvector_core.c
+	src/cbits/bitvector_compare.c
+	src/cbits/bitvector_range.c
+	src/cbits/bitvector_rank.c
+
 	src/compat_dispatch.c
-	python/binding.c
+
+	src/python/bitvector_module.c
+	src/python/bitvector_object.c
+	src/python/bitvector_methods_basic.c
+	src/python/bitvector_methods_compare.c
+	src/python/bitvector_methods_copy.c
+	src/python/bitvector_methods_misc.c
+	src/python/bitvector_methods_ops.c
+	src/python/bitvector_methods_rank.c
+	src/python/bitvector_methods_slice.c
+	src/python/bitvector_iter.c
 )
 
 set_target_properties(${MODULE_NAME} PROPERTIES
@@ -40,6 +54,7 @@ target_include_directories(${MODULE_NAME}
 	PRIVATE
 		${Python_INCLUDE_DIRS}
 		${CMAKE_SOURCE_DIR}/include
+		${CMAKE_SOURCE_DIR}/src/python
 )
 
 target_link_libraries(${MODULE_NAME}

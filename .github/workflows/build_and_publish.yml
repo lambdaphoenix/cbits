@@ -67,7 +67,7 @@ jobs:
 
                 tarball=$(find dist/wheels-*-latest -type f -name 'cbits-*.tar.gz' | head -n1)
                 if [ -z "$tarball" ]; then
-                  echo "Fehler: kein cbits-*.tar.gz gefunden!" >&2
+                  echo "Error: no cbits-*.tar.gz found!" >&2
                   exit 1
                 fi
                 cp "$tarball" dist/
