@@ -1,0 +1,46 @@
+name: CI
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+        
+            - name: Install Python
+              uses: actions/setup-python@v5
+              with:
+                python-version: "3.12"
+
+            - name: Install Python deps
+              run: |
+                python -m pip install --upgrade pip
+                python -m pip install -r requirements.txt
+                python -m pip install -e .
+
+            - name: Install C build deps
+              run: |
+                sudo apt-get update
+                sudo apt-get install -y cmake valgrind build-essential
+
+            - name: Build C extension + C tests
+              run: |
+                cmake -B build
+                cmake --build build --parallel
+
+            - name: Run C tests (ctest)
+              run: |
+                cd build
+                ctest --output-on-failure
+
+            - name: Run Python tests (pytest)
+              run: |
+                pytest -q
