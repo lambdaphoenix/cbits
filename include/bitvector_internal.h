@@ -39,11 +39,11 @@ bv_bit(const size_t pos)
 }
 
 /**
- *  @brief Internal inline version of bv_get().
- *  @param bv Pointer to the BitVector
- *  @param pos Bit index
- *  @return @c 0 or @c 1 depending on the bit value
- *  @since 0.2.1
+ * @brief Internal inline version of bv_get().
+ * @param bv Pointer to the BitVector
+ * @param pos Bit index
+ * @return @c 0 or @c 1 depending on the bit value
+ * @since 0.2.1
  */
 static inline int
 bv__get_inline(const BitVector *bv, const size_t pos)
@@ -51,10 +51,10 @@ bv__get_inline(const BitVector *bv, const size_t pos)
     return (bv->data[bv_word(pos)] >> bv_bit(pos)) & 1;
 }
 /**
- *  @brief Internal inline version of bv_set().
- *  @param bv Pointer to the BitVector
- *  @param pos Bit index
- *  @since 0.2.1
+ * @brief Internal inline version of bv_set().
+ * @param bv Pointer to the BitVector
+ * @param pos Bit index
+ * @since 0.2.1
  */
 static inline void
 bv__set_inline(BitVector *bv, const size_t pos)
@@ -64,10 +64,10 @@ bv__set_inline(BitVector *bv, const size_t pos)
     bv->rank_dirty = true;
 }
 /**
- *  @brief Internal inline version of bv_clear().
- *  @param bv Pointer to the BitVector
- *  @param pos Bit index
- *  @since 0.2.1
+ * @brief Internal inline version of bv_clear().
+ * @param bv Pointer to the BitVector
+ * @param pos Bit index
+ * @since 0.2.1
  */
 static inline void
 bv__clear_inline(BitVector *bv, const size_t pos)
@@ -77,10 +77,10 @@ bv__clear_inline(BitVector *bv, const size_t pos)
     bv->rank_dirty = true;
 }
 /**
- *  @brief Internal inline version of bv_flip().
- *  @param bv Pointer to the BitVector
- *  @param pos Bit index
- *  @since 0.2.1
+ * @brief Internal inline version of bv_flip().
+ * @param bv Pointer to the BitVector
+ * @param pos Bit index
+ * @since 0.2.1
  */
 static inline void
 bv__flip_inline(BitVector *bv, const size_t pos)

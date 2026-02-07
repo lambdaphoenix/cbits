@@ -20,6 +20,14 @@
 void
 bv_build_rank(BitVector *bv)
 {
+    if (!bv) {
+        return;
+    }
+    if (bv->n_bits == 0) {
+        bv->rank_dirty = false;
+        return;
+    }
+
     size_t super_total = 0;
     const size_t n_words = bv->n_words;
     const size_t n_super =
@@ -72,14 +80,28 @@ bv_build_rank(BitVector *bv)
 size_t
 bv_rank(BitVector *bv, const size_t pos)
 {
+    if (!bv || bv->n_bits == 0) {
+        return 0;
+    }
+    size_t p = pos;
+    if (pos >= bv->n_bits) {
+        p = bv->n_bits - 1;
+    }
+
     if (bv->rank_dirty) {
         bv_build_rank(bv);
     }
-    size_t w = pos >> 6;
-    size_t off = pos & 63;
-    size_t s = bv->super_rank[w >> BV_WORDS_SUPER_SHIFT];
-    size_t b = bv->block_rank[w];
-    uint64_t mask = (1ULL << (off + 1)) - 1;
-    uint64_t part = bv->data[w] & mask;
-    return s + b + (size_t) cbits_popcount64(part);
+
+    const size_t word_index = bv_word(p);
+    const size_t bit_index = bv_bit(p);
+
+    const size_t super_index = word_index >> BV_WORDS_SUPER_SHIFT;
+    const size_t base = bv->super_rank[super_index];
+    const size_t block = bv->block_rank[word_index];
+
+    const uint64_t word = bv->data[word_index];
+    const uint64_t mask =
+        (bit_index == 63) ? ~0ULL : ((1ULL << (bit_index + 1)) - 1);
+    const size_t in_word = cbits_popcount64(word & mask);
+    return base + block + in_word;
 }

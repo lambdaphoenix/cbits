@@ -41,6 +41,13 @@ bv_new(size_t n_bits)
     bv->n_words = words_for_bits(n_bits);
     bv->rank_dirty = true;
 
+    if (n_bits == 0) {
+        bv->data = NULL;
+        bv->super_rank = NULL;
+        bv->block_rank = NULL;
+        return bv;
+    }
+
     bv->data = cbits_malloc_aligned(bv->n_words * sizeof(uint64_t), BV_ALIGN);
     if (!bv->data) {
         cbits_free_aligned(bv);
@@ -70,9 +77,18 @@ bv_new(size_t n_bits)
 BitVector *
 bv_copy(const BitVector *src)
 {
+    if (!src) {
+        return NULL;
+    }
+
     BitVector *dst = bv_new(src->n_bits);
     if (!dst) {
         return NULL;
+    }
+
+    if (src->n_bits == 0) {
+        dst->rank_dirty = src->rank_dirty;
+        return dst;
     }
 
     memcpy(dst->data, src->data, src->n_words * sizeof(uint64_t));
@@ -83,6 +99,9 @@ bv_copy(const BitVector *src)
 void
 bv_free(BitVector *bv)
 {
+    if (!bv) {
+        return;
+    }
     cbits_free_aligned(bv->block_rank);
     cbits_free_aligned(bv->super_rank);
     cbits_free_aligned(bv->data);
@@ -92,22 +111,34 @@ bv_free(BitVector *bv)
 int
 bv_get(const BitVector *bv, const size_t pos)
 {
+    if (!bv || pos >= bv->n_bits) {
+        return -1;
+    }
     return bv__get_inline(bv, pos);
 }
 void
 bv_set(BitVector *bv, const size_t pos)
 {
+    if (!bv || pos >= bv->n_bits) {
+        return;
+    }
     bv__set_inline(bv, pos);
 }
 
 void
 bv_clear(BitVector *bv, const size_t pos)
 {
+    if (!bv || pos >= bv->n_bits) {
+        return;
+    }
     bv__clear_inline(bv, pos);
 }
 
 void
 bv_flip(BitVector *bv, const size_t pos)
 {
+    if (!bv || pos >= bv->n_bits) {
+        return;
+    }
     bv__flip_inline(bv, pos);
 }

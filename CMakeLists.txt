@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.15)
 project(cbits LANGUAGES C)
 
+# =============================================================
+# Python discovery (with VIRTUAL_ENV support)
+# =============================================================
 include(CheckCCompilerFlag)
 
 set(MODULE_NAME "_cbits")
@@ -15,10 +18,7 @@ if(APPLE)
 	set(Python_FIND_FRAMEWORK NEVER)
 endif()
 
-find_package(Python
-	COMPONENTS Interpreter Development.Module
-	REQUIRED
-)
+find_package(Python COMPONENTS Interpreter Development.Module REQUIRED)
 
 message(STATUS "Found Python ${Python_VERSION_STRING}")
 message(STATUS "  Executable: ${Python_EXECUTABLE}")
@@ -26,29 +26,43 @@ message(STATUS "  Include dir: ${Python_INCLUDE_DIRS}")
 message(STATUS "  Libraries: ${Python_LIBRARIES}")
 message(STATUS "  Module ext: ${Python_MODULE_EXTENSION}")
 
-add_library(${MODULE_NAME} MODULE
+# =============================================================
+# C core library
+# =============================================================
+add_library(${MODULE_NAME}_core STATIC
 	src/cbits/bitvector_core.c
 	src/cbits/bitvector_compare.c
 	src/cbits/bitvector_range.c
 	src/cbits/bitvector_rank.c
 
 	src/compat_dispatch.c
+)
 
-	src/python/bitvector_module.c
-	src/python/bitvector_object.c
-	src/python/bitvector_methods_basic.c
-	src/python/bitvector_methods_compare.c
-	src/python/bitvector_methods_copy.c
-	src/python/bitvector_methods_misc.c
-	src/python/bitvector_methods_ops.c
-	src/python/bitvector_methods_rank.c
-	src/python/bitvector_methods_slice.c
+target_include_directories(${MODULE_NAME}_core
+	PRIVATE
+		${CMAKE_SOURCE_DIR}/include
+)
+
+set_target_properties(${MODULE_NAME}_core PROPERTIES POSITION_INDEPENDENT_CODE ON)
+
+# =============================================================
+# Python extension module
+# =============================================================
+add_library(${MODULE_NAME} MODULE
 	src/python/bitvector_iter.c
+	src/python/bitvector_methods_basic.c
+	src/python/bitvector_methods_copy.c
+	src/python/bitvector_methods_ops.c
+	src/python/bitvector_methods_slice.c
+	src/python/bitvector_object.c
+	src/python/bitvector_methods.c
+	src/python/bitvector_methods_compare.c
+	src/python/bitvector_methods_misc.c
+	src/python/bitvector_methods_rank.c
+	src/python/bitvector_module.c
 )
 
-set_target_properties(${MODULE_NAME} PROPERTIES
-	PREFIX ""
-)
+set_target_properties(${MODULE_NAME} PROPERTIES	PREFIX "")
 
 target_include_directories(${MODULE_NAME}
 	PRIVATE
@@ -60,8 +74,12 @@ target_include_directories(${MODULE_NAME}
 target_link_libraries(${MODULE_NAME}
 	PRIVATE
 		Python::Module
+		${MODULE_NAME}_core
 )
 
+# =============================================================
+# Compiler optimizations
+# =============================================================
 if (MSVC)
 	if(CMAKE_SIZEOF_VOID_P EQUAL 8)
 		target_compile_options(${MODULE_NAME} PRIVATE /O2 /arch:AVX2)
@@ -89,7 +107,9 @@ else()
     set_target_properties(${MODULE_NAME} PROPERTIES SUFFIX ".so")
 endif()
 
-
+# =============================================================
+# Installation
+# =============================================================
 install(TARGETS ${MODULE_NAME}
 	LIBRARY DESTINATION cbits
 	RUNTIME DESTINATION cbits
@@ -99,3 +119,49 @@ install(TARGETS ${MODULE_NAME}
 install(FILES ${CMAKE_SOURCE_DIR}/python/cbits/__init__.py
 	DESTINATION cbits
 )
+
+# =============================================================
+# CTest integration for C tests
+# =============================================================
+enable_testing()
+
+set(C_TEST_DIR ${CMAKE_SOURCE_DIR}/tests/c)
+file(GLOB C_TEST_SOURCES "${C_TEST_DIR}/*.c")
+
+foreach(TEST_SRC ${C_TEST_SOURCES})
+	get_filename_component(TEST_NAME ${TEST_SRC} NAME_WE)
+	
+	add_executable(${TEST_NAME} ${TEST_SRC})
+	target_link_libraries(${TEST_NAME} PRIVATE ${MODULE_NAME}_core)
+	
+	target_include_directories(${TEST_NAME}
+		PRIVATE
+			${CMAKE_SOURCE_DIR}/include
+			${CMAKE_SOURCE_DIR}/src/cbits
+	)
+	
+	add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME})
+endforeach()
+
+find_program(VALGRIND_EXECUTABLE valgrind)
+
+if (VALGRIND_EXECUTABLE)
+    message(STATUS "Valgrind found: ${VALGRIND_EXECUTABLE}")
+
+    foreach(TEST_SRC ${C_TEST_SOURCES})
+        get_filename_component(TEST_NAME ${TEST_SRC} NAME_WE)
+
+        add_test(
+            NAME memcheck_${TEST_NAME}
+            COMMAND ${VALGRIND_EXECUTABLE}
+                --leak-check=full
+                --show-leak-kinds=all
+                --errors-for-leak-kinds=all
+                --error-exitcode=1
+                ./${TEST_NAME}
+        )
+
+    endforeach()
+else()
+    message(WARNING "Valgrind not found; memory tests disabled")
+endif()

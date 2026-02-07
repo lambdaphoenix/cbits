@@ -3,7 +3,7 @@
  * @brief Aggregates all BitVector Python methods into a single table.
  *
  * Includes all method group headers and constructs:
- *  - \ref BitVector_methods[]
+ * - \ref BitVector_methods[]
  *
  * This file centralizes the Python-visible API of the BitVector type.
  *

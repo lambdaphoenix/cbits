@@ -16,10 +16,44 @@
  */
 #include "bitvector_internal.h"
 
+/**
+ * @brief Clamp a bit-range to the valid bounds of the BitVector.
+ *
+ * Adjusts *start and *len so the range lies fully inside the vector:
+ * - If the vector is empty or the range is empty, *len becomes 0.
+ * - If *start is outside the vector, *len becomes 0.
+ * - If the range exceeds the vector end, *len is shortened accordingly.
+ *
+ * After normalization, the range is guaranteed to satisfy:
+ *  0 <= *start <= n_bits
+ *  0 <= *len <= n_bits - *start
+ *
+ * @param bv Pointer to the BitVector
+ * @param start Input/output: start index of the range
+ * @param len Input/output: length of the range
+ * @since 0.2.0
+ */
+static inline void
+bv__normalize_range(BitVector *bv, size_t *start, size_t *len)
+{
+    if (!bv || bv->n_bits == 0 || *len == 0) {
+        *len = 0;
+        return;
+    }
+    if (*start >= bv->n_bits) {
+        *len = 0;
+        return;
+    }
+    if (*start + *len > bv->n_bits) {
+        *len = bv->n_bits - *start;
+    }
+}
+
 void
 bv_set_range(BitVector *bv, size_t start, size_t len)
 {
-    if (len == 0) {
+    bv__normalize_range(bv, &start, &len);
+    if (!len) {
         return;
     }
     size_t end = start + len;
@@ -54,7 +88,8 @@ bv_set_range(BitVector *bv, size_t start, size_t len)
 void
 bv_clear_range(BitVector *bv, size_t start, size_t len)
 {
-    if (len == 0) {
+    bv__normalize_range(bv, &start, &len);
+    if (!len) {
         return;
     }
     size_t end = start + len;
@@ -88,7 +123,8 @@ bv_clear_range(BitVector *bv, size_t start, size_t len)
 void
 bv_flip_range(BitVector *bv, size_t start, size_t len)
 {
-    if (len == 0) {
+    bv__normalize_range(bv, &start, &len);
+    if (!len) {
         return;
     }
     size_t end = start + len;
