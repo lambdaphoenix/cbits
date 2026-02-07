@@ -16,7 +16,7 @@ jobs:
         env:
             CIBW_OUTPUT_DIR: dist
             CIBW_SKIP: "cp38-macosx_arm64"
-            CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-*"
+            CIBW_BUILD: "cp38-* cp39-* cp310-* cp311-* cp312-* cp313-* cp314-*"
         steps:
             - name: Check out code
               uses: actions/checkout@v4
