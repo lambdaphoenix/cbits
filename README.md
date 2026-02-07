@@ -5,6 +5,7 @@
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/cbits.svg)](https://pypi.org/project/cbits/)
 [![Changelog](https://img.shields.io/badge/CHANGELOG-md-blue.svg)](https://github.com/lambdaphoenix/cbits/blob/main/CHANGELOG.md)
 [![GitHub License](https://img.shields.io/github/license/lambdaphoenix/cbits.svg)](https://github.com/lambdaphoenix/cbits/blob/main/LICENSE)
+[![CI Status](https://img.shields.io/github/actions/workflow/status/lambdaphoenix/cbits/test.yml?branch=main&label=CI&logo=githubactions&logoColor=white)](https://github.com/lambdaphoenix/cbits/actions/workflows/test.yml)
 
 # cbits
 
