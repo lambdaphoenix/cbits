@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cbits<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">cbits<span id="projectnumber">&#160;0.2.1</span>
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
@@ -74,33 +74,38 @@ $(function() {
 <div class="textblock">Here is a list of all functions with links to the files they belong to:</div>
 
 <h3><a id="index_b" name="index_b"></a>- b -</h3><ul>
-<li>bv_apply_tail_mask()&#160;:&#160;<a class="el" href="bitvector_8h.html#a3eccabaaa5958327799ceda0117f7b76">bitvector.h</a></li>
-<li>bv_bit()&#160;:&#160;<a class="el" href="bitvector_8h.html#ad7e0bb7a9f7e9a34611b3c3ba41bfdbf">bitvector.h</a></li>
-<li>bv_build_rank()&#160;:&#160;<a class="el" href="bitvector_8h.html#a512988fb7c0004571bd8edefc67dbe0c">bitvector.h</a>, <a class="el" href="bitvector_8c.html#a512988fb7c0004571bd8edefc67dbe0c">bitvector.c</a></li>
-<li>bv_clear()&#160;:&#160;<a class="el" href="bitvector_8h.html#abe9af7e7b58e8d6c145772125facdf23">bitvector.h</a></li>
-<li>bv_clear_range()&#160;:&#160;<a class="el" href="bitvector_8h.html#a7e326b3e801d3ae2c8372fd66a493b21">bitvector.h</a>, <a class="el" href="bitvector_8c.html#a7e326b3e801d3ae2c8372fd66a493b21">bitvector.c</a></li>
-<li>bv_contains_subvector()&#160;:&#160;<a class="el" href="bitvector_8h.html#a321007321514662bf5f9d8350ed380ba">bitvector.h</a>, <a class="el" href="bitvector_8c.html#a2d0fe7ec2aaea9cb359f93591267e08f">bitvector.c</a></li>
-<li>bv_copy()&#160;:&#160;<a class="el" href="bitvector_8h.html#acbb0c18fd9a720e6e77c40e069d6728c">bitvector.h</a>, <a class="el" href="bitvector_8c.html#acbb0c18fd9a720e6e77c40e069d6728c">bitvector.c</a></li>
-<li>bv_equal()&#160;:&#160;<a class="el" href="bitvector_8h.html#ad82fe6ffdf12ab5ca5239d111942529e">bitvector.h</a>, <a class="el" href="bitvector_8c.html#ad82fe6ffdf12ab5ca5239d111942529e">bitvector.c</a></li>
-<li>bv_flip()&#160;:&#160;<a class="el" href="bitvector_8h.html#a237c5942e4ea28aabaf70a42f8f343a7">bitvector.h</a></li>
-<li>bv_flip_range()&#160;:&#160;<a class="el" href="bitvector_8c.html#a2e3fbc3abe02f0db7577453638cb46b7">bitvector.c</a>, <a class="el" href="bitvector_8h.html#a2e3fbc3abe02f0db7577453638cb46b7">bitvector.h</a></li>
-<li>bv_free()&#160;:&#160;<a class="el" href="bitvector_8h.html#a222e3ed52b6f2c3079429f0cd4da5c58">bitvector.h</a>, <a class="el" href="bitvector_8c.html#a222e3ed52b6f2c3079429f0cd4da5c58">bitvector.c</a></li>
-<li>bv_get()&#160;:&#160;<a class="el" href="bitvector_8h.html#adb02e58f6a79eebb62a1c260821c3ab6">bitvector.h</a></li>
-<li>bv_new()&#160;:&#160;<a class="el" href="bitvector_8h.html#a560b4e6bdb70189b5866ea7d0245650d">bitvector.h</a>, <a class="el" href="bitvector_8c.html#a560b4e6bdb70189b5866ea7d0245650d">bitvector.c</a></li>
-<li>bv_parse_index()&#160;:&#160;<a class="el" href="binding_8c.html#a66f1d18ed7869c72e4d5e383af06f48f">binding.c</a></li>
-<li>bv_parse_tuple()&#160;:&#160;<a class="el" href="binding_8c.html#af83d6c14dbf421173b34f8b69d00da95">binding.c</a></li>
-<li>bv_rank()&#160;:&#160;<a class="el" href="bitvector_8h.html#afdfa632ea087f518a95082388f71cf38">bitvector.h</a>, <a class="el" href="bitvector_8c.html#afdfa632ea087f518a95082388f71cf38">bitvector.c</a></li>
-<li>bv_set()&#160;:&#160;<a class="el" href="bitvector_8h.html#ab5a6e7fc872706fc88f7562ea00dab02">bitvector.h</a></li>
-<li>bv_set_range()&#160;:&#160;<a class="el" href="bitvector_8h.html#a182f282c1a69c41d230ead44c24eec77">bitvector.h</a>, <a class="el" href="bitvector_8c.html#a182f282c1a69c41d230ead44c24eec77">bitvector.c</a></li>
-<li>bv_word()&#160;:&#160;<a class="el" href="bitvector_8h.html#ac522e4654cef505c1ffcc75a426d639c">bitvector.h</a></li>
-<li>bv_wrap_new()&#160;:&#160;<a class="el" href="binding_8c.html#a5e6fffc9d5f721ba9836bdc7c173499a">binding.c</a></li>
+<li>bv__clear_inline()&#160;:&#160;<a class="el" href="bitvector__internal_8h.html#a87f974cf33c937db8d31cd9709160613">bitvector_internal.h</a></li>
+<li>bv__flip_inline()&#160;:&#160;<a class="el" href="bitvector__internal_8h.html#a2fbc3c71299f3cb934e1786cbde3e49a">bitvector_internal.h</a></li>
+<li>bv__get_inline()&#160;:&#160;<a class="el" href="bitvector__internal_8h.html#aad3fe3384b6cd17117b81bc6da9e4083">bitvector_internal.h</a></li>
+<li>bv__normalize_range()&#160;:&#160;<a class="el" href="bitvector__range_8c.html#a5af81fb78da78056b2acd9d78f83899b">bitvector_range.c</a></li>
+<li>bv__set_inline()&#160;:&#160;<a class="el" href="bitvector__internal_8h.html#a1207dcbb4b015e57eac7f5a5ccc32a40">bitvector_internal.h</a></li>
+<li>bv_apply_tail_mask()&#160;:&#160;<a class="el" href="bitvector__internal_8h.html#a3eccabaaa5958327799ceda0117f7b76">bitvector_internal.h</a></li>
+<li>bv_bit()&#160;:&#160;<a class="el" href="bitvector__internal_8h.html#ad7e0bb7a9f7e9a34611b3c3ba41bfdbf">bitvector_internal.h</a></li>
+<li>bv_build_rank()&#160;:&#160;<a class="el" href="bitvector_8h.html#a512988fb7c0004571bd8edefc67dbe0c">bitvector.h</a>, <a class="el" href="bitvector__rank_8c.html#a512988fb7c0004571bd8edefc67dbe0c">bitvector_rank.c</a></li>
+<li>bv_clear()&#160;:&#160;<a class="el" href="bitvector_8h.html#a8a1cb8eb14cf44e420804665ab72d3a5">bitvector.h</a>, <a class="el" href="bitvector__core_8c.html#a8a1cb8eb14cf44e420804665ab72d3a5">bitvector_core.c</a></li>
+<li>bv_clear_range()&#160;:&#160;<a class="el" href="bitvector_8h.html#a7e326b3e801d3ae2c8372fd66a493b21">bitvector.h</a>, <a class="el" href="bitvector__range_8c.html#a7e326b3e801d3ae2c8372fd66a493b21">bitvector_range.c</a></li>
+<li>bv_contains_subvector()&#160;:&#160;<a class="el" href="bitvector_8h.html#a321007321514662bf5f9d8350ed380ba">bitvector.h</a>, <a class="el" href="bitvector__compare_8c.html#a321007321514662bf5f9d8350ed380ba">bitvector_compare.c</a></li>
+<li>bv_copy()&#160;:&#160;<a class="el" href="bitvector_8h.html#acbb0c18fd9a720e6e77c40e069d6728c">bitvector.h</a>, <a class="el" href="bitvector__core_8c.html#acbb0c18fd9a720e6e77c40e069d6728c">bitvector_core.c</a></li>
+<li>bv_equal()&#160;:&#160;<a class="el" href="bitvector_8h.html#ad82fe6ffdf12ab5ca5239d111942529e">bitvector.h</a>, <a class="el" href="bitvector__compare_8c.html#ad82fe6ffdf12ab5ca5239d111942529e">bitvector_compare.c</a></li>
+<li>bv_flip()&#160;:&#160;<a class="el" href="bitvector__core_8c.html#ae3d0887d13e81dda83cb826e1f19d9a6">bitvector_core.c</a>, <a class="el" href="bitvector_8h.html#ae3d0887d13e81dda83cb826e1f19d9a6">bitvector.h</a></li>
+<li>bv_flip_range()&#160;:&#160;<a class="el" href="bitvector_8h.html#a2e3fbc3abe02f0db7577453638cb46b7">bitvector.h</a>, <a class="el" href="bitvector__range_8c.html#a2e3fbc3abe02f0db7577453638cb46b7">bitvector_range.c</a></li>
+<li>bv_free()&#160;:&#160;<a class="el" href="bitvector_8h.html#a222e3ed52b6f2c3079429f0cd4da5c58">bitvector.h</a>, <a class="el" href="bitvector__core_8c.html#a222e3ed52b6f2c3079429f0cd4da5c58">bitvector_core.c</a></li>
+<li>bv_get()&#160;:&#160;<a class="el" href="bitvector_8h.html#a91e0516a523c4bd85e2719cb8a624766">bitvector.h</a>, <a class="el" href="bitvector__core_8c.html#a91e0516a523c4bd85e2719cb8a624766">bitvector_core.c</a></li>
+<li>bv_new()&#160;:&#160;<a class="el" href="bitvector_8h.html#a560b4e6bdb70189b5866ea7d0245650d">bitvector.h</a>, <a class="el" href="bitvector__core_8c.html#a560b4e6bdb70189b5866ea7d0245650d">bitvector_core.c</a></li>
+<li>bv_parse_index()&#160;:&#160;<a class="el" href="bitvector__parse_8h.html#aa54c3ab9ed97faa6e1f5cdad46cbc465">bitvector_parse.h</a></li>
+<li>bv_parse_tuple()&#160;:&#160;<a class="el" href="bitvector__parse_8h.html#a02ebcd47783eaa28bf27d7652f5d1c00">bitvector_parse.h</a></li>
+<li>bv_rank()&#160;:&#160;<a class="el" href="bitvector_8h.html#afdfa632ea087f518a95082388f71cf38">bitvector.h</a>, <a class="el" href="bitvector__rank_8c.html#afdfa632ea087f518a95082388f71cf38">bitvector_rank.c</a></li>
+<li>bv_set()&#160;:&#160;<a class="el" href="bitvector_8h.html#af2baa31f9f443fa2b8b9d6177a3aa8b6">bitvector.h</a>, <a class="el" href="bitvector__core_8c.html#af2baa31f9f443fa2b8b9d6177a3aa8b6">bitvector_core.c</a></li>
+<li>bv_set_range()&#160;:&#160;<a class="el" href="bitvector_8h.html#a182f282c1a69c41d230ead44c24eec77">bitvector.h</a>, <a class="el" href="bitvector__range_8c.html#a182f282c1a69c41d230ead44c24eec77">bitvector_range.c</a></li>
+<li>bv_word()&#160;:&#160;<a class="el" href="bitvector__internal_8h.html#ac522e4654cef505c1ffcc75a426d639c">bitvector_internal.h</a></li>
+<li>bv_wrap_new()&#160;:&#160;<a class="el" href="bitvector__object_8c.html#a7f0cde18df3fb5241c12fb5215836a76">bitvector_object.c</a>, <a class="el" href="bitvector__object_8h.html#a7f0cde18df3fb5241c12fb5215836a76">bitvector_object.h</a></li>
 </ul>
 
 
 <h3><a id="index_c" name="index_c"></a>- c -</h3><ul>
 <li>cbits_free_aligned()&#160;:&#160;<a class="el" href="compat_8h.html#aef5ff1718342c263ed54219faf08ec16">compat.h</a></li>
 <li>cbits_malloc_aligned()&#160;:&#160;<a class="el" href="compat_8h.html#ab0861c18a2e3ac73f750606b45787ed7">compat.h</a></li>
-<li>cbits_module_exec()&#160;:&#160;<a class="el" href="binding_8c.html#a8f427b0cfdb1957c3605e10019f007bd">binding.c</a></li>
+<li>cbits_module_exec()&#160;:&#160;<a class="el" href="bitvector__module_8c.html#a8f427b0cfdb1957c3605e10019f007bd">bitvector_module.c</a></li>
 <li>cbits_popcount64()&#160;:&#160;<a class="el" href="compat_8h.html#a5123c2821a6ef3a94476f2b83e09dba2">compat.h</a></li>
 <li>cbits_popcount_block()&#160;:&#160;<a class="el" href="compat_8h.html#addef37948dc5ab434f81a1f15ff81570">compat.h</a></li>
 <li>cbits_popcount_block_fallback()&#160;:&#160;<a class="el" href="compat_8h.html#a8cb5141d31b8f85334c52c013f40a5d9">compat.h</a>, <a class="el" href="compat__dispatch_8c.html#a8cb5141d31b8f85334c52c013f40a5d9">compat_dispatch.c</a></li>
@@ -114,56 +119,56 @@ $(function() {
 
 
 <h3><a id="index_p" name="index_p"></a>- p -</h3><ul>
-<li>py_bv_and()&#160;:&#160;<a class="el" href="binding_8c.html#a09bf92aec4a330bd6b0e0ad143f3ab36">binding.c</a></li>
-<li>py_bv_ass_item()&#160;:&#160;<a class="el" href="binding_8c.html#a9a4f14c0adf92741fd193d14fee2bd6e">binding.c</a></li>
-<li>py_bv_ass_slice()&#160;:&#160;<a class="el" href="binding_8c.html#ac5fcf5d2628aa7a30dba01a1224492a6">binding.c</a></li>
-<li>py_bv_ass_subscript()&#160;:&#160;<a class="el" href="binding_8c.html#adde6296db3ce5161082498d618fda1ea">binding.c</a></li>
-<li>py_bv_bool()&#160;:&#160;<a class="el" href="binding_8c.html#a2a48ec54bd2020b5f9c53ccb60efad9e">binding.c</a></li>
-<li>py_bv_clear()&#160;:&#160;<a class="el" href="binding_8c.html#af3d93df3d5ac6faaa1366b7f31402798">binding.c</a></li>
-<li>py_bv_clear_range()&#160;:&#160;<a class="el" href="binding_8c.html#ac489bee1773936cb5e811e2d0252707f">binding.c</a></li>
-<li>py_bv_contains()&#160;:&#160;<a class="el" href="binding_8c.html#ac16b0c5b44b6cdd492918469bcbf7f96">binding.c</a></li>
-<li>py_bv_copy()&#160;:&#160;<a class="el" href="binding_8c.html#a67c5804ed6745718be7527a3aae4664a">binding.c</a></li>
-<li>py_bv_deepcopy()&#160;:&#160;<a class="el" href="binding_8c.html#ad5569e465c62a44515af6f4aa324fc60">binding.c</a></li>
-<li>py_bv_flip()&#160;:&#160;<a class="el" href="binding_8c.html#a38c1503708121705e22921b48fabf14c">binding.c</a></li>
-<li>py_bv_flip_range()&#160;:&#160;<a class="el" href="binding_8c.html#abaa5a8a1af4ebbd29f13a650c21f3af2">binding.c</a></li>
-<li>py_bv_free()&#160;:&#160;<a class="el" href="binding_8c.html#a2d55c861d7fdf3b0e9b95497fdb6a6e4">binding.c</a></li>
-<li>py_bv_get()&#160;:&#160;<a class="el" href="binding_8c.html#a95f4a245c9973679b1f9af1379e81821">binding.c</a></li>
-<li>py_bv_get_size()&#160;:&#160;<a class="el" href="binding_8c.html#a676b77aaaa3053d90f7ea7f95e22e8eb">binding.c</a></li>
-<li>py_bv_hash()&#160;:&#160;<a class="el" href="binding_8c.html#a2f67615df466f74b6f90c13dc37589ff">binding.c</a></li>
-<li>py_bv_iand()&#160;:&#160;<a class="el" href="binding_8c.html#ad100d02b61be2f9082ce249bc3099ddc">binding.c</a></li>
-<li>py_bv_init()&#160;:&#160;<a class="el" href="binding_8c.html#a510d7b30401e3d3bd188a9a7de61803d">binding.c</a></li>
-<li>py_bv_invert()&#160;:&#160;<a class="el" href="binding_8c.html#a21759f5b861d2e61454568931070553d">binding.c</a></li>
-<li>py_bv_ior()&#160;:&#160;<a class="el" href="binding_8c.html#a2a23db722235b739cd8ca7af6aa096dd">binding.c</a></li>
-<li>py_bv_item()&#160;:&#160;<a class="el" href="binding_8c.html#a436b24e6696f952a3d1a96ecf7191f96">binding.c</a></li>
-<li>py_bv_iter()&#160;:&#160;<a class="el" href="binding_8c.html#a25220119ba92df39434d4868745481b1">binding.c</a></li>
-<li>py_bv_ixor()&#160;:&#160;<a class="el" href="binding_8c.html#a239e981d1a323d9bce7c018f08b5f081">binding.c</a></li>
-<li>py_bv_len()&#160;:&#160;<a class="el" href="binding_8c.html#a21e08dec927792701cb73c6e6a1df927">binding.c</a></li>
-<li>py_bv_new()&#160;:&#160;<a class="el" href="binding_8c.html#a33699ee8e583f6b69da8d7a4b011de12">binding.c</a></li>
-<li>py_bv_or()&#160;:&#160;<a class="el" href="binding_8c.html#ac80404db499e4bc108a6ac98bf2a117e">binding.c</a></li>
-<li>py_bv_rank()&#160;:&#160;<a class="el" href="binding_8c.html#a6596d7e4e07e24155651258c9091028b">binding.c</a></li>
-<li>py_bv_repr()&#160;:&#160;<a class="el" href="binding_8c.html#a7c29dda376c942eaafd3e1297c392b6c">binding.c</a></li>
-<li>py_bv_richcompare()&#160;:&#160;<a class="el" href="binding_8c.html#a907d626799062d832d366b69aa7755ef">binding.c</a></li>
-<li>py_bv_set()&#160;:&#160;<a class="el" href="binding_8c.html#a83289c5959b0cbc9ef594a00054b3d0a">binding.c</a></li>
-<li>py_bv_set_range()&#160;:&#160;<a class="el" href="binding_8c.html#a5a36766609fe6f9a6f7b436d305d29cd">binding.c</a></li>
-<li>py_bv_set_size()&#160;:&#160;<a class="el" href="binding_8c.html#a470ee7402be5662a9f0651631ec1f172">binding.c</a></li>
-<li>py_bv_slice()&#160;:&#160;<a class="el" href="binding_8c.html#a511eab9e240d4537ea455c8181ecbb48">binding.c</a></li>
-<li>py_bv_str()&#160;:&#160;<a class="el" href="binding_8c.html#a08bbcefc5bea6072787075f0a7e305c8">binding.c</a></li>
-<li>py_bv_subscript()&#160;:&#160;<a class="el" href="binding_8c.html#a1a9db01fecf7acf29d81e6af54c2b1a1">binding.c</a></li>
-<li>py_bv_xor()&#160;:&#160;<a class="el" href="binding_8c.html#aefe0bb25553ffc47f530cf93cb46ca42">binding.c</a></li>
-<li>py_bviter_dealloc()&#160;:&#160;<a class="el" href="binding_8c.html#a881c976bd771094e5f63e77dbbacb95b">binding.c</a></li>
-<li>py_bviter_iternext()&#160;:&#160;<a class="el" href="binding_8c.html#a778fdf5cc237723a965b88bf6011f519">binding.c</a></li>
-<li>PyDoc_STRVAR()&#160;:&#160;<a class="el" href="binding_8c.html#a4f4f1973576a28570505fd8ebe44de7f">binding.c</a></li>
-<li>PyInit__cbits()&#160;:&#160;<a class="el" href="binding_8c.html#a5a66f6dc0f1f2e3f2080e50d639e37d2">binding.c</a></li>
+<li>py_bv_and()&#160;:&#160;<a class="el" href="bitvector__methods__ops_8h.html#a119253be7796db6604ef7ae25ed1c39c">bitvector_methods_ops.h</a>, <a class="el" href="bitvector__methods__ops_8c.html#a119253be7796db6604ef7ae25ed1c39c">bitvector_methods_ops.c</a></li>
+<li>py_bv_ass_item()&#160;:&#160;<a class="el" href="bitvector__methods__slice_8c.html#a9a4f14c0adf92741fd193d14fee2bd6e">bitvector_methods_slice.c</a></li>
+<li>py_bv_ass_slice()&#160;:&#160;<a class="el" href="bitvector__methods__slice_8c.html#ac5fcf5d2628aa7a30dba01a1224492a6">bitvector_methods_slice.c</a></li>
+<li>py_bv_ass_subscript()&#160;:&#160;<a class="el" href="bitvector__methods__slice_8h.html#aa11e2053c0445b1ef4278020ab54a5b0">bitvector_methods_slice.h</a>, <a class="el" href="bitvector__methods__slice_8c.html#aa11e2053c0445b1ef4278020ab54a5b0">bitvector_methods_slice.c</a></li>
+<li>py_bv_bool()&#160;:&#160;<a class="el" href="bitvector__methods__ops_8c.html#a4e45a2d41e73e8fd6c325bb63bd83f20">bitvector_methods_ops.c</a>, <a class="el" href="bitvector__methods__ops_8h.html#a4e45a2d41e73e8fd6c325bb63bd83f20">bitvector_methods_ops.h</a></li>
+<li>py_bv_clear()&#160;:&#160;<a class="el" href="bitvector__methods__basic_8c.html#ac77d4c536d6134146e272fc8379b5052">bitvector_methods_basic.c</a>, <a class="el" href="bitvector__methods__basic_8h.html#ac77d4c536d6134146e272fc8379b5052">bitvector_methods_basic.h</a></li>
+<li>py_bv_clear_range()&#160;:&#160;<a class="el" href="bitvector__methods__basic_8c.html#a1b4ae235f712d4536f0293a49e00b66e">bitvector_methods_basic.c</a>, <a class="el" href="bitvector__methods__basic_8h.html#a1b4ae235f712d4536f0293a49e00b66e">bitvector_methods_basic.h</a></li>
+<li>py_bv_contains()&#160;:&#160;<a class="el" href="bitvector__methods__misc_8c.html#a4bf46f65f28aba57907280ca365cf412">bitvector_methods_misc.c</a>, <a class="el" href="bitvector__methods__misc_8h.html#a4bf46f65f28aba57907280ca365cf412">bitvector_methods_misc.h</a></li>
+<li>py_bv_copy()&#160;:&#160;<a class="el" href="bitvector__methods__copy_8c.html#ada353c54facbb4110d9d0aa6feae24ff">bitvector_methods_copy.c</a>, <a class="el" href="bitvector__methods__copy_8h.html#ada353c54facbb4110d9d0aa6feae24ff">bitvector_methods_copy.h</a></li>
+<li>py_bv_deepcopy()&#160;:&#160;<a class="el" href="bitvector__methods__copy_8c.html#aca1885f67228d8b0096aa76d48e4e7be">bitvector_methods_copy.c</a>, <a class="el" href="bitvector__methods__copy_8h.html#aca1885f67228d8b0096aa76d48e4e7be">bitvector_methods_copy.h</a></li>
+<li>py_bv_flip()&#160;:&#160;<a class="el" href="bitvector__methods__basic_8c.html#acc2025c05cf46ee4990b117ce5a54b91">bitvector_methods_basic.c</a>, <a class="el" href="bitvector__methods__basic_8h.html#acc2025c05cf46ee4990b117ce5a54b91">bitvector_methods_basic.h</a></li>
+<li>py_bv_flip_range()&#160;:&#160;<a class="el" href="bitvector__methods__basic_8h.html#aa8b32ce45e5774404216fa2184e0c60c">bitvector_methods_basic.h</a>, <a class="el" href="bitvector__methods__basic_8c.html#aa8b32ce45e5774404216fa2184e0c60c">bitvector_methods_basic.c</a></li>
+<li>py_bv_free()&#160;:&#160;<a class="el" href="bitvector__object_8c.html#a2d55c861d7fdf3b0e9b95497fdb6a6e4">bitvector_object.c</a></li>
+<li>py_bv_get()&#160;:&#160;<a class="el" href="bitvector__methods__basic_8c.html#a3b038fb1cf0cdd0b72e2faccdfa15e88">bitvector_methods_basic.c</a>, <a class="el" href="bitvector__methods__basic_8h.html#a3b038fb1cf0cdd0b72e2faccdfa15e88">bitvector_methods_basic.h</a></li>
+<li>py_bv_get_size()&#160;:&#160;<a class="el" href="bitvector__methods__misc_8c.html#a676b77aaaa3053d90f7ea7f95e22e8eb">bitvector_methods_misc.c</a></li>
+<li>py_bv_hash()&#160;:&#160;<a class="el" href="bitvector__methods__compare_8c.html#afb2e3ee3ccc64bb6b519f6413bf87247">bitvector_methods_compare.c</a>, <a class="el" href="bitvector__methods__compare_8h.html#afb2e3ee3ccc64bb6b519f6413bf87247">bitvector_methods_compare.h</a></li>
+<li>py_bv_iand()&#160;:&#160;<a class="el" href="bitvector__methods__ops_8c.html#a5b0a1e2316be65adf5eb69149d58a0ba">bitvector_methods_ops.c</a>, <a class="el" href="bitvector__methods__ops_8h.html#a5b0a1e2316be65adf5eb69149d58a0ba">bitvector_methods_ops.h</a></li>
+<li>py_bv_init()&#160;:&#160;<a class="el" href="bitvector__object_8c.html#a510d7b30401e3d3bd188a9a7de61803d">bitvector_object.c</a></li>
+<li>py_bv_invert()&#160;:&#160;<a class="el" href="bitvector__methods__ops_8c.html#a1a381895260a55798d10d395f9bee1bf">bitvector_methods_ops.c</a>, <a class="el" href="bitvector__methods__ops_8h.html#a1a381895260a55798d10d395f9bee1bf">bitvector_methods_ops.h</a></li>
+<li>py_bv_ior()&#160;:&#160;<a class="el" href="bitvector__methods__ops_8c.html#a0afd14acf131807ab2d00ac2e5cb1b77">bitvector_methods_ops.c</a>, <a class="el" href="bitvector__methods__ops_8h.html#a0afd14acf131807ab2d00ac2e5cb1b77">bitvector_methods_ops.h</a></li>
+<li>py_bv_item()&#160;:&#160;<a class="el" href="bitvector__methods__slice_8c.html#a436b24e6696f952a3d1a96ecf7191f96">bitvector_methods_slice.c</a></li>
+<li>py_bv_iter()&#160;:&#160;<a class="el" href="bitvector__iter_8c.html#a56faafe5bfd6fa3f0f62ccd0b2c875c4">bitvector_iter.c</a>, <a class="el" href="bitvector__iter_8h.html#a56faafe5bfd6fa3f0f62ccd0b2c875c4">bitvector_iter.h</a></li>
+<li>py_bv_ixor()&#160;:&#160;<a class="el" href="bitvector__methods__ops_8c.html#a6e5a746e4f9c18b85ed03d748d0024d5">bitvector_methods_ops.c</a>, <a class="el" href="bitvector__methods__ops_8h.html#a6e5a746e4f9c18b85ed03d748d0024d5">bitvector_methods_ops.h</a></li>
+<li>py_bv_len()&#160;:&#160;<a class="el" href="bitvector__methods__misc_8c.html#ab0d52c7578ed62bc0753d157ebbb62c2">bitvector_methods_misc.c</a>, <a class="el" href="bitvector__methods__misc_8h.html#ab0d52c7578ed62bc0753d157ebbb62c2">bitvector_methods_misc.h</a></li>
+<li>py_bv_new()&#160;:&#160;<a class="el" href="bitvector__object_8c.html#ad37b58e670327c87059af188a7e88c36">bitvector_object.c</a></li>
+<li>py_bv_or()&#160;:&#160;<a class="el" href="bitvector__methods__ops_8h.html#a8fd8fa504f6d723e8b020a685bd70c3c">bitvector_methods_ops.h</a>, <a class="el" href="bitvector__methods__ops_8c.html#a8fd8fa504f6d723e8b020a685bd70c3c">bitvector_methods_ops.c</a></li>
+<li>py_bv_rank()&#160;:&#160;<a class="el" href="bitvector__methods__rank_8c.html#aeb807dcc11cf6b812f45f8c0d03b87f8">bitvector_methods_rank.c</a>, <a class="el" href="bitvector__methods__rank_8h.html#aeb807dcc11cf6b812f45f8c0d03b87f8">bitvector_methods_rank.h</a></li>
+<li>py_bv_repr()&#160;:&#160;<a class="el" href="bitvector__methods__misc_8c.html#a974280b47d159676c131236cc7389815">bitvector_methods_misc.c</a>, <a class="el" href="bitvector__methods__misc_8h.html#a974280b47d159676c131236cc7389815">bitvector_methods_misc.h</a></li>
+<li>py_bv_richcompare()&#160;:&#160;<a class="el" href="bitvector__methods__compare_8c.html#af5c0d64de4c66be636a242292868a3a6">bitvector_methods_compare.c</a>, <a class="el" href="bitvector__methods__compare_8h.html#af5c0d64de4c66be636a242292868a3a6">bitvector_methods_compare.h</a></li>
+<li>py_bv_set()&#160;:&#160;<a class="el" href="bitvector__methods__basic_8c.html#ac5e83af2bbcdfa2f288236ce289e7573">bitvector_methods_basic.c</a>, <a class="el" href="bitvector__methods__basic_8h.html#ac5e83af2bbcdfa2f288236ce289e7573">bitvector_methods_basic.h</a></li>
+<li>py_bv_set_range()&#160;:&#160;<a class="el" href="bitvector__methods__basic_8c.html#a35516f1041268e0fa4dfac0d52b1bbf6">bitvector_methods_basic.c</a>, <a class="el" href="bitvector__methods__basic_8h.html#a35516f1041268e0fa4dfac0d52b1bbf6">bitvector_methods_basic.h</a></li>
+<li>py_bv_set_size()&#160;:&#160;<a class="el" href="bitvector__methods__misc_8c.html#a470ee7402be5662a9f0651631ec1f172">bitvector_methods_misc.c</a></li>
+<li>py_bv_slice()&#160;:&#160;<a class="el" href="bitvector__methods__slice_8c.html#a511eab9e240d4537ea455c8181ecbb48">bitvector_methods_slice.c</a></li>
+<li>py_bv_str()&#160;:&#160;<a class="el" href="bitvector__methods__misc_8c.html#ac04ab5abc9dc035fb6f355343725b22b">bitvector_methods_misc.c</a>, <a class="el" href="bitvector__methods__misc_8h.html#ac04ab5abc9dc035fb6f355343725b22b">bitvector_methods_misc.h</a></li>
+<li>py_bv_subscript()&#160;:&#160;<a class="el" href="bitvector__methods__slice_8h.html#ac1bc8668539652c195ac6ec51cf84150">bitvector_methods_slice.h</a>, <a class="el" href="bitvector__methods__slice_8c.html#ac1bc8668539652c195ac6ec51cf84150">bitvector_methods_slice.c</a></li>
+<li>py_bv_xor()&#160;:&#160;<a class="el" href="bitvector__methods__ops_8c.html#a1b0cf4a760793ae0cde3ce58f8031182">bitvector_methods_ops.c</a>, <a class="el" href="bitvector__methods__ops_8h.html#a1b0cf4a760793ae0cde3ce58f8031182">bitvector_methods_ops.h</a></li>
+<li>py_bviter_dealloc()&#160;:&#160;<a class="el" href="bitvector__iter_8c.html#a52fc7ecd34b55f560c1a725bf3d9468c">bitvector_iter.c</a>, <a class="el" href="bitvector__iter_8h.html#a52fc7ecd34b55f560c1a725bf3d9468c">bitvector_iter.h</a></li>
+<li>py_bviter_iternext()&#160;:&#160;<a class="el" href="bitvector__iter_8c.html#ab1e8d59c5c7920ffc1a19201e7bb5142">bitvector_iter.c</a>, <a class="el" href="bitvector__iter_8h.html#ab1e8d59c5c7920ffc1a19201e7bb5142">bitvector_iter.h</a></li>
+<li>PyDoc_STRVAR()&#160;:&#160;<a class="el" href="bitvector__methods_8c.html#aeeb4bf04b7dba5886d67076d40167328">bitvector_methods.c</a>, <a class="el" href="bitvector__object_8c.html#a821b81ab1b3cde6c5e96b908b1e9c62f">bitvector_object.c</a>, <a class="el" href="bitvector__methods_8c.html#affc62d1304007fadd932f46d3952167e">bitvector_methods.c</a></li>
+<li>PyInit__cbits()&#160;:&#160;<a class="el" href="bitvector__module_8c.html#a5a66f6dc0f1f2e3f2080e50d639e37d2">bitvector_module.c</a></li>
 </ul>
 
 
 <h3><a id="index_w" name="index_w"></a>- w -</h3><ul>
-<li>words_for_bits()&#160;:&#160;<a class="el" href="bitvector_8c.html#ad51d2ff48f225f8f8d5da50fdf7a63fc">bitvector.c</a></li>
+<li>words_for_bits()&#160;:&#160;<a class="el" href="bitvector__core_8c.html#ad51d2ff48f225f8f8d5da50fdf7a63fc">bitvector_core.c</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 10 2025 13:20:32 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Feb 7 2026 15:13:04 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

@@ -1,0 +1,21 @@
+<map id="src/python/bitvector_object.h" name="src/python/bitvector_object.h">
+<area shape="rect" id="Node000001" title="Definition of the PyBitVector Python type." alt="" coords="38,5,190,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,93,84,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,47,66,84,62,81,95,44"/>
+<area shape="rect" id="Node000003" href="$bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="109,93,258,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="133,44,166,81,162,84,129,47"/>
+<area shape="rect" id="Node000004" href="$bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="138,167,229,192"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="186,119,186,153,181,153,181,119"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="10,313,85,339"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="160,194,126,214,93,242,73,271,58,301,54,299,68,269,89,238,123,210,157,190"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="204,313,275,339"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="190,191,232,300,227,301,185,193"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="261,240,343,265"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="204,190,272,230,269,235,201,194"/>
+<area shape="rect" id="Node000008" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="103,240,186,265"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="179,194,160,229,155,227,175,191"/>
+<area shape="poly" id="edge9_Node000008_Node000005" title=" " alt="" coords="131,268,76,307,73,303,127,263"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="161,263,214,303,211,307,158,267"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="109,313,180,339"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="147,266,147,300,142,300,142,266"/>
+</map>

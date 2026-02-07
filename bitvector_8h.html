@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cbits<span id="projectnumber">&#160;0.2.0</span>
+   <div id="projectname">cbits<span id="projectnumber">&#160;0.2.1</span>
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
@@ -83,26 +83,30 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Packed <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> C-API declarations.  
+<p>Public C API for the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> data structure.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;<a class="el" href="compat_8h_source.html">compat.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="compat_8h_source.html">compat.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for bitvector.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="bitvector_8h__incl.png" border="0" usemap="#ainclude_2bitvector_8h" alt=""/></div>
 <map name="ainclude_2bitvector_8h" id="ainclude_2bitvector_8h">
-<area shape="rect" title="Packed BitVector C&#45;API declarations." alt="" coords="120,5,263,31"/>
-<area shape="rect" href="compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="97,79,179,104"/>
-<area shape="poly" title=" " alt="" coords="185,33,157,69,153,66,180,29"/>
-<area shape="rect" title=" " alt="" coords="203,79,286,104"/>
-<area shape="poly" title=" " alt="" coords="202,29,230,66,226,69,198,33"/>
-<area shape="rect" title=" " alt="" coords="5,152,76,177"/>
-<area shape="poly" title=" " alt="" coords="124,106,69,146,66,141,121,102"/>
-<area shape="rect" title=" " alt="" coords="101,152,175,177"/>
-<area shape="poly" title=" " alt="" coords="141,104,141,138,135,138,135,104"/>
-<area shape="rect" title=" " alt="" coords="200,152,271,177"/>
-<area shape="poly" title=" " alt="" coords="155,102,210,141,207,146,152,106"/>
+<area shape="rect" title="Public C API for the BitVector data structure." alt="" coords="107,5,250,31"/>
+<area shape="rect" title=" " alt="" coords="5,152,80,177"/>
+<area shape="poly" title=" " alt="" coords="155,33,121,53,89,80,68,110,54,140,49,138,63,107,85,77,118,49,153,28"/>
+<area shape="rect" title=" " alt="" coords="199,152,270,177"/>
+<area shape="poly" title=" " alt="" coords="186,30,228,138,223,140,181,32"/>
+<area shape="rect" title=" " alt="" coords="256,79,339,104"/>
+<area shape="poly" title=" " alt="" coords="199,28,267,69,265,74,196,33"/>
+<area shape="rect" href="compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="99,79,181,104"/>
+<area shape="poly" title=" " alt="" coords="175,32,155,68,150,65,170,30"/>
+<area shape="poly" title=" " alt="" coords="126,106,71,146,68,141,123,102"/>
+<area shape="poly" title=" " alt="" coords="157,102,210,141,207,146,154,106"/>
+<area shape="rect" title=" " alt="" coords="105,152,175,177"/>
+<area shape="poly" title=" " alt="" coords="143,104,143,138,137,138,137,104"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -110,11 +114,75 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="bitvector_8h__dep__incl.png" border="0" usemap="#ainclude_2bitvector_8hdep" alt=""/></div>
 <map name="ainclude_2bitvector_8hdep" id="ainclude_2bitvector_8hdep">
-<area shape="rect" title="Packed BitVector C&#45;API declarations." alt="" coords="73,5,215,31"/>
-<area shape="rect" href="binding_8c.html" title="Python C&#45;API bindings for BitVector." alt="" coords="5,79,136,104"/>
-<area shape="poly" title=" " alt="" coords="124,42,84,80,81,77,120,38"/>
-<area shape="rect" href="bitvector_8c.html" title="Implementation of BitVector functions." alt="" coords="161,79,274,104"/>
-<area shape="poly" title=" " alt="" coords="168,38,207,77,204,80,164,42"/>
+<area shape="rect" title="Public C API for the BitVector data structure." alt="" coords="562,5,705,31"/>
+<area shape="rect" href="bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="533,79,733,104"/>
+<area shape="poly" title=" " alt="" coords="636,44,636,79,631,79,631,44"/>
+<area shape="rect" href="bitvector__compare_8c.html" title="BitVector comparison and subvector search." alt="" coords="239,152,377,192"/>
+<area shape="poly" title=" " alt="" coords="574,110,378,157,377,151,572,105"/>
+<area shape="rect" href="bitvector__core_8c.html" title="Core BitVector construction and basic bit operations." alt="" coords="401,152,540,192"/>
+<area shape="poly" title=" " alt="" coords="599,112,511,154,509,149,596,107"/>
+<area shape="rect" href="bitvector__range_8c.html" title="Range&#45;based bit operations for BitVector." alt="" coords="564,152,703,192"/>
+<area shape="poly" title=" " alt="" coords="636,118,636,152,631,152,631,118"/>
+<area shape="rect" href="bitvector__rank_8c.html" title="Rank table construction and rank queries." alt="" coords="727,152,865,192"/>
+<area shape="poly" title=" " alt="" coords="670,107,758,149,755,154,668,112"/>
+<area shape="rect" href="bitvector__object_8h.html" title="Definition of the PyBitVector Python type." alt="" coords="889,152,1041,192"/>
+<area shape="poly" title=" " alt="" coords="695,104,889,150,888,155,694,110"/>
+<area shape="rect" href="bitvector__iter_8h.html" title="Iterator type for BitVector." alt="" coords="17,240,169,280"/>
+<area shape="poly" title=" " alt="" coords="876,195,770,207,680,214,527,219,374,223,286,230,182,243,170,244,169,239,181,237,285,225,374,218,527,213,680,209,770,202,875,189"/>
+<area shape="rect" href="bitvector__object_8c.html" title="Implementation of the PyBitVector Python type." alt="" coords="544,328,696,368"/>
+<area shape="poly" title=" " alt="" coords="876,195,720,205,644,217,616,228,597,242,588,261,590,284,598,307,609,327,604,329,593,309,585,285,583,261,593,238,613,223,643,212,719,200,875,189"/>
+<area shape="rect" href="bitvector__methods_8h.html" title="Aggregated method table for the BitVector Python type." alt="" coords="1060,240,1212,280"/>
+<area shape="poly" title=" " alt="" coords="1016,196,1100,238,1097,242,1014,201"/>
+<area shape="rect" href="bitvector__methods__basic_8h.html" title="Basic BitVector operations for Python." alt="" coords="1463,240,1615,280"/>
+<area shape="poly" title=" " alt="" coords="1055,181,1238,205,1451,237,1463,240,1462,245,1450,243,1238,210,1055,186"/>
+<area shape="rect" href="bitvector__methods__compare_8h.html" title="Equality and hashing methods for BitVector." alt="" coords="193,240,356,280"/>
+<area shape="poly" title=" " alt="" coords="876,195,733,212,620,219,509,226,368,243,356,245,356,239,368,237,508,221,620,214,732,206,875,189"/>
+<area shape="rect" href="bitvector__methods__copy_8c.html" title="Implementation of copy and clone operations." alt="" coords="1267,328,1419,368"/>
+<area shape="poly" title=" " alt="" coords="1056,183,1140,203,1184,219,1225,238,1274,276,1326,326,1322,330,1270,280,1223,242,1182,223,1139,208,1055,188"/>
+<area shape="rect" href="bitvector__methods__copy_8h.html" title="Copy and clone operations for BitVector." alt="" coords="1287,240,1439,280"/>
+<area shape="poly" title=" " alt="" coords="1055,190,1287,240,1286,245,1054,195"/>
+<area shape="rect" href="bitvector__methods__misc_8h.html" title="Miscellaneous BitVector Python methods." alt="" coords="380,240,532,280"/>
+<area shape="poly" title=" " alt="" coords="876,195,712,219,551,243,533,246,532,241,550,237,711,214,875,190"/>
+<area shape="rect" href="bitvector__methods__ops_8c.html" title="Bitwise operation methods for BitVector." alt="" coords="720,328,872,368"/>
+<area shape="poly" title=" " alt="" coords="883,200,850,217,823,242,811,262,804,285,798,328,793,328,798,284,806,260,819,238,847,213,880,195"/>
+<area shape="rect" href="bitvector__methods__ops_8h.html" title="Bitwise operations for BitVector." alt="" coords="607,240,759,280"/>
+<area shape="poly" title=" " alt="" coords="891,199,745,243,744,237,889,193"/>
+<area shape="rect" href="bitvector__methods__rank_8h.html" title="Rank&#45;related Python methods for BitVector." alt="" coords="1639,240,1791,280"/>
+<area shape="poly" title=" " alt="" coords="1055,177,1313,199,1470,216,1627,237,1639,239,1638,245,1626,243,1469,221,1312,204,1055,182"/>
+<area shape="rect" href="bitvector__methods__slice_8c.html" title="Slicing support for the BitVector Python type." alt="" coords="896,328,1048,368"/>
+<area shape="poly" title=" " alt="" coords="986,203,1000,239,1002,264,998,288,984,329,979,327,993,287,997,264,995,241,981,205"/>
+<area shape="rect" href="bitvector__methods__slice_8h.html" title="Slicing support for BitVector." alt="" coords="833,240,985,280"/>
+<area shape="poly" title=" " alt="" coords="948,205,924,241,919,238,943,202"/>
+<area shape="rect" href="bitvector__parse_8h.html" title="Argument parsing helpers for BitVector Python methods." alt="" coords="1815,240,1967,280"/>
+<area shape="poly" title=" " alt="" coords="1056,174,1386,193,1594,212,1803,237,1815,239,1814,245,1802,243,1593,217,1385,199,1055,179"/>
+<area shape="rect" href="bitvector__iter_8c.html" title="Implementation of BitVector iterator." alt="" coords="5,328,157,368"/>
+<area shape="poly" title=" " alt="" coords="91,294,87,328,81,327,86,293"/>
+<area shape="poly" title=" " alt="" coords="183,278,360,302,436,311,532,325,544,328,543,333,532,331,435,316,359,307,183,283"/>
+<area shape="poly" title=" " alt="" coords="1047,277,889,300,708,331,697,333,696,328,708,325,888,295,1046,271"/>
+<area shape="rect" href="bitvector__methods_8c.html" title="Aggregates all BitVector Python methods into a single table." alt="" coords="1452,328,1604,368"/>
+<area shape="poly" title=" " alt="" coords="1226,278,1452,327,1451,333,1225,283"/>
+<area shape="rect" href="bitvector__module_8c.html" title="Module initialization for the cbits._cbits extension." alt="" coords="1072,328,1224,368"/>
+<area shape="poly" title=" " alt="" coords="1143,293,1148,327,1143,328,1138,294"/>
+<area shape="poly" title=" " alt="" coords="1537,294,1533,328,1528,327,1532,293"/>
+<area shape="rect" href="bitvector__methods__basic_8c.html" title="Implementation of basic BitVector Python methods." alt="" coords="1633,328,1785,368"/>
+<area shape="poly" title=" " alt="" coords="1590,284,1673,326,1671,330,1587,289"/>
+<area shape="poly" title=" " alt="" coords="364,281,545,325,544,331,363,286"/>
+<area shape="rect" href="bitvector__methods__compare_8c.html" title="Equality and hashing for PyBitVector." alt="" coords="182,328,343,368"/>
+<area shape="poly" title=" " alt="" coords="273,294,268,328,263,327,267,293"/>
+<area shape="poly" title=" " alt="" coords="1412,284,1493,326,1491,330,1410,289"/>
+<area shape="poly" title=" " alt="" coords="1358,294,1350,328,1344,327,1353,293"/>
+<area shape="poly" title=" " alt="" coords="505,284,585,326,583,330,503,289"/>
+<area shape="rect" href="bitvector__methods__misc_8c.html" title="Implementation of miscellaneous BitVector methods." alt="" coords="368,328,520,368"/>
+<area shape="poly" title=" " alt="" coords="454,294,449,328,444,327,449,293"/>
+<area shape="poly" title=" " alt="" coords="663,293,636,329,632,326,659,290"/>
+<area shape="poly" title=" " alt="" coords="720,286,773,326,769,330,717,290"/>
+<area shape="poly" title=" " alt="" coords="1663,288,1570,330,1568,326,1660,283"/>
+<area shape="rect" href="bitvector__methods__rank_8c.html" title="Implementation of rank&#45;related Python methods." alt="" coords="1812,328,1964,368"/>
+<area shape="poly" title=" " alt="" coords="1766,284,1851,326,1849,330,1764,288"/>
+<area shape="poly" title=" " alt="" coords="834,286,684,331,683,325,832,281"/>
+<area shape="poly" title=" " alt="" coords="933,290,960,326,956,329,929,293"/>
+<area shape="poly" title=" " alt="" coords="1840,288,1750,330,1748,326,1838,283"/>
+<area shape="poly" title=" " alt="" coords="1892,294,1891,328,1886,328,1887,294"/>
 </map>
 </div>
 </div>
@@ -140,15 +208,6 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac522e4654cef505c1ffcc75a426d639c" id="r_ac522e4654cef505c1ffcc75a426d639c"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#ac522e4654cef505c1ffcc75a426d639c">bv_word</a> (const size_t pos)</td></tr>
-<tr class="memdesc:ac522e4654cef505c1ffcc75a426d639c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the word index for a given bit position.  <br /></td></tr>
-<tr class="separator:ac522e4654cef505c1ffcc75a426d639c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7e0bb7a9f7e9a34611b3c3ba41bfdbf" id="r_ad7e0bb7a9f7e9a34611b3c3ba41bfdbf"><td class="memItemLeft" align="right" valign="top">static size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#ad7e0bb7a9f7e9a34611b3c3ba41bfdbf">bv_bit</a> (const size_t pos)</td></tr>
-<tr class="memdesc:ad7e0bb7a9f7e9a34611b3c3ba41bfdbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the bit offset within its 64-bit word.  <br /></td></tr>
-<tr class="separator:ad7e0bb7a9f7e9a34611b3c3ba41bfdbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3eccabaaa5958327799ceda0117f7b76" id="r_a3eccabaaa5958327799ceda0117f7b76"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#a3eccabaaa5958327799ceda0117f7b76">bv_apply_tail_mask</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv)</td></tr>
-<tr class="memdesc:a3eccabaaa5958327799ceda0117f7b76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mask off any excess bits in the last word of a <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>.  <br /></td></tr>
-<tr class="separator:a3eccabaaa5958327799ceda0117f7b76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a560b4e6bdb70189b5866ea7d0245650d" id="r_a560b4e6bdb70189b5866ea7d0245650d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBitVector.html">BitVector</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#a560b4e6bdb70189b5866ea7d0245650d">bv_new</a> (size_t n_bits)</td></tr>
 <tr class="memdesc:a560b4e6bdb70189b5866ea7d0245650d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate a new <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> with all bits cleared.  <br /></td></tr>
 <tr class="separator:a560b4e6bdb70189b5866ea7d0245650d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -158,18 +217,6 @@ Functions</h2></td></tr>
 <tr class="memitem:a222e3ed52b6f2c3079429f0cd4da5c58" id="r_a222e3ed52b6f2c3079429f0cd4da5c58"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#a222e3ed52b6f2c3079429f0cd4da5c58">bv_free</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv)</td></tr>
 <tr class="memdesc:a222e3ed52b6f2c3079429f0cd4da5c58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all memory associated with a <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>.  <br /></td></tr>
 <tr class="separator:a222e3ed52b6f2c3079429f0cd4da5c58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adb02e58f6a79eebb62a1c260821c3ab6" id="r_adb02e58f6a79eebb62a1c260821c3ab6"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#adb02e58f6a79eebb62a1c260821c3ab6">bv_get</a> (const <a class="el" href="structBitVector.html">BitVector</a> *bv, const size_t pos)</td></tr>
-<tr class="memdesc:adb02e58f6a79eebb62a1c260821c3ab6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the bit value at a given position.  <br /></td></tr>
-<tr class="separator:adb02e58f6a79eebb62a1c260821c3ab6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5a6e7fc872706fc88f7562ea00dab02" id="r_ab5a6e7fc872706fc88f7562ea00dab02"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#ab5a6e7fc872706fc88f7562ea00dab02">bv_set</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv, const size_t pos)</td></tr>
-<tr class="memdesc:ab5a6e7fc872706fc88f7562ea00dab02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the bit at a given position (set to 1)  <br /></td></tr>
-<tr class="separator:ab5a6e7fc872706fc88f7562ea00dab02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe9af7e7b58e8d6c145772125facdf23" id="r_abe9af7e7b58e8d6c145772125facdf23"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#abe9af7e7b58e8d6c145772125facdf23">bv_clear</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv, const size_t pos)</td></tr>
-<tr class="memdesc:abe9af7e7b58e8d6c145772125facdf23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the bit at a given position (set to 0)  <br /></td></tr>
-<tr class="separator:abe9af7e7b58e8d6c145772125facdf23"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a237c5942e4ea28aabaf70a42f8f343a7" id="r_a237c5942e4ea28aabaf70a42f8f343a7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#a237c5942e4ea28aabaf70a42f8f343a7">bv_flip</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv, const size_t pos)</td></tr>
-<tr class="memdesc:a237c5942e4ea28aabaf70a42f8f343a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle (flip) the bit at a given position.  <br /></td></tr>
-<tr class="separator:a237c5942e4ea28aabaf70a42f8f343a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a182f282c1a69c41d230ead44c24eec77" id="r_a182f282c1a69c41d230ead44c24eec77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#a182f282c1a69c41d230ead44c24eec77">bv_set_range</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv, size_t start, size_t len)</td></tr>
 <tr class="memdesc:a182f282c1a69c41d230ead44c24eec77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set all bits in the half‑open range [start, start+len).  <br /></td></tr>
 <tr class="separator:a182f282c1a69c41d230ead44c24eec77"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -191,17 +238,32 @@ Functions</h2></td></tr>
 <tr class="memitem:a321007321514662bf5f9d8350ed380ba" id="r_a321007321514662bf5f9d8350ed380ba"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#a321007321514662bf5f9d8350ed380ba">bv_contains_subvector</a> (const <a class="el" href="structBitVector.html">BitVector</a> *a, const <a class="el" href="structBitVector.html">BitVector</a> *b)</td></tr>
 <tr class="memdesc:a321007321514662bf5f9d8350ed380ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check weather B appears as a contiguous sub-bitvector of A.  <br /></td></tr>
 <tr class="separator:a321007321514662bf5f9d8350ed380ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91e0516a523c4bd85e2719cb8a624766" id="r_a91e0516a523c4bd85e2719cb8a624766"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#a91e0516a523c4bd85e2719cb8a624766">bv_get</a> (const <a class="el" href="structBitVector.html">BitVector</a> *bv, const size_t pos)</td></tr>
+<tr class="memdesc:a91e0516a523c4bd85e2719cb8a624766"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the bit value at a given position.  <br /></td></tr>
+<tr class="separator:a91e0516a523c4bd85e2719cb8a624766"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2baa31f9f443fa2b8b9d6177a3aa8b6" id="r_af2baa31f9f443fa2b8b9d6177a3aa8b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#af2baa31f9f443fa2b8b9d6177a3aa8b6">bv_set</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv, const size_t pos)</td></tr>
+<tr class="memdesc:af2baa31f9f443fa2b8b9d6177a3aa8b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the bit at a given position (set to 1)  <br /></td></tr>
+<tr class="separator:af2baa31f9f443fa2b8b9d6177a3aa8b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a1cb8eb14cf44e420804665ab72d3a5" id="r_a8a1cb8eb14cf44e420804665ab72d3a5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#a8a1cb8eb14cf44e420804665ab72d3a5">bv_clear</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv, const size_t pos)</td></tr>
+<tr class="memdesc:a8a1cb8eb14cf44e420804665ab72d3a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the bit at a given position (set to 0)  <br /></td></tr>
+<tr class="separator:a8a1cb8eb14cf44e420804665ab72d3a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3d0887d13e81dda83cb826e1f19d9a6" id="r_ae3d0887d13e81dda83cb826e1f19d9a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector_8h.html#ae3d0887d13e81dda83cb826e1f19d9a6">bv_flip</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv, const size_t pos)</td></tr>
+<tr class="memdesc:ae3d0887d13e81dda83cb826e1f19d9a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle (flip) the bit at a given position.  <br /></td></tr>
+<tr class="separator:ae3d0887d13e81dda83cb826e1f19d9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Packed <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> C-API declarations. </p>
-<p>This header decleares the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> C-API:</p><ul>
-<li>creation, copy, free</li>
-<li>bit get/set/clear/flip operations</li>
-<li>rank and subvector-containment queries</li>
+<div class="textblock"><p>Public C API for the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> data structure. </p>
+<p>Declares the stable, external-facing API for <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>:</p><ul>
+<li>construction and destruction (<a class="el" href="bitvector_8h.html#a560b4e6bdb70189b5866ea7d0245650d">bv_new</a>, <a class="el" href="bitvector_8h.html#acbb0c18fd9a720e6e77c40e069d6728c">bv_copy</a>, <a class="el" href="bitvector_8h.html#a222e3ed52b6f2c3079429f0cd4da5c58">bv_free</a>)</li>
+<li>single-bit operations (<a class="el" href="bitvector_8h.html#a91e0516a523c4bd85e2719cb8a624766">bv_get</a>, <a class="el" href="bitvector_8h.html#af2baa31f9f443fa2b8b9d6177a3aa8b6">bv_set</a>, <a class="el" href="bitvector_8h.html#a8a1cb8eb14cf44e420804665ab72d3a5">bv_clear</a>, <a class="el" href="bitvector_8h.html#ae3d0887d13e81dda83cb826e1f19d9a6">bv_flip</a>)</li>
+<li>range operations (<a class="el" href="bitvector_8h.html#a182f282c1a69c41d230ead44c24eec77">bv_set_range</a>, <a class="el" href="bitvector_8h.html#a7e326b3e801d3ae2c8372fd66a493b21">bv_clear_range</a>, <a class="el" href="bitvector_8h.html#a2e3fbc3abe02f0db7577453638cb46b7">bv_flip_range</a>)</li>
+<li>rank queries (<a class="el" href="bitvector_8h.html#a512988fb7c0004571bd8edefc67dbe0c">bv_build_rank</a>, <a class="el" href="bitvector_8h.html#afdfa632ea087f518a95082388f71cf38">bv_rank</a>)</li>
+<li>comparison and subvector search (<a class="el" href="bitvector_8h.html#ad82fe6ffdf12ab5ca5239d111942529e">bv_equal</a>, <a class="el" href="bitvector_8h.html#a321007321514662bf5f9d8350ed380ba">bv_contains_subvector</a>)</li>
 </ul>
+<p>This header exposes only the public interface. Internal helpers and inline fast-paths are intentionally separated into <a class="el" href="bitvector__internal_8h.html">bitvector_internal.h</a>.</p>
 <dl class="section author"><dt>Author</dt><dd>lambdaphoenix </dd></dl>
-<dl class="section version"><dt>Version</dt><dd>0.2.0 </dd></dl>
-<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 lambdaphoenix </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.2.1 </dd></dl>
+<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2026 lambdaphoenix </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="ac741fbe224335b2474474263fc59609e" name="ac741fbe224335b2474474263fc59609e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac741fbe224335b2474474263fc59609e">&#9670;&#160;</a></span>BV_ALIGN</h2>
@@ -252,76 +314,6 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a3eccabaaa5958327799ceda0117f7b76" name="a3eccabaaa5958327799ceda0117f7b76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3eccabaaa5958327799ceda0117f7b76">&#9670;&#160;</a></span>bv_apply_tail_mask()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void bv_apply_tail_mask </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structBitVector.html">BitVector</a> *&#160;</td>
-          <td class="paramname"><em>bv</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Mask off any excess bits in the last word of a <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">bv</td><td>Pointer to an allocated <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section since"><dt>Since</dt><dd>0.1.2 </dd></dl>
-
-</div>
-</div>
-<a id="ad7e0bb7a9f7e9a34611b3c3ba41bfdbf" name="ad7e0bb7a9f7e9a34611b3c3ba41bfdbf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7e0bb7a9f7e9a34611b3c3ba41bfdbf">&#9670;&#160;</a></span>bv_bit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static size_t bv_bit </td>
-          <td>(</td>
-          <td class="paramtype">const size_t&#160;</td>
-          <td class="paramname"><em>pos</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Compute the bit offset within its 64-bit word. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pos</td><td>bit index </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Offset in [0...63] inside the 64-bit word. </dd></dl>
-
-</div>
-</div>
 <a id="a512988fb7c0004571bd8edefc67dbe0c" name="a512988fb7c0004571bd8edefc67dbe0c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a512988fb7c0004571bd8edefc67dbe0c">&#9670;&#160;</a></span>bv_build_rank()</h2>
 
@@ -348,17 +340,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="abe9af7e7b58e8d6c145772125facdf23" name="abe9af7e7b58e8d6c145772125facdf23"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe9af7e7b58e8d6c145772125facdf23">&#9670;&#160;</a></span>bv_clear()</h2>
+<a id="a8a1cb8eb14cf44e420804665ab72d3a5" name="a8a1cb8eb14cf44e420804665ab72d3a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a1cb8eb14cf44e420804665ab72d3a5">&#9670;&#160;</a></span>bv_clear()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void bv_clear </td>
+          <td class="memname">void bv_clear </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structBitVector.html">BitVector</a> *&#160;</td>
           <td class="paramname"><em>bv</em>, </td>
@@ -375,11 +364,6 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Clear the bit at a given position (set to 0) </p>
@@ -541,17 +525,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a237c5942e4ea28aabaf70a42f8f343a7" name="a237c5942e4ea28aabaf70a42f8f343a7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a237c5942e4ea28aabaf70a42f8f343a7">&#9670;&#160;</a></span>bv_flip()</h2>
+<a id="ae3d0887d13e81dda83cb826e1f19d9a6" name="ae3d0887d13e81dda83cb826e1f19d9a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3d0887d13e81dda83cb826e1f19d9a6">&#9670;&#160;</a></span>bv_flip()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void bv_flip </td>
+          <td class="memname">void bv_flip </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structBitVector.html">BitVector</a> *&#160;</td>
           <td class="paramname"><em>bv</em>, </td>
@@ -568,11 +549,6 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Toggle (flip) the bit at a given position. </p>
@@ -657,17 +633,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="adb02e58f6a79eebb62a1c260821c3ab6" name="adb02e58f6a79eebb62a1c260821c3ab6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adb02e58f6a79eebb62a1c260821c3ab6">&#9670;&#160;</a></span>bv_get()</h2>
+<a id="a91e0516a523c4bd85e2719cb8a624766" name="a91e0516a523c4bd85e2719cb8a624766"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91e0516a523c4bd85e2719cb8a624766">&#9670;&#160;</a></span>bv_get()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static int bv_get </td>
+          <td class="memname">int bv_get </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structBitVector.html">BitVector</a> *&#160;</td>
           <td class="paramname"><em>bv</em>, </td>
@@ -684,11 +657,6 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Get the bit value at a given position. </p>
@@ -768,17 +736,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ab5a6e7fc872706fc88f7562ea00dab02" name="ab5a6e7fc872706fc88f7562ea00dab02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5a6e7fc872706fc88f7562ea00dab02">&#9670;&#160;</a></span>bv_set()</h2>
+<a id="af2baa31f9f443fa2b8b9d6177a3aa8b6" name="af2baa31f9f443fa2b8b9d6177a3aa8b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2baa31f9f443fa2b8b9d6177a3aa8b6">&#9670;&#160;</a></span>bv_set()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static void bv_set </td>
+          <td class="memname">void bv_set </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="structBitVector.html">BitVector</a> *&#160;</td>
           <td class="paramname"><em>bv</em>, </td>
@@ -795,11 +760,6 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Set the bit at a given position (set to 1) </p>
@@ -858,45 +818,10 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ac522e4654cef505c1ffcc75a426d639c" name="ac522e4654cef505c1ffcc75a426d639c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac522e4654cef505c1ffcc75a426d639c">&#9670;&#160;</a></span>bv_word()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static size_t bv_word </td>
-          <td>(</td>
-          <td class="paramtype">const size_t&#160;</td>
-          <td class="paramname"><em>pos</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Compute the word index for a given bit position. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">pos</td><td>bit index </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Index of the 64-bit word containing that bit. </dd></dl>
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Oct 10 2025 13:20:32 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Sat Feb 7 2026 15:13:04 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

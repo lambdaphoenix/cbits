@@ -1,0 +1,17 @@
+<map id="include/bitvector_internal.h" name="include/bitvector_internal.h">
+<area shape="rect" id="Node000001" title="Internal inline helpers for BitVector operations." alt="" coords="79,5,279,31"/>
+<area shape="rect" id="Node000002" href="$bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="133,79,224,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,31,181,65,176,65,176,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,225,80,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="155,106,121,126,89,154,68,183,54,213,49,211,63,181,85,150,118,122,153,102"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="199,225,270,251"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="186,103,228,212,223,213,181,105"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="256,152,339,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="199,102,267,142,265,147,196,106"/>
+<area shape="rect" id="Node000006" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="99,152,181,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="175,106,155,141,150,139,170,103"/>
+<area shape="poly" id="edge7_Node000006_Node000003" title=" " alt="" coords="126,180,71,219,68,215,123,175"/>
+<area shape="poly" id="edge6_Node000006_Node000004" title=" " alt="" coords="157,175,210,215,207,219,154,179"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="105,225,175,251"/>
+<area shape="poly" id="edge8_Node000006_Node000007" title=" " alt="" coords="143,178,143,212,137,212,137,178"/>
+</map>

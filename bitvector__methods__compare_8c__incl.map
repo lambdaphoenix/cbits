@@ -1,0 +1,28 @@
+<map id="src/python/bitvector_methods_compare.c" name="src/python/bitvector_methods_compare.c">
+<area shape="rect" id="Node000001" title="Equality and hashing for PyBitVector." alt="" coords="178,5,339,45"/>
+<area shape="rect" id="Node000002" href="$bitvector__methods__compare_8h.html" title="Equality and hashing methods for BitVector." alt="" coords="75,93,295,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="243,47,208,85,204,81,239,44"/>
+<area shape="rect" id="Node000012" href="$bitvector__check_8h.html" title="Validation helpers for Python BitVector operations." alt="" coords="273,167,410,192"/>
+<area shape="poly" id="edge13_Node000001_Node000012" title=" " alt="" coords="277,44,310,92,336,153,331,155,306,95,273,47"/>
+<area shape="rect" id="Node000003" href="$bitvector__object_8h.html" title="Definition of the PyBitVector Python type." alt="" coords="109,167,248,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="187,119,184,153,178,153,182,119"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="290,240,369,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="204,190,293,232,291,236,202,194"/>
+<area shape="rect" id="Node000005" href="$bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="104,240,253,265"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="181,192,181,226,176,226,176,192"/>
+<area shape="rect" id="Node000006" href="$bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="133,313,224,339"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="181,266,181,300,176,300,176,266"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="5,460,80,485"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="155,341,121,361,89,388,68,418,54,448,49,446,63,415,85,385,118,357,153,336"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="199,460,270,485"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="186,338,228,446,223,448,181,340"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="256,387,339,412"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="199,336,267,377,265,382,196,341"/>
+<area shape="rect" id="Node000010" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="99,387,181,412"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="175,340,155,376,150,373,170,338"/>
+<area shape="poly" id="edge11_Node000010_Node000007" title=" " alt="" coords="126,414,71,454,68,449,123,410"/>
+<area shape="poly" id="edge10_Node000010_Node000008" title=" " alt="" coords="157,410,210,449,207,454,154,414"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="105,460,175,485"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="143,412,143,446,137,446,137,412"/>
+<area shape="poly" id="edge14_Node000012_Node000004" title=" " alt="" coords="342,193,336,227,331,226,337,192"/>
+</map>
