@@ -1,3 +1,16 @@
+/**
+ * @file src/python/bitvector_iter.c
+ * @brief Implementation of BitVector iterator.
+ *
+ * Implements the iterator returned by BitVector.__iter__(). Iteration proceeds
+ * bit‑by‑bit using a cached 64‑bit word and a shifting mask to minimize
+ * indexing overhead and reduce Python/C boundary calls.
+ *
+ * @see bitvector_object.h
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #include "bitvector_iter.h"
 
 /**

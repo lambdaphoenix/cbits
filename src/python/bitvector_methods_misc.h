@@ -1,7 +1,21 @@
+/**
+ * @file src/python/bitvector_methods_misc.h
+ * @brief Miscellaneous BitVector Python methods.
+ *
+ * Declares:
+ * - __len__
+ * - __repr__, __str__
+ * - __contains__
+ * - getset table
+ *
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #ifndef CBITS_PY_BITVECTOR_METHODS_MISC_H
 #define CBITS_PY_BITVECTOR_METHODS_MISC_H
 
-#include "bitvector_methods.h"
+#include "bitvector_object.h"
 
 /**
  * @brief __len__(BitVector) → number of bits.

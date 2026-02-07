@@ -1,11 +1,25 @@
+/**
+ * @file src/python/bitvector_object.c
+ * @brief Implementation of the PyBitVector Python type.
+ *
+ * Defines:
+ * - type initialization via PyType_Spec
+ * - py_bv_new, py_bv_init, py_bv_free
+ * - integration of all method groups and iterator support
+ *
+ * This file binds the C BitVector backend to the Python's objet module.
+ *
+ * @see bitvector_object.h
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #include "bitvector_object.h"
-#include "bitvector_methods_basic.h"
+#include "bitvector_methods.h"
+#include "bitvector_methods_misc.h"
+#include "bitvector_methods_compare.h"
 #include "bitvector_methods_slice.h"
 #include "bitvector_methods_ops.h"
-#include "bitvector_methods_compare.h"
-#include "bitvector_methods_misc.h"
-#include "bitvector_methods_copy.h"
-#include "bitvector_methods_rank.h"
 #include "bitvector_iter.h"
 
 PyObject *
@@ -79,89 +93,6 @@ py_bv_free(PyObject *self)
     }
     Py_TYPE(self)->tp_free(self);
 }
-
-/* Docstrings */
-PyDoc_STRVAR(
-    py_bv_get__doc__,
-    "get(index: int) -> bool\n"
-    "\n"
-    "Return the boolean value of the bit at position *index*.\n"
-    "Negative indices are supported. Raises IndexError if out of range.");
-PyDoc_STRVAR(
-    py_bv_set__doc__,
-    "set(index: int) -> None\n"
-    "\n"
-    "Set the bit at position *index* to True. Supports negative indexing.\n"
-    "Raises IndexError if out of range.");
-PyDoc_STRVAR(py_bv_clear__doc__,
-             "clear(index: int) -> None\n"
-             "\n"
-             "Clear the bit (set to False) at position *index*. Supports "
-             "negative indexing.\n"
-             "Raises IndexError if out of range.");
-PyDoc_STRVAR(
-    py_bv_flip__doc__,
-    "flip(index: int) -> None\n"
-    "\n"
-    "Toggle the bit at position *index*. Supports negative indexing.\n"
-    "Raises IndexError if out of range.");
-PyDoc_STRVAR(py_bv_set_range__doc__,
-             "set_range(start: int, length: int) -> None\n"
-             "\n"
-             "Set all bits in the half-open range [start, start+length).\n"
-             "Raises IndexError if the range is out of bounds.");
-PyDoc_STRVAR(py_bv_clear_range__doc__,
-             "clear_range(start: int, length: int) -> None\n"
-             "\n"
-             "Clear all bits in the half-open range [start, start+length).\n"
-             "Raises IndexError if the range is out of bounds.");
-PyDoc_STRVAR(py_bv_flip_range__doc__,
-             "flip_range(start: int, length: int) -> None\n"
-             "\n"
-             "Toggle all bits in the half-open range [start, start+length).\n"
-             "Raises IndexError if the range is out of bounds.");
-PyDoc_STRVAR(py_bv_copy__doc__,
-             "copy() -> BitVector\n"
-             "\n"
-             "Return a copy of this BitVector.");
-PyDoc_STRVAR(py_bv_copy_inline__doc__,
-             "__copy__() -> BitVector\n"
-             "\n"
-             "Return a copy of this BitVector.");
-PyDoc_STRVAR(py_bv_deepcopy__doc__,
-             "__deepcopy__(memo: dict) -> BitVector\n"
-             "\n"
-             "Return a copy of this BitVector, registering it in *memo*.");
-PyDoc_STRVAR(
-    py_bv_rank__doc__,
-    "rank(index: int) -> int\n"
-    "\n"
-    "Count the number of bits set to True in the half-open range [0..index].\n"
-    "Supports negative indexing. Raises IndexError if out of range.");
-
-
-/**
- * @brief Method table for BitVector core methods.
- */
-static PyMethodDef BitVector_methods[] = {
-    {"get", (PyCFunction) py_bv_get, METH_O, py_bv_get__doc__},
-    {"set", (PyCFunction) py_bv_set, METH_O, py_bv_set__doc__},
-    {"clear", (PyCFunction) py_bv_clear, METH_O, py_bv_clear__doc__},
-    {"flip", (PyCFunction) py_bv_flip, METH_O, py_bv_flip__doc__},
-    {"set_range", (PyCFunction) py_bv_set_range, METH_VARARGS,
-     py_bv_set_range__doc__},
-    {"clear_range", (PyCFunction) py_bv_clear_range, METH_VARARGS,
-     py_bv_clear_range__doc__},
-    {"flip_range", (PyCFunction) py_bv_flip_range, METH_VARARGS,
-     py_bv_flip_range__doc__},
-    {"rank", (PyCFunction) py_bv_rank, METH_O, py_bv_rank__doc__},
-    {"copy", (PyCFunction) py_bv_copy, METH_NOARGS, py_bv_copy__doc__},
-    {"__copy__", (PyCFunction) py_bv_copy, METH_NOARGS,
-     py_bv_copy_inline__doc__},
-    {"__deepcopy__", (PyCFunction) py_bv_deepcopy, METH_O,
-     py_bv_deepcopy__doc__},
-    {NULL, NULL, 0, NULL},
-};
 
 PyDoc_STRVAR(
     BitVector__doc__,

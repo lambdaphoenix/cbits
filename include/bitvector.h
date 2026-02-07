@@ -1,14 +1,23 @@
-/** @file include/bitvector.h
- * @brief Packed BitVector C-API declarations.
+/**
+ * @file include/bitvector.h
+ * @brief Public C API for the BitVector data structure.
  *
- * This header decleares the BitVector C-API:
- * - creation, copy, free
- * - bit get/set/clear/flip operations
- * - rank and subvector-containment queries
+ * Declares the stable, external-facing API for BitVector:
+ * - construction and destruction (\ref bv_new, \ref bv_copy, \ref bv_free)
+ * - single-bit operations (\ref bv_get, \ref bv_set, \ref bv_clear, \ref
+ * bv_flip)
+ * - range operations (\ref bv_set_range, \ref
+ * bv_clear_range, \ref bv_flip_range)
+ * - rank queries (\ref bv_build_rank, \ref bv_rank)
+ * - comparison and subvector search (\ref bv_equal, \ref
+ * bv_contains_subvector)
+ *
+ * This header exposes only the public interface. Internal helpers and inline
+ * fast-paths are intentionally separated into \ref bitvector_internal.h.
  *
  * @author lambdaphoenix
- * @version 0.2.0
- * @copyright Copyright (c) 2025 lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
  */
 #ifndef CBITS_BITVECTOR_H
 #define CBITS_BITVECTOR_H

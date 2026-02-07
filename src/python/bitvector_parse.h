@@ -1,7 +1,23 @@
+/**
+ * @file src/python/bitvector_parse.h
+ * @brief Argument parsing helpers for BitVector Python methods.
+ *
+ * Provide:
+ * - \ref bv_parse_index "bv_parse_index": validate and normalize a single
+ * index
+ * - \ref bv_parse_tuple "bv_parse_tuple": parse (start, len) tuples
+ *
+ * Centralizes error handling and index normalization for all method modules.
+ *
+ * @see bitvector_object.h
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #ifndef CBITS_PY_BITVECTOR_PARSE_H
 #define CBITS_PY_BITVECTOR_PARSE_H
 
-#include "bitvector_methods.h"
+#include "bitvector_object.h"
 
 /**
  * @brief Parse and validate a single index argument.

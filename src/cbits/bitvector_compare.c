@@ -1,3 +1,16 @@
+/**
+ * @file src/cbits/bitvector_compare.c
+ * @brief BitVector comparison and subvector search.
+ *
+ * This module implements:
+ * - \ref bv_equal
+ * - \ref bv_contains_subvector
+ *
+ * @see bitvector_internal.h
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #include "bitvector_internal.h"
 
 bool

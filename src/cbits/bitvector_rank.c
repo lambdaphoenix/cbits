@@ -1,3 +1,20 @@
+/**
+ * @file src/cbits/bitvector_rank.c
+ * @brief Rank table construction and rank queries.
+ *
+ * This module implements:
+ * - \ref bv_build_rank
+ * - \ref bv_rank
+ *
+ * This module isolates the rank subsystem from the core BitVector logic and
+ * integrates with the popcount dispatch mechanism provided by \ref compat.h.
+ *
+ * @see compat.h
+ * @see bitvector_internal.h
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #include "bitvector_internal.h"
 
 void

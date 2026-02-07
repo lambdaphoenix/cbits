@@ -1,3 +1,18 @@
+/**
+ * @file src/python/bitvector_module.c
+ * @brief Module initialization for the cbits._cbits extension.
+ *
+ * Registers:
+ * - BitVector type
+ * - BitVector iterator type
+ * - module-level constants
+ *
+ * This is the entry point for the Python extension module.
+ *
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #define PY_SSIZE_T_CLEAN
 #include "Python.h"
 #include "bitvector_methods.h"
@@ -22,7 +37,8 @@ PyTypeObject *PyBitVectorIterType = NULL;
      * @return 0 on success, -1 on failure (exception set by
      * PyModule_AddObject*).
      */
-    #define ADD_OBJECT(module, name, object) (PyModule_AddObjectRef(module, name, object))
+    #define ADD_OBJECT(module, name, object) \
+        (PyModule_AddObjectRef(module, name, object))
 #else
 
     /**
@@ -131,7 +147,7 @@ cbits_module_exec(PyObject *module)
         0) {
         return -1;
     }
-    if (PyModule_AddStringConstant(module, "__version__", "0.2.0") < 0) {
+    if (PyModule_AddStringConstant(module, "__version__", "0.2.1") < 0) {
         return -1;
     }
     if (PyModule_AddStringConstant(module, "__license__", "Apache-2.0") < 0) {
@@ -176,7 +192,6 @@ static PyModuleDef cbits_module = {
 
 /**
  * @brief Python entrypoint for _cbits extension module.
- * @param void
  * @return New module object (borrowed reference).
  */
 PyMODINIT_FUNC

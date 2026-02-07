@@ -1,3 +1,17 @@
+/**
+ * @file src/cbits/bitvector_core.c
+ * @brief Core BitVector construction and basic bit operations.
+ *
+ * This module implements the fundamental BitVector API:
+ * - \ref bv_new, \ref bv_copy, \ref bv_free
+ * - single bit operations (\ref bv_get, \ref bv_set, \ref bv_clear, \ref
+ * bv_flip)
+ *
+ * @see bitvector_internal.h
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #include "bitvector_internal.h"
 #include <string.h>
 
@@ -76,20 +90,24 @@ bv_free(BitVector *bv)
 }
 
 int
-bv_get(const BitVector *bv, const size_t pos) {
+bv_get(const BitVector *bv, const size_t pos)
+{
     return bv__get_inline(bv, pos);
 }
 void
-bv_set(BitVector *bv, const size_t pos) {
+bv_set(BitVector *bv, const size_t pos)
+{
     bv__set_inline(bv, pos);
 }
 
 void
-bv_clear(BitVector *bv, const size_t pos) {
+bv_clear(BitVector *bv, const size_t pos)
+{
     bv__clear_inline(bv, pos);
 }
 
 void
-bv_flip(BitVector *bv, const size_t pos) {
+bv_flip(BitVector *bv, const size_t pos)
+{
     bv__flip_inline(bv, pos);
 }

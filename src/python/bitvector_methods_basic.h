@@ -1,7 +1,19 @@
+/**
+ * @file src/python/bitvector_methods_basic.h
+ * @brief Basic BitVector operations for Python.
+ *
+ * Declares:
+ * - get, set, clear, flip
+ * - set_range, clear_range, flip_range
+ *
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #ifndef CBITS_PY_BITVECTOR_METHODS_BASIC_H
 #define CBITS_PY_BITVECTOR_METHODS_BASIC_H
 
-#include "bitvector_methods.h"
+#include "bitvector_object.h"
 
 /**
  * @brief Python binding for BitVector.get(index) → bool.
@@ -22,7 +34,7 @@ py_bv_set(PyObject *self, PyObject *arg);
 /**
  * @brief Python binding for BitVector.clear(index).
  * @param self A Python PyBitVector instance.
- * @param args Python argument.
+ * @param arg Python argument.
  * @return None on success, NULL on error.
  */
 PyObject *
@@ -75,6 +87,5 @@ py_bv_clear_range(PyObject *self, PyObject *args);
  */
 PyObject *
 py_bv_flip_range(PyObject *self, PyObject *args);
-
 
 #endif /* CBITS_PY_BITVECTOR_METHODS_BASIC_H */

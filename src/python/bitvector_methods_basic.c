@@ -1,3 +1,15 @@
+/**
+ * @file src/python/bitvector_methods_basic.c
+ * @brief Implementation of basic BitVector Python methods.
+ *
+ * Provides Python bindings for single‑bit access and mutation: get, set,
+ * clear, flip, and the corresponding range operations. All arguments are
+ * validated through shared parsing helpers.
+ *
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #include "bitvector_methods_basic.h"
 #include "bitvector_parse.h"
 

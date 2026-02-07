@@ -1,5 +1,18 @@
-#ifndef CBITS_PY_BITVECTOR_CHECKS_H
-#define CBITS_PY_BITVECTOR_CHECKS_H
+/**
+ * @file src/python/bitvector_check.h  //TODO rename to _check
+ * @brief Validation helpers for Python BitVector operations.
+ *
+ * Contain macros for:
+ * - type checking
+ *
+ * Used across the method modules to ensure consistent error behavior.
+ *
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
+#ifndef CBITS_PY_BITVECTOR_CHECK_H
+#define CBITS_PY_BITVECTOR_CHECK_H
 
 #include <Python.h>
 
@@ -24,4 +37,4 @@
         Py_RETURN_NOTIMPLEMENTED;                 \
     }
 
-#endif /* CBITS_PY_BITVECTOR_CHECKS_H */
+#endif /* CBITS_PY_BITVECTOR_CHECK_H */

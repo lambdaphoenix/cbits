@@ -8,7 +8,7 @@
  * - optimized 64-bit popcount and block-level popcount
  *
  * @author lambdaphoenix
- * @version 0.2.0
+ * @version 0.2.1
  * @copyright Copyright (c) 2025 lambdaphoenix
  */
 #ifndef CBITS_COMPAT_H
@@ -123,7 +123,7 @@ cbits_prefetch(const void *ptr)
 /**
  * @brief Count bits set in a 64-bit word.
  *
- * @param ptr Pointer to the uint64_t to count bits in.
+ * @param x Pointer to the uint64_t to count bits in.
  * @return Number of set bits in *ptr.
  */
 static inline uint64_t
@@ -209,8 +209,6 @@ cbits_popcount_block(const uint64_t *ptr)
  * At program start, this function checks CPU support for AVX-512VPOPCNTDQ
  * and AVX2 via __builtin_cpu_supports, then updates
  * cbits_popcount_block_ptr accordingly.
- *
- * @param void
  */
 void
 init_cpu_dispatch(void);

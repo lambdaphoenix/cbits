@@ -1,7 +1,19 @@
+/**
+ * @file src/python/bitvector_methods_slice.h
+ * @brief Slicing support for BitVector.
+ *
+ * Declares:
+ * - __getitem__ for slice objects
+ * - __setitem__ for slice assignment
+ *
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #ifndef CBITS_PY_BITVECTOR_METHODS_SLICE_H
 #define CBITS_PY_BITVECTOR_METHODS_SLICE_H
 
-#include "bitvector_methods.h"
+#include "bitvector_object.h"
 
 /**
  * @brief Implements BitVector.__getitem__ dispatch for index or slice.

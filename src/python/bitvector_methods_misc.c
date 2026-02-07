@@ -1,3 +1,20 @@
+/**
+ * @file src/python/bitvector_methods_misc.c
+ * @brief Implementation of miscellaneous BitVector methods.
+ *
+ * Implements:
+ * - __repr__ and __str__
+ * - __len__
+ * - __contains__
+ * - the "bits" read-only property
+ *
+ * These methods provide standard Python protocol support and convenience
+ * features for the BitVector type.
+ *
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #include "bitvector_methods_misc.h"
 
 PyObject *

@@ -1,3 +1,19 @@
+/**
+ * @file src/cbits/bitvector_range.c
+ * @brief Range-based bit operations for BitVector.
+ *
+ * This module implements:
+ * - \ref bv_set_range
+ * - \ref bv_clear_range
+ * - \ref bv_flip_range
+ *
+ * These operations manipulate contiguous bit ranges.
+ *
+ * @see bitvector_internal.h
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #include "bitvector_internal.h"
 
 void

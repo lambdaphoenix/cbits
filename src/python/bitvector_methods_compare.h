@@ -1,7 +1,22 @@
+/**
+ * @file src/python/bitvector_methods_compare.h
+ * @brief Equality and hashing methods for BitVector.
+ *
+ * Declares:
+ * - rich comparison (__eq__, __ne__)
+ * - __hash__ implementation
+ *
+ * These functions wrap the C backend’s equality check and provide a cached
+ * hash suitable for Python dictionaries and sets.
+ *
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #ifndef CBITS_PY_BITVECTOR_METHODS_COMPARE_H
 #define CBITS_PY_BITVECTOR_METHODS_COMPARE_H
 
-#include "bitvector_methods.h"
+#include "bitvector_object.h"
 
 /**
  * @brief Rich comparison (== and !=) for BitVector.

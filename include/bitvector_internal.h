@@ -1,3 +1,17 @@
+/**
+ * @file include/bitvector_internal.h
+ * @brief Internal inline helpers for BitVector operations.
+ *
+ * Provides inline functions used by the C backend and Python bindings:
+ * - inline bit operations (\ref bv__get_inline, \ref bv__set_inline, \ref
+ * bv__clear_inline, \ref bv__flip_inline)
+ * - tail masking (\ref bv_apply_tail_mask)
+ *
+ * @see bitvector.h
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #ifndef CBITS_BITVECTOR_INTERNAL_H
 #define CBITS_BITVECTOR_INTERNAL_H
 
@@ -29,7 +43,7 @@ bv_bit(const size_t pos)
  *  @param bv Pointer to the BitVector
  *  @param pos Bit index
  *  @return @c 0 or @c 1 depending on the bit value
- *  @since 0.3.0 
+ *  @since 0.2.1
  */
 static inline int
 bv__get_inline(const BitVector *bv, const size_t pos)
@@ -40,7 +54,7 @@ bv__get_inline(const BitVector *bv, const size_t pos)
  *  @brief Internal inline version of bv_set().
  *  @param bv Pointer to the BitVector
  *  @param pos Bit index
- *  @since 0.3.0 
+ *  @since 0.2.1
  */
 static inline void
 bv__set_inline(BitVector *bv, const size_t pos)
@@ -53,7 +67,7 @@ bv__set_inline(BitVector *bv, const size_t pos)
  *  @brief Internal inline version of bv_clear().
  *  @param bv Pointer to the BitVector
  *  @param pos Bit index
- *  @since 0.3.0 
+ *  @since 0.2.1
  */
 static inline void
 bv__clear_inline(BitVector *bv, const size_t pos)
@@ -66,7 +80,7 @@ bv__clear_inline(BitVector *bv, const size_t pos)
  *  @brief Internal inline version of bv_flip().
  *  @param bv Pointer to the BitVector
  *  @param pos Bit index
- *  @since 0.3.0 
+ *  @since 0.2.1
  */
 static inline void
 bv__flip_inline(BitVector *bv, const size_t pos)

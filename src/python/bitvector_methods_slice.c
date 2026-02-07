@@ -1,3 +1,17 @@
+/**
+ * @file src/python/bitvector_methods_slice.c
+ * @brief Slicing support for the BitVector Python type.
+ *
+ * Implements __getitem__ and __setitem__ for slice objects as well as integer
+ * indexing. Slice extraction uses fast bit‑shifting paths for contiguous
+ * ranges and falls back to per‑bit copying for stepped slices. Slice
+ * assignment accepts any iterable of truthy values and writes them into the
+ * target range.
+ *
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #include "bitvector_methods_slice.h"
 #include "bitvector_object.h"
 
@@ -98,8 +112,7 @@ py_bv_ass_item(PyObject *self, Py_ssize_t i, PyObject *value)
 {
     BitVector *bv = ((PyBitVector *) self)->bv;
     if (!bv || bv->n_bits <= (size_t) i) {
-        PyErr_SetString(PyExc_IndexError,
-                        "BitVector assignment index out of range");
+        PyErr_SetString(PyExc_IndexError, "BitVector assignment out of range");
         return -1;
     }
     int bit = PyObject_IsTrue(value);

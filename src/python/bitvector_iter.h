@@ -1,7 +1,22 @@
+/**
+ * @file src/python/bitvector_iter.h
+ * @brief Iterator type for BitVector.
+ *
+ * Declares:
+ * - py_bv_iter
+ * - py_bviter_iternext, py_bviter_dealloc
+ *
+ * Used by \ref bitvector_object.c to expose iteration type.
+ *
+ * @see bitvector_object.h
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #ifndef CBITS_PY_BITVECTOR_ITER_H
 #define CBITS_PY_BITVECTOR_ITER_H
 
-#include "bitvector_methods.h"
+#include "bitvector_object.h"
 
 /**
  * @brief Create and return a new BitVector iterator.

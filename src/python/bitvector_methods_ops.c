@@ -1,5 +1,18 @@
+/**
+ * @file src/python/bitvector_methods_ops.c
+ * @brief Bitwise operation methods for BitVector.
+ *
+ * Implements Python bindings for all bitwise operators: AND, OR, XOR, their
+ * in‑place variants, bitwise NOT, and truth‑value testing. Operations are
+ * performed word‑wise using the native C backend for high throughput on large
+ * vectors.
+ *
+ * @author lambdaphoenix
+ * @version 0.2.1
+ * @copyright Copyright (c) 2026 lambdaphoenix
+ */
 #include "bitvector_methods_ops.h"
-#include "bitvector_checks.h"
+#include "bitvector_check.h"
 #include "bitvector_object.h"
 
 PyObject *
