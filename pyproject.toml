@@ -33,6 +33,11 @@ keywords = [
 ]
 dependencies = []
 
+[project.optional-dependencies]
+dev = [
+    "pytest",
+]
+
 [project.urls]
 Homepage        = "https://github.com/lambdaphoenix/cbits"
 Source          = "https://github.com/lambdaphoenix/cbits.git"
