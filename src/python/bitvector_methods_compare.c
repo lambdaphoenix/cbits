@@ -1,6 +1,6 @@
 /**
  * @file src/python/bitvector_methods_compare.c
- * @brief Equality and hashing for PyBitVector.
+ * @brief Equality and hashing for PyBitVectorObject.
  *
  * Implements ==, !=, and __hash__ using the C backend’s comparison routines
  * and Python’s byte hashing. Hash values are cached until the BitVector is
@@ -11,29 +11,34 @@
  * @copyright Copyright (c) 2026 lambdaphoenix
  */
 #include "bitvector_methods_compare.h"
-#include "bitvector_check.h"
 
 PyObject *
-py_bv_richcompare(PyObject *a, PyObject *b, int op)
+py_bitvector_richcompare(PyObject *a, PyObject *b, int op)
 {
     if (op != Py_EQ && op != Py_NE) {
         Py_RETURN_NOTIMPLEMENTED;
     }
-    CHECK_BV_BOTH(a, b)
-    BitVector *A = ((PyBitVector *) a)->bv;
-    BitVector *B = ((PyBitVector *) b)->bv;
 
-    bool eq = bv_equal(((PyBitVector *) a)->bv, ((PyBitVector *) b)->bv);
-    if ((op == Py_EQ) == eq) {
-        Py_RETURN_TRUE;
+    cbits_state *state = find_cbits_state_by_type(Py_TYPE(a));
+
+    if (!py_bitvector_check(a, state) || !py_bitvector_check(b, state)) {
+        Py_RETURN_NOTIMPLEMENTED;
     }
-    Py_RETURN_FALSE;
+
+    BitVector *A = ((PyBitVectorObject *) a)->bv;
+    BitVector *B = ((PyBitVectorObject *) b)->bv;
+    bool eq =
+        bv_equal(((PyBitVectorObject *) a)->bv, ((PyBitVectorObject *) b)->bv);
+    if ((op == Py_EQ) == eq) {
+        return Py_NewRef(Py_True);
+    }
+    return Py_NewRef(Py_False);
 }
 
 Py_hash_t
-py_bv_hash(PyObject *self)
+py_bitvector_hash(PyObject *self)
 {
-    PyBitVector *pbv = (PyBitVector *) self;
+    PyBitVectorObject *pbv = (PyBitVectorObject *) self;
     if (pbv->hash_cache != -1) {
         return pbv->hash_cache;
     }

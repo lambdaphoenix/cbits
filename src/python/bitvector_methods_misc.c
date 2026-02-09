@@ -18,63 +18,51 @@
 #include "bitvector_methods_misc.h"
 
 PyObject *
-py_bv_repr(PyObject *self)
+py_bitvector_repr(PyObject *object)
 {
-    PyBitVector *bvself = (PyBitVector *) self;
+    PyBitVectorObject *self = (PyBitVectorObject *) object;
     return PyUnicode_FromFormat("<cbits.BitVector object at %p bits=%zu>",
-                                self, bvself->bv->n_bits);
+                                object, self->bv->n_bits);
 }
 
 PyObject *
-py_bv_str(PyObject *self)
+py_bitvector_str(PyObject *self)
 {
-    PyBitVector *bvself = (PyBitVector *) self;
+    PyBitVectorObject *bvself = (PyBitVectorObject *) self;
     return PyUnicode_FromFormat("BitVector with %zu bits", bvself->bv->n_bits);
 }
 
 Py_ssize_t
-py_bv_len(PyObject *self)
+py_bitvector_len(PyObject *self)
 {
-    BitVector *bv = ((PyBitVector *) self)->bv;
+    BitVector *bv = ((PyBitVectorObject *) self)->bv;
     return (Py_ssize_t) (bv ? bv->n_bits : 0);
 }
 
 int
-py_bv_contains(PyObject *self, PyObject *value)
+py_bitvector_contains(PyObject *object, PyObject *value)
 {
-    if (!PyObject_TypeCheck((PyObject *) value, PyBitVectorPtr)) {
+    PyBitVectorObject *self = (PyBitVectorObject *) object;
+    cbits_state *state = find_cbits_state_by_type(Py_TYPE(object));
+
+    if (!py_bitvector_check(value, state)) {
         return false;
     }
-
-    PyBitVector *A = (PyBitVector *) self;
-    PyBitVector *B = (PyBitVector *) value;
-    return bv_contains_subvector(A->bv, B->bv);
+    PyBitVectorObject *sub = (PyBitVectorObject *) value;
+    return bv_contains_subvector(self->bv, sub->bv);
 }
 
 /**
  * @brief Getter for the read-only "bits" property.
- * @param self A Python PyBitVector instance.
+ * @param self A Python PyBitVectorObject instance.
  * @param closure Unused.
  * @return Python integer of the bit-length
  */
 static PyObject *
-py_bv_get_size(PyObject *self, void *closure)
+py_bitvector_get_size(PyObject *object, void *Py_UNUSED(closure))
 {
-    PyBitVector *bvself = (PyBitVector *) self;
-    return PyLong_FromSize_t(bvself->bv->n_bits);
-}
-
-/**
- * @brief Setter for the read-only "bits" property, always raises.
- * @param self A Python PyBitVector instance.
- * @param closure Unused.
- * @return -1 and sets AttributeError
- */
-static int
-py_bv_set_size(PyObject *self, void *closure)
-{
-    PyErr_SetString(PyExc_AttributeError, "size is read-only");
-    return -1;
+    PyBitVectorObject *self = (PyBitVectorObject *) object;
+    return PyLong_FromSize_t(self->bv->n_bits);
 }
 
 /**
@@ -86,7 +74,6 @@ py_bv_set_size(PyObject *self, void *closure)
  * @see PyGetSetDef
  */
 PyGetSetDef PyBitVector_getset[] = {
-    {"bits", (getter) py_bv_get_size, (setter) py_bv_set_size,
-     PyDoc_STR("The number of bits"), NULL},
+    {"bits", py_bitvector_get_size, NULL, PyDoc_STR("The number of bits.")},
     {NULL},
 };

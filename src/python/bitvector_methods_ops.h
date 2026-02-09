@@ -22,7 +22,7 @@
  * @return New BitVector representing bitwise AND; NULL on error.
  */
 PyObject *
-py_bv_and(PyObject *oA, PyObject *oB);
+py_bitvector_and(PyObject *oA, PyObject *oB);
 /**
  * @brief __iand__(BitVector, BitVector) in-place AND.
  * @param self Left operand (modified in place).
@@ -30,7 +30,7 @@ py_bv_and(PyObject *oA, PyObject *oB);
  * @return Self on success, NULL on error.
  */
 PyObject *
-py_bv_iand(PyObject *self, PyObject *arg);
+py_bitvector_iand(PyObject *self, PyObject *arg);
 /**
  * @brief __or__(BitVector, BitVector) → BitVector.
  * @param oA Left operand.
@@ -38,7 +38,7 @@ py_bv_iand(PyObject *self, PyObject *arg);
  * @return New BitVector representing bitwise OR; NULL on error.
  */
 PyObject *
-py_bv_or(PyObject *oA, PyObject *oB);
+py_bitvector_or(PyObject *oA, PyObject *oB);
 /**
  * @brief __ior__(BitVector, BitVector) in-place OR.
  * @param self Left operand (modified in place).
@@ -46,8 +46,7 @@ py_bv_or(PyObject *oA, PyObject *oB);
  * @return Self on success, NULL on error.
  */
 PyObject *
-py_bv_ior(PyObject *self, PyObject *arg);
-
+py_bitvector_ior(PyObject *self, PyObject *arg);
 /**
  * @brief __xor__(BitVector, BitVector) → BitVector.
  * @param oA Left operand.
@@ -55,8 +54,7 @@ py_bv_ior(PyObject *self, PyObject *arg);
  * @return New BitVector representing bitwise XOR; NULL on error.
  */
 PyObject *
-py_bv_xor(PyObject *oA, PyObject *oB);
-
+py_bitvector_xor(PyObject *oA, PyObject *oB);
 /**
  * @brief __ixor__(BitVector, BitVector) in-place XOR.
  * @param self Left operand (modified in place).
@@ -64,20 +62,20 @@ py_bv_xor(PyObject *oA, PyObject *oB);
  * @return Self on success, NULL on error.
  */
 PyObject *
-py_bv_ixor(PyObject *self, PyObject *arg);
+py_bitvector_ixor(PyObject *self, PyObject *arg);
 /**
  * @brief __invert__(BitVector) → BitVector.
- * @param self A Python PyBitVector instance.
+ * @param self A Python PyBitVectorObject instance.
  * @return New BitVector instance with all bits toggled, NULL on error;
  */
 PyObject *
-py_bv_invert(PyObject *self);
+py_bitvector_invert(PyObject *self);
 /**
  * @brief __bool__(BitVector) → boolean.
- * @param self A Python PyBitVector instance.
+ * @param self A Python PyBitVectorObject instance.
  * @return 1 if any bit is set, 0 otherwise
  */
 int
-py_bv_bool(PyObject *self);
+py_bitvector_bool(PyObject *self);
 
 #endif /* CBITS_PY_BITVECTOR_METHODS_OPS_H */

@@ -21,7 +21,7 @@
 
 /**
  * @brief Parse and validate a single index argument.
- * @param self A Python PyBitVector instance.
+ * @param self A Python PyBitVectorObject instance.
  * @param arg Python argument.
  * @param p_index Output pointer to store the validated index.
  * @return 0 on success (p_index set), -1 on failure (exception set).
@@ -37,7 +37,7 @@ bv_parse_index(PyObject *self, PyObject *arg, size_t *p_index)
     if (index == -1 && PyErr_Occurred()) {
         return -1;
     }
-    PyBitVector *bvself = (PyBitVector *) self;
+    PyBitVectorObject *bvself = (PyBitVectorObject *) self;
     size_t n_bits = bvself->bv->n_bits;
     if (index < 0) {
         index += (Py_ssize_t) n_bits;
@@ -52,7 +52,7 @@ bv_parse_index(PyObject *self, PyObject *arg, size_t *p_index)
 
 /**
  * @brief Parse and validate a (start, length) range tuple.
- * @param self A Python PyBitVector instance.
+ * @param self A Python PyBitVectorObject instance.
  * @param args   Python argument tuple (start, length).
  * @param p_start Output pointer for start index.
  * @param p_len   Output pointer for length.
@@ -71,7 +71,7 @@ bv_parse_tuple(PyObject *self, PyObject *args, size_t *p_start, size_t *p_len)
                         "start and length must be non-negative");
         return -1;
     }
-    PyBitVector *bvself = (PyBitVector *) self;
+    PyBitVectorObject *bvself = (PyBitVectorObject *) self;
     if ((size_t) start + (size_t) len > bvself->bv->n_bits) {
         PyErr_SetString(PyExc_IndexError, "BitVector range out of bounds");
         return -1;

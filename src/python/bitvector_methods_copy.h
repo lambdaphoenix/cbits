@@ -17,19 +17,19 @@
 
 /**
  * @brief Python binding for BitVector.copy() → BitVector.
- * @param self A Python PyBitVector instance.
+ * @param self A Python PyBitVectorObject instance.
  * @param ignored Unused.
  * @return New BitVector copy
  */
 PyObject *
-py_bv_copy(PyObject *self, PyObject *ignored);
+py_bitvector_copy(PyObject *object, PyObject *Py_UNUSED(ignored));
 /**
  * @brief Python binding for BitVector.__deepcopy__(memo) → BitVector.
- * @param self A Python PyBitVector instance.
- * @param memo
+ * @param self A Python PyBitVectorObject instance.
+ * @param unused
  * @return New BitVector copy
  */
 PyObject *
-py_bv_deepcopy(PyObject *self, PyObject *memo);
+py_bitvector_deepcopy(PyObject *self, PyObject *unused);
 
 #endif /* CBITS_PY_BITVECTOR_METHODS_COPY_H */

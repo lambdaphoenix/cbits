@@ -20,6 +20,7 @@
 
 #include <Python.h>
 #include "bitvector_internal.h"
+#include "cbits_state.h"
 
 /**
  * @struct PyBitVector
@@ -30,15 +31,11 @@
  */
 typedef struct {
     PyObject_HEAD BitVector *bv; /**< Reference to the BitVector */
+    PyObject *weakreflist;       /**< List of weak references */
     Py_hash_t hash_cache;        /**< Cached hash value or -1 if invalid */
-} PyBitVector;
-
-/* Forward declarations */
-extern PyTypeObject *PyBitVectorPtr;
-extern PyTypeObject *PyBitVectorIterType;
+} PyBitVectorObject;
 
 extern PyType_Spec PyBitVector_spec;
-extern PyType_Spec PyBitVectorIter_spec;
 
 /**
  * @brief Wrap a native BitVector in a new PyBitVector Python object.
@@ -46,6 +43,6 @@ extern PyType_Spec PyBitVectorIter_spec;
  * @return New reference to a PyBitVector, or NULL on allocation failure.
  */
 PyObject *
-bv_wrap_new(BitVector *bv_data);
+bitvector_wrap_new(PyTypeObject *type, BitVector *bv_data);
 
 #endif /* CBITS_PY_BITVECTOR_OBJECT_H */

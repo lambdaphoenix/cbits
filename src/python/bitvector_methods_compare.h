@@ -27,7 +27,7 @@
  * unsupported.
  */
 PyObject *
-py_bv_richcompare(PyObject *a, PyObject *b, int op);
+py_bitvector_richcompare(PyObject *a, PyObject *b, int op);
 /**
  * @brief __hash__ for a BitVector object.
  *
@@ -35,10 +35,10 @@ py_bv_richcompare(PyObject *a, PyObject *b, int op);
  * _Py_HashBytes helper. The result is cached in the object until the BitVector
  * is mutated.
  *
- * @param self A Python PyBitVector instance.
+ * @param self A Python PyBitVectorObject instance.
  * @return A Py_hash_t value derived from the bit‐pattern contents.
  */
 Py_hash_t
-py_bv_hash(PyObject *self);
+py_bitvector_hash(PyObject *self);
 
 #endif /* CBITS_PY_BITVECTOR_METHODS_COMPARE_H */

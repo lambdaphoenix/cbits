@@ -59,7 +59,7 @@ add_library(${MODULE_NAME} MODULE
 	src/python/bitvector_methods_compare.c
 	src/python/bitvector_methods_misc.c
 	src/python/bitvector_methods_rank.c
-	src/python/bitvector_module.c
+	src/python/cbits_module.c
 )
 
 set_target_properties(${MODULE_NAME} PROPERTIES	PREFIX "")

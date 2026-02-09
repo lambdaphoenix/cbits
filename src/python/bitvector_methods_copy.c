@@ -12,29 +12,49 @@
 #include "bitvector_object.h"
 
 PyObject *
-py_bv_copy(PyObject *self, PyObject *ignored)
+py_bitvector_copy(PyObject *object, PyObject *ignored)
 {
-    BitVector *copy = bv_copy(((PyBitVector *) self)->bv);
+    cbits_state *state = find_cbits_state_by_type(Py_TYPE(object));
+    PyBitVectorObject *self = (PyBitVectorObject *) object;
+
+    BitVector *copy = bv_copy(self->bv);
     if (!copy) {
         PyErr_SetString(PyExc_MemoryError,
                         "Failed to allocate BitVector in copy()");
         return NULL;
     }
-    return bv_wrap_new(copy);
+
+    return bitvector_wrap_new(state->PyBitVectorType, copy);
 }
 
 PyObject *
-py_bv_deepcopy(PyObject *self, PyObject *memo)
+py_bitvector_deepcopy(PyObject *self, PyObject *memo)
 {
-    PyObject *copy = py_bv_copy(self, NULL);
-    if (!copy) {
+    if (memo == NULL) {
+        PyErr_SetString(PyExc_TypeError, "__deepcopy__ missing memo argument");
         return NULL;
     }
-    if (memo && PyDict_Check(memo)) {
-        if (PyDict_SetItem(memo, self, copy) < 0) {
-            Py_DECREF(copy);
-            return NULL;
-        }
+
+    PyObject *existing = PyObject_GetItem(memo, self);
+    if (existing) {
+        return existing;
     }
-    return copy;
+
+    if (PyErr_ExceptionMatches(PyExc_KeyError)) {
+        PyErr_Clear();
+    }
+    else if (PyErr_Occurred()) {
+        return NULL;
+    }
+
+    PyObject *copy_obj = py_bitvector_copy(self, NULL);
+    if (copy_obj == NULL) {
+        return NULL;
+    }
+
+    if (PyObject_SetItem(memo, self, copy_obj) < 0) {
+        Py_DECREF(copy_obj);
+        return NULL;
+    }
+    return copy_obj;
 }

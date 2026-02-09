@@ -74,26 +74,25 @@ PyDoc_STRVAR(
     "\n"
     "Count the number of bits set to True in the half-open range [0..index].\n"
     "Supports negative indexing. Raises IndexError if out of range.");
-
 /**
  * @brief Method table for BitVector core methods.
  */
 PyMethodDef BitVector_methods[] = {
-    {"get", (PyCFunction) py_bv_get, METH_O, py_bv_get__doc__},
-    {"set", (PyCFunction) py_bv_set, METH_O, py_bv_set__doc__},
-    {"clear", (PyCFunction) py_bv_clear, METH_O, py_bv_clear__doc__},
-    {"flip", (PyCFunction) py_bv_flip, METH_O, py_bv_flip__doc__},
-    {"set_range", (PyCFunction) py_bv_set_range, METH_VARARGS,
+    {"get", (PyCFunction) py_bitvector_get, METH_O, py_bv_get__doc__},
+    {"set", (PyCFunction) py_bitvector_set, METH_O, py_bv_set__doc__},
+    {"clear", (PyCFunction) py_bitvector_clear, METH_O, py_bv_clear__doc__},
+    {"flip", (PyCFunction) py_bitvector_flip, METH_O, py_bv_flip__doc__},
+    {"set_range", (PyCFunction) py_bitvector_set_range, METH_VARARGS,
      py_bv_set_range__doc__},
-    {"clear_range", (PyCFunction) py_bv_clear_range, METH_VARARGS,
+    {"clear_range", (PyCFunction) py_bitvector_clear_range, METH_VARARGS,
      py_bv_clear_range__doc__},
-    {"flip_range", (PyCFunction) py_bv_flip_range, METH_VARARGS,
+    {"flip_range", (PyCFunction) py_bitvector_flip_range, METH_VARARGS,
      py_bv_flip_range__doc__},
-    {"rank", (PyCFunction) py_bv_rank, METH_O, py_bv_rank__doc__},
-    {"copy", (PyCFunction) py_bv_copy, METH_NOARGS, py_bv_copy__doc__},
-    {"__copy__", (PyCFunction) py_bv_copy, METH_NOARGS,
+    {"rank", (PyCFunction) py_bitvector_rank, METH_O, py_bv_rank__doc__},
+    {"copy", (PyCFunction) py_bitvector_copy, METH_NOARGS, py_bv_copy__doc__},
+    {"__copy__", (PyCFunction) py_bitvector_copy, METH_NOARGS,
      py_bv_copy_inline__doc__},
-    {"__deepcopy__", (PyCFunction) py_bv_deepcopy, METH_O,
+    {"__deepcopy__", (PyCFunction) py_bitvector_deepcopy, METH_O,
      py_bv_deepcopy__doc__},
     {NULL, NULL, 0, NULL},
 };

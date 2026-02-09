@@ -16,11 +16,11 @@
 
 /**
  * @brief Python binding for BitVector.rank(index) → bool.
- * @param self A Python PyBitVector instance.
+ * @param self A Python PyBitVectorObject instance.
  * @param arg Python argument.
  * @return Number of bits set in range [0...pos]
  */
 PyObject *
-py_bv_rank(PyObject *self, PyObject *arg);
+py_bitvector_rank(PyObject *self, PyObject *arg);
 
 #endif /* CBITS_PY_BITVECTOR_METHODS_RANK_H */

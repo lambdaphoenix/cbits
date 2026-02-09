@@ -12,16 +12,18 @@
  * @copyright Copyright (c) 2026 lambdaphoenix
  */
 #include "bitvector_methods_ops.h"
-#include "bitvector_check.h"
 #include "bitvector_object.h"
 
 PyObject *
-py_bv_and(PyObject *oA, PyObject *oB)
+py_bitvector_and(PyObject *oA, PyObject *oB)
 {
-    CHECK_BV_BOTH(oA, oB)
+    PyBitVectorObject *A = (PyBitVectorObject *) oA;
+    cbits_state *state = find_cbits_state_by_type(Py_TYPE(A));
 
-    PyBitVector *A = (PyBitVector *) oA;
-    PyBitVector *B = (PyBitVector *) oB;
+    if (!py_bitvector_check(oA, state) || !py_bitvector_check(oB, state)) {
+        Py_RETURN_NOTIMPLEMENTED;
+    }
+    PyBitVectorObject *B = (PyBitVectorObject *) oB;
 
     size_t size = A->bv->n_bits;
     if (size != B->bv->n_bits) {
@@ -54,16 +56,20 @@ py_bv_and(PyObject *oA, PyObject *oB)
         c[i] = a[i] & b[i];
     }
     bv_apply_tail_mask(C);
-    return bv_wrap_new(C);
+    return bitvector_wrap_new(state->PyBitVectorType, C);
 }
 
 PyObject *
-py_bv_iand(PyObject *self, PyObject *arg)
+py_bitvector_iand(PyObject *self, PyObject *arg)
 {
-    CHECK_BV_OBJ(arg)
+    PyBitVectorObject *A = (PyBitVectorObject *) self;
+    cbits_state *state = find_cbits_state_by_type(Py_TYPE(A));
 
-    PyBitVector *A = (PyBitVector *) self;
-    PyBitVector *B = (PyBitVector *) arg;
+    if (!py_bitvector_check(self, state)) {
+        PyErr_SetString(PyExc_TypeError, "Expected BitVector");
+        return NULL;
+    }
+    PyBitVectorObject *B = (PyBitVectorObject *) arg;
 
     size_t size = A->bv->n_bits;
     if (size != B->bv->n_bits) {
@@ -96,12 +102,15 @@ py_bv_iand(PyObject *self, PyObject *arg)
 }
 
 PyObject *
-py_bv_or(PyObject *oA, PyObject *oB)
+py_bitvector_or(PyObject *oA, PyObject *oB)
 {
-    CHECK_BV_BOTH(oA, oB)
+    PyBitVectorObject *A = (PyBitVectorObject *) oA;
+    cbits_state *state = find_cbits_state_by_type(Py_TYPE(A));
 
-    PyBitVector *A = (PyBitVector *) oA;
-    PyBitVector *B = (PyBitVector *) oB;
+    if (!py_bitvector_check(oA, state) || !py_bitvector_check(oB, state)) {
+        Py_RETURN_NOTIMPLEMENTED;
+    }
+    PyBitVectorObject *B = (PyBitVectorObject *) oB;
 
     size_t size = A->bv->n_bits;
     if (size != B->bv->n_bits) {
@@ -134,16 +143,20 @@ py_bv_or(PyObject *oA, PyObject *oB)
         c[i] = a[i] | b[i];
     }
     bv_apply_tail_mask(C);
-    return bv_wrap_new(C);
+    return bitvector_wrap_new(state->PyBitVectorType, C);
 }
 
 PyObject *
-py_bv_ior(PyObject *self, PyObject *arg)
+py_bitvector_ior(PyObject *self, PyObject *arg)
 {
-    CHECK_BV_OBJ(arg)
+    PyBitVectorObject *A = (PyBitVectorObject *) self;
+    cbits_state *state = find_cbits_state_by_type(Py_TYPE(A));
 
-    PyBitVector *A = (PyBitVector *) self;
-    PyBitVector *B = (PyBitVector *) arg;
+    if (!py_bitvector_check(self, state)) {
+        PyErr_SetString(PyExc_TypeError, "Expected BitVector");
+        return NULL;
+    }
+    PyBitVectorObject *B = (PyBitVectorObject *) arg;
 
     size_t size = A->bv->n_bits;
     if (size != B->bv->n_bits) {
@@ -175,12 +188,15 @@ py_bv_ior(PyObject *self, PyObject *arg)
 }
 
 PyObject *
-py_bv_xor(PyObject *oA, PyObject *oB)
+py_bitvector_xor(PyObject *oA, PyObject *oB)
 {
-    CHECK_BV_BOTH(oA, oB)
+    PyBitVectorObject *A = (PyBitVectorObject *) oA;
+    cbits_state *state = find_cbits_state_by_type(Py_TYPE(A));
 
-    PyBitVector *A = (PyBitVector *) oA;
-    PyBitVector *B = (PyBitVector *) oB;
+    if (!py_bitvector_check(oA, state) || !py_bitvector_check(oB, state)) {
+        Py_RETURN_NOTIMPLEMENTED;
+    }
+    PyBitVectorObject *B = (PyBitVectorObject *) oB;
 
     size_t size = A->bv->n_bits;
     if (size != B->bv->n_bits) {
@@ -213,16 +229,20 @@ py_bv_xor(PyObject *oA, PyObject *oB)
         c[i] = a[i] ^ b[i];
     }
     bv_apply_tail_mask(C);
-    return bv_wrap_new(C);
+    return bitvector_wrap_new(state->PyBitVectorType, C);
 }
 
 PyObject *
-py_bv_ixor(PyObject *self, PyObject *arg)
+py_bitvector_ixor(PyObject *self, PyObject *arg)
 {
-    CHECK_BV_OBJ(arg)
+    PyBitVectorObject *A = (PyBitVectorObject *) self;
+    cbits_state *state = find_cbits_state_by_type(Py_TYPE(A));
 
-    PyBitVector *A = (PyBitVector *) self;
-    PyBitVector *B = (PyBitVector *) arg;
+    if (!py_bitvector_check(self, state)) {
+        PyErr_SetString(PyExc_TypeError, "Expected BitVector");
+        return NULL;
+    }
+    PyBitVectorObject *B = (PyBitVectorObject *) arg;
 
     size_t size = A->bv->n_bits;
     if (size != B->bv->n_bits) {
@@ -254,9 +274,11 @@ py_bv_ixor(PyObject *self, PyObject *arg)
 }
 
 PyObject *
-py_bv_invert(PyObject *self)
+py_bitvector_invert(PyObject *self)
 {
-    PyBitVector *A = (PyBitVector *) self;
+    PyBitVectorObject *A = (PyBitVectorObject *) self;
+    cbits_state *state = find_cbits_state_by_type(Py_TYPE(A));
+
     BitVector *C = bv_new(A->bv->n_bits);
     if (!C) {
         PyErr_SetString(PyExc_MemoryError,
@@ -279,12 +301,12 @@ py_bv_invert(PyObject *self)
         c[i] = ~a[i];
     }
     bv_apply_tail_mask(C);
-    return bv_wrap_new(C);
+    return bitvector_wrap_new(state->PyBitVectorType, C);
 }
 
 int
-py_bv_bool(PyObject *self)
+py_bitvector_bool(PyObject *self)
 {
-    PyBitVector *bvself = (PyBitVector *) self;
+    PyBitVectorObject *bvself = (PyBitVectorObject *) self;
     return bv_rank(bvself->bv, bvself->bv->n_bits - 1) > 0;
 }
