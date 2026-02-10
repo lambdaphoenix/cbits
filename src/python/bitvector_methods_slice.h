@@ -7,7 +7,7 @@
  * - __setitem__ for slice assignment
  *
  * @author lambdaphoenix
- * @version 0.2.1
+ * @version 0.3.0
  * @copyright Copyright (c) 2026 lambdaphoenix
  */
 #ifndef CBITS_PY_BITVECTOR_METHODS_SLICE_H
@@ -21,7 +21,7 @@
  * This function checks bounds and returns the corresponding Python boolean
  * (True/False). On out-of-range access it raises IndexError.
  *
- * @param self A Python PyBitVectorObject instance.
+ * @param object A Python PyBitVectorObject instance.
  * @param i Index to access
  * @return New reference to Py_True or Py_False on success; NULL and IndexError
  * on failure.
@@ -34,7 +34,7 @@ py_bitvector_item(PyObject *object, Py_ssize_t i);
  * Sets or clears the bit at position i based on the truth value of
  * `value`. Raises IndexError if the index is out of range.
  *
- * @param self A Python PyBitVectorObject instance.
+ * @param object A Python PyBitVectorObject instance.
  * @param i Index of the bit to assign.
  * @param value Python object interpreted as boolean.
  * @return 0 on success; -1 on error (with exception set).

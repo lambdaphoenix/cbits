@@ -7,7 +7,7 @@
  * - __deepcopy__
  *
  * @author lambdaphoenix
- * @version 0.2.1
+ * @version 0.3.0
  * @copyright Copyright (c) 2026 lambdaphoenix
  */
 #ifndef CBITS_PY_BITVECTOR_METHODS_COPY_H
@@ -17,7 +17,7 @@
 
 /**
  * @brief Python binding for BitVector.copy() → BitVector.
- * @param self A Python PyBitVectorObject instance.
+ * @param object A Python PyBitVectorObject instance.
  * @param ignored Unused.
  * @return New BitVector copy
  */
@@ -26,10 +26,10 @@ py_bitvector_copy(PyObject *object, PyObject *Py_UNUSED(ignored));
 /**
  * @brief Python binding for BitVector.__deepcopy__(memo) → BitVector.
  * @param self A Python PyBitVectorObject instance.
- * @param unused
+ * @param memo Dictionary used by Python's deepcopy mechanism.
  * @return New BitVector copy
  */
 PyObject *
-py_bitvector_deepcopy(PyObject *self, PyObject *unused);
+py_bitvector_deepcopy(PyObject *self, PyObject *memo);
 
 #endif /* CBITS_PY_BITVECTOR_METHODS_COPY_H */

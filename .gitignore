@@ -2,6 +2,7 @@
 __pycache__/
 .pypirc
 /dist/
+.tox/
 
 # C extensions
 *.so

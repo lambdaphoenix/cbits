@@ -7,7 +7,7 @@
  *
  * @see include/compat.h
  * @author lambdaphoenix
- * @version 0.2.1
+ * @version 0.3.0
  * @copyright Copyright (c) 2025 lambdaphoenix
  */
 #include "compat.h"

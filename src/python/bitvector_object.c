@@ -11,13 +11,14 @@
  *
  * @see bitvector_object.h
  * @author lambdaphoenix
- * @version 0.2.1
+ * @version 0.3.0
  * @copyright Copyright (c) 2026 lambdaphoenix
  */
 #include "cbits_state.h"
 #include "bitvector_object.h"
 
 #include <stddef.h>
+#include <structmember.h>
 
 #include "bitvector_methods.h"
 #include "bitvector_methods_misc.h"
@@ -34,7 +35,8 @@
  * @return New, uninitialized PyBitVectorObject or NULL on failure.
  */
 PyObject *
-py_bitvector_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+py_bitvector_new(PyTypeObject *type, PyObject *Py_UNUSED(args),
+                 PyObject *Py_UNUSED(kwds))
 {
     PyBitVectorObject *bvself = (PyBitVectorObject *) type->tp_alloc(type, 0);
     if (!bvself) {
@@ -97,6 +99,22 @@ py_bitvector_init(PyObject *self, PyObject *args, PyObject *kwds)
     return 0;
 }
 
+/**
+ * @brief Traverse callback for PyBitVectorObject.
+ *
+ * Participates in Python's cyclic garbage collector by visiting all Python
+ * objects referenced by the BitVector instance. Only the type object is
+ * visited here, as the BitVector does not own additional Python-level
+ * references.
+ *
+ * @param bv BitVector instance being traversed.
+ * @param visit GC visit function supplied by the interpreter.
+ * @param arg Extra argument passed through by the GC.
+ * @return Always 0 to indicate success.
+ *
+ * @since 0.3.0
+ */
+
 static int
 py_bitvector_traverse(PyBitVectorObject *bv, visitproc visit, void *arg)
 {
@@ -106,7 +124,7 @@ py_bitvector_traverse(PyBitVectorObject *bv, visitproc visit, void *arg)
 
 /**
  * @brief Deallocate a PyBitVectorObject object.
- * @param self A Python PyBitVectorObject instance.
+ * @param object A Python PyBitVectorObject instance.
  */
 static void
 py_bitvector_dealloc(PyObject *object)
@@ -122,7 +140,7 @@ py_bitvector_dealloc(PyObject *object)
     type->tp_free(self);
     Py_DECREF(type);
 }
-
+/** @brief Docstring for BitVector. */
 PyDoc_STRVAR(
     PyBitVector__doc__,
     "BitVector(size: int)\n"
@@ -133,15 +151,25 @@ PyDoc_STRVAR(
     "----------\n"
     "size : int\n"
     "    Number of bits in the vector.\n\n"
-    "Methods\n"
-    "----------\n"
-    "\n\n"
     "Attributes\n"
     "----------\n"
     "bits : int\n"
     "    The length of this BitVector.\n");
 
-static struct PyMemberDef py_bitvector_members[] = {{NULL}};
+/**
+ * @brief Member table for PyBitVectorObject.
+ *
+ * The BitVector type does not expose any struct‑level members to Python, so
+ * the table contains only the NULL terminator.
+ *
+ * @since 0.3.0
+ */
+static struct PyMemberDef py_bitvector_members[] = {
+#if PY_VERSION_HEX < 0x030C0000
+    {"__weaklistoffset__", T_PYSSIZET,
+     offsetof(PyBitVectorObject, weakreflist), READONLY},
+#endif
+    {NULL}};
 
 /**
  * @brief Slot table for the PyBitVectorObject type.
@@ -200,8 +228,14 @@ static PyType_Slot BitVector_slots[] = {
 PyType_Spec PyBitVector_spec = {
     .name = "cbits.BitVector",
     .basicsize = sizeof(PyBitVectorObject),
+#if PY_VERSION_HEX >= 0x030C0000
     .flags = (Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE |
               Py_TPFLAGS_IMMUTABLETYPE | Py_TPFLAGS_HAVE_GC |
               Py_TPFLAGS_SEQUENCE | Py_TPFLAGS_MANAGED_WEAKREF),
+#else
+    .flags =
+        (Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_IMMUTABLETYPE |
+         Py_TPFLAGS_HAVE_GC | Py_TPFLAGS_SEQUENCE),
+#endif
     .slots = BitVector_slots,
 };

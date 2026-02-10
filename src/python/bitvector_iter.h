@@ -10,7 +10,7 @@
  *
  * @see bitvector_object.h
  * @author lambdaphoenix
- * @version 0.2.1
+ * @version 0.3.0
  * @copyright Copyright (c) 2026 lambdaphoenix
  */
 #ifndef CBITS_PY_BITVECTOR_ITER_H

@@ -2,15 +2,10 @@
  * @file src/python/cbits_module.c
  * @brief Module initialization for the cbits._cbits extension.
  *
- * Registers:
- * - BitVector type
- * - BitVector iterator type
- * - module-level constants
- *
  * This is the entry point for the Python extension module.
  *
  * @author lambdaphoenix
- * @version 0.2.1
+ * @version 0.3.0
  * @copyright Copyright (c) 2026 lambdaphoenix
  */
 #include "cbits_state.h"
@@ -73,7 +68,7 @@ cbits_module_exec(PyObject *module)
         0) {
         return -1;
     }
-    if (PyModule_AddStringConstant(module, "__version__", "0.2.1") < 0) {
+    if (PyModule_AddStringConstant(module, "__version__", "0.3.0") < 0) {
         return -1;
     }
     if (PyModule_AddStringConstant(module, "__license__", "Apache-2.0") < 0) {
@@ -86,9 +81,21 @@ cbits_module_exec(PyObject *module)
     }
     return 0;
 }
-
+/**
+ * @brief Module‑level docstring for the cbits extension.
+ *
+ * This string becomes the module’s __doc__ attribute and provides the
+ * top‑level description shown in Python when inspecting the module.
+ * @since 0.3.0
+ */
 PyDoc_STRVAR(module_doc, "cbits");
-
+/**
+ * @brief Method table for the cbits module.
+ *
+ * The module does not define any Python‑callable functions at the top level,
+ * so the table contains only the NULL terminator.
+ * @since 0.3.0
+ */
 static PyMethodDef cbits_methods[] = {{NULL, NULL, 0, NULL}};
 
 /**
@@ -101,11 +108,28 @@ static PyMethodDef cbits_methods[] = {{NULL, NULL, 0, NULL}};
  */
 static PyModuleDef_Slot cbits_slots[] = {
     {Py_mod_exec, cbits_module_exec},
+#if Py_VERSION_HEX >= 0x030C0000
     {Py_mod_multiple_interpreters, Py_MOD_PER_INTERPRETER_GIL_SUPPORTED},
+#endif
+#if Py_VERSION_HEX >= 0x030D0000
     {Py_mod_gil, Py_MOD_GIL_NOT_USED},
+#endif
     {0, NULL},
 };
 
+/**
+ * @brief Traverse callback for the cbits module.
+ *
+ * Integrates the module state into Python's cyclic garbage collector by
+ * visiting all Python objects stored inside the module state. This includes
+ * the BitVector type and the BitVector iterator type.
+ *
+ * @param module The module whose state is being traversed.
+ * @param visit GC visit function provided by the interpreter.
+ * @param arg Extra argument passed through by the GC.
+ * @return Always 0 to indicate successful traversal.
+ * @since 0.3.0
+ */
 static int
 cbits_traverse(PyObject *module, visitproc visit, void *arg)
 {
@@ -114,7 +138,17 @@ cbits_traverse(PyObject *module, visitproc visit, void *arg)
     Py_VISIT(state->PyBitVectorIterType);
     return 0;
 }
-
+/**
+ * @brief Clear callback for the cbits module.
+ *
+ * Releases all Python object references stored in the module state. Called
+ * during module finalization or when the interpreter tears down module state.
+ * After clearing, the state contains only NULL pointers.
+ *
+ * @param module The module whose state is being cleared.
+ * @return Always 0 to indicate success.
+ * @since 0.3.0
+ */
 static int
 cbits_clear(PyObject *module)
 {
@@ -123,7 +157,15 @@ cbits_clear(PyObject *module)
     Py_CLEAR(state->PyBitVectorIterType);
     return 0;
 }
-
+/**
+ * @brief Free callback for the cbits module.
+ *
+ * Invoked when the module is being deallocated. Delegates to cbits_clear() to
+ * release all Python references held in the module state.
+ *
+ * @param module The module object being freed (as a void pointer).
+ * @since 0.3.0
+ */
 static void
 cbits_free(void *module)
 {
@@ -135,8 +177,6 @@ cbits_free(void *module)
  *
  * Describes the module’s name, docstring, memory footprint,
  * and its initialization slot table.
- *
- * @see PyModuleDef
  */
 struct PyModuleDef cbits_module = {
     .m_base = PyModuleDef_HEAD_INIT,

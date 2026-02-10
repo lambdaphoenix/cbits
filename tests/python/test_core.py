@@ -1,5 +1,6 @@
 import unittest
 import copy
+import weakref
 from cbits import BitVector
 
 class TestCore(unittest.TestCase):
@@ -203,6 +204,15 @@ class TestCore(unittest.TestCase):
         self.assertNotEqual(hash_val, hash(self.bv))
         self.bv.set(0)
         self.assertEqual(hash_val, hash(self.bv))
+    
+    def test_weakref(self):
+        try:
+            r = weakref.ref(self.bv)
+        except TypeError:
+            weakref_supported = False
+        else: weakref_supported = True
+
+        self.assertTrue(weakref_supported)
 
     # def test_to_bytes(self):
     #     self.bv.set(0)

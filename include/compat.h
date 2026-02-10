@@ -8,7 +8,7 @@
  * - optimized 64-bit popcount and block-level popcount
  *
  * @author lambdaphoenix
- * @version 0.2.1
+ * @version 0.3.0
  * @copyright Copyright (c) 2025 lambdaphoenix
  */
 #ifndef CBITS_COMPAT_H

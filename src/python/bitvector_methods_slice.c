@@ -9,12 +9,21 @@
  * target range.
  *
  * @author lambdaphoenix
- * @version 0.2.1
+ * @version 0.3.0
  * @copyright Copyright (c) 2026 lambdaphoenix
  */
 #include "bitvector_methods_slice.h"
 #include "bitvector_object.h"
 
+/**
+ * @brief Returns the boolean value of a single bit.
+ *
+ * @param object A Python PyBitVectorObject instance.
+ * @param i Index to access
+ * @return New reference to Py_True or Py_False
+ *
+ * @since 0.3.0
+ */
 static PyObject *
 py_bitvector_get_item(PyObject *object, Py_ssize_t i)
 {
@@ -66,7 +75,7 @@ py_bitvector_ass_item(PyObject *object, Py_ssize_t i, PyObject *value)
  * nts from
  * [start:stop:step]. Raises IndexError if any index is out of bounds.
  *
- * @param self A Python PyBitVectorObject instance.
+ * @param object A Python PyBitVectorObject instance.
  * @param start Start index of the slice.
  * @param stop End index (exclusive) of the slice.
  * @param step Step size for the slice.

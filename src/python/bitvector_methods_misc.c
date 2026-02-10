@@ -12,7 +12,7 @@
  * features for the BitVector type.
  *
  * @author lambdaphoenix
- * @version 0.2.1
+ * @version 0.3.0
  * @copyright Copyright (c) 2026 lambdaphoenix
  */
 #include "bitvector_methods_misc.h"
@@ -54,7 +54,7 @@ py_bitvector_contains(PyObject *object, PyObject *value)
 
 /**
  * @brief Getter for the read-only "bits" property.
- * @param self A Python PyBitVectorObject instance.
+ * @param object A Python PyBitVectorObject instance.
  * @param closure Unused.
  * @return Python integer of the bit-length
  */

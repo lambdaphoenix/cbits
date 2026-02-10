@@ -5,14 +5,14 @@
  * Uses bv_copy from the C backend to duplicate BitVector instances.
  *
  * @author lambdaphoenix
- * @version 0.2.1
+ * @version 0.3.0
  * @copyright Copyright (c) 2026 lambdaphoenix
  */
 #include "bitvector_methods_copy.h"
 #include "bitvector_object.h"
 
 PyObject *
-py_bitvector_copy(PyObject *object, PyObject *ignored)
+py_bitvector_copy(PyObject *object, PyObject *Py_UNUSED(ignored))
 {
     cbits_state *state = find_cbits_state_by_type(Py_TYPE(object));
     PyBitVectorObject *self = (PyBitVectorObject *) object;

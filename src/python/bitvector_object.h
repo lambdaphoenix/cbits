@@ -3,7 +3,7 @@
  * @brief Definition of the PyBitVector Python type.
  *
  * Declares:
- * - \ref PyBitVector struct
+ * - \ref PyBitVectorObject struct
  * - type objects and type specifications
  * - bv_wrap_new
  *
@@ -12,7 +12,7 @@
  *
  * @see bitvector_internal.h
  * @author lambdaphoenix
- * @version 0.2.1
+ * @version 0.3.0
  * @copyright Copyright (c) 2026 lambdaphoenix
  */
 #ifndef CBITS_PY_BITVECTOR_OBJECT_H
@@ -23,7 +23,6 @@
 #include "cbits_state.h"
 
 /**
- * @struct PyBitVector
  * @brief Python object containing a pointer to a native BitVector.
  *
  * Includes a cached hash value @c `hash_cache` to speed up repeated
@@ -31,14 +30,17 @@
  */
 typedef struct {
     PyObject_HEAD BitVector *bv; /**< Reference to the BitVector */
-    PyObject *weakreflist;       /**< List of weak references */
     Py_hash_t hash_cache;        /**< Cached hash value or -1 if invalid */
+#if PY_VERSION_HEX < 0x030C0000
+    PyObject *weakreflist; /**< List of weak references */
+#endif
 } PyBitVectorObject;
 
 extern PyType_Spec PyBitVector_spec;
 
 /**
  * @brief Wrap a native BitVector in a new PyBitVector Python object.
+ * @param type PyTypeObject reference to PyBitVectorObject.
  * @param bv_data Pointer to an allocated BitVector.
  * @return New reference to a PyBitVector, or NULL on allocation failure.
  */

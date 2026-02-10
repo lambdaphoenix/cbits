@@ -8,7 +8,7 @@
  * vectors.
  *
  * @author lambdaphoenix
- * @version 0.2.1
+ * @version 0.3.0
  * @copyright Copyright (c) 2026 lambdaphoenix
  */
 #include "bitvector_methods_ops.h"

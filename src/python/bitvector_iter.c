@@ -8,20 +8,19 @@
  *
  * @see bitvector_object.h
  * @author lambdaphoenix
- * @version 0.2.1
+ * @version 0.3.0
  * @copyright Copyright (c) 2026 lambdaphoenix
  */
 #include "bitvector_iter.h"
 #include "cbits_module.h"
 
 /**
- * @struct BitVectorIterObject
  * @brief Iterator structure for PyBitVectorObject
  *
  * Stores a reference to the original PyBitVectorObject and tracks
  * the current bit position and buffer state for iteration.
  */
-typedef struct PyBitVectorIterObject {
+typedef struct {
     PyObject_HEAD PyBitVectorObject
         *bv;       /**< Reference to the PyBitVectorObject being iterated */
     size_t n_bits; /**< Total number of bits in the vector */
@@ -76,7 +75,19 @@ py_bitvectoriter_dealloc(PyObject *self)
     PyObject_GC_Del(iter);
     Py_DECREF(type);
 }
-
+/**
+ * @brief Traverse callback for the BitVector iterator.
+ *
+ * Supports Python's cyclic garbage collector by visiting all referenced Python
+ * objects held by the iterator. This includes the iterator's type object and
+ * the underlying BitVector instance.
+ *
+ * @param self Iterator object to traverse.
+ * @param visit GC visit function provided by the interpreter.
+ * @param arg Extra argument passed through by the GC.
+ * @return Always 0 to indicate success.
+ * @since 0.3.0
+ */
 static int
 py_bitvectoriter_traverse(PyObject *self, visitproc visit, void *arg)
 {
@@ -135,6 +146,14 @@ py_bitvectoriter_next(PyObject *self)
     }
 }
 
+/**
+ * @brief Method table for the BitVector iterator type.
+ *
+ * The iterator does not expose any Python-callable methods, so the method
+ * table contains only a terminating NULL entry.
+ *
+ * @since 0.3.0
+ */
 static PyMethodDef py_bitvectoriter_methods[] = {{NULL, NULL}};
 
 /**
