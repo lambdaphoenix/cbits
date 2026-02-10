@@ -1,13 +1,13 @@
 /**
- * @file src/python/bitvector_methods_compare.h
- * @brief Equality and hashing methods for BitVector.
+ * @file bitvector_methods_compare.h
+ * @brief Equality and hashing methods for ``BitVector``.
  *
- * Declares:
- * - rich comparison (__eq__, __ne__)
- * - __hash__ implementation
+ * Declares the Python bindings for:
+ * - rich comparison (``__eq__`` and ``__ne__``)
+ * - ``__hash__`` implementation with caching
  *
- * These functions wrap the C backend’s equality check and provide a cached
- * hash suitable for Python dictionaries and sets.
+ * These functions wrap the C backend’s equality logic and compute a stable,
+ * cached hash suitable for use in Python dictionaries and sets.
  *
  * @author lambdaphoenix
  * @version 0.3.0
@@ -19,24 +19,28 @@
 #include "bitvector_object.h"
 
 /**
- * @brief Rich comparison (== and !=) for BitVector.
+ * @brief Implement rich comparison for BitVector.
+ *
+ * Supports ``==`` and ``!=``. For unsupported operations, returns
+ * ``Py_NotImplemented``.
+ *
  * @param a First operant.
  * @param b Second operant.
- * @param op Comparison operation (Py_EQ or Py_NE).
- * @return Py_True or Py_False on success; Py_RETURN_NOTIMPLEMENTED if
- * unsupported.
+ * @param op Comparison operation (``Py_EQ`` or ``Py_NE``).
+ * @retval bool ``Py_True`` or ``Py_False`` on success.
+ * @retval Py_RETURN_NOTIMPLEMENTED for unsupported comparisons.
  */
 PyObject *
 py_bitvector_richcompare(PyObject *a, PyObject *b, int op);
 /**
- * @brief __hash__ for a BitVector object.
+ * @brief Implement ``hash(BitVector)``.
  *
- * Computes a hash over the vector’s packed bit data using Python’s internal
- * _Py_HashBytes helper. The result is cached in the object until the BitVector
- * is mutated.
+ * Computes a hash over the packed bit data using Python’s internal
+ * ``_Py_HashBytes``. The result is cached in the BitVector object until the
+ * underlying data is mutated.
  *
- * @param self A Python PyBitVectorObject instance.
- * @return A Py_hash_t value derived from the bit‐pattern contents.
+ * @param self A ``PyBitVectorObject`` instance.
+ * @return A ``Py_hash_t`` value derived from the bit‐pattern.
  */
 Py_hash_t
 py_bitvector_hash(PyObject *self);

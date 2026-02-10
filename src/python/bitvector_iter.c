@@ -1,10 +1,10 @@
 /**
- * @file src/python/bitvector_iter.c
- * @brief Implementation of BitVector iterator.
+ * @file bitvector_iter.c
+ * @brief Implementation of the BitVector iterator.
  *
- * Implements the iterator returned by BitVector.__iter__(). Iteration proceeds
- * bit‑by‑bit using a cached 64‑bit word and a shifting mask to minimize
- * indexing overhead and reduce Python/C boundary calls.
+ * Defines the iterator returned by ``BitVector.__iter__()``. Iteration
+ * proceeds bit‑by‑bit using a cached 64‑bit word and a shifting mask to
+ * minimize indexing overhead and reduce Python/C boundary crossings.
  *
  * @see bitvector_object.h
  * @author lambdaphoenix
@@ -15,18 +15,17 @@
 #include "cbits_module.h"
 
 /**
- * @brief Iterator structure for PyBitVectorObject
+ * @brief Iterator structure for BitVector.
  *
- * Stores a reference to the original PyBitVectorObject and tracks
- * the current bit position and buffer state for iteration.
+ * Holds a reference to the underlying BitVector and tracks iteration state:
+ * current bit index, current word index, cached word, and active bit mask.
  */
 typedef struct {
-    PyObject_HEAD PyBitVectorObject
-        *bv;       /**< Reference to the PyBitVectorObject being iterated */
-    size_t n_bits; /**< Total number of bits in the vector */
-    Py_ssize_t position;   /**< Current bit index (0-based) */
+    PyObject_HEAD PyBitVectorObject *bv; /**< Referenced BitVector */
+    size_t n_bits;                       /**< Total number of bits */
+    Py_ssize_t position;                 /**< Current bit index (0-based) */
     size_t word_index;     /**< Index into the 64-bit word array */
-    uint64_t current_word; /**< Local copy of the active 64-bit word */
+    uint64_t current_word; /**< Cached 64-bit word */
     uint64_t mask;         /**< Bit mask for next bit */
 } PyBitVectorIterObject;
 
@@ -60,10 +59,9 @@ py_bitvector_iter(PyObject *self)
 /**
  * @brief Deallocate a BitVector iterator object.
  *
- * Releases the reference to the parent PyBitVectorObject and frees the
- * iterator struct.
+ * Releases the reference to the underlying BitVector and frees the iterator.
  *
- * @param self A PyBitVectorIter instance.
+ * @param self A ``PyBitVectorIterObject`` instance.
  */
 static void
 py_bitvectoriter_dealloc(PyObject *self)
@@ -76,16 +74,16 @@ py_bitvectoriter_dealloc(PyObject *self)
     Py_DECREF(type);
 }
 /**
- * @brief Traverse callback for the BitVector iterator.
+ * @brief GC traverse callback for the BitVector iterator.
  *
  * Supports Python's cyclic garbage collector by visiting all referenced Python
  * objects held by the iterator. This includes the iterator's type object and
  * the underlying BitVector instance.
  *
- * @param self Iterator object to traverse.
- * @param visit GC visit function provided by the interpreter.
- * @param arg Extra argument passed through by the GC.
- * @return Always 0 to indicate success.
+ * @param self Iterator object.
+ * @param visit GC visitor callback.
+ * @param arg Extra argument passed by the GC.
+ * @retval 0 Always ``0``.
  * @since 0.3.0
  */
 static int
@@ -99,12 +97,13 @@ py_bitvectoriter_traverse(PyObject *self, visitproc visit, void *arg)
 /**
  * @brief Return the next bit as a Python boolean.
  *
- * Reads one bit from the internal buffer and shifts it out. If all bits have
- * been yielded, raises StopIteration.
+ * Extracts one bit from the cached word. When the mask is exhausted, loads the
+ * next 64‑bit word. Raises StopIteration when all bits have been consumed.
  *
- * @param self A PyBitVectorIter instance.
- * @return Py_True or Py_False on success; NULL with StopIteration set at
- * end-of-iteration.
+ * @param self A ``PyBitVectorIterObject`` instance.
+ * @retval Py_True if the next bit is ``1``.
+ * @retval Py_False if the next bit is ``0``.
+ * @retval NULL when iteration is complete (``StopIteration`` set).
  */
 static PyObject *
 py_bitvectoriter_next(PyObject *self)
@@ -157,9 +156,9 @@ py_bitvectoriter_next(PyObject *self)
 static PyMethodDef py_bitvectoriter_methods[] = {{NULL, NULL}};
 
 /**
- * @brief Slots for the _BitVectorIter type.
+ * @brief Type slots for the BitVector iterator.
  *
- * Defines deallocator, __iter__ and __next__.
+ * Defines deallocation, GC traversal, ``__iter__`` and ``__next__``.
  */
 static PyType_Slot PyBitVectorIter_slots[] = {
     {Py_tp_dealloc, py_bitvectoriter_dealloc},
@@ -172,9 +171,9 @@ static PyType_Slot PyBitVectorIter_slots[] = {
 };
 
 /**
- * @brief Type specification for cbits._BitVectorIter.
+ * @brief Type specification for ``cbits._BitVectorIter``.
  *
- * This is the bit‐wise iterator returned by BitVector.__iter__().
+ * Used by the module to create the iterator type object.
  */
 PyType_Spec PyBitVectorIter_spec = {
     .name = "cbits._BitVectorIterator",

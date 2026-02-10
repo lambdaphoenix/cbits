@@ -1,12 +1,11 @@
 /**
- * @file src/python/bitvector_methods_slice.c
- * @brief Slicing support for the BitVector Python type.
+ * @file bitvector_methods_slice.c
+ * @brief Slicing and indexed access implemantation for ``BitVector``.
  *
- * Implements __getitem__ and __setitem__ for slice objects as well as integer
- * indexing. Slice extraction uses fast bit‑shifting paths for contiguous
- * ranges and falls back to per‑bit copying for stepped slices. Slice
- * assignment accepts any iterable of truthy values and writes them into the
- * target range.
+ * Implements ``__getitem__`` and ``__setitem__`` for both integer indices and
+ * slice objects. Slice extraction uses fast bit‑shifting for contiguous ranges
+ * and falls back to per‑bit copying for stepped slices. Slice assignment
+ * accepts any iterable of truthy values and writes them into the target range.
  *
  * @author lambdaphoenix
  * @version 0.3.0
@@ -18,11 +17,15 @@
 /**
  * @brief Returns the boolean value of a single bit.
  *
- * @param object A Python PyBitVectorObject instance.
- * @param i Index to access
- * @return New reference to Py_True or Py_False
+ * Assumes the index has already been validated. Returns a Python boolean
+ * corresponding to the bit at position ``i``.
  *
+ * @param object A ``PyBitVectorObject`` instance.
+ * @param i Index to access
+ * @return New reference to ``Py_True`` or ``Py_False``
  * @since 0.3.0
+ *
+ * @note This function does not perform bounds checking.
  */
 static PyObject *
 py_bitvector_get_item(PyObject *object, Py_ssize_t i)
@@ -69,19 +72,19 @@ py_bitvector_ass_item(PyObject *object, Py_ssize_t i, PyObject *value)
 }
 
 /**
- * @brief Implements slicing for BitVector.__getitem__ with a slice object.
+ * @brief Implement slicing for ``BitVector.__getitem__`` with a slice object.
  *
- * Creates and returns a new BitVector containing eleme
- * nts from
- * [start:stop:step]. Raises IndexError if any index is out of bounds.
+ * Creates and returns a new BitVector containing elements from
+ * ``[start:stop:step]``. Uses a fast word‑shifting path for contiguous slices
+ * (``step == 1``) and falls back to per‑bit extraction otherwise.
  *
- * @param object A Python PyBitVectorObject instance.
- * @param start Start index of the slice.
- * @param stop End index (exclusive) of the slice.
- * @param step Step size for the slice.
+ * @param object A ``PyBitVectorObject`` instance.
+ * @param start Start index.
+ * @param stop End index (exclusive).
+ * @param step Step size.
  * @param slicelength Number of elements in the resulting slice.
- * @return New PyBitVectorObject wrapping the sliced BitVector; NULL and
- * IndexError on failure.
+ * @retval object New ``PyBitVectorObject`` on success
+ * @retval NULL on failure (exception set)
  */
 static PyObject *
 py_bitvector_slice(PyObject *object, size_t start, size_t stop, size_t step,
@@ -128,18 +131,20 @@ py_bitvector_slice(PyObject *object, size_t start, size_t stop, size_t step,
     return bitvector_wrap_new(state->PyBitVectorType, out);
 }
 /**
- * @brief Implements BitVector.__setitem__ for slice assignment.
+ * @brief Implement ``BitVector.__setitem__`` for slice assignment.
  *
- * Assigns bits from an iterable `value` to the slice [start:stop:step]. Raises
- * IndexError or ValueError on length mismatch or out-of-range.
+ * Assigns bits from an iterable ``value`` to the slice ``[start:stop:step]``.
+ * Raises ``IndexError`` or ``ValueError`` on length mismatch or out‑of‑range
+ * access.
  *
- * @param self A Python PyBitVectorObject instance.
- * @param start Start index of the slice.
- * @param stop End index (exclusive) of the slice.
- * @param step Step size for the slice.
- * @param slicelength Number of elements in the resulting slice.
+ * @param self A ``PyBitVectorObject`` instance.
+ * @param start Start index.
+ * @param stop End index (exclusive).
+ * @param step Step size.
+ * @param slicelength Number of elements in the slice.
  * @param value Iterable of boolean-convertible Python objects.
- * @return 0 on success; -1 on error (with exception set).
+ * @retval 0 Success.
+ * @retval -1 Failure (exception set).
  */
 static int
 py_bitvector_ass_slice(PyObject *self, size_t start, size_t stop, size_t step,

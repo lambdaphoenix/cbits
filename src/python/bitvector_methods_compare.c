@@ -1,10 +1,11 @@
 /**
- * @file src/python/bitvector_methods_compare.c
- * @brief Equality and hashing for PyBitVectorObject.
+ * @file bitvector_methods_compare.c
+ * @brief Equality and hashing for ``PyBitVectorObject``.
  *
- * Implements ==, !=, and __hash__ using the C backend’s comparison routines
- * and Python’s byte hashing. Hash values are cached until the BitVector is
- * mutated.
+ * Implements ``__eq__``, ``__ne__``, and ``__hash__`` using the C backend’s
+ * comparison routines and Python’s hashing utilities. Hash values are cached
+ * inside the BitVector object and invalidated whenever the underlying data
+ * mutates.
  *
  * @author lambdaphoenix
  * @version 0.3.0

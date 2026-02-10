@@ -1,19 +1,23 @@
 /**
- * @file include/bitvector.h
+ * @file bitvector.h
  * @brief Public C API for the BitVector data structure.
  *
- * Declares the stable, external-facing API for BitVector:
- * - construction and destruction (\ref bv_new, \ref bv_copy, \ref bv_free)
- * - single-bit operations (\ref bv_get, \ref bv_set, \ref bv_clear, \ref
+ * Declares the stable, external-facing API for working with BitVectors:
+ * - construction and destruction (@ref bv_new, @ref bv_copy, @ref bv_free)
+ * - single-bit operations (@ref bv_get, @ref bv_set, @ref bv_clear, @ref
  * bv_flip)
- * - range operations (\ref bv_set_range, \ref
- * bv_clear_range, \ref bv_flip_range)
- * - rank queries (\ref bv_build_rank, \ref bv_rank)
- * - comparison and subvector search (\ref bv_equal, \ref
+ * - range operations (@ref bv_set_range, @ref bv_clear_range, @ref
+ * bv_flip_range)
+ * - rank queries (@ref bv_build_rank, @ref bv_rank)
+ * - comparison and subvector search (@ref bv_equal, @ref
  * bv_contains_subvector)
  *
- * This header exposes only the public interface. Internal helpers and inline
- * fast-paths are intentionally separated into \ref bitvector_internal.h.
+ * The public API is intentionally minimal. Internal helpers, inline
+ * fast‑paths, and low‑level utilities are defined separately in @ref
+ * bitvector_internal.h.
+ *
+ * BitVector provides a compact, cache‑friendly bit array with optional
+ * auxiliary rank tables enabling O(1) prefix‑popcount queries.
  *
  * @author lambdaphoenix
  * @version 0.3.0
@@ -22,48 +26,51 @@
 #ifndef CBITS_BITVECTOR_H
 #define CBITS_BITVECTOR_H
 
-#include <stddef.h>
-#include <stdint.h>
 #include <stdbool.h>
 #include "compat.h"
 
 /**
  * @def BV_ALIGN
- * @brief Alignment in bytes for all BitVector allocations.
+ * @brief Alignment (in bytes) for all BitVector allocations.
+ *
+ * Ensures that the underlying word array is aligned for efficient SIMD and
+ * cache‑line access.
  */
 #define BV_ALIGN 64
 /**
  * @def BV_WORDS_SUPER_SHIFT
- * @brief Number of bits to shift a word index to compute a superblock
- * index.
+ * @brief Log2 of the number of 64‑bit words per superblock.
+ *
+ * Used to compute superblock indices via bit‑shifts rather than division.
  */
 #define BV_WORDS_SUPER_SHIFT 3
 /**
  * @def BV_WORDS_SUPER
- * @brief Number of 64-bit worde per superblock.
+ * @brief Number of 64-bit worde in a superblock.
  */
 #define BV_WORDS_SUPER (1u << BV_WORDS_SUPER_SHIFT)
 
 /**
- * @brief Packed array of bits with support for rank/select operations.
+ * @brief Packed bit array with rank-support structures.
  *
- * Stores bits in an aligned array of 64-bit words, and maintains auxiliary
- * superblock and block rank tables for constant-time rank queries.
+ * Stores bits in an aligned array of 64‑bit words and maintains auxiliary
+ * superblock‑ and block‑level prefix popcount tables for constant‑time rank
+ * queries.
  */
 typedef struct {
-    uint64_t *data; /**< Aligned array of 64-bit words storing bits. */
-    size_t n_bits;  /**< Total number of bits. */
-    size_t n_words; /**< Number of 64-bit words allocated in @c data.*/
-    size_t
-        *super_rank; /**< Prefix-sum of popcounts at superblock granularity. */
-    uint16_t *block_rank; /**< Prefix-sum of popcounts at block granularity. */
-    bool rank_dirty; /**< Flag indicating that rank tables need rebuilding. */
+    uint64_t *data;       /**< Aligned array of 64-bit words storing bits. */
+    size_t n_bits;        /**< Total number of bits. */
+    size_t n_words;       /**< Number of 64-bit words allocated in @c data.*/
+    size_t *super_rank;   /**< Superblock-level prefix popcounts. */
+    uint16_t *block_rank; /**< Block-level prefix popcunts. */
+    bool rank_dirty;      /**< Indicates rank tables must be rebuilt. */
 } BitVector;
 
 /**
- * @brief Allocate a new BitVector with all bits cleared
- * @param n_bits Number of bits
- * @return Pointer to the new BitVector
+ * @brief Allocate a new BitVector with all bits cleared.
+ * @param n_bits Number of bits to allocate.
+ * @retval BitVector* Newly allocated BitVector.
+ * @retval NULL Allocation failure.
  */
 BitVector *
 bv_new(size_t n_bits);
@@ -73,7 +80,8 @@ bv_new(size_t n_bits);
  * The copy shares no memory with the source; all bits and rank tables are
  * reinitialized.
  * @param src Pointer to the source BitVector
- * @return Newly allocated BitVector copy, or @c NULL on failure.
+ * @retval BitVector* Newly allocated BitVector copy.
+ * @retval NULL Failure.
  */
 BitVector *
 bv_copy(const BitVector *src);
@@ -85,7 +93,7 @@ void
 bv_free(BitVector *bv);
 
 /**
- * @brief Set all bits in the half‑open range [start, start+len).
+ * @brief Set all bits in the half-open range [start, start+len).
  *
  * Marks the rank table dirty so it will be rebuilt on next rank query.
  * @param bv Pointer to the BitVector
@@ -96,7 +104,7 @@ bv_free(BitVector *bv);
 void
 bv_set_range(BitVector *bv, size_t start, size_t len);
 /**
- * @brief Clear all bits in the half‑open range [start, start+len).
+ * @brief Clear all bits in the half-open range [start, start+len).
  *
  * Marks the rank table dirty so it will be rebuilt on next rank query.
  * @param bv Pointer to the BitVector
@@ -107,7 +115,7 @@ bv_set_range(BitVector *bv, size_t start, size_t len);
 void
 bv_clear_range(BitVector *bv, size_t start, size_t len);
 /**
- * @brief Toggle (flip) all bits in the half‑open range [start, start+len).
+ * @brief Toggle (flip) all bits in the half-open range [start, start+len).
  *
  * Marks the rank table dirty so it will be rebuilt on next rank query.
  * @param bv Pointer to the BitVector
@@ -133,7 +141,7 @@ bv_build_rank(BitVector *bv);
  * If the internal rank tables are dirty, they will be rebuilt.
  * @param bv Pointer to the BitVector
  * @param pos Bit index
- * @return Number of bits set in range @c [0...pos]
+ * @return Number of bits set in range @c [0...pos)
  */
 size_t
 bv_rank(BitVector *bv, const size_t pos);

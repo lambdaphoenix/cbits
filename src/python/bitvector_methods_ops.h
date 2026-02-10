@@ -1,10 +1,12 @@
 /**
- * @file src/python/bitvector_methods_ops.h
- * @brief Bitwise operations for BitVector.
+ * @file bitvector_methods_ops.h
+ * @brief Bitwise operations for ``BitVector``.
  *
- * Declares:
- * - __and__, __or__, __xor__, __invert__
- * - in-place variants
+ * Declares the Python bindings for all bitwise operators supported by the
+ * BitVector type:
+ * - ``__and__``, ``__or__``, ``__xor__``, ``__invert__``
+ * - in‑place variants (``__iand__``, ``__ior__``, ``__ixor__``)
+ * - truth‑value testing (``__bool__``)
  *
  * @author lambdaphoenix
  * @version 0.3.0
@@ -16,64 +18,93 @@
 #include "bitvector_object.h"
 
 /**
- * @brief __and__(BitVector, BitVector) → BitVector.
+ * @brief Implement ``A & B``.
+ *
+ * Performs a bitwise AND between two BitVectors of equal length.
+ *
  * @param oA Left operand.
  * @param oB Right operand.
- * @return New BitVector representing bitwise AND; NULL on error.
+ * @retval and New ``PyBitVectorObject`` on success.
+ * @retval NULL on failure (exception set).
  */
 PyObject *
 py_bitvector_and(PyObject *oA, PyObject *oB);
 /**
- * @brief __iand__(BitVector, BitVector) in-place AND.
+ * @brief Implement ``A &= B`` (in‑place AND).
+ *
+ * Modifies ``self`` in place. Both operands must have equal length.
+ *
  * @param self Left operand (modified in place).
  * @param arg Right operand.
- * @return Self on success, NULL on error.
+ * @retval self on success
+ * @retval NULL on failure (exception set).
  */
 PyObject *
 py_bitvector_iand(PyObject *self, PyObject *arg);
 /**
- * @brief __or__(BitVector, BitVector) → BitVector.
+ * @brief Implement ``A | B``.
+ *
+ * Performs a bitwise OR between two BitVectors of equal length.
+ *
  * @param oA Left operand.
  * @param oB Right operand.
- * @return New BitVector representing bitwise OR; NULL on error.
- */
+ * @retval or New ``PyBitVectorObject`` on success.
+ * @retval NULL on failure (exception set). */
 PyObject *
 py_bitvector_or(PyObject *oA, PyObject *oB);
 /**
- * @brief __ior__(BitVector, BitVector) in-place OR.
+ * @brief Implement ``A |= B`` (in‑place OR).
+ *
+ * Modifies ``self`` in place. Both operands must have equal length.
+ *
  * @param self Left operand (modified in place).
  * @param arg Right operand.
- * @return Self on success, NULL on error.
+ * @retval self on success.
+ * @retval NULL on failure (exception set).
  */
 PyObject *
 py_bitvector_ior(PyObject *self, PyObject *arg);
 /**
- * @brief __xor__(BitVector, BitVector) → BitVector.
+ * @brief Implement ``A ^ B``.
+ *
+ * Performs a bitwise XOR between two BitVectors of equal length.
+ *
  * @param oA Left operand.
  * @param oB Right operand.
- * @return New BitVector representing bitwise XOR; NULL on error.
- */
+ * @retval xor New ``PyBitVectorObject`` on success.
+ * @retval NULL on failure (exception set). */
 PyObject *
 py_bitvector_xor(PyObject *oA, PyObject *oB);
 /**
- * @brief __ixor__(BitVector, BitVector) in-place XOR.
+ * @brief Implement ``A ^= B`` (in‑place XOR).
+ *
+ * Modifies ``self`` in place. Both operands must have equal length.
+ *
  * @param self Left operand (modified in place).
  * @param arg Right operand.
- * @return Self on success, NULL on error.
+ * @retval self on success.
+ * @retval NULL on failure (exception set).
  */
 PyObject *
 py_bitvector_ixor(PyObject *self, PyObject *arg);
 /**
- * @brief __invert__(BitVector) → BitVector.
- * @param self A Python PyBitVectorObject instance.
- * @return New BitVector instance with all bits toggled, NULL on error;
- */
+ * @brief Implement ``~A``.
+ *
+ * Returns a new BitVector where every bit of ``self`` is inverted.
+ *
+ * @param self A ``PyBitVectorObject`` instance.
+ * @retval invert New ``PyBitVectorObject`` on success.
+ * @retval NULL on failure (exception set). */
 PyObject *
 py_bitvector_invert(PyObject *self);
 /**
- * @brief __bool__(BitVector) → boolean.
- * @param self A Python PyBitVectorObject instance.
- * @return 1 if any bit is set, 0 otherwise
+ * @brief Implement ``bool(BitVector)``.
+ *
+ * A BitVector is considered true if at least one bit is set.
+ *
+ * @param self A ``PyBitVectorObject`` instance.
+ * @retval 1 At least one bit is set.
+ * @retval 0 All bits are zero.
  */
 int
 py_bitvector_bool(PyObject *self);

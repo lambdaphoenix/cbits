@@ -1,9 +1,14 @@
 /**
- * @file src/python/cbits_module.c
- * @brief Module initialization for the cbits._cbits extension.
+ * @file cbits_module.c
+ * @brief Module initialization for the ``cbits._cbits`` extension.
  *
- * This is the entry point for the Python extension module.
+ * Implements the initialization logic for the BitVector C extension. This
+ * includes creating and registering the module’s type objects, setting up the
+ * per‑module state, installing metadata, and defining the garbage‑collection
+ * callbacks used by CPython to manage module lifetime.
  *
+ * @see cbits_module.h
+ * @see cbits_state.h
  * @author lambdaphoenix
  * @version 0.3.0
  * @copyright Copyright (c) 2026 lambdaphoenix
@@ -14,9 +19,16 @@
 #include "bitvector_iter.h"
 
 /**
- * @brief Module exec callback: register BitVector type and metadata.
- * @param module New module instance.
- * @return 0 on success; -1 on failure (exception set).
+ * @brief Module exec callback: create and register types and metadata.
+ *
+ * Executed during module initialization. Allocates the BitVector and iterator
+ * types, registers them with the module, integrates BitVector with
+ * ``collections.abc.Sequence``, and sets module‑level metadata such as author,
+ * version, and license.
+ *
+ * @param module Newly created module instance.
+ * @retval 0 Initialization succeeded
+ * @retval -1 Initialization failed and a Python exception is set
  */
 static int
 cbits_module_exec(PyObject *module)
@@ -82,27 +94,26 @@ cbits_module_exec(PyObject *module)
     return 0;
 }
 /**
- * @brief Module‑level docstring for the cbits extension.
+ * @brief Module‑level docstring for ``_cbits``.
  *
- * This string becomes the module’s __doc__ attribute and provides the
- * top‑level description shown in Python when inspecting the module.
+ * Installed as the module’s ``__doc__`` attribute.
  * @since 0.3.0
  */
 PyDoc_STRVAR(module_doc, "cbits");
 /**
- * @brief Method table for the cbits module.
+ * @brief Method table for the module.
  *
- * The module does not define any Python‑callable functions at the top level,
- * so the table contains only the NULL terminator.
+ * The module does not expose any top-level Python functions, so the table
+ * contains only the NULL terminator.
  * @since 0.3.0
  */
 static PyMethodDef cbits_methods[] = {{NULL, NULL, 0, NULL}};
 
 /**
- * @brief Module initialization slots.
+ * @brief Initialization slot table for the module.
  *
- * Lists callbacks invoked when the module is loaded; here,
- * we use Py_mod_exec to register types and module constants.
+ * Specifies callbacks executed during module creation, including the exec
+ * function and optional interpreter/GIL configuration flags.
  *
  * @see PyModuleDef_Slot
  */
@@ -118,16 +129,15 @@ static PyModuleDef_Slot cbits_slots[] = {
 };
 
 /**
- * @brief Traverse callback for the cbits module.
+ * @brief GC traverse callback for the module.
  *
- * Integrates the module state into Python's cyclic garbage collector by
- * visiting all Python objects stored inside the module state. This includes
- * the BitVector type and the BitVector iterator type.
+ * Reports all Python objects stored in the module state to the garbage
+ * collector. This ensures proper participation in cyclic GC.
  *
- * @param module The module whose state is being traversed.
- * @param visit GC visit function provided by the interpreter.
+ * @param module Module instance.
+ * @param visit GC visitor function.
  * @param arg Extra argument passed through by the GC.
- * @return Always 0 to indicate successful traversal.
+ * @return Always ``0``.
  * @since 0.3.0
  */
 static int
@@ -139,14 +149,13 @@ cbits_traverse(PyObject *module, visitproc visit, void *arg)
     return 0;
 }
 /**
- * @brief Clear callback for the cbits module.
+ * @brief GC clear callback for the module.
  *
- * Releases all Python object references stored in the module state. Called
- * during module finalization or when the interpreter tears down module state.
- * After clearing, the state contains only NULL pointers.
+ * Releases all Python references stored in the module state and resets them to
+ * ``NULL``. Called during interpreter shutdown or module teardown.
  *
- * @param module The module whose state is being cleared.
- * @return Always 0 to indicate success.
+ * @param module Module instance.
+ * @return Always ``0``.
  * @since 0.3.0
  */
 static int
@@ -158,12 +167,12 @@ cbits_clear(PyObject *module)
     return 0;
 }
 /**
- * @brief Free callback for the cbits module.
+ * @brief Free callback for the module.
  *
- * Invoked when the module is being deallocated. Delegates to cbits_clear() to
- * release all Python references held in the module state.
+ * Invoked when the module is being deallocated. Delegates to ``cbits_clear()``
+ * to release all Python references held in the module state.
  *
- * @param module The module object being freed (as a void pointer).
+ * @param module The module object being freed.
  * @since 0.3.0
  */
 static void
@@ -173,10 +182,10 @@ cbits_free(void *module)
 }
 
 /**
- * @brief Definition of the _cbits extension module.
+ * @brief Definition of the ``_cbits`` extension.
  *
- * Describes the module’s name, docstring, memory footprint,
- * and its initialization slot table.
+ * Specifies the module name, documentation string, state size, method table,
+ * initialization slots, and GC callbacks.
  */
 struct PyModuleDef cbits_module = {
     .m_base = PyModuleDef_HEAD_INIT,
@@ -191,8 +200,12 @@ struct PyModuleDef cbits_module = {
 };
 
 /**
- * @brief Python entrypoint for _cbits extension module.
- * @return New module object (borrowed reference).
+ * @brief Python entry point for ``_cbits`` extension.
+ *
+ * Creates and returns a new module instance using the definition in
+ * ::cbits_module.
+ *
+ * @return Newly created module object.
  */
 PyMODINIT_FUNC
 PyInit__cbits(void)

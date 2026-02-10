@@ -1,8 +1,9 @@
 /**
- * @file src/python/bitvector_methods_rank.c
- * @brief Implementation of rank-related Python methods.
+ * @file bitvector_methods_rank.c
+ * @brief Implementation of rank-related Python methods for ``BitVector``.
  *
- * Wraps the C backend's rank queries.
+ * Provides the Python binding for the native ``bv_rank`` function, including
+ * argument parsing, negative‑index normalization, and error handling.
  *
  * @author lambdaphoenix
  * @version 0.3.0

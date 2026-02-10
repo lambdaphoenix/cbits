@@ -1,13 +1,14 @@
 /**
- * @file src/python/bitvector_parse.h
- * @brief Argument parsing helpers for BitVector Python methods.
+ * @file bitvector_parse.h
+ * @brief Argument-parsing helpers for BitVector Python methods.
  *
- * Provide:
- * - \ref bv_parse_index "bv_parse_index": validate and normalize a single
- * index
- * - \ref bv_parse_tuple "bv_parse_tuple": parse (start, len) tuples
+ * Provides small, centralized utilities for validating and normalizing
+ * BitVector method arguments:
+ * - \ref bv_parse_index — validate and normalize a single index
+ * - \ref bv_parse_tuple — parse ``(start, length)`` tuples
  *
- * Centralizes error handling and index normalization for all method modules.
+ * Consolidates error handling and range checking so that all BitVector
+ * operations follow consistent semantics.
  *
  * @see bitvector_object.h
  * @author lambdaphoenix
@@ -21,10 +22,17 @@
 
 /**
  * @brief Parse and validate a single index argument.
- * @param self A Python PyBitVectorObject instance.
- * @param arg Python argument.
- * @param p_index Output pointer to store the validated index.
- * @return 0 on success (p_index set), -1 on failure (exception set).
+ *
+ * Accepts a Python integer, normalizes negative indices relative to the
+ * BitVector length, and checks bounds.
+ *
+ * @param self A ``PyBitVectorObject`` instance.
+ * @param arg Python argument expected to be an integer.
+ * @param p_index Output pointer receiving the validated index.
+ * @retval 0 Success; ``*p_index``is set.
+ * @retval -1 Failure; a Python exception is set.
+ *
+ * @note Negative indices are translated using Python slice semantics.
  */
 inline int
 bv_parse_index(PyObject *self, PyObject *arg, size_t *p_index)
@@ -51,13 +59,21 @@ bv_parse_index(PyObject *self, PyObject *arg, size_t *p_index)
 }
 
 /**
- * @brief Parse and validate a (start, length) range tuple.
- * @param self A Python PyBitVectorObject instance.
- * @param args   Python argument tuple (start, length).
+ * @brief Parse and validate a ``(start, length)`` tuple.
+ *
+ * Extracts two non‑negative integers and verifies that the range fits within
+ * the BitVector.
+ *
+ * @param self A ``PyBitVectorObject`` instance.
+ * @param args Python tuple ``(start, length)``.
  * @param p_start Output pointer for start index.
- * @param p_len   Output pointer for length.
- * @return 0 on success (outputs set), -1 on failure (exception set).
+ * @param p_len Output pointer for length.
+ * @retval 0 Success; outputs are set.
+ * @retval -1 Failure; a Python exception is set.
  * @since 0.2.0
+ *
+ * @note Both values must be non‑negative; overflow and range violations are
+ * checked explicitly.
  */
 inline int
 bv_parse_tuple(PyObject *self, PyObject *args, size_t *p_start, size_t *p_len)

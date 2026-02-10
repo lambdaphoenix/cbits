@@ -1,10 +1,14 @@
 /**
- * @file src/python/cbits_module.h
+ * @file cbits_module.h
  * @brief Forward declaration of the cbits module definition.
  *
- * Exposes the module's PyModuleDef so that other compilation units (such as
- * state helpers or type initializers) can reference the module definition
- * without creating circular dependencies.
+ * Provides external visibility of the module's ``PyModuleDef`` so that other
+ * compilation units-such as state helpers, type initializers, or method
+ * implementations-can reference the module definition without introducing
+ * circular dependencies.
+ *
+ * This header does not define initialization logic; it only exposes the
+ * declaration of the module object implemented in ``cbits_module.c``.
  *
  * @see cbits_module.c
  * @author lambdaphoenix

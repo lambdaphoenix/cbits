@@ -1,8 +1,10 @@
 /**
- * @file src/python/bitvector_methods_copy.c
- * @brief Implementation of copy and clone operations.
+ * @file bitvector_methods_copy.c
+ * @brief Implementation of copy and clone operationsfor ``BitVector``.
  *
- * Uses bv_copy from the C backend to duplicate BitVector instances.
+ * Provides the Python bindings for shallow and deep copying. Both operations
+ * rely on the native ``bv_copy`` backend function to duplicate the underlying
+ * BitVector data.
  *
  * @author lambdaphoenix
  * @version 0.3.0

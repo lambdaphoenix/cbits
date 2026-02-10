@@ -1,10 +1,11 @@
 /**
- * @file src/python/cbits_state.h
- * @brief Module-local state for the cbits extension.
+ * @file cbits_state.h
+ * @brief Module-local state definition for the cbits extension.
  *
- * Defines the per-module state structure used by the BitVector C extension.
- * The state stores references to the Python types exposed by the module and
- * provides helpers to retrieve the state and validate objects.
+ * This header defines the per‑module state structure used by the BitVector
+ * CPython extension. The state stores references to the Python types exposed
+ * by the module and provides helpers for retrieving the state and validating
+ * objects at runtime.
  *
  * @author lambdaphoenix
  * @version 0.3.0
@@ -16,11 +17,17 @@
 #include "cbits_module.h"
 
 /**
+ * @defgroup cbits_state_module Module State
+ * @brief Internal state and helpers for the cbits extension.
+ * @{
+ */
+
+/**
  * @brief Per-module state for the cbits extension.
  *
- * Holds the Python type objects needed by the module. Each module instance
- * maintains its own state, allocated by CPython's module state mechanism.
- *
+ * Each module instance maintains its own state, allocated through CPython’s
+ * module state mechanism. The structure stores the Python type objects
+ * required by the BitVector implementation.
  * @since 0.3.0
  */
 typedef struct {
@@ -31,8 +38,11 @@ typedef struct {
 /**
  * @brief Retrieve the cbits module state from a module object.
  *
- * @param module Python module object created from cbits_module.
- * @return Pointer to the module's cbits_state.
+ * This function returns the state associated with a module instance created
+ * from ::cbits_module.
+ *
+ * @param module Python module object.
+ * @return Pointer to the module's ::cbits_state.
  * @since 0.3.0
  */
 static inline cbits_state *
@@ -42,14 +52,14 @@ get_cbits_state(PyObject *module)
 }
 
 #if PY_VERSION_HEX >= 0x030B0000
+
     /**
      * @brief Retrieve the cbits module state using a type object.
      *
-     * Convenience wrapper for modules that need to access their state from a
-     * type method or slot.
+     * Convenience macro for accessing module state from type methods or slots.
      *
-     * @param type Type object to retrieve module from
-     * @return Pointer to the module's cbits_state.
+     * @param type Type object whose defining module should be queried.
+     * @return Pointer to the module's ::cbits_state.
      *
      * @since 0.3.0
      */
@@ -59,11 +69,10 @@ get_cbits_state(PyObject *module)
     /**
      * @brief Retrieve the cbits module state using a type object.
      *
-     * Convenience wrapper for modules that need to access their state from a
-     * type method or slot.
+     * Compatibility macro for Python versions prior to 3.11.
      *
-     * @param type Type object to retrieve module from
-     * @return Pointer to the module's cbits_state.
+     * @param type Type object whose defining module should be queried.
+     * @return Pointer to the module's ::cbits_state.
      *
      * @since 0.3.0
      */
@@ -75,12 +84,13 @@ get_cbits_state(PyObject *module)
  * @brief Check whether an object is an instance of the BitVector type.
  *
  * @param object Python object to test.
- * @param state Module state containing the BitVector type.
- * @return Non-zero if the object is a BitVector instance, zero otherwise.
- *
+ * @param state Module state containing the BitVector type reference.
+ * @return Non-zero if @p object is a BitVector instance, zero otherwise.
  * @since 0.3.0
  */
 #define py_bitvector_check(object, state) \
     PyObject_TypeCheck(object, state->PyBitVectorType)
+
+/** @} */ /* end of cbits_state_module */
 
 #endif /* CBITS_STATE_H */

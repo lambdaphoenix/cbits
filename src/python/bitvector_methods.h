@@ -1,9 +1,10 @@
 /**
- * @file src/python/bitvector_methods.h
- * @brief Aggregated method table for the BitVector Python type.
+ * @file bitvector_methods.h
+ * @brief Aggregated method table for the ``BitVector`` Python type.
  *
- * Declares:
- * - \ref BitVector_methods[]: the unified PyMethodDef table
+ * Declares the unified ``PyMethodDef`` table used by the BitVector type. All
+ * method groups (core operations, slicing, comparison, misc utilities)
+ * contribute entries to this table, which is then referenced by the
  *
  * @author lambdaphoenix
  * @version 0.3.0

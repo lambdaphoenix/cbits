@@ -1,12 +1,11 @@
 /**
- * @file src/python/bitvector_iter.h
- * @brief Iterator type for BitVector.
+ * @file bitvector_iter.h
+ * @brief Iterator type for ``BitVector``.
  *
- * Declares:
- * - py_bv_iter
- * - py_bviter_iternext, py_bviter_dealloc
- *
- * Used by \ref bitvector_object.c to expose iteration type.
+ * Declares the iterator type and constructor used to support Python’s
+ * iteration protocol for BitVector objects:
+ * - ``py_bv_iter`` (tp_iter implementation)
+ * - iterator methods such as ``tp_iternext`` and ``tp_dealloc``
  *
  * @see bitvector_object.h
  * @author lambdaphoenix
@@ -21,13 +20,14 @@
 extern PyType_Spec PyBitVectorIter_spec;
 
 /**
- * @brief Create and return a new BitVector iterator.
+ * @brief Create and a new BitVector iterator.
  *
- * Implements the tp_iter slot. Allocates a fresh PyBitVectorIter, initializes
- * its state, and returns it.
+ * Implements the ``tp_iter`` slot for BitVector. Allocates and initializes a
+ * fresh iterator object whose internal state tracks the current bit index.
  *
- * @param self A Python PyBitVectorObject instance.
- * @return New iterator object or NULL on allocation failure.
+ * @param self A ``PyBitVectorObject`` instance.
+ * @retval iter New iterator object on success
+ * @retval NULL on allocation failure (ecxception set).
  */
 PyObject *
 py_bitvector_iter(PyObject *self);

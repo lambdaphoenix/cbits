@@ -1,10 +1,10 @@
 /**
- * @file src/python/bitvector_methods_slice.h
- * @brief Slicing support for BitVector.
+ * @file bitvector_methods_slice.h
+ * @brief Slicing and indexed access support for ``BitVector``.
  *
- * Declares:
- * - __getitem__ for slice objects
- * - __setitem__ for slice assignment
+ * Declares the functions that implement ``__getitem__`` and ``__setitem__``
+ * for both integer indices and slice objects. These functions provide the core
+ * Python‑level indexing and slicing behavior for the BitVector type.
  *
  * @author lambdaphoenix
  * @version 0.3.0
@@ -16,55 +16,57 @@
 #include "bitvector_object.h"
 
 /**
- * @brief Implements BitVector.__getitem__, returns the bit at position i.
+ * @brief Implement ``BitVector.__getitem__`` for a single integer index.
  *
- * This function checks bounds and returns the corresponding Python boolean
- * (True/False). On out-of-range access it raises IndexError.
+ * Validates the index, checks bounds, and returns the corresponding bit as a
+ * Python boolean. Raises ``IndexError`` on out‑of‑range access.
  *
- * @param object A Python PyBitVectorObject instance.
+ * @param object A ``PyBitVectorObject`` instance.
  * @param i Index to access
- * @return New reference to Py_True or Py_False on success; NULL and IndexError
- * on failure.
+ * @retval bool New reference to ``Py_True`` or ``Py_False`` on success.
+ * @retval NULL on failure (exception set).
  */
 PyObject *
 py_bitvector_item(PyObject *object, Py_ssize_t i);
 /**
- * @brief Implements BitVector.__setitem__ for a single index.
+ * @brief Implement ``BitVector.__setitem__`` for a single integer index.
  *
- * Sets or clears the bit at position i based on the truth value of
- * `value`. Raises IndexError if the index is out of range.
+ * Sets or clears the bit at position ``i`` based on the truth value of
+ * ``value``. Raises ``IndexError`` if the index is out of range.
  *
- * @param object A Python PyBitVectorObject instance.
+ * @param object A ``PyBitVectorObject`` instance.
  * @param i Index of the bit to assign.
  * @param value Python object interpreted as boolean.
- * @return 0 on success; -1 on error (with exception set).
+ * @retval 0 Success.
+ * @retval -1 Failure (exception set).
  */
 int
 py_bitvector_ass_item(PyObject *object, Py_ssize_t i, PyObject *value);
 /**
- * @brief Implements BitVector.__getitem__ dispatch for index or slice.
+ * @brief Implement ``BitVector.__getitem__`` dispatch for index or slice.
  *
- * Delegates either to py_bitvector_item (for integer indices) or to
- * py_bitvector_slice (for slice objects). Raises TypeError for unsupported
- * types.
+ * Dispatches to ``py_bitvector_item`` for integer indices or to the slice
+ * handler for slice objects. Raises ``TypeError`` for unsupported types.
  *
- * @param self A Python PyBitVectorObject instance.
- * @param arg Index or slice object.
- * @return New reference to a Python bool or PyBitVectorObject; NULL and
- * exception on error.
+ * @param self A ``PyBitVectorObject`` instance.
+ * @param arg Integer index or slice object.
+ * @retval value New reference to a Python bool or a new ``PyBitVectorObject``.
+ * @retval NULL on failure (exception set).
  */
 PyObject *
 py_bitvector_subscript(PyObject *self, PyObject *arg);
 /**
- * @brief Implements BitVector.__setitem__ dispatch for index or slice.
+ * @brief Implements ``BitVector.__setitem__`` dispatch for index or slice.
  *
- * Delegates to py_bitvector_ass_item or py_bitvector_ass_slice depending on
- * type of `arg`. Does not support item deletion (value==NULL).
+ * Dispatches to ``py_bitvector_ass_item`` or the slice assignment handler
+ * depending on the type of ``arg``. Deletion (``value == NULL``) is not
+ * supported.
  *
  * @param self A Python PyBitVectorObject instance.
  * @param arg Index or slice object.
  * @param value Python object to assign (must not be NULL).
- * @return 0 on success; -1 on error (with exception set).
+ * @retval 0 Success.
+ * @retval -1 Failure (exception set).
  */
 int
 py_bitvector_ass_subscript(PyObject *self, PyObject *arg, PyObject *value);

@@ -1,15 +1,12 @@
 /**
- * @file src/python/bitvector_methods_misc.c
- * @brief Implementation of miscellaneous BitVector methods.
+ * @file bitvector_methods_misc.c
+ * @brief Implementation of miscellaneous ``BitVector`` Python methods.
  *
- * Implements:
- * - __repr__ and __str__
- * - __len__
- * - __contains__
- * - the "bits" read-only property
- *
- * These methods provide standard Python protocol support and convenience
- * features for the BitVector type.
+ * Provides protocol support and convenience features for the BitVector type:
+ * - ``__repr__`` and ``__str__`` for string representations
+ * - ``__len__`` for container length
+ * - ``__contains__`` for membership tests
+ * - the read‑only ``bits`` property
  *
  * @author lambdaphoenix
  * @version 0.3.0
@@ -46,15 +43,18 @@ py_bitvector_contains(PyObject *object, PyObject *value)
     cbits_state *state = find_cbits_state_by_type(Py_TYPE(object));
 
     if (!py_bitvector_check(value, state)) {
-        return false;
+        return -1;
     }
     PyBitVectorObject *sub = (PyBitVectorObject *) value;
     return bv_contains_subvector(self->bv, sub->bv);
 }
 
 /**
- * @brief Getter for the read-only "bits" property.
- * @param object A Python PyBitVectorObject instance.
+ * @brief Getter for the read-only ``bits`` property.
+ *
+ * Returns the number of bits in the BitVector.
+ *
+ * @param object A ``PyBitVectorObject`` instance.
  * @param closure Unused.
  * @return Python integer of the bit-length
  */
@@ -66,10 +66,10 @@ py_bitvector_get_size(PyObject *object, void *Py_UNUSED(closure))
 }
 
 /**
- * @brief Property definitions for the BitVector type.
+ * @brief Property table for the BitVector type.
  *
- * This table lists all read-only and writable properties exposed
- * on the Python BitVector object.
+ * Lists all Python‑visible properties. Currently only ``bits`` is exposed and
+ * is read‑only.
  *
  * @see PyGetSetDef
  */

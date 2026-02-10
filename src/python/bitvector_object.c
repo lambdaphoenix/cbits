@@ -1,13 +1,14 @@
 /**
- * @file src/python/bitvector_object.c
- * @brief Implementation of the PyBitVectorObject Python type.
+ * @file bitvector_object.c
+ * @brief Implementation of the ``PyBitVectorObject`` Python type.
  *
- * Defines:
- * - type initialization via PyType_Spec
- * - py_bitvector_new, py_bitvector_init, py_bitvector_dealloc
- * - integration of all method groups and iterator support
+ * Implements the Python wrapper type for the native ``BitVector`` structure.
+ * This includes:
+ * - type construction via ``PyType_Spec`` and slot tables
+ * - ``__new__``, ``__init__``, and deallocation logic
+ * - integration of all BitVector method groups and iterator support
  *
- * This file binds the C BitVector backend to the Python's objet module.
+ * This file connects the C BitVector backend with Python’s object model.
  *
  * @see bitvector_object.h
  * @author lambdaphoenix
@@ -28,11 +29,16 @@
 #include "bitvector_iter.h"
 
 /**
- * @brief __new__ for BitVector: allocate the Python object.
+ * @brief ``__new__`` for ``BitVector``: allocate the Python object.
+ *
+ * Allocates a new ``PyBitVectorObject`` without initializing the underlying
+ * native BitVector. Initialization is performed in ``py_bitvector_init``.
+ *
  * @param type The Python type object.
- * @param args Positional args (unused).
- * @param kwds Keyword args (unused).
- * @return New, uninitialized PyBitVectorObject or NULL on failure.
+ * @param args Unused positional arguments.
+ * @param kwds Unused keyword arguments.
+ * @retval new_object New ``PyBitVectorObject`` on success.
+ * @retval NULL on allocation failure (exception set).
  */
 PyObject *
 py_bitvector_new(PyTypeObject *type, PyObject *Py_UNUSED(args),
@@ -66,11 +72,18 @@ bitvector_wrap_new(PyTypeObject *type, BitVector *bv_data)
 }
 
 /**
- * @brief __init__ for BitVector(size): allocate the underlying C BitVector.
- * @param self A Python PyBitVectorObject instance.
- * @param args Positional args tuple.
- * @param kwds Keyword args dict.
- * @return 0 on success, -1 on error (with exception set).
+ * @brief ``__init__`` for ``BitVector(size)``: allocate the native BitVector.
+ *
+ * Parses the ``size`` argument, frees any existing BitVector, and allocates a
+ * new one of the requested length.
+ *
+ * @param self A ``PyBitVectorObject`` instance.
+ * @param args Positional arguments.
+ * @param kwds Keyword arguments.
+ * @retval 0 Success.
+ * @retval -1 Failure (exception set).
+ *
+ * @warning Passing a negative size raises ``ValueError``.
  */
 static int
 py_bitvector_init(PyObject *self, PyObject *args, PyObject *kwds)
@@ -100,17 +113,16 @@ py_bitvector_init(PyObject *self, PyObject *args, PyObject *kwds)
 }
 
 /**
- * @brief Traverse callback for PyBitVectorObject.
+ * @brief GC traverse callback for ``PyBitVectorObject``.
  *
- * Participates in Python's cyclic garbage collector by visiting all Python
- * objects referenced by the BitVector instance. Only the type object is
- * visited here, as the BitVector does not own additional Python-level
- * references.
+ * Reports Python‑level references held by the object to the cyclic garbage
+ * collector. Only the type object is visited, as the native BitVector does not
+ * reference Python objects.
  *
- * @param bv BitVector instance being traversed.
- * @param visit GC visit function supplied by the interpreter.
+ * @param bv The BitVector instance being traversed.
+ * @param visit GC visit function.
  * @param arg Extra argument passed through by the GC.
- * @return Always 0 to indicate success.
+ * @retval 0 Always returns ``0``.
  *
  * @since 0.3.0
  */
@@ -123,8 +135,12 @@ py_bitvector_traverse(PyBitVectorObject *bv, visitproc visit, void *arg)
 }
 
 /**
- * @brief Deallocate a PyBitVectorObject object.
- * @param object A Python PyBitVectorObject instance.
+ * @brief Deallocate a ``PyBitVectorObject``.
+ *
+ * Frees the underlying native BitVector (if present), clears internal state,
+ * and releases the Python object memory.
+ *
+ * @param object A ``PyBitVectorObject`` instance.
  */
 static void
 py_bitvector_dealloc(PyObject *object)
@@ -140,7 +156,7 @@ py_bitvector_dealloc(PyObject *object)
     type->tp_free(self);
     Py_DECREF(type);
 }
-/** @brief Docstring for BitVector. */
+/** @brief Docstring for the ``BitVector`` type. */
 PyDoc_STRVAR(
     PyBitVector__doc__,
     "BitVector(size: int)\n"
@@ -157,10 +173,9 @@ PyDoc_STRVAR(
     "    The length of this BitVector.\n");
 
 /**
- * @brief Member table for PyBitVectorObject.
+ * @brief Member table for ``PyBitVectorObject``.
  *
- * The BitVector type does not expose any struct‑level members to Python, so
- * the table contains only the NULL terminator.
+ * Only weakref support is exposed (on Python < 3.12). Otherwise empty.
  *
  * @since 0.3.0
  */
@@ -172,10 +187,10 @@ static struct PyMemberDef py_bitvector_members[] = {
     {NULL}};
 
 /**
- * @brief Slot table for the PyBitVectorObject type.
+ * @brief Slot table for the ``PyBitVector`` type.
  *
- * Maps Python’s type callbacks (new, init, dealloc, repr, etc.)
- * and protocol slots (sequence, number, richcompare) to our C functions.
+ * Maps Python type slots (constructor, GC hooks, sequence protocol, number
+ * protocol, etc.) to the corresponding C implementations.
  *
  * @see PyType_Slot
  */
@@ -218,24 +233,21 @@ static PyType_Slot BitVector_slots[] = {
     {0, NULL},
 };
 /**
- * @brief Type specification for BitVector.
+ * @brief Type specification for ``BitVector``.
  *
- * This structure describes the Python type name, size,
- * inheritance flags, and slot table used to create the type.
+ * Defines the type name, size, flags, and slot table used to construct the
+ * Python type via ``PyType_FromModuleAndSpec``.
  *
  * @see PyType_Spec
  */
 PyType_Spec PyBitVector_spec = {
     .name = "cbits.BitVector",
     .basicsize = sizeof(PyBitVectorObject),
+    .flags = Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE |
+             Py_TPFLAGS_IMMUTABLETYPE | Py_TPFLAGS_HAVE_GC |
+             Py_TPFLAGS_SEQUENCE
 #if PY_VERSION_HEX >= 0x030C0000
-    .flags = (Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE |
-              Py_TPFLAGS_IMMUTABLETYPE | Py_TPFLAGS_HAVE_GC |
-              Py_TPFLAGS_SEQUENCE | Py_TPFLAGS_MANAGED_WEAKREF),
-#else
-    .flags =
-        (Py_TPFLAGS_DEFAULT | Py_TPFLAGS_BASETYPE | Py_TPFLAGS_IMMUTABLETYPE |
-         Py_TPFLAGS_HAVE_GC | Py_TPFLAGS_SEQUENCE),
+             | Py_TPFLAGS_MANAGED_WEAKREF,
 #endif
     .slots = BitVector_slots,
 };
