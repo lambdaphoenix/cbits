@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cbits<span id="projectnumber">&#160;0.2.1</span>
+   <div id="projectname">cbits<span id="projectnumber">&#160;0.3.0</span>
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
@@ -90,27 +90,27 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="bitvector__object_8h.html">bitvector_object.h</a>&quot;</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>Py_ssize_t</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#ab0d52c7578ed62bc0753d157ebbb62c2">py_bv_len</a>(PyObject *self);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#aa6c45cb08a04282d2a7b5a68d67b7d63">py_bitvector_len</a>(PyObject *self);</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>PyObject *</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#a974280b47d159676c131236cc7389815">py_bv_repr</a>(PyObject *self);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#a86b6b03992fbc00109b59e536cffc2c1">py_bitvector_repr</a>(PyObject *self);</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>PyObject *</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#ac04ab5abc9dc035fb6f355343725b22b">py_bv_str</a>(PyObject *self);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#ab89d3f819b9aa435f1a78e2820a3de45">py_bitvector_str</a>(PyObject *self);</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keywordtype">int</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#a4bf46f65f28aba57907280ca365cf412">py_bv_contains</a>(PyObject *self, PyObject *value);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#aa3642b638b71860117666d483eefd956">py_bitvector_contains</a>(PyObject *self, PyObject *value);</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">extern</span> PyGetSetDef <a class="code hl_variable" href="bitvector__methods__misc_8h.html#aed9d2206089523b6bc6fbac996e9895e">PyBitVector_getset</a>[];</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif </span><span class="comment">/* CBITS_PY_BITVECTOR_METHODS_MISC_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="abitvector__methods__misc_8h_html_a4bf46f65f28aba57907280ca365cf412"><div class="ttname"><a href="bitvector__methods__misc_8h.html#a4bf46f65f28aba57907280ca365cf412">py_bv_contains</a></div><div class="ttdeci">int py_bv_contains(PyObject *self, PyObject *value)</div><div class="ttdoc">contains(BitVector, other) → boolean.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:43</div></div>
-<div class="ttc" id="abitvector__methods__misc_8h_html_a974280b47d159676c131236cc7389815"><div class="ttname"><a href="bitvector__methods__misc_8h.html#a974280b47d159676c131236cc7389815">py_bv_repr</a></div><div class="ttdeci">PyObject * py_bv_repr(PyObject *self)</div><div class="ttdoc">repr for BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:21</div></div>
-<div class="ttc" id="abitvector__methods__misc_8h_html_ab0d52c7578ed62bc0753d157ebbb62c2"><div class="ttname"><a href="bitvector__methods__misc_8h.html#ab0d52c7578ed62bc0753d157ebbb62c2">py_bv_len</a></div><div class="ttdeci">Py_ssize_t py_bv_len(PyObject *self)</div><div class="ttdoc">len(BitVector) → number of bits.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:36</div></div>
-<div class="ttc" id="abitvector__methods__misc_8h_html_ac04ab5abc9dc035fb6f355343725b22b"><div class="ttname"><a href="bitvector__methods__misc_8h.html#ac04ab5abc9dc035fb6f355343725b22b">py_bv_str</a></div><div class="ttdeci">PyObject * py_bv_str(PyObject *self)</div><div class="ttdoc">str for BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:29</div></div>
-<div class="ttc" id="abitvector__methods__misc_8h_html_aed9d2206089523b6bc6fbac996e9895e"><div class="ttname"><a href="bitvector__methods__misc_8h.html#aed9d2206089523b6bc6fbac996e9895e">PyBitVector_getset</a></div><div class="ttdeci">PyGetSetDef PyBitVector_getset[]</div><div class="ttdoc">Property definitions for the BitVector type.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:88</div></div>
+<div class="ttc" id="abitvector__methods__misc_8h_html_a86b6b03992fbc00109b59e536cffc2c1"><div class="ttname"><a href="bitvector__methods__misc_8h.html#a86b6b03992fbc00109b59e536cffc2c1">py_bitvector_repr</a></div><div class="ttdeci">PyObject * py_bitvector_repr(PyObject *self)</div><div class="ttdoc">repr for BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:21</div></div>
+<div class="ttc" id="abitvector__methods__misc_8h_html_aa3642b638b71860117666d483eefd956"><div class="ttname"><a href="bitvector__methods__misc_8h.html#aa3642b638b71860117666d483eefd956">py_bitvector_contains</a></div><div class="ttdeci">int py_bitvector_contains(PyObject *self, PyObject *value)</div><div class="ttdoc">contains(BitVector, other) → boolean.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:43</div></div>
+<div class="ttc" id="abitvector__methods__misc_8h_html_aa6c45cb08a04282d2a7b5a68d67b7d63"><div class="ttname"><a href="bitvector__methods__misc_8h.html#aa6c45cb08a04282d2a7b5a68d67b7d63">py_bitvector_len</a></div><div class="ttdeci">Py_ssize_t py_bitvector_len(PyObject *self)</div><div class="ttdoc">len(BitVector) → number of bits.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:36</div></div>
+<div class="ttc" id="abitvector__methods__misc_8h_html_ab89d3f819b9aa435f1a78e2820a3de45"><div class="ttname"><a href="bitvector__methods__misc_8h.html#ab89d3f819b9aa435f1a78e2820a3de45">py_bitvector_str</a></div><div class="ttdeci">PyObject * py_bitvector_str(PyObject *self)</div><div class="ttdoc">str for BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:29</div></div>
+<div class="ttc" id="abitvector__methods__misc_8h_html_aed9d2206089523b6bc6fbac996e9895e"><div class="ttname"><a href="bitvector__methods__misc_8h.html#aed9d2206089523b6bc6fbac996e9895e">PyBitVector_getset</a></div><div class="ttdeci">PyGetSetDef PyBitVector_getset[]</div><div class="ttdoc">Property definitions for the BitVector type.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:76</div></div>
 <div class="ttc" id="abitvector__object_8h_html"><div class="ttname"><a href="bitvector__object_8h.html">bitvector_object.h</a></div><div class="ttdoc">Definition of the PyBitVector Python type.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 01:58:05 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

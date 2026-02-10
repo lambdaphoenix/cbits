@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cbits<span id="projectnumber">&#160;0.2.1</span>
+   <div id="projectname">cbits<span id="projectnumber">&#160;0.3.0</span>
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
@@ -93,9 +93,6 @@ Directory dependency graph for python:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
 Files</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="bitvector__check_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__check_8h.html">bitvector_check.h</a></td></tr>
-<tr class="memdesc:bitvector__check_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Validation helpers for Python <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> operations. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__iter_8c.html">bitvector_iter.c</a></td></tr>
 <tr class="memdesc:bitvector__iter_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> iterator. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,7 +112,7 @@ Files</h2></td></tr>
 <tr class="memdesc:bitvector__methods__basic_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Basic <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> operations for Python. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__methods__compare_8c.html">bitvector_methods_compare.c</a></td></tr>
-<tr class="memdesc:bitvector__methods__compare_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality and hashing for <a class="el" href="structPyBitVector.html" title="Python object containing a pointer to a native BitVector.">PyBitVector</a>. <br /></td></tr>
+<tr class="memdesc:bitvector__methods__compare_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality and hashing for <a class="el" href="structPyBitVectorObject.html" title="Python object containing a pointer to a native BitVector.">PyBitVectorObject</a>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="bitvector__methods__compare_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__methods__compare_8h.html">bitvector_methods_compare.h</a></td></tr>
 <tr class="memdesc:bitvector__methods__compare_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Equality and hashing methods for <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>. <br /></td></tr>
@@ -150,23 +147,29 @@ Files</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="bitvector__methods__slice_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__methods__slice_8h.html">bitvector_methods_slice.h</a></td></tr>
 <tr class="memdesc:bitvector__methods__slice_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Slicing support for <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__module_8c.html">bitvector_module.c</a></td></tr>
-<tr class="memdesc:bitvector__module_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Module initialization for the cbits._cbits extension. <br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__object_8c.html">bitvector_object.c</a></td></tr>
-<tr class="memdesc:bitvector__object_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the <a class="el" href="structPyBitVector.html" title="Python object containing a pointer to a native BitVector.">PyBitVector</a> Python type. <br /></td></tr>
+<tr class="memdesc:bitvector__object_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implementation of the <a class="el" href="structPyBitVectorObject.html" title="Python object containing a pointer to a native BitVector.">PyBitVectorObject</a> Python type. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="bitvector__object_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__object_8h.html">bitvector_object.h</a></td></tr>
-<tr class="memdesc:bitvector__object_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of the <a class="el" href="structPyBitVector.html" title="Python object containing a pointer to a native BitVector.">PyBitVector</a> Python type. <br /></td></tr>
+<tr class="memdesc:bitvector__object_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of the PyBitVector Python type. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="bitvector__parse_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__parse_8h.html">bitvector_parse.h</a></td></tr>
 <tr class="memdesc:bitvector__parse_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Argument parsing helpers for <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> Python methods. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><span class="icondoc"></span>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbits__module_8c.html">cbits_module.c</a></td></tr>
+<tr class="memdesc:cbits__module_8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Module initialization for the cbits._cbits extension. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="cbits__module_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbits__module_8h.html">cbits_module.h</a></td></tr>
+<tr class="memdesc:cbits__module_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Forward declaration of the cbits module definition. <br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="cbits__state_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbits__state_8h.html">cbits_state.h</a></td></tr>
+<tr class="memdesc:cbits__state_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">Module-local state for the cbits extension. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 01:58:05 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

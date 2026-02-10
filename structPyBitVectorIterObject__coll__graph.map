@@ -1,0 +1,7 @@
+<map id="PyBitVectorIterObject" name="PyBitVectorIterObject">
+<area shape="rect" id="Node000001" title="Iterator structure for PyBitVectorObject." alt="" coords="5,181,167,207"/>
+<area shape="rect" id="Node000002" href="$structPyBitVectorObject.html" title="Python object containing a pointer to a native BitVector." alt="" coords="17,93,155,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,133,89,181,83,181,83,133"/>
+<area shape="rect" id="Node000003" href="$structBitVector.html" title="Packed array of bits with support for rank/select operations." alt="" coords="45,5,127,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="89,45,89,93,83,93,83,45"/>
+</map>

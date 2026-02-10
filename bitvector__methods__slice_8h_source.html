@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cbits<span id="projectnumber">&#160;0.2.1</span>
+   <div id="projectname">cbits<span id="projectnumber">&#160;0.3.0</span>
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
@@ -90,18 +90,24 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="bitvector__object_8h.html">bitvector_object.h</a>&quot;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>PyObject *</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><a class="code hl_function" href="bitvector__methods__slice_8h.html#ac1bc8668539652c195ac6ec51cf84150">py_bv_subscript</a>(PyObject *self, PyObject *arg);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><a class="code hl_function" href="bitvector__methods__slice_8h.html#a367056829ebc427ffe70156edb1b36ca">py_bitvector_item</a>(PyObject *<span class="keywordtype">object</span>, Py_ssize_t i);</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keywordtype">int</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><a class="code hl_function" href="bitvector__methods__slice_8h.html#aa11e2053c0445b1ef4278020ab54a5b0">py_bv_ass_subscript</a>(PyObject *self, PyObject *arg, PyObject *value);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif </span><span class="comment">/* CBITS_PY_BITVECTOR_METHODS_SLICE_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="abitvector__methods__slice_8h_html_aa11e2053c0445b1ef4278020ab54a5b0"><div class="ttname"><a href="bitvector__methods__slice_8h.html#aa11e2053c0445b1ef4278020ab54a5b0">py_bv_ass_subscript</a></div><div class="ttdeci">int py_bv_ass_subscript(PyObject *self, PyObject *arg, PyObject *value)</div><div class="ttdoc">Implements BitVector.__setitem__ dispatch for index or slice.</div><div class="ttdef"><b>Definition</b> bitvector_methods_slice.c:225</div></div>
-<div class="ttc" id="abitvector__methods__slice_8h_html_ac1bc8668539652c195ac6ec51cf84150"><div class="ttname"><a href="bitvector__methods__slice_8h.html#ac1bc8668539652c195ac6ec51cf84150">py_bv_subscript</a></div><div class="ttdeci">PyObject * py_bv_subscript(PyObject *self, PyObject *arg)</div><div class="ttdoc">Implements BitVector.__getitem__ dispatch for index or slice.</div><div class="ttdef"><b>Definition</b> bitvector_methods_slice.c:196</div></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><a class="code hl_function" href="bitvector__methods__slice_8h.html#a1e8470ed66918b13e9b80f4daeefa750">py_bitvector_ass_item</a>(PyObject *<span class="keywordtype">object</span>, Py_ssize_t i, PyObject *value);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>PyObject *</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><a class="code hl_function" href="bitvector__methods__slice_8h.html#ad791316c4de485f28b00300a0dedde00">py_bitvector_subscript</a>(PyObject *self, PyObject *arg);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="keywordtype">int</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><a class="code hl_function" href="bitvector__methods__slice_8h.html#af1e11158a35cf68f8444eb480d79b3d7">py_bitvector_ass_subscript</a>(PyObject *self, PyObject *arg, PyObject *value);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif </span><span class="comment">/* CBITS_PY_BITVECTOR_METHODS_SLICE_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="abitvector__methods__slice_8h_html_a1e8470ed66918b13e9b80f4daeefa750"><div class="ttname"><a href="bitvector__methods__slice_8h.html#a1e8470ed66918b13e9b80f4daeefa750">py_bitvector_ass_item</a></div><div class="ttdeci">int py_bitvector_ass_item(PyObject *object, Py_ssize_t i, PyObject *value)</div><div class="ttdoc">Implements BitVector.__setitem__ for a single index.</div><div class="ttdef"><b>Definition</b> bitvector_methods_slice.c:45</div></div>
+<div class="ttc" id="abitvector__methods__slice_8h_html_a367056829ebc427ffe70156edb1b36ca"><div class="ttname"><a href="bitvector__methods__slice_8h.html#a367056829ebc427ffe70156edb1b36ca">py_bitvector_item</a></div><div class="ttdeci">PyObject * py_bitvector_item(PyObject *object, Py_ssize_t i)</div><div class="ttdoc">Implements BitVector.__getitem__, returns the bit at position i.</div><div class="ttdef"><b>Definition</b> bitvector_methods_slice.c:35</div></div>
+<div class="ttc" id="abitvector__methods__slice_8h_html_ad791316c4de485f28b00300a0dedde00"><div class="ttname"><a href="bitvector__methods__slice_8h.html#ad791316c4de485f28b00300a0dedde00">py_bitvector_subscript</a></div><div class="ttdeci">PyObject * py_bitvector_subscript(PyObject *self, PyObject *arg)</div><div class="ttdoc">Implements BitVector.__getitem__ dispatch for index or slice.</div><div class="ttdef"><b>Definition</b> bitvector_methods_slice.c:194</div></div>
+<div class="ttc" id="abitvector__methods__slice_8h_html_af1e11158a35cf68f8444eb480d79b3d7"><div class="ttname"><a href="bitvector__methods__slice_8h.html#af1e11158a35cf68f8444eb480d79b3d7">py_bitvector_ass_subscript</a></div><div class="ttdeci">int py_bitvector_ass_subscript(PyObject *self, PyObject *arg, PyObject *value)</div><div class="ttdoc">Implements BitVector.__setitem__ dispatch for index or slice.</div><div class="ttdef"><b>Definition</b> bitvector_methods_slice.c:227</div></div>
 <div class="ttc" id="abitvector__object_8h_html"><div class="ttname"><a href="bitvector__object_8h.html">bitvector_object.h</a></div><div class="ttdoc">Definition of the PyBitVector Python type.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 01:58:05 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

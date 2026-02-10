@@ -1,26 +1,31 @@
 <map id="src/python/bitvector_methods_copy.c" name="src/python/bitvector_methods_copy.c">
-<area shape="rect" id="Node000001" title="Implementation of copy and clone operations." alt="" coords="38,5,190,45"/>
-<area shape="rect" id="Node000002" href="$bitvector__methods__copy_8h.html" title="Copy and clone operations for BitVector." alt="" coords="85,93,277,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="132,44,164,81,160,84,128,47"/>
-<area shape="rect" id="Node000003" href="$bitvector__object_8h.html" title="Definition of the PyBitVector Python type." alt="" coords="45,167,183,192"/>
-<area shape="poly" id="edge13_Node000001_Node000003" title=" " alt="" coords="99,47,78,80,74,99,75,118,84,137,96,155,92,158,80,140,70,119,68,99,74,78,94,44"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="172,121,136,158,132,155,168,117"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="5,240,84,265"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="104,194,67,232,63,228,101,190"/>
-<area shape="rect" id="Node000005" href="$bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="109,240,258,265"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="127,190,165,228,161,232,124,194"/>
-<area shape="rect" id="Node000006" href="$bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="138,313,229,339"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="186,266,186,300,181,300,181,266"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="10,460,85,485"/>
-<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="160,341,126,361,93,388,73,418,58,448,54,446,68,415,89,385,123,357,157,336"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="204,460,275,485"/>
-<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="190,338,232,446,227,448,185,340"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="261,387,343,412"/>
-<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="204,336,272,377,269,382,201,341"/>
-<area shape="rect" id="Node000010" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="103,387,186,412"/>
-<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="179,340,160,376,155,373,175,338"/>
-<area shape="poly" id="edge11_Node000010_Node000007" title=" " alt="" coords="131,414,76,454,73,449,127,410"/>
-<area shape="poly" id="edge10_Node000010_Node000008" title=" " alt="" coords="161,410,214,449,211,454,158,414"/>
-<area shape="rect" id="Node000011" title=" " alt="" coords="109,460,180,485"/>
-<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="147,412,147,446,142,446,142,412"/>
+<area shape="rect" id="Node000001" title="Implementation of copy and clone operations." alt="" coords="92,5,244,45"/>
+<area shape="rect" id="Node000002" href="$bitvector__methods__copy_8h.html" title="Copy and clone operations for BitVector." alt="" coords="5,93,197,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="154,47,122,84,118,81,150,44"/>
+<area shape="rect" id="Node000003" href="$bitvector__object_8h.html" title="Definition of the PyBitVector Python type." alt="" coords="99,167,237,192"/>
+<area shape="poly" id="edge16_Node000001_Node000003" title=" " alt="" coords="188,44,208,78,214,99,212,119,202,140,190,158,186,155,198,137,207,118,208,99,204,80,183,47"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="114,117,150,155,146,158,110,121"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="77,387,155,412"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="150,194,126,214,105,241,96,275,95,311,101,345,109,373,104,374,96,346,90,311,90,274,100,239,122,210,147,190"/>
+<area shape="rect" id="Node000005" href="$bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="244,240,393,265"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="193,190,283,232,280,236,191,194"/>
+<area shape="rect" id="Node000012" href="$cbits__state_8h.html" title="Module&#45;local state for the cbits extension." alt="" coords="115,240,221,265"/>
+<area shape="poly" id="edge13_Node000003_Node000012" title=" " alt="" coords="171,192,171,226,165,226,165,192"/>
+<area shape="rect" id="Node000006" href="$bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="273,313,364,339"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="321,266,321,300,316,300,316,266"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="441,460,516,485"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="366,335,412,353,435,367,455,385,472,414,479,445,474,446,467,416,451,388,432,371,410,358,364,340"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="215,460,286,485"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="294,341,265,360,252,373,242,388,238,402,237,417,243,447,238,448,232,418,233,401,238,386,248,370,262,356,292,337"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="252,387,335,412"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="317,340,304,375,299,373,312,338"/>
+<area shape="rect" id="Node000010" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="359,387,441,412"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="333,337,378,376,375,380,330,341"/>
+<area shape="poly" id="edge11_Node000010_Node000007" title=" " alt="" coords="414,410,458,449,454,453,411,414"/>
+<area shape="poly" id="edge10_Node000010_Node000008" title=" " alt="" coords="377,414,289,456,286,452,375,410"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="346,460,417,485"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="399,413,390,448,385,446,394,412"/>
+<area shape="rect" id="Node000013" href="$cbits__module_8h.html" title="Forward declaration of the cbits module definition." alt="" coords="111,313,233,339"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="171,266,173,300,168,300,166,266"/>
+<area shape="poly" id="edge15_Node000013_Node000004" title=" " alt="" coords="165,341,136,377,131,374,161,337"/>
 </map>

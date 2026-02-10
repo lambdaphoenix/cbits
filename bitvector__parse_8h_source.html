@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cbits<span id="projectnumber">&#160;0.2.1</span>
+   <div id="projectname">cbits<span id="projectnumber">&#160;0.3.0</span>
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
@@ -101,8 +101,8 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordflow">if</span> (index == -1 &amp;&amp; PyErr_Occurred()) {</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_struct" href="structPyBitVector.html">PyBitVector</a> *bvself = (<a class="code hl_struct" href="structPyBitVector.html">PyBitVector</a> *) self;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">size_t</span> n_bits = bvself-&gt;<a class="code hl_variable" href="structPyBitVector.html#a3ea374d89e2cc07b1dd2f110b7d0ee30">bv</a>-&gt;<a class="code hl_variable" href="structBitVector.html#ab83f018fe84a783408855951df52ae43">n_bits</a>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <a class="code hl_struct" href="structPyBitVectorObject.html">PyBitVectorObject</a> *bvself = (<a class="code hl_struct" href="structPyBitVectorObject.html">PyBitVectorObject</a> *) self;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">size_t</span> n_bits = bvself-&gt;<a class="code hl_variable" href="structPyBitVectorObject.html#a567e1f0db72a1bb2a9e201c755c003ac">bv</a>-&gt;<a class="code hl_variable" href="structBitVector.html#ab83f018fe84a783408855951df52ae43">n_bits</a>;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">if</span> (index &lt; 0) {</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        index += (Py_ssize_t) n_bits;</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
@@ -128,8 +128,8 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                        <span class="stringliteral">&quot;start and length must be non-negative&quot;</span>);</div>
 <div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    }</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_struct" href="structPyBitVector.html">PyBitVector</a> *bvself = (<a class="code hl_struct" href="structPyBitVector.html">PyBitVector</a> *) self;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>) start + (size_t) len &gt; bvself-&gt;<a class="code hl_variable" href="structPyBitVector.html#a3ea374d89e2cc07b1dd2f110b7d0ee30">bv</a>-&gt;<a class="code hl_variable" href="structBitVector.html#ab83f018fe84a783408855951df52ae43">n_bits</a>) {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <a class="code hl_struct" href="structPyBitVectorObject.html">PyBitVectorObject</a> *bvself = (<a class="code hl_struct" href="structPyBitVectorObject.html">PyBitVectorObject</a> *) self;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordflow">if</span> ((<span class="keywordtype">size_t</span>) start + (size_t) len &gt; bvself-&gt;<a class="code hl_variable" href="structPyBitVectorObject.html#a567e1f0db72a1bb2a9e201c755c003ac">bv</a>-&gt;<a class="code hl_variable" href="structBitVector.html#ab83f018fe84a783408855951df52ae43">n_bits</a>) {</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        PyErr_SetString(PyExc_IndexError, <span class="stringliteral">&quot;BitVector range out of bounds&quot;</span>);</div>
 <div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    }</div>
@@ -143,13 +143,13 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="abitvector__object_8h_html"><div class="ttname"><a href="bitvector__object_8h.html">bitvector_object.h</a></div><div class="ttdoc">Definition of the PyBitVector Python type.</div></div>
 <div class="ttc" id="abitvector__parse_8h_html_a02ebcd47783eaa28bf27d7652f5d1c00"><div class="ttname"><a href="bitvector__parse_8h.html#a02ebcd47783eaa28bf27d7652f5d1c00">bv_parse_tuple</a></div><div class="ttdeci">int bv_parse_tuple(PyObject *self, PyObject *args, size_t *p_start, size_t *p_len)</div><div class="ttdoc">Parse and validate a (start, length) range tuple.</div><div class="ttdef"><b>Definition</b> bitvector_parse.h:63</div></div>
 <div class="ttc" id="abitvector__parse_8h_html_aa54c3ab9ed97faa6e1f5cdad46cbc465"><div class="ttname"><a href="bitvector__parse_8h.html#aa54c3ab9ed97faa6e1f5cdad46cbc465">bv_parse_index</a></div><div class="ttdeci">int bv_parse_index(PyObject *self, PyObject *arg, size_t *p_index)</div><div class="ttdoc">Parse and validate a single index argument.</div><div class="ttdef"><b>Definition</b> bitvector_parse.h:30</div></div>
-<div class="ttc" id="astructBitVector_html_ab83f018fe84a783408855951df52ae43"><div class="ttname"><a href="structBitVector.html#ab83f018fe84a783408855951df52ae43">BitVector::n_bits</a></div><div class="ttdeci">size_t n_bits</div><div class="ttdef"><b>Definition</b> bitvector.h:56</div></div>
-<div class="ttc" id="astructPyBitVector_html"><div class="ttname"><a href="structPyBitVector.html">PyBitVector</a></div><div class="ttdoc">Python object containing a pointer to a native BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_object.h:31</div></div>
-<div class="ttc" id="astructPyBitVector_html_a3ea374d89e2cc07b1dd2f110b7d0ee30"><div class="ttname"><a href="structPyBitVector.html#a3ea374d89e2cc07b1dd2f110b7d0ee30">PyBitVector::bv</a></div><div class="ttdeci">PyObject_HEAD BitVector * bv</div><div class="ttdef"><b>Definition</b> bitvector_object.h:32</div></div>
+<div class="ttc" id="astructBitVector_html_ab83f018fe84a783408855951df52ae43"><div class="ttname"><a href="structBitVector.html#ab83f018fe84a783408855951df52ae43">BitVector::n_bits</a></div><div class="ttdeci">size_t n_bits</div><div class="ttdef"><b>Definition</b> bitvector.h:55</div></div>
+<div class="ttc" id="astructPyBitVectorObject_html"><div class="ttname"><a href="structPyBitVectorObject.html">PyBitVectorObject</a></div><div class="ttdoc">Python object containing a pointer to a native BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_object.h:31</div></div>
+<div class="ttc" id="astructPyBitVectorObject_html_a567e1f0db72a1bb2a9e201c755c003ac"><div class="ttname"><a href="structPyBitVectorObject.html#a567e1f0db72a1bb2a9e201c755c003ac">PyBitVectorObject::bv</a></div><div class="ttdeci">PyObject_HEAD BitVector * bv</div><div class="ttdef"><b>Definition</b> bitvector_object.h:32</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 01:58:05 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

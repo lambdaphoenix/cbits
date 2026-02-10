@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cbits<span id="projectnumber">&#160;0.2.1</span>
+   <div id="projectname">cbits<span id="projectnumber">&#160;0.3.0</span>
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
@@ -90,38 +90,36 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="bitvector__object_8h.html">bitvector_object.h</a>&quot;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>PyObject *</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#a119253be7796db6604ef7ae25ed1c39c">py_bv_and</a>(PyObject *oA, PyObject *oB);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#aa231afc6f36cadf4194ddb253c9c392f">py_bitvector_and</a>(PyObject *oA, PyObject *oB);</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>PyObject *</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#a5b0a1e2316be65adf5eb69149d58a0ba">py_bv_iand</a>(PyObject *self, PyObject *arg);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#ae1239b6c86b38c93b4c6c28a5e1aa9ed">py_bitvector_iand</a>(PyObject *self, PyObject *arg);</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>PyObject *</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#a8fd8fa504f6d723e8b020a685bd70c3c">py_bv_or</a>(PyObject *oA, PyObject *oB);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#a8577fb1445af3c0245adc6b98132fcc5">py_bitvector_or</a>(PyObject *oA, PyObject *oB);</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>PyObject *</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#a0afd14acf131807ab2d00ac2e5cb1b77">py_bv_ior</a>(PyObject *self, PyObject *arg);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>PyObject *</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#a1b0cf4a760793ae0cde3ce58f8031182">py_bv_xor</a>(PyObject *oA, PyObject *oB);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>PyObject *</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#a6e5a746e4f9c18b85ed03d748d0024d5">py_bv_ixor</a>(PyObject *self, PyObject *arg);</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>PyObject *</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#a1a381895260a55798d10d395f9bee1bf">py_bv_invert</a>(PyObject *self);</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="keywordtype">int</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#a4e45a2d41e73e8fd6c325bb63bd83f20">py_bv_bool</a>(PyObject *self);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span><span class="preprocessor">#endif </span><span class="comment">/* CBITS_PY_BITVECTOR_METHODS_OPS_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="abitvector__methods__ops_8h_html_a0afd14acf131807ab2d00ac2e5cb1b77"><div class="ttname"><a href="bitvector__methods__ops_8h.html#a0afd14acf131807ab2d00ac2e5cb1b77">py_bv_ior</a></div><div class="ttdeci">PyObject * py_bv_ior(PyObject *self, PyObject *arg)</div><div class="ttdoc">ior(BitVector, BitVector) in-place OR.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:141</div></div>
-<div class="ttc" id="abitvector__methods__ops_8h_html_a119253be7796db6604ef7ae25ed1c39c"><div class="ttname"><a href="bitvector__methods__ops_8h.html#a119253be7796db6604ef7ae25ed1c39c">py_bv_and</a></div><div class="ttdeci">PyObject * py_bv_and(PyObject *oA, PyObject *oB)</div><div class="ttdoc">and(BitVector, BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:19</div></div>
-<div class="ttc" id="abitvector__methods__ops_8h_html_a1a381895260a55798d10d395f9bee1bf"><div class="ttname"><a href="bitvector__methods__ops_8h.html#a1a381895260a55798d10d395f9bee1bf">py_bv_invert</a></div><div class="ttdeci">PyObject * py_bv_invert(PyObject *self)</div><div class="ttdoc">invert(BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:257</div></div>
-<div class="ttc" id="abitvector__methods__ops_8h_html_a1b0cf4a760793ae0cde3ce58f8031182"><div class="ttname"><a href="bitvector__methods__ops_8h.html#a1b0cf4a760793ae0cde3ce58f8031182">py_bv_xor</a></div><div class="ttdeci">PyObject * py_bv_xor(PyObject *oA, PyObject *oB)</div><div class="ttdoc">xor(BitVector, BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:178</div></div>
-<div class="ttc" id="abitvector__methods__ops_8h_html_a4e45a2d41e73e8fd6c325bb63bd83f20"><div class="ttname"><a href="bitvector__methods__ops_8h.html#a4e45a2d41e73e8fd6c325bb63bd83f20">py_bv_bool</a></div><div class="ttdeci">int py_bv_bool(PyObject *self)</div><div class="ttdoc">bool(BitVector) → boolean.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:286</div></div>
-<div class="ttc" id="abitvector__methods__ops_8h_html_a5b0a1e2316be65adf5eb69149d58a0ba"><div class="ttname"><a href="bitvector__methods__ops_8h.html#a5b0a1e2316be65adf5eb69149d58a0ba">py_bv_iand</a></div><div class="ttdeci">PyObject * py_bv_iand(PyObject *self, PyObject *arg)</div><div class="ttdoc">iand(BitVector, BitVector) in-place AND.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:61</div></div>
-<div class="ttc" id="abitvector__methods__ops_8h_html_a6e5a746e4f9c18b85ed03d748d0024d5"><div class="ttname"><a href="bitvector__methods__ops_8h.html#a6e5a746e4f9c18b85ed03d748d0024d5">py_bv_ixor</a></div><div class="ttdeci">PyObject * py_bv_ixor(PyObject *self, PyObject *arg)</div><div class="ttdoc">ixor(BitVector, BitVector) in-place XOR.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:220</div></div>
-<div class="ttc" id="abitvector__methods__ops_8h_html_a8fd8fa504f6d723e8b020a685bd70c3c"><div class="ttname"><a href="bitvector__methods__ops_8h.html#a8fd8fa504f6d723e8b020a685bd70c3c">py_bv_or</a></div><div class="ttdeci">PyObject * py_bv_or(PyObject *oA, PyObject *oB)</div><div class="ttdoc">or(BitVector, BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:99</div></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#a844b7fc94a82364e20c19f8ee0abbfdd">py_bitvector_ior</a>(PyObject *self, PyObject *arg);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>PyObject *</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#a5b28e94fc2663e6182ab3e6d231beecb">py_bitvector_xor</a>(PyObject *oA, PyObject *oB);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>PyObject *</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#a0045d135428aa29151e3dbcdaa2ef5a2">py_bitvector_ixor</a>(PyObject *self, PyObject *arg);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>PyObject *</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#a6ae893665b5b1859ee4c47382c77e0ff">py_bitvector_invert</a>(PyObject *self);</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keywordtype">int</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><a class="code hl_function" href="bitvector__methods__ops_8h.html#ae161e951ba0eb1e60c26a6b38519202a">py_bitvector_bool</a>(PyObject *self);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#endif </span><span class="comment">/* CBITS_PY_BITVECTOR_METHODS_OPS_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="abitvector__methods__ops_8h_html_a0045d135428aa29151e3dbcdaa2ef5a2"><div class="ttname"><a href="bitvector__methods__ops_8h.html#a0045d135428aa29151e3dbcdaa2ef5a2">py_bitvector_ixor</a></div><div class="ttdeci">PyObject * py_bitvector_ixor(PyObject *self, PyObject *arg)</div><div class="ttdoc">ixor(BitVector, BitVector) in-place XOR.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:236</div></div>
+<div class="ttc" id="abitvector__methods__ops_8h_html_a5b28e94fc2663e6182ab3e6d231beecb"><div class="ttname"><a href="bitvector__methods__ops_8h.html#a5b28e94fc2663e6182ab3e6d231beecb">py_bitvector_xor</a></div><div class="ttdeci">PyObject * py_bitvector_xor(PyObject *oA, PyObject *oB)</div><div class="ttdoc">xor(BitVector, BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:191</div></div>
+<div class="ttc" id="abitvector__methods__ops_8h_html_a6ae893665b5b1859ee4c47382c77e0ff"><div class="ttname"><a href="bitvector__methods__ops_8h.html#a6ae893665b5b1859ee4c47382c77e0ff">py_bitvector_invert</a></div><div class="ttdeci">PyObject * py_bitvector_invert(PyObject *self)</div><div class="ttdoc">invert(BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:277</div></div>
+<div class="ttc" id="abitvector__methods__ops_8h_html_a844b7fc94a82364e20c19f8ee0abbfdd"><div class="ttname"><a href="bitvector__methods__ops_8h.html#a844b7fc94a82364e20c19f8ee0abbfdd">py_bitvector_ior</a></div><div class="ttdeci">PyObject * py_bitvector_ior(PyObject *self, PyObject *arg)</div><div class="ttdoc">ior(BitVector, BitVector) in-place OR.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:150</div></div>
+<div class="ttc" id="abitvector__methods__ops_8h_html_a8577fb1445af3c0245adc6b98132fcc5"><div class="ttname"><a href="bitvector__methods__ops_8h.html#a8577fb1445af3c0245adc6b98132fcc5">py_bitvector_or</a></div><div class="ttdeci">PyObject * py_bitvector_or(PyObject *oA, PyObject *oB)</div><div class="ttdoc">or(BitVector, BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:105</div></div>
+<div class="ttc" id="abitvector__methods__ops_8h_html_aa231afc6f36cadf4194ddb253c9c392f"><div class="ttname"><a href="bitvector__methods__ops_8h.html#aa231afc6f36cadf4194ddb253c9c392f">py_bitvector_and</a></div><div class="ttdeci">PyObject * py_bitvector_and(PyObject *oA, PyObject *oB)</div><div class="ttdoc">and(BitVector, BitVector) → BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:18</div></div>
+<div class="ttc" id="abitvector__methods__ops_8h_html_ae1239b6c86b38c93b4c6c28a5e1aa9ed"><div class="ttname"><a href="bitvector__methods__ops_8h.html#ae1239b6c86b38c93b4c6c28a5e1aa9ed">py_bitvector_iand</a></div><div class="ttdeci">PyObject * py_bitvector_iand(PyObject *self, PyObject *arg)</div><div class="ttdoc">iand(BitVector, BitVector) in-place AND.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:63</div></div>
+<div class="ttc" id="abitvector__methods__ops_8h_html_ae161e951ba0eb1e60c26a6b38519202a"><div class="ttname"><a href="bitvector__methods__ops_8h.html#ae161e951ba0eb1e60c26a6b38519202a">py_bitvector_bool</a></div><div class="ttdeci">int py_bitvector_bool(PyObject *self)</div><div class="ttdoc">bool(BitVector) → boolean.</div><div class="ttdef"><b>Definition</b> bitvector_methods_ops.c:308</div></div>
 <div class="ttc" id="abitvector__object_8h_html"><div class="ttname"><a href="bitvector__object_8h.html">bitvector_object.h</a></div><div class="ttdoc">Definition of the PyBitVector Python type.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 01:58:05 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

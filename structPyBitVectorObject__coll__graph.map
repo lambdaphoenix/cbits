@@ -1,0 +1,5 @@
+<map id="PyBitVectorObject" name="PyBitVectorObject">
+<area shape="rect" id="Node000001" title="Python object containing a pointer to a native BitVector." alt="" coords="5,93,144,119"/>
+<area shape="rect" id="Node000002" href="$structBitVector.html" title="Packed array of bits with support for rank/select operations." alt="" coords="34,5,115,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="77,45,77,93,72,93,72,45"/>
+</map>

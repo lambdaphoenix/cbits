@@ -1,7 +1,0 @@
-<map id="src/python/bitvector_check.h" name="src/python/bitvector_check.h">
-<area shape="rect" id="Node000001" title="Validation helpers for Python BitVector operations." alt="" coords="101,5,253,45"/>
-<area shape="rect" id="Node000002" href="$bitvector__methods__compare_8c.html" title="Equality and hashing for PyBitVector." alt="" coords="5,93,167,133"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="149,57,108,95,104,91,145,53"/>
-<area shape="rect" id="Node000003" href="$bitvector__methods__ops_8c.html" title="Bitwise operation methods for BitVector." alt="" coords="191,93,343,133"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="208,53,249,91,245,95,205,57"/>
-</map>

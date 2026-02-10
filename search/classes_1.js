@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pybitvector_0',['PyBitVector',['../structPyBitVector.html',1,'']]],
-  ['pybitvectoriter_1',['PyBitVectorIter',['../structPyBitVectorIter.html',1,'']]]
+  ['cbits_5fstate_0',['cbits_state',['../structcbits__state.html',1,'']]]
 ];

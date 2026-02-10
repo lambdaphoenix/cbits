@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cbits<span id="projectnumber">&#160;0.2.1</span>
+   <div id="projectname">cbits<span id="projectnumber">&#160;0.3.0</span>
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
@@ -90,18 +90,18 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="bitvector__object_8h.html">bitvector_object.h</a>&quot;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>PyObject *</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><a class="code hl_function" href="bitvector__methods__copy_8h.html#ada353c54facbb4110d9d0aa6feae24ff">py_bv_copy</a>(PyObject *self, PyObject *ignored);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><a class="code hl_function" href="bitvector__methods__copy_8h.html#a5efb0105e6ce5fac794ae10061584775">py_bitvector_copy</a>(PyObject *<span class="keywordtype">object</span>, PyObject *Py_UNUSED(ignored));</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>PyObject *</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><a class="code hl_function" href="bitvector__methods__copy_8h.html#aca1885f67228d8b0096aa76d48e4e7be">py_bv_deepcopy</a>(PyObject *self, PyObject *memo);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><a class="code hl_function" href="bitvector__methods__copy_8h.html#a015f14e091214de7353116d7132b24f4">py_bitvector_deepcopy</a>(PyObject *self, PyObject *memo);</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif </span><span class="comment">/* CBITS_PY_BITVECTOR_METHODS_COPY_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="abitvector__methods__copy_8h_html_aca1885f67228d8b0096aa76d48e4e7be"><div class="ttname"><a href="bitvector__methods__copy_8h.html#aca1885f67228d8b0096aa76d48e4e7be">py_bv_deepcopy</a></div><div class="ttdeci">PyObject * py_bv_deepcopy(PyObject *self, PyObject *memo)</div><div class="ttdoc">Python binding for BitVector.__deepcopy__(memo) → BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_copy.c:27</div></div>
-<div class="ttc" id="abitvector__methods__copy_8h_html_ada353c54facbb4110d9d0aa6feae24ff"><div class="ttname"><a href="bitvector__methods__copy_8h.html#ada353c54facbb4110d9d0aa6feae24ff">py_bv_copy</a></div><div class="ttdeci">PyObject * py_bv_copy(PyObject *self, PyObject *ignored)</div><div class="ttdoc">Python binding for BitVector.copy() → BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_copy.c:15</div></div>
+<div class="ttc" id="abitvector__methods__copy_8h_html_a015f14e091214de7353116d7132b24f4"><div class="ttname"><a href="bitvector__methods__copy_8h.html#a015f14e091214de7353116d7132b24f4">py_bitvector_deepcopy</a></div><div class="ttdeci">PyObject * py_bitvector_deepcopy(PyObject *self, PyObject *memo)</div><div class="ttdoc">Python binding for BitVector.__deepcopy__(memo) → BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_copy.c:31</div></div>
+<div class="ttc" id="abitvector__methods__copy_8h_html_a5efb0105e6ce5fac794ae10061584775"><div class="ttname"><a href="bitvector__methods__copy_8h.html#a5efb0105e6ce5fac794ae10061584775">py_bitvector_copy</a></div><div class="ttdeci">PyObject * py_bitvector_copy(PyObject *object, PyObject *ignored)</div><div class="ttdoc">Python binding for BitVector.copy() → BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_copy.c:15</div></div>
 <div class="ttc" id="abitvector__object_8h_html"><div class="ttname"><a href="bitvector__object_8h.html">bitvector_object.h</a></div><div class="ttdoc">Definition of the PyBitVector Python type.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 01:58:05 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>

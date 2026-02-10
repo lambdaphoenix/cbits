@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['init_5fcpu_5fdispatch_0',['init_cpu_dispatch',['../compat_8h.html#a9256aa51e475beabf9cd975766084809',1,'init_cpu_dispatch(void):&#160;compat_dispatch.c'],['../compat__dispatch_8c.html#a9256aa51e475beabf9cd975766084809',1,'init_cpu_dispatch(void):&#160;compat_dispatch.c']]],
-  ['installation_1',['Installation',['../index.html#autotoc_md2',1,'']]]
+  ['get_5fcbits_5fstate_0',['get_cbits_state',['../cbits__state_8h.html#a18708cdf2b9ffc92445b7d79b0d09608',1,'cbits_state.h']]]
 ];

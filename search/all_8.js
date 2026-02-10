@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['mask_0',['mask',['../structPyBitVectorIter.html#ad56912b495732f21989e91304a6250c0',1,'PyBitVectorIter']]]
+  ['init_5fcpu_5fdispatch_0',['init_cpu_dispatch',['../compat_8h.html#a9256aa51e475beabf9cd975766084809',1,'init_cpu_dispatch(void):&#160;compat_dispatch.c'],['../compat__dispatch_8c.html#a9256aa51e475beabf9cd975766084809',1,'init_cpu_dispatch(void):&#160;compat_dispatch.c']]],
+  ['installation_1',['Installation',['../index.html#autotoc_md2',1,'']]]
 ];

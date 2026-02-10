@@ -22,7 +22,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">cbits<span id="projectnumber">&#160;0.2.1</span>
+   <div id="projectname">cbits<span id="projectnumber">&#160;0.3.0</span>
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
@@ -89,22 +89,19 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="bitvector__object_8h.html">bitvector_object.h</a>&quot;</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>PyObject *</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><a class="code hl_function" href="bitvector__iter_8h.html#a56faafe5bfd6fa3f0f62ccd0b2c875c4">py_bv_iter</a>(PyObject *self);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>PyObject *</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><a class="code hl_function" href="bitvector__iter_8h.html#ab1e8d59c5c7920ffc1a19201e7bb5142">py_bviter_iternext</a>(PyObject *self);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="keywordtype">void</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><a class="code hl_function" href="bitvector__iter_8h.html#a52fc7ecd34b55f560c1a725bf3d9468c">py_bviter_dealloc</a>(PyObject *self);</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="preprocessor">#endif </span><span class="comment">/* CBITS_PY_BITVECTOR_ITER_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="abitvector__iter_8h_html_a52fc7ecd34b55f560c1a725bf3d9468c"><div class="ttname"><a href="bitvector__iter_8h.html#a52fc7ecd34b55f560c1a725bf3d9468c">py_bviter_dealloc</a></div><div class="ttdeci">void py_bviter_dealloc(PyObject *self)</div><div class="ttdoc">Deallocate a BitVector iterator object.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:34</div></div>
-<div class="ttc" id="abitvector__iter_8h_html_a56faafe5bfd6fa3f0f62ccd0b2c875c4"><div class="ttname"><a href="bitvector__iter_8h.html#a56faafe5bfd6fa3f0f62ccd0b2c875c4">py_bv_iter</a></div><div class="ttdeci">PyObject * py_bv_iter(PyObject *self)</div><div class="ttdoc">Create and return a new BitVector iterator.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:74</div></div>
-<div class="ttc" id="abitvector__iter_8h_html_ab1e8d59c5c7920ffc1a19201e7bb5142"><div class="ttname"><a href="bitvector__iter_8h.html#ab1e8d59c5c7920ffc1a19201e7bb5142">py_bviter_iternext</a></div><div class="ttdeci">PyObject * py_bviter_iternext(PyObject *self)</div><div class="ttdoc">Return the next bit as a Python boolean.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:42</div></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">extern</span> PyType_Spec <a class="code hl_variable" href="bitvector__iter_8h.html#a7f8cff07e2be78e6f372eab2796c7e66">PyBitVectorIter_spec</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>PyObject *</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><a class="code hl_function" href="bitvector__iter_8h.html#a64b04d42f3fb652fa9bdda6ae23740e9">py_bitvector_iter</a>(PyObject *self);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif </span><span class="comment">/* CBITS_PY_BITVECTOR_ITER_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="abitvector__iter_8h_html_a64b04d42f3fb652fa9bdda6ae23740e9"><div class="ttname"><a href="bitvector__iter_8h.html#a64b04d42f3fb652fa9bdda6ae23740e9">py_bitvector_iter</a></div><div class="ttdeci">PyObject * py_bitvector_iter(PyObject *self)</div><div class="ttdoc">Create and return a new BitVector iterator.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:34</div></div>
+<div class="ttc" id="abitvector__iter_8h_html_a7f8cff07e2be78e6f372eab2796c7e66"><div class="ttname"><a href="bitvector__iter_8h.html#a7f8cff07e2be78e6f372eab2796c7e66">PyBitVectorIter_spec</a></div><div class="ttdeci">PyType_Spec PyBitVectorIter_spec</div><div class="ttdoc">Type specification for cbits._BitVectorIter.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:179</div></div>
 <div class="ttc" id="abitvector__object_8h_html"><div class="ttname"><a href="bitvector__object_8h.html">bitvector_object.h</a></div><div class="ttdoc">Definition of the PyBitVector Python type.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 01:58:05 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
 </small></address>
 </body>
 </html>
