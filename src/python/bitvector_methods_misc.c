@@ -43,7 +43,7 @@ py_bitvector_contains(PyObject *object, PyObject *value)
     cbits_state *state = find_cbits_state_by_type(Py_TYPE(object));
 
     if (!py_bitvector_check(value, state)) {
-        return -1;
+        return 0;
     }
     PyBitVectorObject *sub = (PyBitVectorObject *) value;
     return bv_contains_subvector(self->bv, sub->bv);
