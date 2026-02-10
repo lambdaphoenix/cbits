@@ -1,21 +1,19 @@
 <map id="src/cbits/bitvector_compare.c" name="src/cbits/bitvector_compare.c">
-<area shape="rect" id="Node000001" title="BitVector comparison and subvector search." alt="" coords="176,5,315,45"/>
-<area shape="rect" id="Node000002" href="$bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="104,93,253,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="231,47,199,84,195,81,227,44"/>
-<area shape="rect" id="Node000009" title=" " alt="" coords="278,93,349,119"/>
-<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="264,44,296,81,292,84,260,47"/>
-<area shape="rect" id="Node000003" href="$bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="133,167,224,192"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="181,119,181,153,176,153,176,119"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="5,313,80,339"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="155,194,121,214,89,242,68,271,54,301,49,299,63,269,85,238,118,210,153,190"/>
-<area shape="rect" id="Node000005" title=" " alt="" coords="199,313,270,339"/>
-<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="186,191,228,300,223,301,181,193"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="256,240,339,265"/>
-<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="199,190,267,230,265,235,196,194"/>
-<area shape="rect" id="Node000007" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="99,240,181,265"/>
-<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="175,194,155,229,150,227,170,191"/>
-<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="126,268,71,307,68,303,123,263"/>
-<area shape="poly" id="edge7_Node000007_Node000005" title=" " alt="" coords="157,263,210,303,207,307,154,267"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="105,313,175,339"/>
-<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="143,266,143,300,137,300,137,266"/>
+<area shape="rect" id="Node000001" title="BitVector comparison and subvector search." alt="" coords="97,5,236,45"/>
+<area shape="rect" id="Node000002" href="$bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="25,93,175,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="153,47,121,84,117,81,149,44"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="199,93,270,119"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="185,44,218,81,214,84,181,47"/>
+<area shape="rect" id="Node000003" href="$bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="55,167,145,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="103,119,103,153,97,153,97,119"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,240,88,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="93,194,66,231,61,228,89,191"/>
+<area shape="rect" id="Node000005" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="112,240,195,265"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="111,191,139,228,134,231,107,194"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="21,313,91,339"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="139,268,85,307,82,303,136,263"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="116,313,191,339"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="156,266,156,300,151,300,151,266"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="215,313,286,339"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="171,263,225,303,222,307,167,268"/>
 </map>

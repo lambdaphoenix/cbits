@@ -16,15 +16,15 @@
 <area shape="poly" id="edge37_Node000006_Node000009" title=" " alt="" coords="1080,121,924,132,848,144,820,154,801,168,793,188,797,211,808,233,821,253,817,256,803,236,791,212,788,188,797,165,817,150,847,139,923,127,1079,116"/>
 <area shape="rect" id="Node000011" href="$bitvector__methods_8h.html" title="Aggregated method table for the BitVector Python type." alt="" coords="1315,167,1467,207"/>
 <area shape="poly" id="edge10_Node000006_Node000011" title=" " alt="" coords="1231,121,1343,164,1341,169,1230,126"/>
-<area shape="rect" id="Node000013" href="$bitvector__methods__basic_8h.html" title="Basic BitVector operations for Python." alt="" coords="1667,167,1819,207"/>
+<area shape="rect" id="Node000013" href="$bitvector__methods__basic_8h.html" title="Basic BitVector operations exposed to Python." alt="" coords="1667,167,1819,207"/>
 <area shape="poly" id="edge13_Node000006_Node000013" title=" " alt="" coords="1259,108,1442,131,1655,164,1667,166,1666,171,1654,169,1442,137,1259,113"/>
 <area shape="rect" id="Node000015" href="$bitvector__methods__compare_8h.html" title="Equality and hashing methods for BitVector." alt="" coords="397,167,560,207"/>
 <area shape="poly" id="edge16_Node000006_Node000015" title=" " alt="" coords="1080,121,937,138,824,146,713,153,572,169,560,171,560,166,572,164,712,148,824,140,936,133,1079,116"/>
-<area shape="rect" id="Node000017" href="$bitvector__methods__copy_8c.html" title="Implementation of copy and clone operations." alt="" coords="1389,255,1541,295"/>
+<area shape="rect" id="Node000017" href="$bitvector__methods__copy_8c.html" title="Implementation of copy and clone operationsfor BitVector." alt="" coords="1389,255,1541,295"/>
 <area shape="poly" id="edge19_Node000006_Node000017" title=" " alt="" coords="1201,126,1248,165,1304,204,1357,231,1409,252,1408,257,1355,236,1301,209,1245,170,1197,130"/>
 <area shape="rect" id="Node000018" href="$bitvector__methods__copy_8h.html" title="Copy and clone operations for BitVector." alt="" coords="1491,167,1643,207"/>
 <area shape="poly" id="edge20_Node000006_Node000018" title=" " alt="" coords="1259,117,1491,166,1490,172,1258,122"/>
-<area shape="rect" id="Node000019" href="$bitvector__methods__misc_8h.html" title="Miscellaneous BitVector Python methods." alt="" coords="584,167,736,207"/>
+<area shape="rect" id="Node000019" href="$bitvector__methods__misc_8h.html" title="Miscellaneous BitVector Python methods for BitVector." alt="" coords="584,167,736,207"/>
 <area shape="poly" id="edge23_Node000006_Node000019" title=" " alt="" coords="1080,122,916,146,755,169,737,173,736,167,754,164,915,141,1079,116"/>
 <area shape="rect" id="Node000021" href="$bitvector__methods__ops_8c.html" title="Bitwise operation methods for BitVector." alt="" coords="936,255,1088,295"/>
 <area shape="poly" id="edge26_Node000006_Node000021" title=" " alt="" coords="1082,126,1052,144,1027,168,1017,189,1012,212,1012,254,1007,254,1007,211,1012,187,1023,165,1049,140,1080,122"/>
@@ -32,19 +32,19 @@
 <area shape="poly" id="edge27_Node000006_Node000022" title=" " alt="" coords="1095,125,949,169,948,164,1093,120"/>
 <area shape="rect" id="Node000023" href="$bitvector__methods__rank_8h.html" title="Rank&#45;related Python methods for BitVector." alt="" coords="1843,167,1995,207"/>
 <area shape="poly" id="edge30_Node000006_Node000023" title=" " alt="" coords="1259,103,1517,125,1674,142,1831,164,1843,166,1842,171,1830,169,1673,148,1516,130,1259,109"/>
-<area shape="rect" id="Node000025" href="$bitvector__methods__slice_8c.html" title="Slicing support for the BitVector Python type." alt="" coords="1132,255,1284,295"/>
+<area shape="rect" id="Node000025" href="$bitvector__methods__slice_8c.html" title="Slicing and indexed access implemantation for BitVector." alt="" coords="1132,255,1284,295"/>
 <area shape="poly" id="edge33_Node000006_Node000025" title=" " alt="" coords="1190,130,1204,166,1211,214,1212,254,1206,255,1206,214,1199,167,1185,132"/>
-<area shape="rect" id="Node000026" href="$bitvector__methods__slice_8h.html" title="Slicing support for BitVector." alt="" coords="1037,167,1189,207"/>
+<area shape="rect" id="Node000026" href="$bitvector__methods__slice_8h.html" title="Slicing and indexed access support for BitVector." alt="" coords="1037,167,1189,207"/>
 <area shape="poly" id="edge34_Node000006_Node000026" title=" " alt="" coords="1152,132,1128,168,1123,165,1147,129"/>
-<area shape="rect" id="Node000027" href="$bitvector__parse_8h.html" title="Argument parsing helpers for BitVector Python methods." alt="" coords="2019,167,2171,207"/>
+<area shape="rect" id="Node000027" href="$bitvector__parse_8h.html" title="Argument&#45;parsing helpers for BitVector Python methods." alt="" coords="2019,167,2171,207"/>
 <area shape="poly" id="edge38_Node000006_Node000027" title=" " alt="" coords="1260,101,1590,120,1798,138,2007,164,2019,166,2018,171,2006,169,1797,144,1589,125,1259,106"/>
-<area shape="rect" id="Node000008" href="$bitvector__iter_8c.html" title="Implementation of BitVector iterator." alt="" coords="221,255,373,295"/>
+<area shape="rect" id="Node000008" href="$bitvector__iter_8c.html" title="Implementation of the BitVector iterator." alt="" coords="221,255,373,295"/>
 <area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="300,221,300,254,295,254,295,221"/>
 <area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="387,204,490,219,570,228,649,237,748,252,760,254,759,259,748,257,648,242,569,233,489,225,387,209"/>
 <area shape="rect" id="Node000010" href="$cbits__module_8c.html" title="Module initialization for the cbits._cbits extension." alt="" coords="5,262,197,287"/>
 <area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="243,215,128,264,126,260,241,210"/>
 <area shape="poly" id="edge12_Node000011_Node000009" title=" " alt="" coords="1301,202,1127,225,924,257,913,259,912,254,924,252,1126,220,1301,196"/>
-<area shape="rect" id="Node000012" href="$bitvector__methods_8c.html" title="Aggregates all BitVector Python methods into a single table." alt="" coords="1607,255,1759,295"/>
+<area shape="rect" id="Node000012" href="$bitvector__methods_8c.html" title="Aggregates all Python&#45;visible BitVector methods into one table." alt="" coords="1607,255,1759,295"/>
 <area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="1468,208,1619,252,1618,257,1467,213"/>
 <area shape="poly" id="edge14_Node000013_Node000012" title=" " alt="" coords="1724,219,1698,256,1694,253,1719,216"/>
 <area shape="rect" id="Node000014" href="$bitvector__methods__basic_8c.html" title="Implementation of basic BitVector Python methods." alt="" coords="1803,255,1955,295"/>
@@ -55,12 +55,12 @@
 <area shape="poly" id="edge21_Node000018_Node000012" title=" " alt="" coords="1605,213,1659,252,1655,257,1602,217"/>
 <area shape="poly" id="edge22_Node000018_Node000017" title=" " alt="" coords="1535,218,1489,256,1486,252,1532,214"/>
 <area shape="poly" id="edge25_Node000019_Node000009" title=" " alt="" coords="712,210,799,252,796,257,710,215"/>
-<area shape="rect" id="Node000020" href="$bitvector__methods__misc_8c.html" title="Implementation of miscellaneous BitVector methods." alt="" coords="584,255,736,295"/>
+<area shape="rect" id="Node000020" href="$bitvector__methods__misc_8c.html" title="Implementation of miscellaneous BitVector Python methods." alt="" coords="584,255,736,295"/>
 <area shape="poly" id="edge24_Node000019_Node000020" title=" " alt="" coords="663,221,663,254,657,254,657,221"/>
 <area shape="poly" id="edge29_Node000022_Node000009" title=" " alt="" coords="871,220,850,256,845,253,866,217"/>
 <area shape="poly" id="edge28_Node000022_Node000021" title=" " alt="" coords="927,212,986,252,983,257,924,217"/>
 <area shape="poly" id="edge31_Node000023_Node000012" title=" " alt="" coords="1855,214,1735,257,1733,252,1853,209"/>
-<area shape="rect" id="Node000024" href="$bitvector__methods__rank_8c.html" title="Implementation of rank&#45;related Python methods." alt="" coords="1989,255,2141,295"/>
+<area shape="rect" id="Node000024" href="$bitvector__methods__rank_8c.html" title="Implementation of rank&#45;related Python methods for BitVector." alt="" coords="1989,255,2141,295"/>
 <area shape="poly" id="edge32_Node000023_Node000024" title=" " alt="" coords="1964,211,2035,252,2032,257,1962,216"/>
 <area shape="poly" id="edge36_Node000026_Node000009" title=" " alt="" coords="1040,213,898,257,896,252,1039,208"/>
 <area shape="poly" id="edge35_Node000026_Node000025" title=" " alt="" coords="1146,214,1189,252,1185,256,1143,218"/>

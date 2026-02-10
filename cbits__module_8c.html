@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -26,6 +35,18 @@
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -37,17 +58,23 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('cbits__module_8c.html',''); initResizable(); });
 /* @license-end */
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +96,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a> &#124;
@@ -82,7 +104,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Module initialization for the cbits._cbits extension.  
+<p>Module initialization for the <code>cbits._cbits</code> extension.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="cbits__state_8h_source.html">cbits_state.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cbits__module_8h_source.html">cbits_module.h</a>&quot;</code><br />
@@ -93,74 +115,74 @@ Include dependency graph for cbits_module.c:</div>
 <div class="center"><img src="cbits__module_8c__incl.png" border="0" usemap="#asrc_2python_2cbits__module_8c" alt=""/></div>
 <map name="asrc_2python_2cbits__module_8c" id="asrc_2python_2cbits__module_8c">
 <area shape="rect" title="Module initialization for the cbits._cbits extension." alt="" coords="5,5,197,31"/>
-<area shape="rect" href="cbits__state_8h.html" title="Module&#45;local state for the cbits extension." alt="" coords="65,225,170,251"/>
-<area shape="poly" title=" " alt="" coords="105,31,118,211,113,211,100,31"/>
-<area shape="rect" href="cbits__module_8h.html" title="Forward declaration of the cbits module definition." alt="" coords="49,299,170,324"/>
-<area shape="poly" title=" " alt="" coords="97,32,77,70,56,124,48,155,45,187,46,219,54,250,67,271,84,288,80,292,63,274,50,252,41,220,39,187,43,154,51,123,72,67,92,30"/>
+<area shape="rect" href="cbits__state_8h.html" title="Module&#45;local state definition for the cbits extension." alt="" coords="69,225,174,251"/>
+<area shape="poly" title=" " alt="" coords="105,31,122,211,116,211,100,31"/>
+<area shape="rect" href="cbits__module_8h.html" title="Forward declaration of the cbits module definition." alt="" coords="30,299,151,324"/>
+<area shape="poly" title=" " alt="" coords="98,32,81,69,63,123,53,186,53,219,59,250,76,286,71,289,53,251,48,219,48,186,58,122,76,67,93,30"/>
 <area shape="rect" href="bitvector__iter_8h.html" title="Iterator type for BitVector." alt="" coords="143,79,263,104"/>
 <area shape="poly" title=" " alt="" coords="119,28,176,68,173,73,116,33"/>
-<area shape="poly" title=" " alt="" coords="119,251,115,285,109,285,113,251"/>
-<area shape="rect" title=" " alt="" coords="87,372,166,397"/>
-<area shape="poly" title=" " alt="" coords="115,324,123,358,118,360,110,325"/>
+<area shape="poly" title=" " alt="" coords="119,252,103,287,99,285,114,250"/>
+<area shape="rect" title=" " alt="" coords="51,372,130,397"/>
+<area shape="poly" title=" " alt="" coords="93,324,93,358,88,358,88,324"/>
 <area shape="rect" href="bitvector__object_8h.html" title="Definition of the PyBitVector Python type." alt="" coords="139,152,277,177"/>
 <area shape="poly" title=" " alt="" coords="206,104,209,138,203,139,201,105"/>
-<area shape="poly" title=" " alt="" coords="195,179,145,219,141,214,192,175"/>
-<area shape="poly" title=" " alt="" coords="211,178,208,242,200,284,185,325,171,347,154,365,150,361,167,343,180,323,195,283,202,242,206,177"/>
-<area shape="rect" href="bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="245,225,395,251"/>
-<area shape="poly" title=" " alt="" coords="227,175,291,215,288,220,225,180"/>
-<area shape="rect" href="bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="275,299,365,324"/>
-<area shape="poly" title=" " alt="" coords="323,251,323,285,317,285,317,251"/>
-<area shape="rect" title=" " alt="" coords="167,445,241,471"/>
-<area shape="poly" title=" " alt="" coords="304,326,277,347,250,374,230,404,216,433,211,431,226,401,246,370,273,343,301,322"/>
-<area shape="rect" title=" " alt="" coords="361,445,431,471"/>
-<area shape="poly" title=" " alt="" coords="329,323,357,371,387,432,383,434,352,373,325,326"/>
-<area shape="rect" title=" " alt="" coords="417,372,500,397"/>
-<area shape="poly" title=" " alt="" coords="343,322,425,363,423,368,341,326"/>
-<area shape="rect" href="compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="260,372,343,397"/>
-<area shape="poly" title=" " alt="" coords="319,325,310,360,305,358,314,324"/>
-<area shape="poly" title=" " alt="" coords="287,400,233,439,230,435,284,395"/>
-<area shape="poly" title=" " alt="" coords="318,395,371,435,368,439,315,399"/>
-<area shape="rect" title=" " alt="" coords="266,445,337,471"/>
-<area shape="poly" title=" " alt="" coords="304,398,304,432,299,432,299,398"/>
+<area shape="poly" title=" " alt="" coords="196,179,148,219,144,214,192,175"/>
+<area shape="rect" href="bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="197,225,347,251"/>
+<area shape="poly" title=" " alt="" coords="221,176,255,213,251,217,217,179"/>
+<area shape="rect" href="bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="227,299,317,324"/>
+<area shape="poly" title=" " alt="" coords="275,251,275,285,269,285,269,251"/>
+<area shape="rect" title=" " alt="" coords="192,372,275,397"/>
+<area shape="poly" title=" " alt="" coords="268,326,248,361,244,359,263,323"/>
+<area shape="rect" href="compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="299,372,381,397"/>
+<area shape="poly" title=" " alt="" coords="285,322,321,360,317,364,281,326"/>
+<area shape="rect" title=" " alt="" coords="207,445,278,471"/>
+<area shape="poly" title=" " alt="" coords="326,400,271,439,268,435,323,395"/>
+<area shape="rect" title=" " alt="" coords="303,445,377,471"/>
+<area shape="poly" title=" " alt="" coords="343,398,343,432,337,432,337,398"/>
+<area shape="rect" title=" " alt="" coords="402,445,473,471"/>
+<area shape="poly" title=" " alt="" coords="357,395,412,435,409,439,354,400"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a8f427b0cfdb1957c3605e10019f007bd" id="r_a8f427b0cfdb1957c3605e10019f007bd"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbits__module_8c.html#a8f427b0cfdb1957c3605e10019f007bd">cbits_module_exec</a> (PyObject *module)</td></tr>
-<tr class="memdesc:a8f427b0cfdb1957c3605e10019f007bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Module exec callback: register <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> type and metadata.  <br /></td></tr>
+<tr class="memdesc:a8f427b0cfdb1957c3605e10019f007bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Module exec callback: create and register types and metadata.  <br /></td></tr>
 <tr class="separator:a8f427b0cfdb1957c3605e10019f007bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6230bcdcdbd22d82d3da60302f4d2efa" id="r_a6230bcdcdbd22d82d3da60302f4d2efa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbits__module_8c.html#a6230bcdcdbd22d82d3da60302f4d2efa">PyDoc_STRVAR</a> (module_doc, &quot;cbits&quot;)</td></tr>
-<tr class="memdesc:a6230bcdcdbd22d82d3da60302f4d2efa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Module‑level docstring for the cbits extension.  <br /></td></tr>
+<tr class="memdesc:a6230bcdcdbd22d82d3da60302f4d2efa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Module‑level docstring for <code>_cbits</code>.  <br /></td></tr>
 <tr class="separator:a6230bcdcdbd22d82d3da60302f4d2efa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb6522908893e791ad6f955e18f004a4" id="r_adb6522908893e791ad6f955e18f004a4"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbits__module_8c.html#adb6522908893e791ad6f955e18f004a4">cbits_traverse</a> (PyObject *module, visitproc visit, void *arg)</td></tr>
-<tr class="memdesc:adb6522908893e791ad6f955e18f004a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traverse callback for the cbits module.  <br /></td></tr>
+<tr class="memdesc:adb6522908893e791ad6f955e18f004a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">GC traverse callback for the module.  <br /></td></tr>
 <tr class="separator:adb6522908893e791ad6f955e18f004a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedd3e5ee950ec93c673374e691d66cdd" id="r_aedd3e5ee950ec93c673374e691d66cdd"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbits__module_8c.html#aedd3e5ee950ec93c673374e691d66cdd">cbits_clear</a> (PyObject *module)</td></tr>
-<tr class="memdesc:aedd3e5ee950ec93c673374e691d66cdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear callback for the cbits module.  <br /></td></tr>
+<tr class="memdesc:aedd3e5ee950ec93c673374e691d66cdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">GC clear callback for the module.  <br /></td></tr>
 <tr class="separator:aedd3e5ee950ec93c673374e691d66cdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace96a004421e3a8bf93468a174954c88" id="r_ace96a004421e3a8bf93468a174954c88"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbits__module_8c.html#ace96a004421e3a8bf93468a174954c88">cbits_free</a> (void *module)</td></tr>
-<tr class="memdesc:ace96a004421e3a8bf93468a174954c88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free callback for the cbits module.  <br /></td></tr>
+<tr class="memdesc:ace96a004421e3a8bf93468a174954c88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free callback for the module.  <br /></td></tr>
 <tr class="separator:ace96a004421e3a8bf93468a174954c88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a66f6dc0f1f2e3f2080e50d639e37d2" id="r_a5a66f6dc0f1f2e3f2080e50d639e37d2"><td class="memItemLeft" align="right" valign="top">PyMODINIT_FUNC&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbits__module_8c.html#a5a66f6dc0f1f2e3f2080e50d639e37d2">PyInit__cbits</a> (void)</td></tr>
-<tr class="memdesc:a5a66f6dc0f1f2e3f2080e50d639e37d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Python entrypoint for _cbits extension module.  <br /></td></tr>
+<tr class="memdesc:a5a66f6dc0f1f2e3f2080e50d639e37d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Python entry point for <code>_cbits</code> extension.  <br /></td></tr>
 <tr class="separator:a5a66f6dc0f1f2e3f2080e50d639e37d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ae6df8fc99eb0a5b27567dba15a8fa2d5" id="r_ae6df8fc99eb0a5b27567dba15a8fa2d5"><td class="memItemLeft" align="right" valign="top">static PyMethodDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbits__module_8c.html#ae6df8fc99eb0a5b27567dba15a8fa2d5">cbits_methods</a> [] = {{NULL, NULL, 0, NULL}}</td></tr>
-<tr class="memdesc:ae6df8fc99eb0a5b27567dba15a8fa2d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method table for the cbits module.  <br /></td></tr>
+<tr class="memdesc:ae6df8fc99eb0a5b27567dba15a8fa2d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method table for the module.  <br /></td></tr>
 <tr class="separator:ae6df8fc99eb0a5b27567dba15a8fa2d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e440cf099498c28476a0c252755f56c" id="r_a4e440cf099498c28476a0c252755f56c"><td class="memItemLeft" align="right" valign="top">static PyModuleDef_Slot&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbits__module_8c.html#a4e440cf099498c28476a0c252755f56c">cbits_slots</a> []</td></tr>
-<tr class="memdesc:a4e440cf099498c28476a0c252755f56c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Module initialization slots.  <br /></td></tr>
+<tr class="memdesc:a4e440cf099498c28476a0c252755f56c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialization slot table for the module.  <br /></td></tr>
 <tr class="separator:a4e440cf099498c28476a0c252755f56c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab993a3e007d602c5d75a05dcd65b89b9" id="r_ab993a3e007d602c5d75a05dcd65b89b9"><td class="memItemLeft" align="right" valign="top">struct PyModuleDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbits__module_8c.html#ab993a3e007d602c5d75a05dcd65b89b9">cbits_module</a></td></tr>
-<tr class="memdesc:ab993a3e007d602c5d75a05dcd65b89b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of the _cbits extension module.  <br /></td></tr>
+<tr class="memdesc:ab993a3e007d602c5d75a05dcd65b89b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Definition of the <code>_cbits</code> extension.  <br /></td></tr>
 <tr class="separator:ab993a3e007d602c5d75a05dcd65b89b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Module initialization for the cbits._cbits extension. </p>
-<p>This is the entry point for the Python extension module.</p>
+<div class="textblock"><p>Module initialization for the <code>cbits._cbits</code> extension. </p>
+<p>Implements the initialization logic for the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> C extension. This includes creating and registering the module’s type objects, setting up the per‑module state, installing metadata, and defining the garbage‑collection callbacks used by CPython to manage module lifetime.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="cbits__module_8h.html" title="Forward declaration of the cbits module definition.">cbits_module.h</a> </dd>
+<dd>
+<a class="el" href="cbits__state_8h.html" title="Module-local state definition for the cbits extension.">cbits_state.h</a> </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>lambdaphoenix </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.3.0 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2026 lambdaphoenix </dd></dl>
@@ -189,15 +211,15 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Clear callback for the cbits module. </p>
-<p>Releases all Python object references stored in the module state. Called during module finalization or when the interpreter tears down module state. After clearing, the state contains only NULL pointers.</p>
+<p>GC clear callback for the module. </p>
+<p>Releases all Python references stored in the module state and resets them to <code>NULL</code>. Called during interpreter shutdown or module teardown.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">module</td><td>The module whose state is being cleared. </td></tr>
+    <tr><td class="paramname">module</td><td>Module instance. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Always 0 to indicate success. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Always <code>0</code>. </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>0.3.0 </dd></dl>
 
 </div>
@@ -226,11 +248,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Free callback for the cbits module. </p>
-<p>Invoked when the module is being deallocated. Delegates to <a class="el" href="cbits__module_8c.html#aedd3e5ee950ec93c673374e691d66cdd" title="Clear callback for the cbits module.">cbits_clear()</a> to release all Python references held in the module state.</p>
+<p>Free callback for the module. </p>
+<p>Invoked when the module is being deallocated. Delegates to <code><a class="el" href="cbits__module_8c.html#aedd3e5ee950ec93c673374e691d66cdd" title="GC clear callback for the module.">cbits_clear()</a></code> to release all Python references held in the module state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">module</td><td>The module object being freed (as a void pointer). </td></tr>
+    <tr><td class="paramname">module</td><td>The module object being freed. </td></tr>
   </table>
   </dd>
 </dl>
@@ -262,14 +284,21 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Module exec callback: register <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> type and metadata. </p>
+<p>Module exec callback: create and register types and metadata. </p>
+<p>Executed during module initialization. Allocates the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> and iterator types, registers them with the module, integrates <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> with <code>collections.abc.Sequence</code>, and sets module‑level metadata such as author, version, and license.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">module</td><td>New module instance. </td></tr>
+    <tr><td class="paramname">module</td><td>Newly created module instance. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>0 on success; -1 on failure (exception set). </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">0</td><td>Initialization succeeded </td></tr>
+    <tr><td class="paramname">-1</td><td>Initialization failed and a Python exception is set </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -313,17 +342,17 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Traverse callback for the cbits module. </p>
-<p>Integrates the module state into Python's cyclic garbage collector by visiting all Python objects stored inside the module state. This includes the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> type and the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> iterator type.</p>
+<p>GC traverse callback for the module. </p>
+<p>Reports all Python objects stored in the module state to the garbage collector. This ensures proper participation in cyclic GC.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">module</td><td>The module whose state is being traversed. </td></tr>
-    <tr><td class="paramname">visit</td><td>GC visit function provided by the interpreter. </td></tr>
+    <tr><td class="paramname">module</td><td>Module instance. </td></tr>
+    <tr><td class="paramname">visit</td><td>GC visitor function. </td></tr>
     <tr><td class="paramname">arg</td><td>Extra argument passed through by the GC. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Always 0 to indicate successful traversal. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Always <code>0</code>. </dd></dl>
 <dl class="section since"><dt>Since</dt><dd>0.3.0 </dd></dl>
 
 </div>
@@ -354,8 +383,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Module‑level docstring for the cbits extension. </p>
-<p>This string becomes the module’s <b>doc</b> attribute and provides the top‑level description shown in Python when inspecting the module. </p><dl class="section since"><dt>Since</dt><dd>0.3.0 </dd></dl>
+<p>Module‑level docstring for <code>_cbits</code>. </p>
+<p>Installed as the module’s <code>__doc__</code> attribute. </p><dl class="section since"><dt>Since</dt><dd>0.3.0 </dd></dl>
 
 </div>
 </div>
@@ -375,8 +404,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Python entrypoint for _cbits extension module. </p>
-<dl class="section return"><dt>Returns</dt><dd>New module object (borrowed reference). </dd></dl>
+<p>Python entry point for <code>_cbits</code> extension. </p>
+<p>Creates and returns a new module instance using the definition in <a class="el" href="cbits__module_8c.html#ab993a3e007d602c5d75a05dcd65b89b9" title="Definition of the _cbits extension.">cbits_module</a>.</p>
+<dl class="section return"><dt>Returns</dt><dd>Newly created module object. </dd></dl>
 
 </div>
 </div>
@@ -401,8 +431,8 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Method table for the cbits module. </p>
-<p>The module does not define any Python‑callable functions at the top level, so the table contains only the NULL terminator. </p><dl class="section since"><dt>Since</dt><dd>0.3.0 </dd></dl>
+<p>Method table for the module. </p>
+<p>The module does not expose any top-level Python functions, so the table contains only the NULL terminator. </p><dl class="section since"><dt>Since</dt><dd>0.3.0 </dd></dl>
 
 </div>
 </div>
@@ -428,15 +458,15 @@ Variables</h2></td></tr>
 <div class="line">    .m_clear = <a class="code hl_function" href="cbits__module_8c.html#aedd3e5ee950ec93c673374e691d66cdd">cbits_clear</a>,</div>
 <div class="line">    .m_free = <a class="code hl_function" href="cbits__module_8c.html#ace96a004421e3a8bf93468a174954c88">cbits_free</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="acbits__module_8c_html_a4e440cf099498c28476a0c252755f56c"><div class="ttname"><a href="cbits__module_8c.html#a4e440cf099498c28476a0c252755f56c">cbits_slots</a></div><div class="ttdeci">static PyModuleDef_Slot cbits_slots[]</div><div class="ttdoc">Module initialization slots.</div><div class="ttdef"><b>Definition</b> cbits_module.c:109</div></div>
-<div class="ttc" id="acbits__module_8c_html_ace96a004421e3a8bf93468a174954c88"><div class="ttname"><a href="cbits__module_8c.html#ace96a004421e3a8bf93468a174954c88">cbits_free</a></div><div class="ttdeci">static void cbits_free(void *module)</div><div class="ttdoc">Free callback for the cbits module.</div><div class="ttdef"><b>Definition</b> cbits_module.c:170</div></div>
-<div class="ttc" id="acbits__module_8c_html_adb6522908893e791ad6f955e18f004a4"><div class="ttname"><a href="cbits__module_8c.html#adb6522908893e791ad6f955e18f004a4">cbits_traverse</a></div><div class="ttdeci">static int cbits_traverse(PyObject *module, visitproc visit, void *arg)</div><div class="ttdoc">Traverse callback for the cbits module.</div><div class="ttdef"><b>Definition</b> cbits_module.c:134</div></div>
-<div class="ttc" id="acbits__module_8c_html_ae6df8fc99eb0a5b27567dba15a8fa2d5"><div class="ttname"><a href="cbits__module_8c.html#ae6df8fc99eb0a5b27567dba15a8fa2d5">cbits_methods</a></div><div class="ttdeci">static PyMethodDef cbits_methods[]</div><div class="ttdoc">Method table for the cbits module.</div><div class="ttdef"><b>Definition</b> cbits_module.c:99</div></div>
-<div class="ttc" id="acbits__module_8c_html_aedd3e5ee950ec93c673374e691d66cdd"><div class="ttname"><a href="cbits__module_8c.html#aedd3e5ee950ec93c673374e691d66cdd">cbits_clear</a></div><div class="ttdeci">static int cbits_clear(PyObject *module)</div><div class="ttdoc">Clear callback for the cbits module.</div><div class="ttdef"><b>Definition</b> cbits_module.c:153</div></div>
-<div class="ttc" id="astructcbits__state_html"><div class="ttname"><a href="structcbits__state.html">cbits_state</a></div><div class="ttdoc">Per-module state for the cbits extension.</div><div class="ttdef"><b>Definition</b> cbits_state.h:26</div></div>
+<div class="ttc" id="acbits__module_8c_html_a4e440cf099498c28476a0c252755f56c"><div class="ttname"><a href="cbits__module_8c.html#a4e440cf099498c28476a0c252755f56c">cbits_slots</a></div><div class="ttdeci">static PyModuleDef_Slot cbits_slots[]</div><div class="ttdoc">Initialization slot table for the module.</div><div class="ttdef"><b>Definition</b> cbits_module.c:120</div></div>
+<div class="ttc" id="acbits__module_8c_html_ace96a004421e3a8bf93468a174954c88"><div class="ttname"><a href="cbits__module_8c.html#ace96a004421e3a8bf93468a174954c88">cbits_free</a></div><div class="ttdeci">static void cbits_free(void *module)</div><div class="ttdoc">Free callback for the module.</div><div class="ttdef"><b>Definition</b> cbits_module.c:179</div></div>
+<div class="ttc" id="acbits__module_8c_html_adb6522908893e791ad6f955e18f004a4"><div class="ttname"><a href="cbits__module_8c.html#adb6522908893e791ad6f955e18f004a4">cbits_traverse</a></div><div class="ttdeci">static int cbits_traverse(PyObject *module, visitproc visit, void *arg)</div><div class="ttdoc">GC traverse callback for the module.</div><div class="ttdef"><b>Definition</b> cbits_module.c:144</div></div>
+<div class="ttc" id="acbits__module_8c_html_ae6df8fc99eb0a5b27567dba15a8fa2d5"><div class="ttname"><a href="cbits__module_8c.html#ae6df8fc99eb0a5b27567dba15a8fa2d5">cbits_methods</a></div><div class="ttdeci">static PyMethodDef cbits_methods[]</div><div class="ttdoc">Method table for the module.</div><div class="ttdef"><b>Definition</b> cbits_module.c:110</div></div>
+<div class="ttc" id="acbits__module_8c_html_aedd3e5ee950ec93c673374e691d66cdd"><div class="ttname"><a href="cbits__module_8c.html#aedd3e5ee950ec93c673374e691d66cdd">cbits_clear</a></div><div class="ttdeci">static int cbits_clear(PyObject *module)</div><div class="ttdoc">GC clear callback for the module.</div><div class="ttdef"><b>Definition</b> cbits_module.c:162</div></div>
+<div class="ttc" id="astructcbits__state_html"><div class="ttname"><a href="structcbits__state.html">cbits_state</a></div><div class="ttdoc">Per-module state for the cbits extension.</div><div class="ttdef"><b>Definition</b> cbits_state.h:33</div></div>
 </div><!-- fragment -->
-<p>Definition of the _cbits extension module. </p>
-<p>Describes the module’s name, docstring, memory footprint, and its initialization slot table. </p>
+<p>Definition of the <code>_cbits</code> extension. </p>
+<p>Specifies the module name, documentation string, state size, method table, initialization slots, and GC callbacks. </p>
 
 </div>
 </div>
@@ -469,18 +499,22 @@ Variables</h2></td></tr>
 <div class="line"> </div>
 <div class="line">    {0, NULL},</div>
 <div class="line">}</div>
-<div class="ttc" id="acbits__module_8c_html_a8f427b0cfdb1957c3605e10019f007bd"><div class="ttname"><a href="cbits__module_8c.html#a8f427b0cfdb1957c3605e10019f007bd">cbits_module_exec</a></div><div class="ttdeci">static int cbits_module_exec(PyObject *module)</div><div class="ttdoc">Module exec callback: register BitVector type and metadata.</div><div class="ttdef"><b>Definition</b> cbits_module.c:22</div></div>
+<div class="ttc" id="acbits__module_8c_html_a8f427b0cfdb1957c3605e10019f007bd"><div class="ttname"><a href="cbits__module_8c.html#a8f427b0cfdb1957c3605e10019f007bd">cbits_module_exec</a></div><div class="ttdeci">static int cbits_module_exec(PyObject *module)</div><div class="ttdoc">Module exec callback: create and register types and metadata.</div><div class="ttdef"><b>Definition</b> cbits_module.c:34</div></div>
 </div><!-- fragment -->
-<p>Module initialization slots. </p>
-<p>Lists callbacks invoked when the module is loaded; here, we use Py_mod_exec to register types and module constants.</p>
+<p>Initialization slot table for the module. </p>
+<p>Specifies callbacks executed during module creation, including the exec function and optional interpreter/GIL configuration flags.</p>
 <dl class="section see"><dt>See also</dt><dd>PyModuleDef_Slot </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li><li class="navelem"><a class="el" href="cbits__module_8c.html">cbits_module.c</a></li>
+    <li class="footer">Generated on Tue Feb 10 2026 20:13:12 for cbits by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

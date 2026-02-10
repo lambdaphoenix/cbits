@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -26,6 +35,18 @@
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -37,17 +58,23 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('bitvector__methods_8c.html',''); initResizable(); });
 /* @license-end */
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +96,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a> &#124;
@@ -82,7 +104,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Aggregates all <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> Python methods into a single table.  
+<p>Aggregates all Python-visible <code><a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a></code> methods into one table.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="bitvector__methods_8h_source.html">bitvector_methods.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="bitvector__methods__basic_8h_source.html">bitvector_methods_basic.h</a>&quot;</code><br />
@@ -93,44 +115,41 @@ Include dependency graph for bitvector_methods.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="bitvector__methods_8c__incl.png" border="0" usemap="#asrc_2python_2bitvector__methods_8c" alt=""/></div>
 <map name="asrc_2python_2bitvector__methods_8c" id="asrc_2python_2bitvector__methods_8c">
-<area shape="rect" title="Aggregates all BitVector Python methods into a single table." alt="" coords="318,5,470,45"/>
+<area shape="rect" title="Aggregates all Python&#45;visible BitVector methods into one table." alt="" coords="318,5,470,45"/>
 <area shape="rect" href="bitvector__methods_8h.html" title="Aggregated method table for the BitVector Python type." alt="" coords="5,93,161,119"/>
 <area shape="poly" title=" " alt="" coords="320,48,143,92,142,87,319,43"/>
-<area shape="rect" href="bitvector__methods__basic_8h.html" title="Basic BitVector operations for Python." alt="" coords="186,93,383,119"/>
+<area shape="rect" href="bitvector__methods__basic_8h.html" title="Basic BitVector operations exposed to Python." alt="" coords="186,93,383,119"/>
 <area shape="poly" title=" " alt="" coords="369,48,313,87,310,83,366,43"/>
 <area shape="rect" href="bitvector__methods__copy_8h.html" title="Copy and clone operations for BitVector." alt="" coords="407,93,599,119"/>
 <area shape="poly" title=" " alt="" coords="422,43,478,83,475,87,419,48"/>
 <area shape="rect" href="bitvector__methods__rank_8h.html" title="Rank&#45;related Python methods for BitVector." alt="" coords="623,93,815,119"/>
 <area shape="poly" title=" " alt="" coords="471,42,659,88,658,93,470,48"/>
-<area shape="rect" title=" " alt="" coords="145,387,224,412"/>
-<area shape="poly" title=" " alt="" coords="85,119,82,158,82,214,91,277,100,308,114,337,131,360,153,377,150,381,127,363,109,340,95,310,86,278,77,214,76,157,79,119"/>
-<area shape="rect" href="bitvector__object_8h.html" title="Definition of the PyBitVector Python type." alt="" coords="215,167,354,192"/>
-<area shape="poly" title=" " alt="" coords="117,116,240,159,238,165,115,121"/>
-<area shape="poly" title=" " alt="" coords="288,192,285,258,276,300,259,340,240,363,218,381,215,377,237,359,254,337,271,298,279,257,283,192"/>
-<area shape="rect" href="bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="321,240,470,265"/>
-<area shape="poly" title=" " alt="" coords="304,190,367,230,364,235,301,194"/>
-<area shape="rect" href="cbits__state_8h.html" title="Module&#45;local state for the cbits extension." alt="" coords="136,240,241,265"/>
-<area shape="poly" title=" " alt="" coords="271,194,217,234,214,229,268,190"/>
-<area shape="rect" href="bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="350,313,441,339"/>
-<area shape="poly" title=" " alt="" coords="398,266,398,300,393,300,393,266"/>
-<area shape="rect" title=" " alt="" coords="515,460,590,485"/>
-<area shape="poly" title=" " alt="" coords="442,335,488,353,510,367,529,385,546,415,553,445,548,446,541,416,525,388,507,372,485,358,440,340"/>
-<area shape="rect" title=" " alt="" coords="289,460,360,485"/>
-<area shape="poly" title=" " alt="" coords="370,341,340,360,327,373,316,388,312,402,311,417,317,447,312,448,306,417,307,401,312,385,323,369,337,356,367,337"/>
-<area shape="rect" title=" " alt="" coords="326,387,409,412"/>
-<area shape="poly" title=" " alt="" coords="393,340,379,375,374,373,388,338"/>
-<area shape="rect" href="compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="433,387,515,412"/>
-<area shape="poly" title=" " alt="" coords="410,337,453,376,449,379,406,341"/>
-<area shape="poly" title=" " alt="" coords="488,410,532,449,528,453,485,414"/>
-<area shape="poly" title=" " alt="" coords="451,414,363,456,360,452,449,410"/>
-<area shape="rect" title=" " alt="" coords="420,460,491,485"/>
-<area shape="poly" title=" " alt="" coords="473,413,464,448,459,446,468,412"/>
-<area shape="rect" href="cbits__module_8h.html" title="Forward declaration of the cbits module definition." alt="" coords="124,313,245,339"/>
-<area shape="poly" title=" " alt="" coords="191,266,189,300,183,300,185,266"/>
-<area shape="poly" title=" " alt="" coords="187,339,187,373,182,373,182,339"/>
-<area shape="poly" title=" " alt="" coords="287,119,287,153,282,153,282,119"/>
-<area shape="poly" title=" " alt="" coords="469,121,334,165,332,160,467,116"/>
-<area shape="poly" title=" " alt="" coords="650,121,368,167,367,162,649,116"/>
+<area shape="rect" title=" " alt="" coords="103,387,181,412"/>
+<area shape="poly" title=" " alt="" coords="86,119,88,211,96,274,111,338,129,374,124,376,106,340,91,275,83,211,80,119"/>
+<area shape="rect" href="bitvector__object_8h.html" title="Definition of the PyBitVector Python type." alt="" coords="239,167,378,192"/>
+<area shape="poly" title=" " alt="" coords="120,116,260,160,258,165,119,121"/>
+<area shape="rect" href="bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="258,240,407,265"/>
+<area shape="poly" title=" " alt="" coords="315,191,327,226,322,228,310,193"/>
+<area shape="rect" href="cbits__state_8h.html" title="Module&#45;local state definition for the cbits extension." alt="" coords="129,240,235,265"/>
+<area shape="poly" title=" " alt="" coords="290,194,216,235,213,231,287,190"/>
+<area shape="rect" href="bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="287,313,378,339"/>
+<area shape="poly" title=" " alt="" coords="335,266,335,300,330,300,330,266"/>
+<area shape="rect" title=" " alt="" coords="225,387,307,412"/>
+<area shape="poly" title=" " alt="" coords="324,341,288,378,284,375,320,337"/>
+<area shape="rect" href="compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="331,387,414,412"/>
+<area shape="poly" title=" " alt="" coords="342,338,362,373,357,376,337,340"/>
+<area shape="rect" title=" " alt="" coords="240,460,311,485"/>
+<area shape="poly" title=" " alt="" coords="359,414,304,454,301,449,355,410"/>
+<area shape="rect" title=" " alt="" coords="335,460,410,485"/>
+<area shape="poly" title=" " alt="" coords="375,412,375,446,370,446,370,412"/>
+<area shape="rect" title=" " alt="" coords="435,460,505,485"/>
+<area shape="poly" title=" " alt="" coords="390,410,444,449,441,454,387,414"/>
+<area shape="rect" href="cbits__module_8h.html" title="Forward declaration of the cbits module definition." alt="" coords="121,313,243,339"/>
+<area shape="poly" title=" " alt="" coords="185,266,185,300,179,300,179,266"/>
+<area shape="poly" title=" " alt="" coords="178,340,158,376,153,373,173,338"/>
+<area shape="poly" title=" " alt="" coords="291,118,303,153,298,154,286,120"/>
+<area shape="poly" title=" " alt="" coords="473,121,354,164,352,159,471,116"/>
+<area shape="poly" title=" " alt="" coords="654,121,389,167,388,162,653,116"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -138,61 +157,62 @@ Include dependency graph for bitvector_methods.c:</div>
 Functions</h2></td></tr>
 <tr class="memitem:a4f4f1973576a28570505fd8ebe44de7f" id="r_a4f4f1973576a28570505fd8ebe44de7f"><td class="memItemLeft" align="right" valign="top"><a id="a4f4f1973576a28570505fd8ebe44de7f" name="a4f4f1973576a28570505fd8ebe44de7f"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PyDoc_STRVAR</b> (py_bv_get__doc__, &quot;get(index: int) -&gt; bool\n&quot; &quot;\n&quot; &quot;Return the boolean value of the bit at position *index*.\n&quot; &quot;Negative indices are supported. Raises IndexError if out of range.&quot;)</td></tr>
-<tr class="memdesc:a4f4f1973576a28570505fd8ebe44de7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for BitVector.get(). <br /></td></tr>
+<tr class="memdesc:a4f4f1973576a28570505fd8ebe44de7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for <code>BitVector.get</code>. <br /></td></tr>
 <tr class="separator:a4f4f1973576a28570505fd8ebe44de7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a051fef147d43e118d591720c1ade81a7" id="r_a051fef147d43e118d591720c1ade81a7"><td class="memItemLeft" align="right" valign="top"><a id="a051fef147d43e118d591720c1ade81a7" name="a051fef147d43e118d591720c1ade81a7"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PyDoc_STRVAR</b> (py_bv_set__doc__, &quot;set(index: int) -&gt; None\n&quot; &quot;\n&quot; &quot;Set the bit at position *index* to True. Supports negative indexing.\n&quot; &quot;Raises IndexError if out of range.&quot;)</td></tr>
-<tr class="memdesc:a051fef147d43e118d591720c1ade81a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for BitVector.set(). <br /></td></tr>
+<tr class="memdesc:a051fef147d43e118d591720c1ade81a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for <code>BitVector.set</code>. <br /></td></tr>
 <tr class="separator:a051fef147d43e118d591720c1ade81a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68fec1a34b42e4faa10468e1b05d5a2a" id="r_a68fec1a34b42e4faa10468e1b05d5a2a"><td class="memItemLeft" align="right" valign="top"><a id="a68fec1a34b42e4faa10468e1b05d5a2a" name="a68fec1a34b42e4faa10468e1b05d5a2a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PyDoc_STRVAR</b> (py_bv_clear__doc__, &quot;clear(index: int) -&gt; None\n&quot; &quot;\n&quot; &quot;Clear the bit (set to False) at position *index*. Supports &quot; &quot;negative indexing.\n&quot; &quot;Raises IndexError if out of range.&quot;)</td></tr>
-<tr class="memdesc:a68fec1a34b42e4faa10468e1b05d5a2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for BitVector.clear(). <br /></td></tr>
+<tr class="memdesc:a68fec1a34b42e4faa10468e1b05d5a2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for <code>BitVector.clear</code>. <br /></td></tr>
 <tr class="separator:a68fec1a34b42e4faa10468e1b05d5a2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeb4bf04b7dba5886d67076d40167328" id="r_aeeb4bf04b7dba5886d67076d40167328"><td class="memItemLeft" align="right" valign="top"><a id="aeeb4bf04b7dba5886d67076d40167328" name="aeeb4bf04b7dba5886d67076d40167328"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PyDoc_STRVAR</b> (py_bv_flip__doc__, &quot;flip(index: int) -&gt; None\n&quot; &quot;\n&quot; &quot;Toggle the bit at position *index*. Supports negative indexing.\n&quot; &quot;Raises IndexError if out of range.&quot;)</td></tr>
-<tr class="memdesc:aeeb4bf04b7dba5886d67076d40167328"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for BitVector.flip(). <br /></td></tr>
+<tr class="memdesc:aeeb4bf04b7dba5886d67076d40167328"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for <code>BitVector.flip</code>. <br /></td></tr>
 <tr class="separator:aeeb4bf04b7dba5886d67076d40167328"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0168cda7bd3f2cbff1aa141999f47c7f" id="r_a0168cda7bd3f2cbff1aa141999f47c7f"><td class="memItemLeft" align="right" valign="top"><a id="a0168cda7bd3f2cbff1aa141999f47c7f" name="a0168cda7bd3f2cbff1aa141999f47c7f"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PyDoc_STRVAR</b> (py_bv_set_range__doc__, &quot;set_range(start: int, length: int) -&gt; None\n&quot; &quot;\n&quot; &quot;Set all bits in the half-open range [start, start+length).\n&quot; &quot;Raises IndexError if the range is out of bounds.&quot;)</td></tr>
-<tr class="memdesc:a0168cda7bd3f2cbff1aa141999f47c7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for BitVector.set_range(). <br /></td></tr>
+<tr class="memdesc:a0168cda7bd3f2cbff1aa141999f47c7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for <code>BitVector.set_range</code>. <br /></td></tr>
 <tr class="separator:a0168cda7bd3f2cbff1aa141999f47c7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab955783023262da680c8bcb054ba1963" id="r_ab955783023262da680c8bcb054ba1963"><td class="memItemLeft" align="right" valign="top"><a id="ab955783023262da680c8bcb054ba1963" name="ab955783023262da680c8bcb054ba1963"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PyDoc_STRVAR</b> (py_bv_clear_range__doc__, &quot;clear_range(start: int, length: int) -&gt; None\n&quot; &quot;\n&quot; &quot;Clear all bits in the half-open range [start, start+length).\n&quot; &quot;Raises IndexError if the range is out of bounds.&quot;)</td></tr>
-<tr class="memdesc:ab955783023262da680c8bcb054ba1963"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for BitVector.clear_range(). <br /></td></tr>
+<tr class="memdesc:ab955783023262da680c8bcb054ba1963"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for <code>BitVector.clear_range</code>. <br /></td></tr>
 <tr class="separator:ab955783023262da680c8bcb054ba1963"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae43697e8ed705eb2f0b49517a3c533aa" id="r_ae43697e8ed705eb2f0b49517a3c533aa"><td class="memItemLeft" align="right" valign="top"><a id="ae43697e8ed705eb2f0b49517a3c533aa" name="ae43697e8ed705eb2f0b49517a3c533aa"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PyDoc_STRVAR</b> (py_bv_flip_range__doc__, &quot;flip_range(start: int, length: int) -&gt; None\n&quot; &quot;\n&quot; &quot;Toggle all bits in the half-open range [start, start+length).\n&quot; &quot;Raises IndexError if the range is out of bounds.&quot;)</td></tr>
-<tr class="memdesc:ae43697e8ed705eb2f0b49517a3c533aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for BitVector.flip_range(). <br /></td></tr>
+<tr class="memdesc:ae43697e8ed705eb2f0b49517a3c533aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for <code>BitVector.flip_range</code>. <br /></td></tr>
 <tr class="separator:ae43697e8ed705eb2f0b49517a3c533aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c3c7189ce65be48e710bd5fa5a03f87" id="r_a1c3c7189ce65be48e710bd5fa5a03f87"><td class="memItemLeft" align="right" valign="top"><a id="a1c3c7189ce65be48e710bd5fa5a03f87" name="a1c3c7189ce65be48e710bd5fa5a03f87"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PyDoc_STRVAR</b> (py_bv_copy__doc__, &quot;copy() -&gt; BitVector\n&quot; &quot;\n&quot; &quot;Return a copy of this BitVector.&quot;)</td></tr>
-<tr class="memdesc:a1c3c7189ce65be48e710bd5fa5a03f87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for BitVector.copy(). <br /></td></tr>
+<tr class="memdesc:a1c3c7189ce65be48e710bd5fa5a03f87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for <code>BitVector.copy</code>. <br /></td></tr>
 <tr class="separator:a1c3c7189ce65be48e710bd5fa5a03f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadde30ba5221d4e50c79f97e995ee9cd" id="r_aadde30ba5221d4e50c79f97e995ee9cd"><td class="memItemLeft" align="right" valign="top"><a id="aadde30ba5221d4e50c79f97e995ee9cd" name="aadde30ba5221d4e50c79f97e995ee9cd"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PyDoc_STRVAR</b> (py_bv_copy_inline__doc__, &quot;__copy__() -&gt; BitVector\n&quot; &quot;\n&quot; &quot;Return a copy of this BitVector.&quot;)</td></tr>
-<tr class="memdesc:aadde30ba5221d4e50c79f97e995ee9cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for BitVector.__copy__(). <br /></td></tr>
+<tr class="memdesc:aadde30ba5221d4e50c79f97e995ee9cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for <code>BitVector.__copy__</code>. <br /></td></tr>
 <tr class="separator:aadde30ba5221d4e50c79f97e995ee9cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb4f67838cd25681435f80de1ac59357" id="r_aeb4f67838cd25681435f80de1ac59357"><td class="memItemLeft" align="right" valign="top"><a id="aeb4f67838cd25681435f80de1ac59357" name="aeb4f67838cd25681435f80de1ac59357"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PyDoc_STRVAR</b> (py_bv_deepcopy__doc__, &quot;__deepcopy__(memo: dict) -&gt; BitVector\n&quot; &quot;\n&quot; &quot;Return a copy of this <a class="el" href="structBitVector.html">BitVector</a>, registering it in *memo*.&quot;)</td></tr>
-<tr class="memdesc:aeb4f67838cd25681435f80de1ac59357"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for BitVector.__deepcopy__(). <br /></td></tr>
+<tr class="memdesc:aeb4f67838cd25681435f80de1ac59357"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for <code>BitVector.__deepcopy__</code>. <br /></td></tr>
 <tr class="separator:aeb4f67838cd25681435f80de1ac59357"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:affc62d1304007fadd932f46d3952167e" id="r_affc62d1304007fadd932f46d3952167e"><td class="memItemLeft" align="right" valign="top"><a id="affc62d1304007fadd932f46d3952167e" name="affc62d1304007fadd932f46d3952167e"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>PyDoc_STRVAR</b> (py_bv_rank__doc__, &quot;rank(index: int) -&gt; int\n&quot; &quot;\n&quot; &quot;Count the number of bits set to True in the half-open range [0..index].\n&quot; &quot;Supports negative indexing. Raises IndexError if out of range.&quot;)</td></tr>
-<tr class="memdesc:affc62d1304007fadd932f46d3952167e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for BitVector.rank(). <br /></td></tr>
+<tr class="memdesc:affc62d1304007fadd932f46d3952167e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for <code>BitVector.rank</code>. <br /></td></tr>
 <tr class="separator:affc62d1304007fadd932f46d3952167e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a5bc423083838b34b1ff8c04a410a35e3" id="r_a5bc423083838b34b1ff8c04a410a35e3"><td class="memItemLeft" align="right" valign="top">PyMethodDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__methods_8c.html#a5bc423083838b34b1ff8c04a410a35e3">BitVector_methods</a> []</td></tr>
-<tr class="memdesc:a5bc423083838b34b1ff8c04a410a35e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method table for <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> core methods.  <br /></td></tr>
+<tr class="memdesc:a5bc423083838b34b1ff8c04a410a35e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unified method table for the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> type.  <br /></td></tr>
 <tr class="separator:a5bc423083838b34b1ff8c04a410a35e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Aggregates all <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> Python methods into a single table. </p>
-<p>Includes all method group headers and constructs:</p><ul>
-<li><a class="el" href="bitvector__methods_8c.html#a5bc423083838b34b1ff8c04a410a35e3">BitVector_methods</a>[]</li>
+<div class="textblock"><p>Aggregates all Python-visible <code><a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a></code> methods into one table. </p>
+<p>Collects all method groups (basic operations, copying, rank queries, etc.) and exposes them as a unified <code>PyMethodDef</code> array used by the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> type specification.</p>
+<p>This file defines:</p><ul>
+<li>the full method table <a class="el" href="bitvector__methods_8c.html#a5bc423083838b34b1ff8c04a410a35e3">BitVector_methods</a></li>
+<li>all associated docstrings for Python‑level methods</li>
 </ul>
-<p>This file centralizes the Python-visible API of the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> type.</p>
 <dl class="section author"><dt>Author</dt><dd>lambdaphoenix </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.3.0 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2026 lambdaphoenix </dd></dl>
@@ -213,13 +233,16 @@ Variables</h2></td></tr>
 <div class="line">    {<span class="stringliteral">&quot;set&quot;</span>, (PyCFunction) <a class="code hl_function" href="bitvector__methods__basic_8c.html#acc582d43da01eca8ff8df464926c1ee1">py_bitvector_set</a>, METH_O, py_bv_set__doc__},</div>
 <div class="line">    {<span class="stringliteral">&quot;clear&quot;</span>, (PyCFunction) <a class="code hl_function" href="bitvector__methods__basic_8c.html#a96e1725863d2aea13da4fb398d443276">py_bitvector_clear</a>, METH_O, py_bv_clear__doc__},</div>
 <div class="line">    {<span class="stringliteral">&quot;flip&quot;</span>, (PyCFunction) <a class="code hl_function" href="bitvector__methods__basic_8c.html#a3654f2f6b6d949ea3c1dd6de5e115c4a">py_bitvector_flip</a>, METH_O, py_bv_flip__doc__},</div>
+<div class="line"> </div>
 <div class="line">    {<span class="stringliteral">&quot;set_range&quot;</span>, (PyCFunction) <a class="code hl_function" href="bitvector__methods__basic_8c.html#a29882184afb8b6374cc2a33a659933b5">py_bitvector_set_range</a>, METH_VARARGS,</div>
 <div class="line">     py_bv_set_range__doc__},</div>
 <div class="line">    {<span class="stringliteral">&quot;clear_range&quot;</span>, (PyCFunction) <a class="code hl_function" href="bitvector__methods__basic_8c.html#a9ddf741541a16d29fd8aeedca5b31675">py_bitvector_clear_range</a>, METH_VARARGS,</div>
 <div class="line">     py_bv_clear_range__doc__},</div>
 <div class="line">    {<span class="stringliteral">&quot;flip_range&quot;</span>, (PyCFunction) <a class="code hl_function" href="bitvector__methods__basic_8c.html#aa83f6423d3ee019c9a8d68be2d445afd">py_bitvector_flip_range</a>, METH_VARARGS,</div>
 <div class="line">     py_bv_flip_range__doc__},</div>
+<div class="line"> </div>
 <div class="line">    {<span class="stringliteral">&quot;rank&quot;</span>, (PyCFunction) <a class="code hl_function" href="bitvector__methods__rank_8c.html#af67a1a359a4f421524b1e0d93458226b">py_bitvector_rank</a>, METH_O, py_bv_rank__doc__},</div>
+<div class="line"> </div>
 <div class="line">    {<span class="stringliteral">&quot;copy&quot;</span>, (PyCFunction) <a class="code hl_function" href="bitvector__methods__copy_8c.html#a5efb0105e6ce5fac794ae10061584775">py_bitvector_copy</a>, METH_NOARGS, py_bv_copy__doc__},</div>
 <div class="line">    {<span class="stringliteral">&quot;__copy__&quot;</span>, (PyCFunction) <a class="code hl_function" href="bitvector__methods__copy_8c.html#a5efb0105e6ce5fac794ae10061584775">py_bitvector_copy</a>, METH_NOARGS,</div>
 <div class="line">     py_bv_copy_inline__doc__},</div>
@@ -231,21 +254,26 @@ Variables</h2></td></tr>
 <div class="ttc" id="abitvector__methods__basic_8c_html_a3654f2f6b6d949ea3c1dd6de5e115c4a"><div class="ttname"><a href="bitvector__methods__basic_8c.html#a3654f2f6b6d949ea3c1dd6de5e115c4a">py_bitvector_flip</a></div><div class="ttdeci">PyObject * py_bitvector_flip(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.flip(index).</div><div class="ttdef"><b>Definition</b> bitvector_methods_basic.c:55</div></div>
 <div class="ttc" id="abitvector__methods__basic_8c_html_a96e1725863d2aea13da4fb398d443276"><div class="ttname"><a href="bitvector__methods__basic_8c.html#a96e1725863d2aea13da4fb398d443276">py_bitvector_clear</a></div><div class="ttdeci">PyObject * py_bitvector_clear(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.clear(index).</div><div class="ttdef"><b>Definition</b> bitvector_methods_basic.c:42</div></div>
 <div class="ttc" id="abitvector__methods__basic_8c_html_a9ddf741541a16d29fd8aeedca5b31675"><div class="ttname"><a href="bitvector__methods__basic_8c.html#a9ddf741541a16d29fd8aeedca5b31675">py_bitvector_clear_range</a></div><div class="ttdeci">PyObject * py_bitvector_clear_range(PyObject *self, PyObject *args)</div><div class="ttdoc">Python binding for BitVector.clear_range(start, length).</div><div class="ttdef"><b>Definition</b> bitvector_methods_basic.c:80</div></div>
-<div class="ttc" id="abitvector__methods__basic_8c_html_aa385f316d44d2f318a981a1b9153998a"><div class="ttname"><a href="bitvector__methods__basic_8c.html#aa385f316d44d2f318a981a1b9153998a">py_bitvector_get</a></div><div class="ttdeci">PyObject * py_bitvector_get(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.get(index) → bool.</div><div class="ttdef"><b>Definition</b> bitvector_methods_basic.c:17</div></div>
+<div class="ttc" id="abitvector__methods__basic_8c_html_aa385f316d44d2f318a981a1b9153998a"><div class="ttname"><a href="bitvector__methods__basic_8c.html#aa385f316d44d2f318a981a1b9153998a">py_bitvector_get</a></div><div class="ttdeci">PyObject * py_bitvector_get(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.get(index).</div><div class="ttdef"><b>Definition</b> bitvector_methods_basic.c:17</div></div>
 <div class="ttc" id="abitvector__methods__basic_8c_html_aa83f6423d3ee019c9a8d68be2d445afd"><div class="ttname"><a href="bitvector__methods__basic_8c.html#aa83f6423d3ee019c9a8d68be2d445afd">py_bitvector_flip_range</a></div><div class="ttdeci">PyObject * py_bitvector_flip_range(PyObject *self, PyObject *args)</div><div class="ttdoc">Python binding for BitVector.flip_range(start, length).</div><div class="ttdef"><b>Definition</b> bitvector_methods_basic.c:92</div></div>
 <div class="ttc" id="abitvector__methods__basic_8c_html_acc582d43da01eca8ff8df464926c1ee1"><div class="ttname"><a href="bitvector__methods__basic_8c.html#acc582d43da01eca8ff8df464926c1ee1">py_bitvector_set</a></div><div class="ttdeci">PyObject * py_bitvector_set(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.set(index).</div><div class="ttdef"><b>Definition</b> bitvector_methods_basic.c:29</div></div>
-<div class="ttc" id="abitvector__methods__copy_8c_html_a015f14e091214de7353116d7132b24f4"><div class="ttname"><a href="bitvector__methods__copy_8c.html#a015f14e091214de7353116d7132b24f4">py_bitvector_deepcopy</a></div><div class="ttdeci">PyObject * py_bitvector_deepcopy(PyObject *self, PyObject *memo)</div><div class="ttdoc">Python binding for BitVector.__deepcopy__(memo) → BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_copy.c:31</div></div>
-<div class="ttc" id="abitvector__methods__copy_8c_html_a5efb0105e6ce5fac794ae10061584775"><div class="ttname"><a href="bitvector__methods__copy_8c.html#a5efb0105e6ce5fac794ae10061584775">py_bitvector_copy</a></div><div class="ttdeci">PyObject * py_bitvector_copy(PyObject *object, PyObject *ignored)</div><div class="ttdoc">Python binding for BitVector.copy() → BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_copy.c:15</div></div>
-<div class="ttc" id="abitvector__methods__rank_8c_html_af67a1a359a4f421524b1e0d93458226b"><div class="ttname"><a href="bitvector__methods__rank_8c.html#af67a1a359a4f421524b1e0d93458226b">py_bitvector_rank</a></div><div class="ttdeci">PyObject * py_bitvector_rank(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.rank(index) → bool.</div><div class="ttdef"><b>Definition</b> bitvector_methods_rank.c:15</div></div>
+<div class="ttc" id="abitvector__methods__copy_8c_html_a015f14e091214de7353116d7132b24f4"><div class="ttname"><a href="bitvector__methods__copy_8c.html#a015f14e091214de7353116d7132b24f4">py_bitvector_deepcopy</a></div><div class="ttdeci">PyObject * py_bitvector_deepcopy(PyObject *self, PyObject *memo)</div><div class="ttdoc">Python binding for BitVector.__deepcopy__(memo).</div><div class="ttdef"><b>Definition</b> bitvector_methods_copy.c:33</div></div>
+<div class="ttc" id="abitvector__methods__copy_8c_html_a5efb0105e6ce5fac794ae10061584775"><div class="ttname"><a href="bitvector__methods__copy_8c.html#a5efb0105e6ce5fac794ae10061584775">py_bitvector_copy</a></div><div class="ttdeci">PyObject * py_bitvector_copy(PyObject *object, PyObject *ignored)</div><div class="ttdoc">Python binding for BitVector.copy().</div><div class="ttdef"><b>Definition</b> bitvector_methods_copy.c:17</div></div>
+<div class="ttc" id="abitvector__methods__rank_8c_html_af67a1a359a4f421524b1e0d93458226b"><div class="ttname"><a href="bitvector__methods__rank_8c.html#af67a1a359a4f421524b1e0d93458226b">py_bitvector_rank</a></div><div class="ttdeci">PyObject * py_bitvector_rank(PyObject *self, PyObject *arg)</div><div class="ttdoc">Python binding for BitVector.rank(index).</div><div class="ttdef"><b>Definition</b> bitvector_methods_rank.c:16</div></div>
 </div><!-- fragment -->
-<p>Method table for <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> core methods. </p>
+<p>Unified method table for the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> type. </p>
+<p>Contains all Python‑callable methods exposed by <code><a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a></code>. This table is referenced by the type specification in <code><a class="el" href="bitvector__object_8c.html" title="Implementation of the PyBitVectorObject Python type.">bitvector_object.c</a></code>. </p>
 
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li><li class="navelem"><a class="el" href="bitvector__methods_8c.html">bitvector_methods.c</a></li>
+    <li class="footer">Generated on Tue Feb 10 2026 20:13:12 for cbits by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

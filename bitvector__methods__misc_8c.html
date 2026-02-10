@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -26,6 +35,18 @@
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -37,17 +58,23 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('bitvector__methods__misc_8c.html',''); initResizable(); });
 /* @license-end */
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +96,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a> &#124;
@@ -82,7 +104,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Implementation of miscellaneous <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> methods.  
+<p>Implementation of miscellaneous <code><a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a></code> Python methods.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="bitvector__methods__misc_8h_source.html">bitvector_methods_misc.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -90,70 +112,66 @@ Include dependency graph for bitvector_methods_misc.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="bitvector__methods__misc_8c__incl.png" border="0" usemap="#asrc_2python_2bitvector__methods__misc_8c" alt=""/></div>
 <map name="asrc_2python_2bitvector__methods__misc_8c" id="asrc_2python_2bitvector__methods__misc_8c">
-<area shape="rect" title="Implementation of miscellaneous BitVector methods." alt="" coords="27,5,179,45"/>
-<area shape="rect" href="bitvector__methods__misc_8h.html" title="Miscellaneous BitVector Python methods." alt="" coords="5,93,200,119"/>
-<area shape="poly" title=" " alt="" coords="105,46,105,79,100,79,100,46"/>
-<area shape="rect" href="bitvector__object_8h.html" title="Definition of the PyBitVector Python type." alt="" coords="33,167,172,192"/>
-<area shape="poly" title=" " alt="" coords="105,119,105,153,100,153,100,119"/>
-<area shape="rect" title=" " alt="" coords="11,387,90,412"/>
-<area shape="poly" title=" " alt="" coords="85,194,60,214,40,241,30,275,30,311,36,345,44,373,39,374,31,346,25,311,25,274,35,239,56,210,82,190"/>
-<area shape="rect" href="bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="179,240,328,265"/>
-<area shape="poly" title=" " alt="" coords="128,190,217,232,215,236,126,194"/>
-<area shape="rect" href="cbits__state_8h.html" title="Module&#45;local state for the cbits extension." alt="" coords="50,240,155,265"/>
-<area shape="poly" title=" " alt="" coords="105,192,105,226,100,226,100,192"/>
-<area shape="rect" href="bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="208,313,299,339"/>
-<area shape="poly" title=" " alt="" coords="256,266,256,300,251,300,251,266"/>
-<area shape="rect" title=" " alt="" coords="377,460,452,485"/>
-<area shape="poly" title=" " alt="" coords="300,334,348,353,371,367,391,385,408,414,415,445,410,446,403,416,387,388,368,371,345,357,298,339"/>
-<area shape="rect" title=" " alt="" coords="151,460,222,485"/>
-<area shape="poly" title=" " alt="" coords="230,341,201,360,188,373,178,388,174,402,173,417,179,447,174,448,168,418,169,401,174,386,184,370,198,356,227,336"/>
-<area shape="rect" title=" " alt="" coords="188,387,271,412"/>
-<area shape="poly" title=" " alt="" coords="252,340,240,374,235,373,247,338"/>
-<area shape="rect" href="compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="295,387,377,412"/>
-<area shape="poly" title=" " alt="" coords="268,337,314,375,310,380,265,341"/>
-<area shape="poly" title=" " alt="" coords="350,410,394,449,390,453,347,414"/>
-<area shape="poly" title=" " alt="" coords="313,414,225,456,222,452,311,410"/>
-<area shape="rect" title=" " alt="" coords="282,460,353,485"/>
-<area shape="poly" title=" " alt="" coords="335,413,326,448,321,446,330,412"/>
-<area shape="rect" href="cbits__module_8h.html" title="Forward declaration of the cbits module definition." alt="" coords="46,313,167,339"/>
-<area shape="poly" title=" " alt="" coords="106,266,108,300,103,300,101,266"/>
-<area shape="poly" title=" " alt="" coords="100,341,70,377,66,374,95,337"/>
+<area shape="rect" title="Implementation of miscellaneous BitVector Python methods." alt="" coords="129,5,281,45"/>
+<area shape="rect" href="bitvector__methods__misc_8h.html" title="Miscellaneous BitVector Python methods for BitVector." alt="" coords="108,93,303,119"/>
+<area shape="poly" title=" " alt="" coords="208,46,208,79,203,79,203,46"/>
+<area shape="rect" href="bitvector__object_8h.html" title="Definition of the PyBitVector Python type." alt="" coords="136,167,275,192"/>
+<area shape="poly" title=" " alt="" coords="208,119,208,153,203,153,203,119"/>
+<area shape="rect" href="bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="55,240,204,265"/>
+<area shape="poly" title=" " alt="" coords="195,194,154,232,150,229,191,190"/>
+<area shape="rect" href="cbits__state_8h.html" title="Module&#45;local state definition for the cbits extension." alt="" coords="229,240,334,265"/>
+<area shape="poly" title=" " alt="" coords="219,190,261,229,257,232,216,194"/>
+<area shape="rect" href="bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="84,313,175,339"/>
+<area shape="poly" title=" " alt="" coords="132,266,132,300,127,300,127,266"/>
+<area shape="rect" title=" " alt="" coords="5,387,88,412"/>
+<area shape="poly" title=" " alt="" coords="118,341,72,380,69,375,114,337"/>
+<area shape="rect" href="compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="112,387,195,412"/>
+<area shape="poly" title=" " alt="" coords="136,338,148,373,143,374,131,340"/>
+<area shape="rect" title=" " alt="" coords="21,460,91,485"/>
+<area shape="poly" title=" " alt="" coords="139,414,85,454,82,449,136,410"/>
+<area shape="rect" title=" " alt="" coords="116,460,191,485"/>
+<area shape="poly" title=" " alt="" coords="156,412,156,446,151,446,151,412"/>
+<area shape="rect" title=" " alt="" coords="215,460,286,485"/>
+<area shape="poly" title=" " alt="" coords="171,410,225,449,222,454,167,414"/>
+<area shape="rect" href="cbits__module_8h.html" title="Forward declaration of the cbits module definition." alt="" coords="221,313,342,339"/>
+<area shape="poly" title=" " alt="" coords="284,266,284,300,279,300,279,266"/>
+<area shape="rect" title=" " alt="" coords="242,387,321,412"/>
+<area shape="poly" title=" " alt="" coords="284,339,284,373,279,373,279,339"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aa8a64ebaec5f14251cd217dbbe446226" id="r_aa8a64ebaec5f14251cd217dbbe446226"><td class="memItemLeft" align="right" valign="top">PyObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__methods__misc_8c.html#aa8a64ebaec5f14251cd217dbbe446226">py_bitvector_repr</a> (PyObject *object)</td></tr>
-<tr class="memdesc:aa8a64ebaec5f14251cd217dbbe446226"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>repr</b> for <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>.  <br /></td></tr>
+<tr class="memdesc:aa8a64ebaec5f14251cd217dbbe446226"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implement <code>repr(BitVector)</code>.  <br /></td></tr>
 <tr class="separator:aa8a64ebaec5f14251cd217dbbe446226"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab89d3f819b9aa435f1a78e2820a3de45" id="r_ab89d3f819b9aa435f1a78e2820a3de45"><td class="memItemLeft" align="right" valign="top">PyObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__methods__misc_8c.html#ab89d3f819b9aa435f1a78e2820a3de45">py_bitvector_str</a> (PyObject *self)</td></tr>
-<tr class="memdesc:ab89d3f819b9aa435f1a78e2820a3de45"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>str</b> for <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>.  <br /></td></tr>
+<tr class="memdesc:ab89d3f819b9aa435f1a78e2820a3de45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implement <code>str(BitVector)</code>.  <br /></td></tr>
 <tr class="separator:ab89d3f819b9aa435f1a78e2820a3de45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa6c45cb08a04282d2a7b5a68d67b7d63" id="r_aa6c45cb08a04282d2a7b5a68d67b7d63"><td class="memItemLeft" align="right" valign="top">Py_ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__methods__misc_8c.html#aa6c45cb08a04282d2a7b5a68d67b7d63">py_bitvector_len</a> (PyObject *self)</td></tr>
-<tr class="memdesc:aa6c45cb08a04282d2a7b5a68d67b7d63"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>len</b>(<a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>) → number of bits.  <br /></td></tr>
+<tr class="memdesc:aa6c45cb08a04282d2a7b5a68d67b7d63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implement <code>len(BitVector)</code>.  <br /></td></tr>
 <tr class="separator:aa6c45cb08a04282d2a7b5a68d67b7d63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a027b3cb6cc2ce538c72758b418a98678" id="r_a027b3cb6cc2ce538c72758b418a98678"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__methods__misc_8c.html#a027b3cb6cc2ce538c72758b418a98678">py_bitvector_contains</a> (PyObject *object, PyObject *value)</td></tr>
-<tr class="memdesc:a027b3cb6cc2ce538c72758b418a98678"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>contains</b>(<a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>, other) → boolean.  <br /></td></tr>
+<tr class="memdesc:a027b3cb6cc2ce538c72758b418a98678"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implement <code>value in <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a></code>.  <br /></td></tr>
 <tr class="separator:a027b3cb6cc2ce538c72758b418a98678"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af54e9224e7845fe95ed3a5030ad6fb2c" id="r_af54e9224e7845fe95ed3a5030ad6fb2c"><td class="memItemLeft" align="right" valign="top">static PyObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__methods__misc_8c.html#af54e9224e7845fe95ed3a5030ad6fb2c">py_bitvector_get_size</a> (PyObject *object, void *closure)</td></tr>
-<tr class="memdesc:af54e9224e7845fe95ed3a5030ad6fb2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the read-only "bits" property.  <br /></td></tr>
+<tr class="memdesc:af54e9224e7845fe95ed3a5030ad6fb2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the read-only <code>bits</code> property.  <br /></td></tr>
 <tr class="separator:af54e9224e7845fe95ed3a5030ad6fb2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:aed9d2206089523b6bc6fbac996e9895e" id="r_aed9d2206089523b6bc6fbac996e9895e"><td class="memItemLeft" align="right" valign="top">PyGetSetDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__methods__misc_8c.html#aed9d2206089523b6bc6fbac996e9895e">PyBitVector_getset</a> []</td></tr>
-<tr class="memdesc:aed9d2206089523b6bc6fbac996e9895e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Property definitions for the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> type.  <br /></td></tr>
+<tr class="memdesc:aed9d2206089523b6bc6fbac996e9895e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Property table for the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> type.  <br /></td></tr>
 <tr class="separator:aed9d2206089523b6bc6fbac996e9895e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Implementation of miscellaneous <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> methods. </p>
-<p>Implements:</p><ul>
-<li><b>repr</b> and <b>str</b></li>
-<li><b>len</b></li>
-<li><b>contains</b></li>
-<li>the "bits" read-only property</li>
+<div class="textblock"><p>Implementation of miscellaneous <code><a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a></code> Python methods. </p>
+<p>Provides protocol support and convenience features for the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> type:</p><ul>
+<li><code>__repr__</code> and <code>__str__</code> for string representations</li>
+<li><code>__len__</code> for container length</li>
+<li><code>__contains__</code> for membership tests</li>
+<li>the read‑only <code>bits</code> property</li>
 </ul>
-<p>These methods provide standard Python protocol support and convenience features for the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> type.</p>
 <dl class="section author"><dt>Author</dt><dd>lambdaphoenix </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.3.0 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2026 lambdaphoenix </dd></dl>
@@ -184,15 +202,23 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><b>contains</b>(<a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>, other) → boolean. </p>
+<p>Implement <code>value in <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a></code>. </p>
+<p>Checks whether the given <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> is contained as a contiguous subvector of <code>self</code>. Returns a truth value as an integer.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">self</td><td>A Python <a class="el" href="structPyBitVectorObject.html" title="Python object containing a pointer to a native BitVector.">PyBitVectorObject</a> instance. (haystack). </td></tr>
-    <tr><td class="paramname">value</td><td>A Python <a class="el" href="structPyBitVectorObject.html" title="Python object containing a pointer to a native BitVector.">PyBitVectorObject</a> instance (needle). </td></tr>
+    <tr><td class="paramname">self</td><td>A <code><a class="el" href="structPyBitVectorObject.html" title="Python object wrapping a native BitVector instance.">PyBitVectorObject</a></code> instance. (haystack). </td></tr>
+    <tr><td class="paramname">value</td><td>A <code><a class="el" href="structPyBitVectorObject.html" title="Python object wrapping a native BitVector instance.">PyBitVectorObject</a></code> instance (needle). </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>1 if contained, 0 otherwise </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">1</td><td>Contained. </td></tr>
+    <tr><td class="paramname">0</td><td>Not contained. </td></tr>
+    <tr><td class="paramname">-1</td><td>Failure (exception set): </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -230,10 +256,11 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Getter for the read-only "bits" property. </p>
+<p>Getter for the read-only <code>bits</code> property. </p>
+<p>Returns the number of bits in the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">object</td><td>A Python <a class="el" href="structPyBitVectorObject.html" title="Python object containing a pointer to a native BitVector.">PyBitVectorObject</a> instance. </td></tr>
+    <tr><td class="paramname">object</td><td>A <code><a class="el" href="structPyBitVectorObject.html" title="Python object wrapping a native BitVector instance.">PyBitVectorObject</a></code> instance. </td></tr>
     <tr><td class="paramname">closure</td><td>Unused. </td></tr>
   </table>
   </dd>
@@ -258,14 +285,20 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><b>len</b>(<a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>) → number of bits. </p>
+<p>Implement <code>len(BitVector)</code>. </p>
+<p>Returns the number of bits stored in the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">self</td><td>A Python <a class="el" href="structPyBitVectorObject.html" title="Python object containing a pointer to a native BitVector.">PyBitVectorObject</a> instance. </td></tr>
+    <tr><td class="paramname">self</td><td>A <code><a class="el" href="structPyBitVectorObject.html" title="Python object wrapping a native BitVector instance.">PyBitVectorObject</a></code> instance. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of bits as Py_ssize_t. </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">Py_ssize_t</td><td>Number of bits. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -285,14 +318,21 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><b>repr</b> for <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>. </p>
+<p>Implement <code>repr(BitVector)</code>. </p>
+<p>Produces a developer‑oriented string representation of the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">self</td><td>A Python <a class="el" href="structPyBitVectorObject.html" title="Python object containing a pointer to a native BitVector.">PyBitVectorObject</a> instance. </td></tr>
+    <tr><td class="paramname">self</td><td>A <code><a class="el" href="structPyBitVectorObject.html" title="Python object wrapping a native BitVector instance.">PyBitVectorObject</a></code> instance. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>New Python string describing the object. </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">string</td><td>New Python string on success. </td></tr>
+    <tr><td class="paramname">NULL</td><td>on failure (exception set) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -312,14 +352,21 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p><b>str</b> for <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>. </p>
+<p>Implement <code>str(BitVector)</code>. </p>
+<p>Produces a human‑readable description such as <code>"BitVector with N bits"</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">self</td><td>A Python <a class="el" href="structPyBitVectorObject.html" title="Python object containing a pointer to a native BitVector.">PyBitVectorObject</a> instance. </td></tr>
+    <tr><td class="paramname">self</td><td>A <code><a class="el" href="structPyBitVectorObject.html" title="Python object wrapping a native BitVector instance.">PyBitVectorObject</a></code> instance. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>New Python string "BitVector with X bits". </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">string</td><td>New Python string on success. </td></tr>
+    <tr><td class="paramname">NULL</td><td>on failure (exception set) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -339,18 +386,22 @@ Variables</h2></td></tr>
 <div class="line">    {<span class="stringliteral">&quot;bits&quot;</span>, <a class="code hl_function" href="bitvector__methods__misc_8c.html#af54e9224e7845fe95ed3a5030ad6fb2c">py_bitvector_get_size</a>, NULL, PyDoc_STR(<span class="stringliteral">&quot;The number of bits.&quot;</span>)},</div>
 <div class="line">    {NULL},</div>
 <div class="line">}</div>
-<div class="ttc" id="abitvector__methods__misc_8c_html_af54e9224e7845fe95ed3a5030ad6fb2c"><div class="ttname"><a href="bitvector__methods__misc_8c.html#af54e9224e7845fe95ed3a5030ad6fb2c">py_bitvector_get_size</a></div><div class="ttdeci">static PyObject * py_bitvector_get_size(PyObject *object, void *closure)</div><div class="ttdoc">Getter for the read-only &quot;bits&quot; property.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:62</div></div>
+<div class="ttc" id="abitvector__methods__misc_8c_html_af54e9224e7845fe95ed3a5030ad6fb2c"><div class="ttname"><a href="bitvector__methods__misc_8c.html#af54e9224e7845fe95ed3a5030ad6fb2c">py_bitvector_get_size</a></div><div class="ttdeci">static PyObject * py_bitvector_get_size(PyObject *object, void *closure)</div><div class="ttdoc">Getter for the read-only bits property.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:62</div></div>
 </div><!-- fragment -->
-<p>Property definitions for the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> type. </p>
-<p>This table lists all read-only and writable properties exposed on the Python <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> object.</p>
+<p>Property table for the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> type. </p>
+<p>Lists all Python‑visible properties. Currently only <code>bits</code> is exposed and is read‑only.</p>
 <dl class="section see"><dt>See also</dt><dd>PyGetSetDef </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li><li class="navelem"><a class="el" href="bitvector__methods__misc_8c.html">bitvector_methods_misc.c</a></li>
+    <li class="footer">Generated on Tue Feb 10 2026 20:13:12 for cbits by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

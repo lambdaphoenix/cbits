@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -26,6 +35,18 @@
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -37,17 +58,23 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('bitvector__rank_8c.html',''); initResizable(); });
 /* @license-end */
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +96,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a608fcf9a2305daf9c26bdb536009de6.html">cbits</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
@@ -89,30 +111,28 @@ Include dependency graph for bitvector_rank.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="bitvector__rank_8c__incl.png" border="0" usemap="#asrc_2cbits_2bitvector__rank_8c" alt=""/></div>
 <map name="asrc_2cbits_2bitvector__rank_8c" id="asrc_2cbits_2bitvector__rank_8c">
-<area shape="rect" title="Rank table construction and rank queries." alt="" coords="109,5,248,45"/>
-<area shape="rect" href="bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="104,93,253,119"/>
-<area shape="poly" title=" " alt="" coords="181,46,181,79,176,79,176,46"/>
-<area shape="rect" href="bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="133,167,224,192"/>
-<area shape="poly" title=" " alt="" coords="181,119,181,153,176,153,176,119"/>
-<area shape="rect" title=" " alt="" coords="5,313,80,339"/>
-<area shape="poly" title=" " alt="" coords="155,194,121,214,89,242,68,271,54,301,49,299,63,269,85,238,118,210,153,190"/>
-<area shape="rect" title=" " alt="" coords="199,313,270,339"/>
-<area shape="poly" title=" " alt="" coords="186,191,228,300,223,301,181,193"/>
-<area shape="rect" title=" " alt="" coords="256,240,339,265"/>
-<area shape="poly" title=" " alt="" coords="199,190,267,230,265,235,196,194"/>
-<area shape="rect" href="compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="99,240,181,265"/>
-<area shape="poly" title=" " alt="" coords="175,194,155,229,150,227,170,191"/>
-<area shape="poly" title=" " alt="" coords="126,268,71,307,68,303,123,263"/>
-<area shape="poly" title=" " alt="" coords="157,263,210,303,207,307,154,267"/>
-<area shape="rect" title=" " alt="" coords="105,313,175,339"/>
-<area shape="poly" title=" " alt="" coords="143,266,143,300,137,300,137,266"/>
+<area shape="rect" title="Rank table construction and rank queries." alt="" coords="31,5,169,45"/>
+<area shape="rect" href="bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="25,93,175,119"/>
+<area shape="poly" title=" " alt="" coords="103,46,103,79,97,79,97,46"/>
+<area shape="rect" href="bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="55,167,145,192"/>
+<area shape="poly" title=" " alt="" coords="103,119,103,153,97,153,97,119"/>
+<area shape="rect" title=" " alt="" coords="5,240,88,265"/>
+<area shape="poly" title=" " alt="" coords="93,194,66,231,61,228,89,191"/>
+<area shape="rect" href="compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="112,240,195,265"/>
+<area shape="poly" title=" " alt="" coords="111,191,139,228,134,231,107,194"/>
+<area shape="rect" title=" " alt="" coords="21,313,91,339"/>
+<area shape="poly" title=" " alt="" coords="139,268,85,307,82,303,136,263"/>
+<area shape="rect" title=" " alt="" coords="116,313,191,339"/>
+<area shape="poly" title=" " alt="" coords="156,266,156,300,151,300,151,266"/>
+<area shape="rect" title=" " alt="" coords="215,313,286,339"/>
+<area shape="poly" title=" " alt="" coords="171,263,225,303,222,307,167,268"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a512988fb7c0004571bd8edefc67dbe0c" id="r_a512988fb7c0004571bd8edefc67dbe0c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__rank_8c.html#a512988fb7c0004571bd8edefc67dbe0c">bv_build_rank</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv)</td></tr>
-<tr class="memdesc:a512988fb7c0004571bd8edefc67dbe0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build or rebuild the rank tables for a <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>.  <br /></td></tr>
+<tr class="memdesc:a512988fb7c0004571bd8edefc67dbe0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build or rebuild the rank tables for a <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a>.  <br /></td></tr>
 <tr class="separator:a512988fb7c0004571bd8edefc67dbe0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdfa632ea087f518a95082388f71cf38" id="r_afdfa632ea087f518a95082388f71cf38"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__rank_8c.html#afdfa632ea087f518a95082388f71cf38">bv_rank</a> (<a class="el" href="structBitVector.html">BitVector</a> *bv, const size_t pos)</td></tr>
 <tr class="memdesc:afdfa632ea087f518a95082388f71cf38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compute the rank (number of set bits) up to a position.  <br /></td></tr>
@@ -124,7 +144,7 @@ Functions</h2></td></tr>
 <li><a class="el" href="bitvector_8h.html#a512988fb7c0004571bd8edefc67dbe0c">bv_build_rank</a></li>
 <li><a class="el" href="bitvector_8h.html#afdfa632ea087f518a95082388f71cf38">bv_rank</a></li>
 </ul>
-<p>This module isolates the rank subsystem from the core <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> logic and integrates with the popcount dispatch mechanism provided by <a class="el" href="compat_8h.html">compat.h</a>.</p>
+<p>This module isolates the rank subsystem from the core <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> logic and integrates with the popcount dispatch mechanism provided by <a class="el" href="compat_8h.html">compat.h</a>.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="compat_8h.html" title="Cross-platform aligned allocators, popcount, prefetch.">compat.h</a> </dd>
 <dd>
 <a class="el" href="bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations.">bitvector_internal.h</a> </dd></dl>
@@ -148,10 +168,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Build or rebuild the rank tables for a <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>. </p>
+<p>Build or rebuild the rank tables for a <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a>. </p>
 <p>This populates <code>super_rank</code>[] and <code>block_rank</code>[] to support O(1) rank queries. After this call, <code>bv-&gt;rank_dirty</code> is cleared. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">bv</td><td>Pointer to the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> whose tables to build </td></tr>
+    <tr><td class="paramname">bv</td><td>Pointer to the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> whose tables to build </td></tr>
   </table>
   </dd>
 </dl>
@@ -187,19 +207,23 @@ Functions</h2></td></tr>
 <p>Compute the rank (number of set bits) up to a position. </p>
 <p>If the internal rank tables are dirty, they will be rebuilt. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">bv</td><td>Pointer to the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> </td></tr>
+    <tr><td class="paramname">bv</td><td>Pointer to the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> </td></tr>
     <tr><td class="paramname">pos</td><td>Bit index </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of bits set in range <code></code>[0...pos] </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of bits set in range <code></code>[0...pos) </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a608fcf9a2305daf9c26bdb536009de6.html">cbits</a></li><li class="navelem"><a class="el" href="bitvector__rank_8c.html">bitvector_rank.c</a></li>
+    <li class="footer">Generated on Tue Feb 10 2026 20:13:12 for cbits by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

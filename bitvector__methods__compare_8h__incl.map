@@ -1,28 +1,25 @@
 <map id="src/python/bitvector_methods_compare.h" name="src/python/bitvector_methods_compare.h">
-<area shape="rect" id="Node000001" title="Equality and hashing methods for BitVector." alt="" coords="15,5,178,45"/>
-<area shape="rect" id="Node000002" href="$bitvector__object_8h.html" title="Definition of the PyBitVector Python type." alt="" coords="27,93,166,119"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,46,99,79,94,79,94,46"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="5,313,84,339"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="79,121,54,141,34,168,24,202,24,238,30,271,38,300,33,301,25,273,19,238,19,201,29,165,50,137,76,117"/>
-<area shape="rect" id="Node000004" href="$bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="173,167,322,192"/>
-<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="122,116,211,158,209,163,120,121"/>
-<area shape="rect" id="Node000011" href="$cbits__state_8h.html" title="Module&#45;local state for the cbits extension." alt="" coords="44,167,149,192"/>
-<area shape="poly" id="edge12_Node000002_Node000011" title=" " alt="" coords="99,119,99,153,94,153,94,119"/>
-<area shape="rect" id="Node000005" href="$bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="202,240,293,265"/>
-<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="250,192,250,226,245,226,245,192"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="371,387,446,412"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="294,261,342,279,365,293,385,312,402,341,409,372,404,373,397,343,381,315,362,298,339,284,292,266"/>
-<area shape="rect" id="Node000007" title=" " alt="" coords="145,387,216,412"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="224,268,195,287,182,300,172,314,168,329,167,344,173,373,168,374,162,344,163,328,168,312,178,296,192,283,221,263"/>
-<area shape="rect" id="Node000008" title=" " alt="" coords="182,313,265,339"/>
-<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="246,267,234,301,229,299,241,265"/>
-<area shape="rect" id="Node000009" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="289,313,371,339"/>
-<area shape="poly" id="edge8_Node000005_Node000009" title=" " alt="" coords="262,263,308,302,304,306,259,267"/>
-<area shape="poly" id="edge10_Node000009_Node000006" title=" " alt="" coords="344,337,388,376,384,379,341,341"/>
-<area shape="poly" id="edge9_Node000009_Node000007" title=" " alt="" coords="307,341,219,383,216,378,305,336"/>
-<area shape="rect" id="Node000010" title=" " alt="" coords="276,387,347,412"/>
-<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="329,340,320,374,315,373,324,338"/>
-<area shape="rect" id="Node000012" href="$cbits__module_8h.html" title="Forward declaration of the cbits module definition." alt="" coords="40,240,161,265"/>
-<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="100,192,102,226,97,227,95,192"/>
-<area shape="poly" id="edge14_Node000012_Node000003" title=" " alt="" coords="94,267,64,304,60,301,89,264"/>
+<area shape="rect" id="Node000001" title="Equality and hashing methods for BitVector." alt="" coords="124,5,287,45"/>
+<area shape="rect" id="Node000002" href="$bitvector__object_8h.html" title="Definition of the PyBitVector Python type." alt="" coords="136,93,275,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="208,46,208,79,203,79,203,46"/>
+<area shape="rect" id="Node000003" href="$bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="55,167,204,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="195,121,154,159,150,155,191,117"/>
+<area shape="rect" id="Node000010" href="$cbits__state_8h.html" title="Module&#45;local state definition for the cbits extension." alt="" coords="229,167,334,192"/>
+<area shape="poly" id="edge9_Node000002_Node000010" title=" " alt="" coords="219,117,261,155,257,159,216,121"/>
+<area shape="rect" id="Node000004" href="$bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="84,240,175,265"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="132,192,132,226,127,226,127,192"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,313,88,339"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="118,267,72,306,69,302,114,263"/>
+<area shape="rect" id="Node000006" href="$compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="112,313,195,339"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="136,265,148,299,143,301,131,267"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="21,387,91,412"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="139,341,85,380,82,376,136,337"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="116,387,191,412"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="156,339,156,373,151,373,151,339"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="215,387,286,412"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="171,337,225,376,222,380,167,341"/>
+<area shape="rect" id="Node000011" href="$cbits__module_8h.html" title="Forward declaration of the cbits module definition." alt="" coords="221,240,342,265"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="284,192,284,226,279,226,279,192"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="242,313,321,339"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="284,266,284,300,279,300,279,266"/>
 </map>

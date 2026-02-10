@@ -1,6 +1,6 @@
 <map id="src/python/bitvector_methods.h" name="src/python/bitvector_methods.h">
 <area shape="rect" id="Node000001" title="Aggregated method table for the BitVector Python type." alt="" coords="93,5,245,45"/>
-<area shape="rect" id="Node000002" href="$bitvector__methods_8c.html" title="Aggregates all BitVector Python methods into a single table." alt="" coords="5,93,157,133"/>
+<area shape="rect" id="Node000002" href="$bitvector__methods_8c.html" title="Aggregates all Python&#45;visible BitVector methods into one table." alt="" coords="5,93,157,133"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,57,103,95,99,91,138,53"/>
 <area shape="rect" id="Node000003" href="$bitvector__object_8c.html" title="Implementation of the PyBitVectorObject Python type." alt="" coords="181,93,333,133"/>
 <area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="201,53,240,91,236,95,197,57"/>

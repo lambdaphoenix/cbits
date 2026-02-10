@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -26,6 +35,18 @@
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -37,17 +58,23 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('bitvector__compare_8c.html',''); initResizable(); });
 /* @license-end */
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +96,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a608fcf9a2305daf9c26bdb536009de6.html">cbits</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
@@ -81,7 +103,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> comparison and subvector search.  
+<p><a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> comparison and subvector search.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="bitvector__internal_8h_source.html">bitvector_internal.h</a>&quot;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
@@ -90,25 +112,23 @@ Include dependency graph for bitvector_compare.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="bitvector__compare_8c__incl.png" border="0" usemap="#asrc_2cbits_2bitvector__compare_8c" alt=""/></div>
 <map name="asrc_2cbits_2bitvector__compare_8c" id="asrc_2cbits_2bitvector__compare_8c">
-<area shape="rect" title="BitVector comparison and subvector search." alt="" coords="176,5,315,45"/>
-<area shape="rect" href="bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="104,93,253,119"/>
-<area shape="poly" title=" " alt="" coords="231,47,199,84,195,81,227,44"/>
-<area shape="rect" title=" " alt="" coords="278,93,349,119"/>
-<area shape="poly" title=" " alt="" coords="264,44,296,81,292,84,260,47"/>
-<area shape="rect" href="bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="133,167,224,192"/>
-<area shape="poly" title=" " alt="" coords="181,119,181,153,176,153,176,119"/>
-<area shape="rect" title=" " alt="" coords="5,313,80,339"/>
-<area shape="poly" title=" " alt="" coords="155,194,121,214,89,242,68,271,54,301,49,299,63,269,85,238,118,210,153,190"/>
-<area shape="rect" title=" " alt="" coords="199,313,270,339"/>
-<area shape="poly" title=" " alt="" coords="186,191,228,300,223,301,181,193"/>
-<area shape="rect" title=" " alt="" coords="256,240,339,265"/>
-<area shape="poly" title=" " alt="" coords="199,190,267,230,265,235,196,194"/>
-<area shape="rect" href="compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="99,240,181,265"/>
-<area shape="poly" title=" " alt="" coords="175,194,155,229,150,227,170,191"/>
-<area shape="poly" title=" " alt="" coords="126,268,71,307,68,303,123,263"/>
-<area shape="poly" title=" " alt="" coords="157,263,210,303,207,307,154,267"/>
-<area shape="rect" title=" " alt="" coords="105,313,175,339"/>
-<area shape="poly" title=" " alt="" coords="143,266,143,300,137,300,137,266"/>
+<area shape="rect" title="BitVector comparison and subvector search." alt="" coords="97,5,236,45"/>
+<area shape="rect" href="bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="25,93,175,119"/>
+<area shape="poly" title=" " alt="" coords="153,47,121,84,117,81,149,44"/>
+<area shape="rect" title=" " alt="" coords="199,93,270,119"/>
+<area shape="poly" title=" " alt="" coords="185,44,218,81,214,84,181,47"/>
+<area shape="rect" href="bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="55,167,145,192"/>
+<area shape="poly" title=" " alt="" coords="103,119,103,153,97,153,97,119"/>
+<area shape="rect" title=" " alt="" coords="5,240,88,265"/>
+<area shape="poly" title=" " alt="" coords="93,194,66,231,61,228,89,191"/>
+<area shape="rect" href="compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="112,240,195,265"/>
+<area shape="poly" title=" " alt="" coords="111,191,139,228,134,231,107,194"/>
+<area shape="rect" title=" " alt="" coords="21,313,91,339"/>
+<area shape="poly" title=" " alt="" coords="139,268,85,307,82,303,136,263"/>
+<area shape="rect" title=" " alt="" coords="116,313,191,339"/>
+<area shape="poly" title=" " alt="" coords="156,266,156,300,151,300,151,266"/>
+<area shape="rect" title=" " alt="" coords="215,313,286,339"/>
+<area shape="poly" title=" " alt="" coords="171,263,225,303,222,307,167,268"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -122,7 +142,7 @@ Functions</h2></td></tr>
 <tr class="separator:a321007321514662bf5f9d8350ed380ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> comparison and subvector search. </p>
+<div class="textblock"><p><a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> comparison and subvector search. </p>
 <p>This module implements:</p><ul>
 <li><a class="el" href="bitvector_8h.html#ad82fe6ffdf12ab5ca5239d111942529e">bv_equal</a></li>
 <li><a class="el" href="bitvector_8h.html#a321007321514662bf5f9d8350ed380ba">bv_contains_subvector</a></li>
@@ -161,8 +181,8 @@ Functions</h2></td></tr>
 <p>Check weather B appears as a contiguous sub-bitvector of A. </p>
 <p>That is, whether there exists an offset i in A such that <code> A[i..i+|B|-1] == B[0..|B|-1] </code>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>Haystack <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> </td></tr>
-    <tr><td class="paramname">b</td><td>Needle <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> </td></tr>
+    <tr><td class="paramname">a</td><td>Haystack <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> </td></tr>
+    <tr><td class="paramname">b</td><td>Needle <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -199,8 +219,8 @@ Functions</h2></td></tr>
 <p>Test equality of two BitVectors. </p>
 <p>Only vectors with the same length can compare equal. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>First <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> </td></tr>
-    <tr><td class="paramname">b</td><td>Second <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> </td></tr>
+    <tr><td class="paramname">a</td><td>First <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> </td></tr>
+    <tr><td class="paramname">b</td><td>Second <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -209,9 +229,13 @@ Functions</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a608fcf9a2305daf9c26bdb536009de6.html">cbits</a></li><li class="navelem"><a class="el" href="bitvector__compare_8c.html">bitvector_compare.c</a></li>
+    <li class="footer">Generated on Tue Feb 10 2026 20:13:12 for cbits by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

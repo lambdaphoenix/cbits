@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -26,6 +35,18 @@
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -37,22 +58,23 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('bitvector__methods__compare_8h_source.html',''); initResizable(); });
 /* @license-end */
 </script>
-<div id="main-nav"></div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function() { init_codefold(0); });
-/* @license-end */
-</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -74,11 +96,6 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">bitvector_methods_compare.h</div></div>
 </div><!--header-->
@@ -89,19 +106,23 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="bitvector__object_8h.html">bitvector_object.h</a>&quot;</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>PyObject *</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><a class="code hl_function" href="bitvector__methods__compare_8h.html#ae30b20816303b56ff0b8537ab5b3bf2c">py_bitvector_richcompare</a>(PyObject *a, PyObject *b, <span class="keywordtype">int</span> op);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>Py_hash_t</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><a class="code hl_function" href="bitvector__methods__compare_8h.html#ad9955ab0a0ca93b0491211294fdb6b17">py_bitvector_hash</a>(PyObject *self);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="preprocessor">#endif </span><span class="comment">/* CBITS_PY_BITVECTOR_METHODS_COMPARE_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="abitvector__methods__compare_8h_html_ad9955ab0a0ca93b0491211294fdb6b17"><div class="ttname"><a href="bitvector__methods__compare_8h.html#ad9955ab0a0ca93b0491211294fdb6b17">py_bitvector_hash</a></div><div class="ttdeci">Py_hash_t py_bitvector_hash(PyObject *self)</div><div class="ttdoc">hash for a BitVector object.</div><div class="ttdef"><b>Definition</b> bitvector_methods_compare.c:39</div></div>
-<div class="ttc" id="abitvector__methods__compare_8h_html_ae30b20816303b56ff0b8537ab5b3bf2c"><div class="ttname"><a href="bitvector__methods__compare_8h.html#ae30b20816303b56ff0b8537ab5b3bf2c">py_bitvector_richcompare</a></div><div class="ttdeci">PyObject * py_bitvector_richcompare(PyObject *a, PyObject *b, int op)</div><div class="ttdoc">Rich comparison (== and !=) for BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_compare.c:16</div></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>PyObject *</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><a class="code hl_function" href="bitvector__methods__compare_8h.html#ae30b20816303b56ff0b8537ab5b3bf2c">py_bitvector_richcompare</a>(PyObject *a, PyObject *b, <span class="keywordtype">int</span> op);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>Py_hash_t</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><a class="code hl_function" href="bitvector__methods__compare_8h.html#ad9955ab0a0ca93b0491211294fdb6b17">py_bitvector_hash</a>(PyObject *self);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="preprocessor">#endif </span><span class="comment">/* CBITS_PY_BITVECTOR_METHODS_COMPARE_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="abitvector__methods__compare_8h_html_ad9955ab0a0ca93b0491211294fdb6b17"><div class="ttname"><a href="bitvector__methods__compare_8h.html#ad9955ab0a0ca93b0491211294fdb6b17">py_bitvector_hash</a></div><div class="ttdeci">Py_hash_t py_bitvector_hash(PyObject *self)</div><div class="ttdoc">Implement hash(BitVector).</div><div class="ttdef"><b>Definition</b> bitvector_methods_compare.c:40</div></div>
+<div class="ttc" id="abitvector__methods__compare_8h_html_ae30b20816303b56ff0b8537ab5b3bf2c"><div class="ttname"><a href="bitvector__methods__compare_8h.html#ae30b20816303b56ff0b8537ab5b3bf2c">py_bitvector_richcompare</a></div><div class="ttdeci">PyObject * py_bitvector_richcompare(PyObject *a, PyObject *b, int op)</div><div class="ttdoc">Implement rich comparison for BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_compare.c:17</div></div>
 <div class="ttc" id="abitvector__object_8h_html"><div class="ttname"><a href="bitvector__object_8h.html">bitvector_object.h</a></div><div class="ttdoc">Definition of the PyBitVector Python type.</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li><li class="navelem"><a class="el" href="bitvector__methods__compare_8h.html">bitvector_methods_compare.h</a></li>
+    <li class="footer">Generated on Tue Feb 10 2026 20:13:12 for cbits by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

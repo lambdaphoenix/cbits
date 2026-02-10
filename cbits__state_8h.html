@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -26,6 +35,18 @@
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -37,17 +58,23 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('cbits__state_8h.html',''); initResizable(); });
 /* @license-end */
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +96,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
@@ -83,7 +105,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Module-local state for the cbits extension.  
+<p>Module-local state definition for the cbits extension.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="cbits__module_8h_source.html">cbits_module.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -91,7 +113,7 @@ Include dependency graph for cbits_state.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="cbits__state_8h__incl.png" border="0" usemap="#asrc_2python_2cbits__state_8h" alt=""/></div>
 <map name="asrc_2python_2cbits__state_8h" id="asrc_2python_2cbits__state_8h">
-<area shape="rect" title="Module&#45;local state for the cbits extension." alt="" coords="5,5,183,31"/>
+<area shape="rect" title="Module&#45;local state definition for the cbits extension." alt="" coords="5,5,183,31"/>
 <area shape="rect" href="cbits__module_8h.html" title="Forward declaration of the cbits module definition." alt="" coords="33,79,155,104"/>
 <area shape="poly" title=" " alt="" coords="97,31,97,65,91,65,91,31"/>
 <area shape="rect" title=" " alt="" coords="55,152,133,177"/>
@@ -103,7 +125,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="cbits__state_8h__dep__incl.png" border="0" usemap="#asrc_2python_2cbits__state_8hdep" alt=""/></div>
 <map name="asrc_2python_2cbits__state_8hdep" id="asrc_2python_2cbits__state_8hdep">
-<area shape="rect" title="Module&#45;local state for the cbits extension." alt="" coords="1727,5,1905,31"/>
+<area shape="rect" title="Module&#45;local state definition for the cbits extension." alt="" coords="1727,5,1905,31"/>
 <area shape="rect" href="bitvector__object_8c.html" title="Implementation of the PyBitVectorObject Python type." alt="" coords="1299,255,1451,295"/>
 <area shape="poly" title=" " alt="" coords="1809,44,1792,81,1767,126,1733,171,1691,209,1660,227,1633,238,1582,247,1529,249,1463,257,1452,260,1450,255,1462,252,1528,244,1581,242,1631,233,1658,222,1688,205,1729,168,1763,123,1788,79,1804,42"/>
 <area shape="rect" href="bitvector__object_8h.html" title="Definition of the PyBitVector Python type." alt="" coords="1123,79,1275,119"/>
@@ -115,15 +137,15 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="poly" title=" " alt="" coords="1289,107,1784,164,1854,173,1853,178,1784,169,1288,112"/>
 <area shape="rect" href="bitvector__methods_8h.html" title="Aggregated method table for the BitVector Python type." alt="" coords="760,167,912,207"/>
 <area shape="poly" title=" " alt="" coords="1110,124,913,170,912,165,1109,118"/>
-<area shape="rect" href="bitvector__methods__basic_8h.html" title="Basic BitVector operations for Python." alt="" coords="357,167,509,207"/>
+<area shape="rect" href="bitvector__methods__basic_8h.html" title="Basic BitVector operations exposed to Python." alt="" coords="357,167,509,207"/>
 <area shape="poly" title=" " alt="" coords="1110,108,845,130,684,147,522,169,510,171,509,166,521,164,683,142,845,125,1109,103"/>
 <area shape="rect" href="bitvector__methods__compare_8h.html" title="Equality and hashing methods for BitVector." alt="" coords="936,167,1099,207"/>
 <area shape="poly" title=" " alt="" coords="1148,127,1058,169,1056,164,1146,122"/>
-<area shape="rect" href="bitvector__methods__copy_8c.html" title="Implementation of copy and clone operations." alt="" coords="589,255,741,295"/>
+<area shape="rect" href="bitvector__methods__copy_8c.html" title="Implementation of copy and clone operationsfor BitVector." alt="" coords="589,255,741,295"/>
 <area shape="poly" title=" " alt="" coords="1109,108,1013,116,909,129,814,146,777,157,749,169,725,188,705,211,677,256,672,253,700,207,722,184,747,164,775,152,813,141,908,123,1013,111,1109,103"/>
 <area shape="rect" href="bitvector__methods__copy_8h.html" title="Copy and clone operations for BitVector." alt="" coords="533,167,685,207"/>
 <area shape="poly" title=" " alt="" coords="1109,113,923,137,704,169,686,172,685,167,704,164,922,132,1109,108"/>
-<area shape="rect" href="bitvector__methods__misc_8h.html" title="Miscellaneous BitVector Python methods." alt="" coords="1123,167,1275,207"/>
+<area shape="rect" href="bitvector__methods__misc_8h.html" title="Miscellaneous BitVector Python methods for BitVector." alt="" coords="1123,167,1275,207"/>
 <area shape="poly" title=" " alt="" coords="1201,133,1201,166,1196,166,1196,133"/>
 <area shape="rect" href="bitvector__methods__ops_8c.html" title="Bitwise operation methods for BitVector." alt="" coords="1475,255,1627,295"/>
 <area shape="poly" title=" " alt="" coords="1288,96,1398,99,1518,108,1574,117,1624,129,1664,145,1691,165,1700,179,1700,194,1693,207,1682,219,1649,240,1610,257,1608,252,1646,236,1678,215,1689,204,1695,192,1695,181,1687,168,1661,149,1622,134,1573,122,1517,114,1397,104,1288,101"/>
@@ -131,18 +153,18 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="poly" title=" " alt="" coords="1262,121,1377,164,1375,169,1260,126"/>
 <area shape="rect" href="bitvector__methods__rank_8h.html" title="Rank&#45;related Python methods for BitVector." alt="" coords="181,167,333,207"/>
 <area shape="poly" title=" " alt="" coords="1109,106,772,125,560,143,346,169,334,171,333,166,345,164,559,138,772,120,1109,100"/>
-<area shape="rect" href="bitvector__methods__slice_8c.html" title="Slicing support for the BitVector Python type." alt="" coords="1651,255,1803,295"/>
+<area shape="rect" href="bitvector__methods__slice_8c.html" title="Slicing and indexed access implemantation for BitVector." alt="" coords="1651,255,1803,295"/>
 <area shape="poly" title=" " alt="" coords="1288,96,1402,99,1528,109,1588,118,1641,129,1684,145,1714,165,1727,186,1734,210,1733,255,1728,255,1728,211,1723,188,1710,169,1681,150,1639,134,1587,123,1527,114,1402,104,1288,102"/>
-<area shape="rect" href="bitvector__methods__slice_8h.html" title="Slicing support for BitVector." alt="" coords="1525,167,1677,207"/>
+<area shape="rect" href="bitvector__methods__slice_8h.html" title="Slicing and indexed access support for BitVector." alt="" coords="1525,167,1677,207"/>
 <area shape="poly" title=" " alt="" coords="1289,116,1514,164,1526,167,1524,172,1513,169,1287,122"/>
-<area shape="rect" href="bitvector__parse_8h.html" title="Argument parsing helpers for BitVector Python methods." alt="" coords="5,167,157,207"/>
+<area shape="rect" href="bitvector__parse_8h.html" title="Argument&#45;parsing helpers for BitVector Python methods." alt="" coords="5,167,157,207"/>
 <area shape="poly" title=" " alt="" coords="1109,104,935,109,701,120,437,140,170,169,158,171,157,166,169,164,436,134,701,115,934,104,1108,99"/>
 <area shape="poly" title=" " alt="" coords="1840,208,1835,209,1731,224,1649,233,1567,242,1463,257,1451,259,1450,254,1462,252,1567,236,1648,228,1730,219,1834,204,1839,203"/>
-<area shape="rect" href="bitvector__iter_8c.html" title="Implementation of BitVector iterator." alt="" coords="1827,255,1979,295"/>
+<area shape="rect" href="bitvector__iter_8c.html" title="Implementation of the BitVector iterator." alt="" coords="1827,255,1979,295"/>
 <area shape="poly" title=" " alt="" coords="1922,221,1911,255,1906,254,1917,219"/>
 <area shape="poly" title=" " alt="" coords="1980,211,2077,260,2075,264,1978,215"/>
 <area shape="poly" title=" " alt="" coords="926,204,1028,219,1108,228,1187,237,1287,252,1299,254,1298,259,1286,257,1187,242,1108,233,1028,225,925,209"/>
-<area shape="rect" href="bitvector__methods_8c.html" title="Aggregates all BitVector Python methods into a single table." alt="" coords="413,255,565,295"/>
+<area shape="rect" href="bitvector__methods_8c.html" title="Aggregates all Python&#45;visible BitVector methods into one table." alt="" coords="413,255,565,295"/>
 <area shape="poly" title=" " alt="" coords="747,213,566,257,565,252,746,207"/>
 <area shape="poly" title=" " alt="" coords="455,217,479,253,475,256,451,220"/>
 <area shape="rect" href="bitvector__methods__basic_8c.html" title="Implementation of basic BitVector Python methods." alt="" coords="237,255,389,295"/>
@@ -153,12 +175,12 @@ This graph shows which files directly or indirectly include this file:</div>
 <area shape="poly" title=" " alt="" coords="573,217,517,257,514,252,570,213"/>
 <area shape="poly" title=" " alt="" coords="631,217,655,253,651,256,627,220"/>
 <area shape="poly" title=" " alt="" coords="1251,210,1337,252,1335,257,1248,215"/>
-<area shape="rect" href="bitvector__methods__misc_8c.html" title="Implementation of miscellaneous BitVector methods." alt="" coords="1123,255,1275,295"/>
+<area shape="rect" href="bitvector__methods__misc_8c.html" title="Implementation of miscellaneous BitVector Python methods." alt="" coords="1123,255,1275,295"/>
 <area shape="poly" title=" " alt="" coords="1201,221,1201,254,1196,254,1196,221"/>
 <area shape="poly" title=" " alt="" coords="1409,220,1388,256,1384,253,1405,217"/>
 <area shape="poly" title=" " alt="" coords="1466,212,1524,252,1521,257,1463,217"/>
 <area shape="poly" title=" " alt="" coords="322,209,439,252,438,257,320,214"/>
-<area shape="rect" href="bitvector__methods__rank_8c.html" title="Implementation of rank&#45;related Python methods." alt="" coords="61,255,213,295"/>
+<area shape="rect" href="bitvector__methods__rank_8c.html" title="Implementation of rank&#45;related Python methods for BitVector." alt="" coords="61,255,213,295"/>
 <area shape="poly" title=" " alt="" coords="221,217,165,257,162,252,218,213"/>
 <area shape="poly" title=" " alt="" coords="1540,214,1425,257,1423,252,1538,209"/>
 <area shape="poly" title=" " alt="" coords="1642,212,1700,252,1697,257,1639,217"/>
@@ -177,135 +199,33 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a0a8f01baffdf3bb27786df420e028246" id="r_a0a8f01baffdf3bb27786df420e028246"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbits__state_8h.html#a0a8f01baffdf3bb27786df420e028246">find_cbits_state_by_type</a>(type)&#160;&#160;&#160;        (<a class="el" href="cbits__state_8h.html#a18708cdf2b9ffc92445b7d79b0d09608">get_cbits_state</a>(PyType_GetModule((type))))</td></tr>
-<tr class="memdesc:a0a8f01baffdf3bb27786df420e028246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the cbits module state using a type object.  <br /></td></tr>
-<tr class="separator:a0a8f01baffdf3bb27786df420e028246"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b9dac7618c159921684f4ad127bf9ad" id="r_a4b9dac7618c159921684f4ad127bf9ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbits__state_8h.html#a4b9dac7618c159921684f4ad127bf9ad">py_bitvector_check</a>(object,  state)&#160;&#160;&#160;    PyObject_TypeCheck(object, state-&gt;PyBitVectorType)</td></tr>
-<tr class="memdesc:a4b9dac7618c159921684f4ad127bf9ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether an object is an instance of the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> type.  <br /></td></tr>
-<tr class="separator:a4b9dac7618c159921684f4ad127bf9ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0a8f01baffdf3bb27786df420e028246" id="r_ga0a8f01baffdf3bb27786df420e028246"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cbits__state__module.html#ga0a8f01baffdf3bb27786df420e028246">find_cbits_state_by_type</a>(type)&#160;&#160;&#160;        (<a class="el" href="group__cbits__state__module.html#ga18708cdf2b9ffc92445b7d79b0d09608">get_cbits_state</a>(PyType_GetModule((type))))</td></tr>
+<tr class="memdesc:ga0a8f01baffdf3bb27786df420e028246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the cbits module state using a type object.  <br /></td></tr>
+<tr class="separator:ga0a8f01baffdf3bb27786df420e028246"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4b9dac7618c159921684f4ad127bf9ad" id="r_ga4b9dac7618c159921684f4ad127bf9ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cbits__state__module.html#ga4b9dac7618c159921684f4ad127bf9ad">py_bitvector_check</a>(object,  state)&#160;&#160;&#160;    PyObject_TypeCheck(object, state-&gt;PyBitVectorType)</td></tr>
+<tr class="memdesc:ga4b9dac7618c159921684f4ad127bf9ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check whether an object is an instance of the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> type.  <br /></td></tr>
+<tr class="separator:ga4b9dac7618c159921684f4ad127bf9ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a18708cdf2b9ffc92445b7d79b0d09608" id="r_a18708cdf2b9ffc92445b7d79b0d09608"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structcbits__state.html">cbits_state</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cbits__state_8h.html#a18708cdf2b9ffc92445b7d79b0d09608">get_cbits_state</a> (PyObject *module)</td></tr>
-<tr class="memdesc:a18708cdf2b9ffc92445b7d79b0d09608"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the cbits module state from a module object.  <br /></td></tr>
-<tr class="separator:a18708cdf2b9ffc92445b7d79b0d09608"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga18708cdf2b9ffc92445b7d79b0d09608" id="r_ga18708cdf2b9ffc92445b7d79b0d09608"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structcbits__state.html">cbits_state</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__cbits__state__module.html#ga18708cdf2b9ffc92445b7d79b0d09608">get_cbits_state</a> (PyObject *module)</td></tr>
+<tr class="memdesc:ga18708cdf2b9ffc92445b7d79b0d09608"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the cbits module state from a module object.  <br /></td></tr>
+<tr class="separator:ga18708cdf2b9ffc92445b7d79b0d09608"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Module-local state for the cbits extension. </p>
-<p>Defines the per-module state structure used by the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> C extension. The state stores references to the Python types exposed by the module and provides helpers to retrieve the state and validate objects.</p>
+<div class="textblock"><p>Module-local state definition for the cbits extension. </p>
+<p>This header defines the per‑module state structure used by the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> CPython extension. The state stores references to the Python types exposed by the module and provides helpers for retrieving the state and validating objects at runtime.</p>
 <dl class="section author"><dt>Author</dt><dd>lambdaphoenix </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.3.0 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2026 lambdaphoenix </dd></dl>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a0a8f01baffdf3bb27786df420e028246" name="a0a8f01baffdf3bb27786df420e028246"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a8f01baffdf3bb27786df420e028246">&#9670;&#160;</a></span>find_cbits_state_by_type</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define find_cbits_state_by_type</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">type</td><td>)</td>
-          <td>&#160;&#160;&#160;        (<a class="el" href="cbits__state_8h.html#a18708cdf2b9ffc92445b7d79b0d09608">get_cbits_state</a>(PyType_GetModule((type))))</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Retrieve the cbits module state using a type object. </p>
-<p>Convenience wrapper for modules that need to access their state from a type method or slot.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">type</td><td>Type object to retrieve module from </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the module's <a class="el" href="structcbits__state.html" title="Per-module state for the cbits extension.">cbits_state</a>.</dd></dl>
-<dl class="section since"><dt>Since</dt><dd>0.3.0 </dd></dl>
-
-</div>
-</div>
-<a id="a4b9dac7618c159921684f4ad127bf9ad" name="a4b9dac7618c159921684f4ad127bf9ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b9dac7618c159921684f4ad127bf9ad">&#9670;&#160;</a></span>py_bitvector_check</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define py_bitvector_check</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">object, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">state&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td>&#160;&#160;&#160;    PyObject_TypeCheck(object, state-&gt;PyBitVectorType)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check whether an object is an instance of the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> type. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">object</td><td>Python object to test. </td></tr>
-    <tr><td class="paramname">state</td><td>Module state containing the <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> type. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Non-zero if the object is a <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a> instance, zero otherwise.</dd></dl>
-<dl class="section since"><dt>Since</dt><dd>0.3.0 </dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a18708cdf2b9ffc92445b7d79b0d09608" name="a18708cdf2b9ffc92445b7d79b0d09608"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18708cdf2b9ffc92445b7d79b0d09608">&#9670;&#160;</a></span>get_cbits_state()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="structcbits__state.html">cbits_state</a> * get_cbits_state </td>
-          <td>(</td>
-          <td class="paramtype">PyObject *&#160;</td>
-          <td class="paramname"><em>module</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Retrieve the cbits module state from a module object. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">module</td><td>Python module object created from cbits_module. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the module's <a class="el" href="structcbits__state.html" title="Per-module state for the cbits extension.">cbits_state</a>. </dd></dl>
-<dl class="section since"><dt>Since</dt><dd>0.3.0 </dd></dl>
-
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li><li class="navelem"><a class="el" href="cbits__state_8h.html">cbits_state.h</a></li>
+    <li class="footer">Generated on Tue Feb 10 2026 20:13:12 for cbits by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

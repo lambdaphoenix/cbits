@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -26,6 +35,18 @@
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -37,22 +58,23 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('bitvector__internal_8h_source.html',''); initResizable(); });
 /* @license-end */
 </script>
-<div id="main-nav"></div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function() { init_codefold(0); });
-/* @license-end */
-</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -74,11 +96,6 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">bitvector_internal.h</div></div>
 </div><!--header-->
@@ -163,15 +180,19 @@ $(document).ready(function() { init_codefold(0); });
 <div class="ttc" id="abitvector__internal_8h_html_aad3fe3384b6cd17117b81bc6da9e4083"><div class="ttname"><a href="bitvector__internal_8h.html#aad3fe3384b6cd17117b81bc6da9e4083">bv__get_inline</a></div><div class="ttdeci">static int bv__get_inline(const BitVector *bv, const size_t pos)</div><div class="ttdoc">Internal inline version of bv_get().</div><div class="ttdef"><b>Definition</b> bitvector_internal.h:49</div></div>
 <div class="ttc" id="abitvector__internal_8h_html_ac522e4654cef505c1ffcc75a426d639c"><div class="ttname"><a href="bitvector__internal_8h.html#ac522e4654cef505c1ffcc75a426d639c">bv_word</a></div><div class="ttdeci">static size_t bv_word(const size_t pos)</div><div class="ttdoc">Compute the word index for a given bit position.</div><div class="ttdef"><b>Definition</b> bitvector_internal.h:26</div></div>
 <div class="ttc" id="abitvector__internal_8h_html_ad7e0bb7a9f7e9a34611b3c3ba41bfdbf"><div class="ttname"><a href="bitvector__internal_8h.html#ad7e0bb7a9f7e9a34611b3c3ba41bfdbf">bv_bit</a></div><div class="ttdeci">static size_t bv_bit(const size_t pos)</div><div class="ttdoc">Compute the bit offset within its 64-bit word.</div><div class="ttdef"><b>Definition</b> bitvector_internal.h:36</div></div>
-<div class="ttc" id="astructBitVector_html"><div class="ttname"><a href="structBitVector.html">BitVector</a></div><div class="ttdoc">Packed array of bits with support for rank/select operations.</div><div class="ttdef"><b>Definition</b> bitvector.h:53</div></div>
-<div class="ttc" id="astructBitVector_html_aa956c76f1dcf37d70fbe6b26b23fc571"><div class="ttname"><a href="structBitVector.html#aa956c76f1dcf37d70fbe6b26b23fc571">BitVector::data</a></div><div class="ttdeci">uint64_t * data</div><div class="ttdef"><b>Definition</b> bitvector.h:54</div></div>
-<div class="ttc" id="astructBitVector_html_ab83f018fe84a783408855951df52ae43"><div class="ttname"><a href="structBitVector.html#ab83f018fe84a783408855951df52ae43">BitVector::n_bits</a></div><div class="ttdeci">size_t n_bits</div><div class="ttdef"><b>Definition</b> bitvector.h:55</div></div>
-<div class="ttc" id="astructBitVector_html_ae0bf575ac9079d9eb892a748a7dc04bd"><div class="ttname"><a href="structBitVector.html#ae0bf575ac9079d9eb892a748a7dc04bd">BitVector::n_words</a></div><div class="ttdeci">size_t n_words</div><div class="ttdef"><b>Definition</b> bitvector.h:56</div></div>
-<div class="ttc" id="astructBitVector_html_af65f0dc5339203d0870fbdd9a2779f5f"><div class="ttname"><a href="structBitVector.html#af65f0dc5339203d0870fbdd9a2779f5f">BitVector::rank_dirty</a></div><div class="ttdeci">bool rank_dirty</div><div class="ttdef"><b>Definition</b> bitvector.h:60</div></div>
+<div class="ttc" id="astructBitVector_html"><div class="ttname"><a href="structBitVector.html">BitVector</a></div><div class="ttdoc">Packed bit array with rank-support structures.</div><div class="ttdef"><b>Definition</b> bitvector.h:60</div></div>
+<div class="ttc" id="astructBitVector_html_aa956c76f1dcf37d70fbe6b26b23fc571"><div class="ttname"><a href="structBitVector.html#aa956c76f1dcf37d70fbe6b26b23fc571">BitVector::data</a></div><div class="ttdeci">uint64_t * data</div><div class="ttdef"><b>Definition</b> bitvector.h:61</div></div>
+<div class="ttc" id="astructBitVector_html_ab83f018fe84a783408855951df52ae43"><div class="ttname"><a href="structBitVector.html#ab83f018fe84a783408855951df52ae43">BitVector::n_bits</a></div><div class="ttdeci">size_t n_bits</div><div class="ttdef"><b>Definition</b> bitvector.h:62</div></div>
+<div class="ttc" id="astructBitVector_html_ae0bf575ac9079d9eb892a748a7dc04bd"><div class="ttname"><a href="structBitVector.html#ae0bf575ac9079d9eb892a748a7dc04bd">BitVector::n_words</a></div><div class="ttdeci">size_t n_words</div><div class="ttdef"><b>Definition</b> bitvector.h:63</div></div>
+<div class="ttc" id="astructBitVector_html_af65f0dc5339203d0870fbdd9a2779f5f"><div class="ttname"><a href="structBitVector.html#af65f0dc5339203d0870fbdd9a2779f5f">BitVector::rank_dirty</a></div><div class="ttdeci">bool rank_dirty</div><div class="ttdef"><b>Definition</b> bitvector.h:66</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="bitvector__internal_8h.html">bitvector_internal.h</a></li>
+    <li class="footer">Generated on Tue Feb 10 2026 20:13:12 for cbits by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

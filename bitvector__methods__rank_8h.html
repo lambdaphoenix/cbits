@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -26,6 +35,18 @@
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -37,17 +58,23 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('bitvector__methods__rank_8h.html',''); initResizable(); });
 /* @license-end */
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,11 +96,6 @@ $(function() {
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#func-members">Functions</a>  </div>
@@ -81,7 +103,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Rank-related Python methods for <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>.  
+<p>Rank-related Python methods for <code><a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a></code>.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="bitvector__object_8h_source.html">bitvector_object.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -89,32 +111,29 @@ Include dependency graph for bitvector_methods_rank.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="bitvector__methods__rank_8h__incl.png" border="0" usemap="#asrc_2python_2bitvector__methods__rank_8h" alt=""/></div>
 <map name="asrc_2python_2bitvector__methods__rank_8h" id="asrc_2python_2bitvector__methods__rank_8h">
-<area shape="rect" title="Rank&#45;related Python methods for BitVector." alt="" coords="21,5,173,45"/>
-<area shape="rect" href="bitvector__object_8h.html" title="Definition of the PyBitVector Python type." alt="" coords="27,93,166,119"/>
-<area shape="poly" title=" " alt="" coords="99,46,99,79,94,79,94,46"/>
-<area shape="rect" title=" " alt="" coords="5,313,84,339"/>
-<area shape="poly" title=" " alt="" coords="79,121,54,141,34,168,24,202,24,238,30,271,38,300,33,301,25,273,19,238,19,201,29,165,50,137,76,117"/>
-<area shape="rect" href="bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="173,167,322,192"/>
-<area shape="poly" title=" " alt="" coords="122,116,211,158,209,163,120,121"/>
-<area shape="rect" href="cbits__state_8h.html" title="Module&#45;local state for the cbits extension." alt="" coords="44,167,149,192"/>
-<area shape="poly" title=" " alt="" coords="99,119,99,153,94,153,94,119"/>
-<area shape="rect" href="bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="202,240,293,265"/>
-<area shape="poly" title=" " alt="" coords="250,192,250,226,245,226,245,192"/>
-<area shape="rect" title=" " alt="" coords="371,387,446,412"/>
-<area shape="poly" title=" " alt="" coords="294,261,342,279,365,293,385,312,402,341,409,372,404,373,397,343,381,315,362,298,339,284,292,266"/>
-<area shape="rect" title=" " alt="" coords="145,387,216,412"/>
-<area shape="poly" title=" " alt="" coords="224,268,195,287,182,300,172,314,168,329,167,344,173,373,168,374,162,344,163,328,168,312,178,296,192,283,221,263"/>
-<area shape="rect" title=" " alt="" coords="182,313,265,339"/>
-<area shape="poly" title=" " alt="" coords="246,267,234,301,229,299,241,265"/>
-<area shape="rect" href="compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="289,313,371,339"/>
-<area shape="poly" title=" " alt="" coords="262,263,308,302,304,306,259,267"/>
-<area shape="poly" title=" " alt="" coords="344,337,388,376,384,379,341,341"/>
-<area shape="poly" title=" " alt="" coords="307,341,219,383,216,378,305,336"/>
-<area shape="rect" title=" " alt="" coords="276,387,347,412"/>
-<area shape="poly" title=" " alt="" coords="329,340,320,374,315,373,324,338"/>
-<area shape="rect" href="cbits__module_8h.html" title="Forward declaration of the cbits module definition." alt="" coords="40,240,161,265"/>
-<area shape="poly" title=" " alt="" coords="100,192,102,226,97,227,95,192"/>
-<area shape="poly" title=" " alt="" coords="94,267,64,304,60,301,89,264"/>
+<area shape="rect" title="Rank&#45;related Python methods for BitVector." alt="" coords="129,5,281,45"/>
+<area shape="rect" href="bitvector__object_8h.html" title="Definition of the PyBitVector Python type." alt="" coords="136,93,275,119"/>
+<area shape="poly" title=" " alt="" coords="208,46,208,79,203,79,203,46"/>
+<area shape="rect" href="bitvector__internal_8h.html" title="Internal inline helpers for BitVector operations." alt="" coords="55,167,204,192"/>
+<area shape="poly" title=" " alt="" coords="195,121,154,159,150,155,191,117"/>
+<area shape="rect" href="cbits__state_8h.html" title="Module&#45;local state definition for the cbits extension." alt="" coords="229,167,334,192"/>
+<area shape="poly" title=" " alt="" coords="219,117,261,155,257,159,216,121"/>
+<area shape="rect" href="bitvector_8h.html" title="Public C API for the BitVector data structure." alt="" coords="84,240,175,265"/>
+<area shape="poly" title=" " alt="" coords="132,192,132,226,127,226,127,192"/>
+<area shape="rect" title=" " alt="" coords="5,313,88,339"/>
+<area shape="poly" title=" " alt="" coords="118,267,72,306,69,302,114,263"/>
+<area shape="rect" href="compat_8h.html" title="Cross&#45;platform aligned allocators, popcount, prefetch." alt="" coords="112,313,195,339"/>
+<area shape="poly" title=" " alt="" coords="136,265,148,299,143,301,131,267"/>
+<area shape="rect" title=" " alt="" coords="21,387,91,412"/>
+<area shape="poly" title=" " alt="" coords="139,341,85,380,82,376,136,337"/>
+<area shape="rect" title=" " alt="" coords="116,387,191,412"/>
+<area shape="poly" title=" " alt="" coords="156,339,156,373,151,373,151,339"/>
+<area shape="rect" title=" " alt="" coords="215,387,286,412"/>
+<area shape="poly" title=" " alt="" coords="171,337,225,376,222,380,167,341"/>
+<area shape="rect" href="cbits__module_8h.html" title="Forward declaration of the cbits module definition." alt="" coords="221,240,342,265"/>
+<area shape="poly" title=" " alt="" coords="284,192,284,226,279,226,279,192"/>
+<area shape="rect" title=" " alt="" coords="242,313,321,339"/>
+<area shape="poly" title=" " alt="" coords="284,266,284,300,279,300,279,266"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -123,9 +142,9 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="center"><img src="bitvector__methods__rank_8h__dep__incl.png" border="0" usemap="#asrc_2python_2bitvector__methods__rank_8hdep" alt=""/></div>
 <map name="asrc_2python_2bitvector__methods__rank_8hdep" id="asrc_2python_2bitvector__methods__rank_8hdep">
 <area shape="rect" title="Rank&#45;related Python methods for BitVector." alt="" coords="93,5,245,45"/>
-<area shape="rect" href="bitvector__methods_8c.html" title="Aggregates all BitVector Python methods into a single table." alt="" coords="5,93,157,133"/>
+<area shape="rect" href="bitvector__methods_8c.html" title="Aggregates all Python&#45;visible BitVector methods into one table." alt="" coords="5,93,157,133"/>
 <area shape="poly" title=" " alt="" coords="142,57,103,95,99,91,138,53"/>
-<area shape="rect" href="bitvector__methods__rank_8c.html" title="Implementation of rank&#45;related Python methods." alt="" coords="181,93,333,133"/>
+<area shape="rect" href="bitvector__methods__rank_8c.html" title="Implementation of rank&#45;related Python methods for BitVector." alt="" coords="181,93,333,133"/>
 <area shape="poly" title=" " alt="" coords="201,53,240,91,236,95,197,57"/>
 </map>
 </div>
@@ -135,14 +154,12 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:af67a1a359a4f421524b1e0d93458226b" id="r_af67a1a359a4f421524b1e0d93458226b"><td class="memItemLeft" align="right" valign="top">PyObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__methods__rank_8h.html#af67a1a359a4f421524b1e0d93458226b">py_bitvector_rank</a> (PyObject *self, PyObject *arg)</td></tr>
-<tr class="memdesc:af67a1a359a4f421524b1e0d93458226b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Python binding for BitVector.rank(index) → bool.  <br /></td></tr>
+<tr class="memdesc:af67a1a359a4f421524b1e0d93458226b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Python binding for <code>BitVector.rank(index)</code>.  <br /></td></tr>
 <tr class="separator:af67a1a359a4f421524b1e0d93458226b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Rank-related Python methods for <a class="el" href="structBitVector.html" title="Packed array of bits with support for rank/select operations.">BitVector</a>. </p>
-<p>Declares:</p><ul>
-<li>rank</li>
-</ul>
+<div class="textblock"><p>Rank-related Python methods for <code><a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a></code>. </p>
+<p>Declares the Python binding for the <code>BitVector.rank</code> method, which counts the number of bits set to True in the prefix range <code>[0..index[</code>.</p>
 <dl class="section author"><dt>Author</dt><dd>lambdaphoenix </dd></dl>
 <dl class="section version"><dt>Version</dt><dd>0.3.0 </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2026 lambdaphoenix </dd></dl>
@@ -173,22 +190,33 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Python binding for BitVector.rank(index) → bool. </p>
+<p>Python binding for <code>BitVector.rank(index)</code>. </p>
+<p>Parses the index argument, applies Python’s negative‑index normalization, validates bounds, and returns the number of set bits in the half-open range <code>[0..index)</code>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">self</td><td>A Python <a class="el" href="structPyBitVectorObject.html" title="Python object containing a pointer to a native BitVector.">PyBitVectorObject</a> instance. </td></tr>
-    <tr><td class="paramname">arg</td><td>Python argument. </td></tr>
+    <tr><td class="paramname">self</td><td>A <code><a class="el" href="structPyBitVectorObject.html" title="Python object wrapping a native BitVector instance.">PyBitVectorObject</a></code> instance. </td></tr>
+    <tr><td class="paramname">arg</td><td>Python argument representing the index. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of bits set in range [0...pos] </dd></dl>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">int</td><td>New Python integer on success. </td></tr>
+    <tr><td class="paramname">NULL</td><td>on failure (exception set). </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li><li class="navelem"><a class="el" href="bitvector__methods__rank_8h.html">bitvector_methods_rank.h</a></li>
+    <li class="footer">Generated on Tue Feb 10 2026 20:13:12 for cbits by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

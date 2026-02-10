@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -26,6 +35,18 @@
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -37,17 +58,23 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('structBitVector.html',''); initResizable(); });
 /* @license-end */
 </script>
-<div id="main-nav"></div>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -69,7 +96,6 @@ $(function() {
 </div>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
@@ -78,10 +104,26 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Packed array of bits with support for rank/select operations.  
+<p>Packed bit array with rank-support structures.  
  <a href="structBitVector.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="bitvector_8h_source.html">bitvector.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for BitVector:</div>
+<div class="dyncontent">
+<div class="center"><img src="structBitVector__coll__graph.png" border="0" usemap="#aBitVector_coll__map" alt="Collaboration graph"/></div>
+<map name="aBitVector_coll__map" id="aBitVector_coll__map">
+<area shape="rect" title="Packed bit array with rank&#45;support structures." alt="" coords="157,123,239,148"/>
+<area shape="rect" title=" " alt="" coords="5,5,92,31"/>
+<area shape="poly" title=" " alt="" coords="62,42,78,70,102,97,129,112,158,123,156,128,127,117,99,101,74,74,57,45"/>
+<area shape="rect" title=" " alt="" coords="116,5,176,31"/>
+<area shape="poly" title=" " alt="" coords="143,44,143,71,150,97,160,110,174,120,171,125,156,114,145,100,137,72,138,44"/>
+<area shape="rect" title=" " alt="" coords="207,5,293,31"/>
+<area shape="poly" title=" " alt="" coords="245,45,223,100,208,124,204,121,218,97,240,43"/>
+<area shape="rect" title=" " alt="" coords="331,5,382,31"/>
+<area shape="poly" title=" " alt="" coords="353,45,342,74,321,101,302,113,281,123,240,133,239,128,280,118,300,109,318,97,337,71,348,43"/>
+</map>
+<center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -99,8 +141,8 @@ Public Attributes</h2></td></tr>
 <tr class="separator:af65f0dc5339203d0870fbdd9a2779f5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Packed array of bits with support for rank/select operations. </p>
-<p>Stores bits in an aligned array of 64-bit words, and maintains auxiliary superblock and block rank tables for constant-time rank queries. </p>
+<div class="textblock"><p>Packed bit array with rank-support structures. </p>
+<p>Stores bits in an aligned array of 64‑bit words and maintains auxiliary superblock‑ and block‑level prefix popcount tables for constant‑time rank queries. </p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
 <a id="acca22beea5c72befb73b720e5584edb2" name="acca22beea5c72befb73b720e5584edb2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acca22beea5c72befb73b720e5584edb2">&#9670;&#160;</a></span>block_rank</h2>
@@ -113,7 +155,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Prefix-sum of popcounts at block granularity. </p>
+<p>Block-level prefix popcunts. </p>
 
 </div>
 </div>
@@ -173,7 +215,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Flag indicating that rank tables need rebuilding. </p>
+<p>Indicates rank tables must be rebuilt. </p>
 
 </div>
 </div>
@@ -188,7 +230,7 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Prefix-sum of popcounts at superblock granularity. </p>
+<p>Superblock-level prefix popcounts. </p>
 
 </div>
 </div>
@@ -196,9 +238,13 @@ Public Attributes</h2></td></tr>
 <li>include/<a class="el" href="bitvector_8h_source.html">bitvector.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="structBitVector.html">BitVector</a></li>
+    <li class="footer">Generated on Tue Feb 10 2026 20:13:12 for cbits by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

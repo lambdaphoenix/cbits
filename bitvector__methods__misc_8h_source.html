@@ -9,9 +9,18 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(document).ready(function() { init_search(); });
+/* @license-end */
+</script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen_style.css" rel="stylesheet" type="text/css"/>
 </head>
@@ -26,6 +35,18 @@
    </div>
    <div id="projectbrief">High-performance BitVector C-API &amp; Python binding</div>
   </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="Search" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
  </tr>
  </tbody>
 </table>
@@ -37,22 +58,23 @@
 var searchBox = new SearchBox("searchBox", "search/",'.html');
 /* @license-end */
 </script>
-<script type="text/javascript" src="menudata.js"></script>
-<script type="text/javascript" src="menu.js"></script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(function() {
-  initMenu('',true,false,'search.php','Search');
-  $(document).ready(function() { init_search(); });
-});
+$(document).ready(function(){initNavTree('bitvector__methods__misc_8h_source.html',''); initResizable(); });
 /* @license-end */
 </script>
-<div id="main-nav"></div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function() { init_codefold(0); });
-/* @license-end */
-</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -74,43 +96,42 @@ $(document).ready(function() { init_codefold(0); });
 </div>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="headertitle"><div class="title">bitvector_methods_misc.h</div></div>
 </div><!--header-->
 <div class="contents">
 <a href="bitvector__methods__misc_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#ifndef CBITS_PY_BITVECTOR_METHODS_MISC_H</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define CBITS_PY_BITVECTOR_METHODS_MISC_H</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="bitvector__object_8h.html">bitvector_object.h</a>&quot;</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>Py_ssize_t</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#aa6c45cb08a04282d2a7b5a68d67b7d63">py_bitvector_len</a>(PyObject *self);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>PyObject *</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#a86b6b03992fbc00109b59e536cffc2c1">py_bitvector_repr</a>(PyObject *self);</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>PyObject *</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#ab89d3f819b9aa435f1a78e2820a3de45">py_bitvector_str</a>(PyObject *self);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keywordtype">int</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#aa3642b638b71860117666d483eefd956">py_bitvector_contains</a>(PyObject *self, PyObject *value);</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">extern</span> PyGetSetDef <a class="code hl_variable" href="bitvector__methods__misc_8h.html#aed9d2206089523b6bc6fbac996e9895e">PyBitVector_getset</a>[];</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#endif </span><span class="comment">/* CBITS_PY_BITVECTOR_METHODS_MISC_H */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="abitvector__methods__misc_8h_html_a86b6b03992fbc00109b59e536cffc2c1"><div class="ttname"><a href="bitvector__methods__misc_8h.html#a86b6b03992fbc00109b59e536cffc2c1">py_bitvector_repr</a></div><div class="ttdeci">PyObject * py_bitvector_repr(PyObject *self)</div><div class="ttdoc">repr for BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:21</div></div>
-<div class="ttc" id="abitvector__methods__misc_8h_html_aa3642b638b71860117666d483eefd956"><div class="ttname"><a href="bitvector__methods__misc_8h.html#aa3642b638b71860117666d483eefd956">py_bitvector_contains</a></div><div class="ttdeci">int py_bitvector_contains(PyObject *self, PyObject *value)</div><div class="ttdoc">contains(BitVector, other) → boolean.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:43</div></div>
-<div class="ttc" id="abitvector__methods__misc_8h_html_aa6c45cb08a04282d2a7b5a68d67b7d63"><div class="ttname"><a href="bitvector__methods__misc_8h.html#aa6c45cb08a04282d2a7b5a68d67b7d63">py_bitvector_len</a></div><div class="ttdeci">Py_ssize_t py_bitvector_len(PyObject *self)</div><div class="ttdoc">len(BitVector) → number of bits.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:36</div></div>
-<div class="ttc" id="abitvector__methods__misc_8h_html_ab89d3f819b9aa435f1a78e2820a3de45"><div class="ttname"><a href="bitvector__methods__misc_8h.html#ab89d3f819b9aa435f1a78e2820a3de45">py_bitvector_str</a></div><div class="ttdeci">PyObject * py_bitvector_str(PyObject *self)</div><div class="ttdoc">str for BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:29</div></div>
-<div class="ttc" id="abitvector__methods__misc_8h_html_aed9d2206089523b6bc6fbac996e9895e"><div class="ttname"><a href="bitvector__methods__misc_8h.html#aed9d2206089523b6bc6fbac996e9895e">PyBitVector_getset</a></div><div class="ttdeci">PyGetSetDef PyBitVector_getset[]</div><div class="ttdoc">Property definitions for the BitVector type.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:76</div></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifndef CBITS_PY_BITVECTOR_METHODS_MISC_H</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#define CBITS_PY_BITVECTOR_METHODS_MISC_H</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;<a class="code" href="bitvector__object_8h.html">bitvector_object.h</a>&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>Py_ssize_t</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#aa6c45cb08a04282d2a7b5a68d67b7d63">py_bitvector_len</a>(PyObject *self);</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>PyObject *</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#a86b6b03992fbc00109b59e536cffc2c1">py_bitvector_repr</a>(PyObject *self);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>PyObject *</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#ab89d3f819b9aa435f1a78e2820a3de45">py_bitvector_str</a>(PyObject *self);</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keywordtype">int</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><a class="code hl_function" href="bitvector__methods__misc_8h.html#aa3642b638b71860117666d483eefd956">py_bitvector_contains</a>(PyObject *self, PyObject *value);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keyword">extern</span> PyGetSetDef <a class="code hl_variable" href="bitvector__methods__misc_8h.html#aed9d2206089523b6bc6fbac996e9895e">PyBitVector_getset</a>[];</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif </span><span class="comment">/* CBITS_PY_BITVECTOR_METHODS_MISC_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="abitvector__methods__misc_8h_html_a86b6b03992fbc00109b59e536cffc2c1"><div class="ttname"><a href="bitvector__methods__misc_8h.html#a86b6b03992fbc00109b59e536cffc2c1">py_bitvector_repr</a></div><div class="ttdeci">PyObject * py_bitvector_repr(PyObject *self)</div><div class="ttdoc">Implement repr(BitVector).</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:18</div></div>
+<div class="ttc" id="abitvector__methods__misc_8h_html_aa3642b638b71860117666d483eefd956"><div class="ttname"><a href="bitvector__methods__misc_8h.html#aa3642b638b71860117666d483eefd956">py_bitvector_contains</a></div><div class="ttdeci">int py_bitvector_contains(PyObject *self, PyObject *value)</div><div class="ttdoc">Implement value in BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:40</div></div>
+<div class="ttc" id="abitvector__methods__misc_8h_html_aa6c45cb08a04282d2a7b5a68d67b7d63"><div class="ttname"><a href="bitvector__methods__misc_8h.html#aa6c45cb08a04282d2a7b5a68d67b7d63">py_bitvector_len</a></div><div class="ttdeci">Py_ssize_t py_bitvector_len(PyObject *self)</div><div class="ttdoc">Implement len(BitVector).</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:33</div></div>
+<div class="ttc" id="abitvector__methods__misc_8h_html_ab89d3f819b9aa435f1a78e2820a3de45"><div class="ttname"><a href="bitvector__methods__misc_8h.html#ab89d3f819b9aa435f1a78e2820a3de45">py_bitvector_str</a></div><div class="ttdeci">PyObject * py_bitvector_str(PyObject *self)</div><div class="ttdoc">Implement str(BitVector).</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:26</div></div>
+<div class="ttc" id="abitvector__methods__misc_8h_html_aed9d2206089523b6bc6fbac996e9895e"><div class="ttname"><a href="bitvector__methods__misc_8h.html#aed9d2206089523b6bc6fbac996e9895e">PyBitVector_getset</a></div><div class="ttdeci">PyGetSetDef PyBitVector_getset[]</div><div class="ttdoc">Property table for the BitVector type.</div><div class="ttdef"><b>Definition</b> bitvector_methods_misc.c:76</div></div>
 <div class="ttc" id="abitvector__object_8h_html"><div class="ttname"><a href="bitvector__object_8h.html">bitvector_object.h</a></div><div class="ttdoc">Definition of the PyBitVector Python type.</div></div>
 </div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated on Tue Feb 10 2026 02:25:23 for cbits by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li><li class="navelem"><a class="el" href="bitvector__methods__misc_8h.html">bitvector_methods_misc.h</a></li>
+    <li class="footer">Generated on Tue Feb 10 2026 20:13:12 for cbits by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+  </ul>
+</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <map id="src/python/cbits_state.h" name="src/python/cbits_state.h">
-<area shape="rect" id="Node000001" title="Module&#45;local state for the cbits extension." alt="" coords="5,5,183,31"/>
+<area shape="rect" id="Node000001" title="Module&#45;local state definition for the cbits extension." alt="" coords="5,5,183,31"/>
 <area shape="rect" id="Node000002" href="$cbits__module_8h.html" title="Forward declaration of the cbits module definition." alt="" coords="33,79,155,104"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,31,97,65,91,65,91,31"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="55,152,133,177"/>
