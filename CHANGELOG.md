@@ -1,4 +1,14 @@
 # CHANGELOG
+## [0.2.1]
+### Added
+ - GitHub Actions workflow extended with an optimized CI pipeline including C tests, a Python version matrix, and manual release approval.
+ - CI status badge added to the README for clearer visibility of build health.
+
+### Changed
+ - Test workflow cleaned up by removing requirements.txt in favor of dev extras.
+ - Python 3.14 added to the supported/tested versions.
+ - Internal CI structure improved by consolidating C and Python test execution.
+
 ## [0.2.0]
 ### Added
 - Implement `__iter__` for Python BitVector.

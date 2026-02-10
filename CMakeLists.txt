@@ -82,17 +82,22 @@ target_link_libraries(${MODULE_NAME}
 # =============================================================
 if (MSVC)
 	if(CMAKE_SIZEOF_VOID_P EQUAL 8)
-		target_compile_options(${MODULE_NAME} PRIVATE /O2 /arch:AVX2)
+		target_compile_options(${MODULE_NAME} PRIVATE
+			$<$<CONFIG:Release>:/O2>
+			$<$<CONFIG:Release>:/arch:AVX2>
+		)
 		target_compile_definitions(${MODULE_NAME} PRIVATE
-			__AVX2__=1
+			$<$<CONFIG:Release>:__AVX2__=1>
 		)
 		check_c_compiler_flag("/arch:AVX512VPOPCNTDQ" HAS_AVX512VPOPCNTDQ)
 		if(HAS_AVX512VPOPCNTDQ)
-			target_compile_options(${MODULE_NAME} PRIVATE /arch:AVX512VPOPCNTDQ)
-			target_compile_definitions(${MODULE_NAME} PRIVATE __AVX512VPOPCNTDQ__=1)
+			target_compile_options(${MODULE_NAME} PRIVATE
+				$<$<CONFIG:Release>:/arch:AVX512VPOPCNTDQ>
+			)
+			target_compile_definitions(${MODULE_NAME} PRIVATE
+				$<$<CONFIG:Release>:__AVX512VPOPCNTDQ__=1>
+			)
 		endif()
-	else()
-		target_compile_options(${MODULE_NAME} PRIVATE /O2)
 	endif()
 	set_target_properties(${MODULE_NAME} PROPERTIES SUFFIX ".pyd")
 else()
