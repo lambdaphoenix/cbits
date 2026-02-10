@@ -21,10 +21,17 @@ jobs:
       
       - name: Run C tests
         run: |
-          cmake -B build -DCMAKE_BUILD_TYPE=Debug
-          cmake --build build --parallel --config Debug
-          cd build
-          ctest --output-on-failure -C Debug
+          if [ "$RUNNER_OS" = "Windows" ]; then
+            cmake -B build -DCMAKE_BUILD_TYPE=Release
+            cmake --build build --parallel --config Release
+            cd build
+            ctest --output-on-failure -C Release
+          else
+            cmake -B build -DCMAKE_BUILD_TYPE=Debug
+            cmake --build build --parallel
+            cd build
+            ctest --output-on-failure
+          fi
 
   test_python:
     name: Python Tests
