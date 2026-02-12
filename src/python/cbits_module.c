@@ -99,7 +99,15 @@ cbits_module_exec(PyObject *module)
  * Installed as the module’s ``__doc__`` attribute.
  * @since 0.3.0
  */
-PyDoc_STRVAR(module_doc, "cbits");
+PyDoc_STRVAR(
+    module_doc,
+    "Low-level C extension providing the BitVector type.\n"
+    "\n"
+    "This module implements the high-performance BitVector backend used by "
+    "the cbits package. It exposes the BitVector type, its iterator, and all "
+    "native operations such as slicing, bitwise ops, and rank-support.\n"
+    "\n"
+    "The module is internal and not intended for direct use.");
 /**
  * @brief Method table for the module.
  *

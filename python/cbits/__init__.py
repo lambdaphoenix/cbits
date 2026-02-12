@@ -8,7 +8,7 @@
 # @version 0.3.0
 # @copyright Copyright (c) 2026 lambdaphoenix
 """
-cbits - High-performance BitVector for Python.
+High-performance BitVector for Python.
 
 This module exposes the Python-level API for the BitVector C extension.
 

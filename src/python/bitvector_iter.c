@@ -56,6 +56,15 @@ py_bitvector_iter(PyObject *self)
     PyObject_GC_Track(iter);
     return (PyObject *) iter;
 }
+/** @brief Docstring for the ``BitVector`` iterator. */
+PyDoc_STRVAR(PyBitVectorIter__doc__,
+             "Internal iterator for BitVector objects.\n"
+             "\n"
+             "This type is returned by BitVector.__iter__() and yields the "
+             "bits of the vector in order from index 0 to len(BitVector)-1.\n"
+             "\n"
+             "Users should not instantiate this type directly.");
+
 /**
  * @brief Deallocate a BitVector iterator object.
  *
@@ -161,6 +170,8 @@ static PyMethodDef py_bitvectoriter_methods[] = {{NULL, NULL}};
  * Defines deallocation, GC traversal, ``__iter__`` and ``__next__``.
  */
 static PyType_Slot PyBitVectorIter_slots[] = {
+    {Py_tp_doc, (void *) PyBitVectorIter__doc__},
+
     {Py_tp_dealloc, py_bitvectoriter_dealloc},
     {Py_tp_getattro, PyObject_GenericGetAttr},
     {Py_tp_traverse, py_bitvectoriter_traverse},
