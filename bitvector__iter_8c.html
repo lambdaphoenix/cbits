@@ -154,6 +154,10 @@ Functions</h2></td></tr>
 <tr class="memitem:a64b04d42f3fb652fa9bdda6ae23740e9" id="r_a64b04d42f3fb652fa9bdda6ae23740e9"><td class="memItemLeft" align="right" valign="top">PyObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__iter_8c.html#a64b04d42f3fb652fa9bdda6ae23740e9">py_bitvector_iter</a> (PyObject *self)</td></tr>
 <tr class="memdesc:a64b04d42f3fb652fa9bdda6ae23740e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create and a new <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> iterator.  <br /></td></tr>
 <tr class="separator:a64b04d42f3fb652fa9bdda6ae23740e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22fff92f132f4995892a7748e21af94b" id="r_a22fff92f132f4995892a7748e21af94b"><td class="memItemLeft" align="right" valign="top"><a id="a22fff92f132f4995892a7748e21af94b" name="a22fff92f132f4995892a7748e21af94b"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>PyDoc_STRVAR</b> (PyBitVectorIter__doc__, &quot;Internal iterator for <a class="el" href="structBitVector.html">BitVector</a> objects.\n&quot; &quot;\n&quot; &quot;This type is returned by BitVector.__iter__() and yields the &quot; &quot;bits of the vector in order from index 0 to len(<a class="el" href="structBitVector.html">BitVector</a>)-1.\n&quot; &quot;\n&quot; &quot;Users should not instantiate this type directly.&quot;)</td></tr>
+<tr class="memdesc:a22fff92f132f4995892a7748e21af94b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Docstring for the <code><a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a></code> iterator. <br /></td></tr>
+<tr class="separator:a22fff92f132f4995892a7748e21af94b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd07930520f92db615db6a0fa5dfdacf" id="r_abd07930520f92db615db6a0fa5dfdacf"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bitvector__iter_8c.html#abd07930520f92db615db6a0fa5dfdacf">py_bitvectoriter_dealloc</a> (PyObject *self)</td></tr>
 <tr class="memdesc:abd07930520f92db615db6a0fa5dfdacf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deallocate a <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> iterator object.  <br /></td></tr>
 <tr class="separator:abd07930520f92db615db6a0fa5dfdacf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -403,6 +407,8 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    {Py_tp_doc, (<span class="keywordtype">void</span> *) PyBitVectorIter__doc__},</div>
+<div class="line"> </div>
 <div class="line">    {Py_tp_dealloc, <a class="code hl_function" href="bitvector__iter_8c.html#abd07930520f92db615db6a0fa5dfdacf">py_bitvectoriter_dealloc</a>},</div>
 <div class="line">    {Py_tp_getattro, PyObject_GenericGetAttr},</div>
 <div class="line">    {Py_tp_traverse, <a class="code hl_function" href="bitvector__iter_8c.html#ade3f0d70d9980176d6deaca70272cfd0">py_bitvectoriter_traverse</a>},</div>
@@ -411,10 +417,10 @@ Variables</h2></td></tr>
 <div class="line">    {Py_tp_methods, <a class="code hl_variable" href="bitvector__iter_8c.html#a42b5caa33e05bc04ac8ba323fdf74478">py_bitvectoriter_methods</a>},</div>
 <div class="line">    {0, NULL},</div>
 <div class="line">}</div>
-<div class="ttc" id="abitvector__iter_8c_html_a42b5caa33e05bc04ac8ba323fdf74478"><div class="ttname"><a href="bitvector__iter_8c.html#a42b5caa33e05bc04ac8ba323fdf74478">py_bitvectoriter_methods</a></div><div class="ttdeci">static PyMethodDef py_bitvectoriter_methods[]</div><div class="ttdoc">Method table for the BitVector iterator type.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:156</div></div>
-<div class="ttc" id="abitvector__iter_8c_html_abd07930520f92db615db6a0fa5dfdacf"><div class="ttname"><a href="bitvector__iter_8c.html#abd07930520f92db615db6a0fa5dfdacf">py_bitvectoriter_dealloc</a></div><div class="ttdeci">static void py_bitvectoriter_dealloc(PyObject *self)</div><div class="ttdoc">Deallocate a BitVector iterator object.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:67</div></div>
-<div class="ttc" id="abitvector__iter_8c_html_ade3f0d70d9980176d6deaca70272cfd0"><div class="ttname"><a href="bitvector__iter_8c.html#ade3f0d70d9980176d6deaca70272cfd0">py_bitvectoriter_traverse</a></div><div class="ttdeci">static int py_bitvectoriter_traverse(PyObject *self, visitproc visit, void *arg)</div><div class="ttdoc">GC traverse callback for the BitVector iterator.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:90</div></div>
-<div class="ttc" id="abitvector__iter_8c_html_ae379d14261adebcb809ed5e96d867db8"><div class="ttname"><a href="bitvector__iter_8c.html#ae379d14261adebcb809ed5e96d867db8">py_bitvectoriter_next</a></div><div class="ttdeci">static PyObject * py_bitvectoriter_next(PyObject *self)</div><div class="ttdoc">Return the next bit as a Python boolean.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:109</div></div>
+<div class="ttc" id="abitvector__iter_8c_html_a42b5caa33e05bc04ac8ba323fdf74478"><div class="ttname"><a href="bitvector__iter_8c.html#a42b5caa33e05bc04ac8ba323fdf74478">py_bitvectoriter_methods</a></div><div class="ttdeci">static PyMethodDef py_bitvectoriter_methods[]</div><div class="ttdoc">Method table for the BitVector iterator type.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:169</div></div>
+<div class="ttc" id="abitvector__iter_8c_html_abd07930520f92db615db6a0fa5dfdacf"><div class="ttname"><a href="bitvector__iter_8c.html#abd07930520f92db615db6a0fa5dfdacf">py_bitvectoriter_dealloc</a></div><div class="ttdeci">static void py_bitvectoriter_dealloc(PyObject *self)</div><div class="ttdoc">Deallocate a BitVector iterator object.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:76</div></div>
+<div class="ttc" id="abitvector__iter_8c_html_ade3f0d70d9980176d6deaca70272cfd0"><div class="ttname"><a href="bitvector__iter_8c.html#ade3f0d70d9980176d6deaca70272cfd0">py_bitvectoriter_traverse</a></div><div class="ttdeci">static int py_bitvectoriter_traverse(PyObject *self, visitproc visit, void *arg)</div><div class="ttdoc">GC traverse callback for the BitVector iterator.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:99</div></div>
+<div class="ttc" id="abitvector__iter_8c_html_ae379d14261adebcb809ed5e96d867db8"><div class="ttname"><a href="bitvector__iter_8c.html#ae379d14261adebcb809ed5e96d867db8">py_bitvectoriter_next</a></div><div class="ttdeci">static PyObject * py_bitvectoriter_next(PyObject *self)</div><div class="ttdoc">Return the next bit as a Python boolean.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:118</div></div>
 </div><!-- fragment -->
 <p>Type slots for the <a class="el" href="structBitVector.html" title="Packed bit array with rank-support structures.">BitVector</a> iterator. </p>
 <p>Defines deallocation, GC traversal, <code>__iter__</code> and <code>__next__</code>. </p>
@@ -439,7 +445,7 @@ Variables</h2></td></tr>
 <div class="line">              Py_TPFLAGS_DISALLOW_INSTANTIATION | Py_TPFLAGS_IMMUTABLETYPE),</div>
 <div class="line">    .slots = <a class="code hl_variable" href="bitvector__iter_8c.html#a5741aa05e43e6ec2d650341f5d4b1a0b">PyBitVectorIter_slots</a>,</div>
 <div class="line">}</div>
-<div class="ttc" id="abitvector__iter_8c_html_a5741aa05e43e6ec2d650341f5d4b1a0b"><div class="ttname"><a href="bitvector__iter_8c.html#a5741aa05e43e6ec2d650341f5d4b1a0b">PyBitVectorIter_slots</a></div><div class="ttdeci">static PyType_Slot PyBitVectorIter_slots[]</div><div class="ttdoc">Type slots for the BitVector iterator.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:163</div></div>
+<div class="ttc" id="abitvector__iter_8c_html_a5741aa05e43e6ec2d650341f5d4b1a0b"><div class="ttname"><a href="bitvector__iter_8c.html#a5741aa05e43e6ec2d650341f5d4b1a0b">PyBitVectorIter_slots</a></div><div class="ttdeci">static PyType_Slot PyBitVectorIter_slots[]</div><div class="ttdoc">Type slots for the BitVector iterator.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:176</div></div>
 <div class="ttc" id="astructPyBitVectorIterObject_html"><div class="ttname"><a href="structPyBitVectorIterObject.html">PyBitVectorIterObject</a></div><div class="ttdoc">Iterator structure for BitVector.</div><div class="ttdef"><b>Definition</b> bitvector_iter.c:23</div></div>
 </div><!-- fragment -->
 <p>Type specification for <code>cbits._BitVectorIter</code>. </p>
@@ -453,7 +459,7 @@ Variables</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_5c0d64f70903e893b1efe571a4b8de29.html">python</a></li><li class="navelem"><a class="el" href="bitvector__iter_8c.html">bitvector_iter.c</a></li>
-    <li class="footer">Generated on Tue Feb 10 2026 20:20:41 for cbits by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
+    <li class="footer">Generated on Thu Feb 12 2026 16:18:09 for cbits by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8 </li>
   </ul>
 </div>
 </body>
