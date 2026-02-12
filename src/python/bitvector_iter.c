@@ -122,17 +122,21 @@ py_bitvectoriter_next(PyObject *self)
 
     PyBitVectorObject *bv = iter->bv;
     if (bv == NULL) {
+        PyErr_SetNone(PyExc_StopIteration);
         return NULL;
     }
 
     if (iter->position >= iter->n_bits) {
         iter->bv = NULL;
         Py_DECREF(bv);
+        PyErr_SetNone(PyExc_StopIteration);
         return NULL;
     }
 
     if (iter->mask == 0) {
         if (iter->word_index >= iter->bv->bv->n_words) {
+            iter->bv = NULL;
+            Py_DECREF(bv);
             PyErr_SetNone(PyExc_StopIteration);
             return NULL;
         }
