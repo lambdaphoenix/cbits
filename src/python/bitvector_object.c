@@ -27,6 +27,7 @@
 #include "bitvector_methods_slice.h"
 #include "bitvector_methods_ops.h"
 #include "bitvector_iter.h"
+#include "bitvector_methods_sequence.h"
 
 /**
  * @brief ``__new__`` for ``BitVector``: allocate the Python object.
@@ -249,6 +250,8 @@ static PyType_Slot BitVector_slots[] = {
     {Py_sq_item, py_bitvector_item},
     {Py_sq_ass_item, py_bitvector_ass_item},
     {Py_sq_contains, py_bitvector_contains},
+    {Py_sq_concat, py_bitvector_concat},
+    {Py_sq_repeat, py_bitvector_repeat},
 
     {Py_nb_and, py_bitvector_and},
     {Py_nb_inplace_and, py_bitvector_iand},

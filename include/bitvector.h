@@ -203,5 +203,33 @@ bv_clear(BitVector *bv, const size_t pos);
  */
 void
 bv_flip(BitVector *bv, const size_t pos);
+/**
+ * @brief Concatenate two BitVectors into a new BitVector.
+ *
+ * Produces a new BitVector whose bits are ``A`` followed by ``B``. Returns
+ * ``NULL`` on allocation failure.
+ *
+ * @param a Left operand.
+ * @param b Right operand.
+ * @retval object New BitVector on success.
+ * @retval NULL on failure.
+ * @since 0.3.0
+ */
+BitVector *
+bv_concat(const BitVector *a, const BitVector *b);
+/**
+ * @brief Repeat a BitVector ``n`` times.
+ *
+ * Produces a new BitVector whose bit pattern is the original repeated
+ * ``count`` times. Returns ``NULL`` on allocation failure.
+ *
+ * @param bv BitVector instance.
+ * @param count Repeat count.
+ * @retval object New BitVector on success.
+ * @retval NULL on error (exception set).
+ * @since 0.3.0
+ */
+BitVector *
+bv_repeat(const BitVector *bv, const size_t count);
 
 #endif /* CBITS_BITVECTOR_H */

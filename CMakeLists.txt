@@ -34,6 +34,7 @@ add_library(${MODULE_NAME}_core STATIC
 	src/cbits/bitvector_compare.c
 	src/cbits/bitvector_range.c
 	src/cbits/bitvector_rank.c
+	src/cbits/bitvector_sequence.c
 
 	src/compat_dispatch.c
 )
@@ -59,6 +60,7 @@ add_library(${MODULE_NAME} MODULE
 	src/python/bitvector_methods_compare.c
 	src/python/bitvector_methods_misc.c
 	src/python/bitvector_methods_rank.c
+	src/python/bitvector_methods_sequence.c
 	src/python/cbits_module.c
 )
 

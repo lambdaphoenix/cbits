@@ -48,12 +48,13 @@ bv_new(size_t n_bits)
         return bv;
     }
 
-    bv->data = cbits_malloc_aligned(bv->n_words * sizeof(uint64_t), BV_ALIGN);
+    const size_t alloc_words = bv->n_words + 1;
+    bv->data = cbits_malloc_aligned(alloc_words * sizeof(uint64_t), BV_ALIGN);
     if (!bv->data) {
         cbits_free_aligned(bv);
         return NULL;
     }
-    memset(bv->data, 0, bv->n_words * sizeof(uint64_t));
+    memset(bv->data, 0, alloc_words * sizeof(uint64_t));
 
     size_t n_super =
         (bv->n_words + BV_WORDS_SUPER - 1) >> BV_WORDS_SUPER_SHIFT;
