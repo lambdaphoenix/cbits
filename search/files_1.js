@@ -20,11 +20,14 @@ var searchData=
   ['bitvector_5fmethods_5fops_2eh_17',['bitvector_methods_ops.h',['../bitvector__methods__ops_8h.html',1,'']]],
   ['bitvector_5fmethods_5frank_2ec_18',['bitvector_methods_rank.c',['../bitvector__methods__rank_8c.html',1,'']]],
   ['bitvector_5fmethods_5frank_2eh_19',['bitvector_methods_rank.h',['../bitvector__methods__rank_8h.html',1,'']]],
-  ['bitvector_5fmethods_5fslice_2ec_20',['bitvector_methods_slice.c',['../bitvector__methods__slice_8c.html',1,'']]],
-  ['bitvector_5fmethods_5fslice_2eh_21',['bitvector_methods_slice.h',['../bitvector__methods__slice_8h.html',1,'']]],
-  ['bitvector_5fobject_2ec_22',['bitvector_object.c',['../bitvector__object_8c.html',1,'']]],
-  ['bitvector_5fobject_2eh_23',['bitvector_object.h',['../bitvector__object_8h.html',1,'']]],
-  ['bitvector_5fparse_2eh_24',['bitvector_parse.h',['../bitvector__parse_8h.html',1,'']]],
-  ['bitvector_5frange_2ec_25',['bitvector_range.c',['../bitvector__range_8c.html',1,'']]],
-  ['bitvector_5frank_2ec_26',['bitvector_rank.c',['../bitvector__rank_8c.html',1,'']]]
+  ['bitvector_5fmethods_5fsequence_2ec_20',['bitvector_methods_sequence.c',['../bitvector__methods__sequence_8c.html',1,'']]],
+  ['bitvector_5fmethods_5fsequence_2eh_21',['bitvector_methods_sequence.h',['../bitvector__methods__sequence_8h.html',1,'']]],
+  ['bitvector_5fmethods_5fslice_2ec_22',['bitvector_methods_slice.c',['../bitvector__methods__slice_8c.html',1,'']]],
+  ['bitvector_5fmethods_5fslice_2eh_23',['bitvector_methods_slice.h',['../bitvector__methods__slice_8h.html',1,'']]],
+  ['bitvector_5fobject_2ec_24',['bitvector_object.c',['../bitvector__object_8c.html',1,'']]],
+  ['bitvector_5fobject_2eh_25',['bitvector_object.h',['../bitvector__object_8h.html',1,'']]],
+  ['bitvector_5fparse_2eh_26',['bitvector_parse.h',['../bitvector__parse_8h.html',1,'']]],
+  ['bitvector_5frange_2ec_27',['bitvector_range.c',['../bitvector__range_8c.html',1,'']]],
+  ['bitvector_5frank_2ec_28',['bitvector_rank.c',['../bitvector__rank_8c.html',1,'']]],
+  ['bitvector_5fsequence_2ec_29',['bitvector_sequence.c',['../bitvector__sequence_8c.html',1,'']]]
 ];

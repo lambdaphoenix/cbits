@@ -16,6 +16,8 @@ var dir_5c0d64f70903e893b1efe571a4b8de29 =
     [ "bitvector_methods_ops.h", "bitvector__methods__ops_8h.html", "bitvector__methods__ops_8h" ],
     [ "bitvector_methods_rank.c", "bitvector__methods__rank_8c.html", "bitvector__methods__rank_8c" ],
     [ "bitvector_methods_rank.h", "bitvector__methods__rank_8h.html", "bitvector__methods__rank_8h" ],
+    [ "bitvector_methods_sequence.c", "bitvector__methods__sequence_8c.html", "bitvector__methods__sequence_8c" ],
+    [ "bitvector_methods_sequence.h", "bitvector__methods__sequence_8h.html", "bitvector__methods__sequence_8h" ],
     [ "bitvector_methods_slice.c", "bitvector__methods__slice_8c.html", "bitvector__methods__slice_8c" ],
     [ "bitvector_methods_slice.h", "bitvector__methods__slice_8h.html", "bitvector__methods__slice_8h" ],
     [ "bitvector_object.c", "bitvector__object_8c.html", "bitvector__object_8c" ],

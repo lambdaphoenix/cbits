@@ -59,7 +59,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "____init_____8py.html",
-"structPyBitVectorIterObject.html#a25339c38e0d105f64cfab197a59d82e0"
+"index.html#autotoc_md4"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
